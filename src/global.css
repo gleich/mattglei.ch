@@ -59,6 +59,7 @@ html {
 	text-rendering: optimizeLegibility;
 }
 
+/* textured background */
 html:before {
 	content: '';
 	background-color: transparent;
@@ -73,4 +74,36 @@ html:before {
 	position: absolute;
 	pointer-events: none;
 	z-index: -1;
+}
+
+/* custom scrollbar */
+*::-webkit-scrollbar {
+	width: 0.2rem;
+	height: 0.2rem;
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--background);
+}
+
+*::-webkit-scrollbar-thumb {
+	background: var(--foreground);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+a {
+	color: var(--link);
+}
+
+img {
+	-webkit-user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 }
