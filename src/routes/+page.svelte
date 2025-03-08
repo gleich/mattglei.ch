@@ -10,6 +10,4 @@
 	description="College Student @ RIT (Rochester Institute of Technology), software engineer, cyclist, and photographer"
 />
 
-<h1>Matt Gleich</h1>
-
 <Header />
