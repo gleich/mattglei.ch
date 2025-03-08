@@ -11,3 +11,13 @@
 <main>
 	<Header />
 </main>
+
+<style>
+	main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		padding: 0 20px;
+	}
+</style>

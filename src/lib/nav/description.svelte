@@ -12,15 +12,14 @@
 	});
 </script>
 
-<div>
+<span>
 	{descriptions[index]}
-</div>
+</span>
 
 <style>
-	div {
+	span {
 		font-family: 'IBM Plex Mono';
 		font-style: italic;
 		font-weight: 600;
-		font-size: var(--font-size);
 	}
 </style>
