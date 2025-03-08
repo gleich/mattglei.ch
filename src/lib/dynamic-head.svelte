@@ -1,5 +1,3 @@
-<!-- DYNAMIC HEAD CONTENT -->
-
 <script lang="ts">
 	let {
 		title,
