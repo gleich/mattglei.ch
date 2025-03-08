@@ -1,6 +1,8 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
-	import Socials from '$lib/socials.svelte';
+	import Header from '$lib/index/header.svelte';
+	import Description from '$lib/nav/description.svelte';
+	import Socials from '$lib/nav/socials.svelte';
 </script>
 
 <DynamicHead
@@ -10,4 +12,4 @@
 
 <h1>Matt Gleich</h1>
 
-<Socials />
+<Header />

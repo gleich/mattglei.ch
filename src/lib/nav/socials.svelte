@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Component } from 'svelte';
-	import Github from './icons/github.svelte';
-	import Instagram from './icons/instagram.svelte';
-	import Strava from './icons/strava.svelte';
-	import Linkedin from './icons/linkedin.svelte';
+	import Github from '../icons/github.svelte';
+	import Instagram from '../icons/instagram.svelte';
+	import Strava from '../icons/strava.svelte';
+	import Linkedin from '../icons/linkedin.svelte';
 
 	interface account {
 		name: string;
@@ -19,17 +19,8 @@
 	];
 </script>
 
-<div class="container">
-	{#each accounts as account}
-		<a href={account.href} target="_blank" title={account.name}>
-			<svelte:component this={account.icon} />
-		</a>
-	{/each}
-</div>
-
-<style>
-	.container {
-		display: flex;
-		align-items: center;
-	}
-</style>
+{#each accounts as account}
+	<a href={account.href} target="_blank" title={account.name}>
+		<svelte:component this={account.icon} />
+	</a>
+{/each}
