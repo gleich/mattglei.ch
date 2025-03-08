@@ -12,19 +12,17 @@
 	}
 
 	const accounts: account[] = [
-		{ name: 'github', href: 'https://github.com/gleich', icon: Github },
-		{ name: 'instagram', href: 'https://www.instagram.com/mattglei.ch', icon: Instagram },
-		{ name: 'strava', href: 'https://www.strava.com/athletes/mattgleich', icon: Strava },
-		{ name: 'linkedin', href: 'https://www.linkedin.com/in/matt-gleich/', icon: Linkedin }
+		{ name: 'GitHub', href: 'https://github.com/gleich', icon: Github },
+		{ name: 'Instagram', href: 'https://www.instagram.com/mattglei.ch', icon: Instagram },
+		{ name: 'Strava', href: 'https://www.strava.com/athletes/mattgleich', icon: Strava },
+		{ name: 'Linkedin', href: 'https://www.linkedin.com/in/matt-gleich/', icon: Linkedin }
 	];
 </script>
 
 <div class="container">
 	{#each accounts as account}
 		<a href={account.href} target="_blank" title={account.name}>
-			<div class="icon">
-				<svelte:component this={account.icon} class="icon" />
-			</div>
+			<svelte:component this={account.icon} />
 		</a>
 	{/each}
 </div>
@@ -33,10 +31,5 @@
 	.container {
 		display: flex;
 		align-items: center;
-	}
-
-	.icon {
-		height: 30px;
-		width: 30px;
 	}
 </style>
