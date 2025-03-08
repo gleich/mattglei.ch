@@ -1,4 +1,5 @@
 <script>
+	import Logo from '$lib/logo.svelte';
 	import Description from '$lib/nav/description.svelte';
 	import Socials from '$lib/nav/socials.svelte';
 </script>
@@ -8,6 +9,7 @@
 		<h1>Matt Gleich</h1>
 		<Description --font-size="17px" />
 	</div>
+	<Logo --width="150px" />
 	<div class="socials">
 		<Socials />
 	</div>

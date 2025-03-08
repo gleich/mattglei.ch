@@ -3,7 +3,7 @@
 	<!-- theme styles -->
 	<style>
 		:root {
-			--link: #2b95ff: ;
+			--link: #2b95ff;
 
 			--foreground: white;
 			--background: rgb(21, 25, 27);
@@ -51,7 +51,7 @@
 
 		@font-face {
 			font-family: 'Inter';
-			src: url('/fonts/inter/bold.otf');
+			src: url('/fonts/inter/bold.woff2');
 			font-weight: 700;
 		}
 	</style>
@@ -158,6 +158,20 @@
 		<link
 			rel="preload"
 			href="%sveltekit.assets%/fonts/ibm_plex_sans/medium.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="%sveltekit.assets%/fonts/ibm_plex_mono/semibold_italic.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="%sveltekit.assets%/fonts/inter/bold.woff2"
 			as="font"
 			type="font/woff2"
 			crossorigin

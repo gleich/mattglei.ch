@@ -1,8 +1,6 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
-	import Header from '$lib/index/header.svelte';
-	import Description from '$lib/nav/description.svelte';
-	import Socials from '$lib/nav/socials.svelte';
+	import Header from './header.svelte';
 </script>
 
 <DynamicHead
@@ -10,4 +8,6 @@
 	description="College Student @ RIT (Rochester Institute of Technology), software engineer, cyclist, and photographer"
 />
 
-<Header />
+<main>
+	<Header />
+</main>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	let {
+	const {
 		title,
 		description,
 		keywords = []
