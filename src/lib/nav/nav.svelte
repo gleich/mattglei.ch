@@ -4,7 +4,7 @@
 	import Linkedin from '$lib/icons/linkedin.svelte';
 	import Logo from '$lib/logo.svelte';
 	import type { Component } from 'svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 </script>
 
 {#snippet social(name: string, href: string, icon: Component)}
@@ -28,13 +28,12 @@
 		</div>
 	</div>
 	<div class="links">
-		<a href="/" class={$page.url.pathname === '/' ? 'current-link' : ''}>~</a>
-		<a href="/writing" class={$page.url.pathname === '/writing' ? 'current-link' : ''}>/writing</a>
-		<a href="/photos" class={$page.url.pathname === '/photos' ? 'current-link' : ''}>/photos</a>
-		<a href="/workouts" class={$page.url.pathname === '/workouts' ? 'current-link' : ''}
-			>/workouts</a
+		<a href="/" class={page.url.pathname === '/' ? 'current-link' : ''}>~</a>
+		<a href="/writing" class={page.url.pathname === '/writing' ? 'current-link' : ''}>/writing</a>
+		<a href="/photos" class={page.url.pathname === '/photos' ? 'current-link' : ''}>/photos</a>
+		<a href="/workouts" class={page.url.pathname === '/workouts' ? 'current-link' : ''}>/workouts</a
 		>
-		<a href="/music" class={$page.url.pathname === '/music' ? 'current-link' : ''}>/music</a>
+		<a href="/music" class={page.url.pathname === '/music' ? 'current-link' : ''}>/music</a>
 	</div>
 </nav>
 
@@ -62,13 +61,14 @@
 
 	.links {
 		display: flex;
-		gap: 20px;
-		background-color: rgb(10 19 34);
+		max-width: 500px;
+		width: 100%;
+		background-color: var(--blue-background);
 		border-radius: var(--border-radius);
 		padding: 0px 10px;
 		align-items: center;
-		justify-content: center;
-		width: fit-content;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
 	}
 
 	.links a {
@@ -78,7 +78,7 @@
 	}
 
 	.current-link {
-		background-color: rgb(16, 30, 54);
+		background-color: var(--blue-selection);
 		border-radius: 2px;
 	}
 

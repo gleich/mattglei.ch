@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Nav from '$lib/nav/nav.svelte';
 
 	let { children } = $props();
