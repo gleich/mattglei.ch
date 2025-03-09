@@ -1,15 +1,17 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
-	import Header from './header.svelte';
+	import Nav from '$lib/nav/nav.svelte';
 </script>
 
 <DynamicHead
 	title="Matt Gleich"
-	description="College Student @ RIT (Rochester Institute of Technology), software engineer, cyclist, and photographer"
+	description="student, software engineer, cyclist, and photographer"
 />
 
 <main>
-	<Header />
+	<div class="content">
+		<Nav />
+	</div>
 </main>
 
 <style>
@@ -17,7 +19,17 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 100vh;
+		min-height: 100vh;
 		padding: 0 20px;
+		width: 100%;
+	}
+
+	.content {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		max-width: 900px;
 	}
 </style>
