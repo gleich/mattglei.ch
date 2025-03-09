@@ -4,6 +4,7 @@
 	import Linkedin from '$lib/icons/linkedin.svelte';
 	import Logo from '$lib/logo.svelte';
 	import type { Component } from 'svelte';
+	import { page } from '$app/stores';
 </script>
 
 {#snippet social(name: string, href: string, icon: Component)}
@@ -26,12 +27,24 @@
 			{@render social('Linkedin', 'https://www.linkedin.com/in/matt-gleich/', Linkedin)}
 		</div>
 	</div>
+	<div class="links">
+		<a href="/" class={$page.url.pathname === '/' ? 'current-link' : ''}>~</a>
+		<a href="/writing" class={$page.url.pathname === '/writing' ? 'current-link' : ''}>/writing</a>
+		<a href="/photos" class={$page.url.pathname === '/photos' ? 'current-link' : ''}>/photos</a>
+		<a href="/workouts" class={$page.url.pathname === '/workouts' ? 'current-link' : ''}
+			>/workouts</a
+		>
+		<a href="/music" class={$page.url.pathname === '/music' ? 'current-link' : ''}>/music</a>
+	</div>
 </nav>
 
 <style>
 	nav {
-		flex: 1;
+		width: 100%;
+		padding: 10px;
 		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.bar {
@@ -44,6 +57,29 @@
 		z-index: 99;
 		overflow: hidden;
 		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	.links {
+		display: flex;
+		gap: 20px;
+		background-color: rgb(10 19 34);
+		border-radius: var(--border-radius);
+		padding: 0px 10px;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+	}
+
+	.links a {
+		padding: 2px 10px;
+		margin: 5px;
+		text-decoration: none;
+	}
+
+	.current-link {
+		background-color: rgb(16, 30, 54);
+		border-radius: 2px;
 	}
 
 	.left {
@@ -80,6 +116,5 @@
 		justify-content: center;
 		margin-right: 3px;
 		background-color: var(--foreground);
-		z-index: -1;
 	}
 </style>

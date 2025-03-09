@@ -1,6 +1,5 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
-	import Nav from '$lib/nav/nav.svelte';
 </script>
 
 <DynamicHead
@@ -9,27 +8,24 @@
 />
 
 <main>
-	<div class="content">
-		<Nav />
-	</div>
+	<p class="hi">Hey, I'm Matt Gleich</p>
+	<p>
+		I'm a third-year Computer Science student at the <a href="https://rit.edu" about="_blank"
+			>Rochester Institute of Technology (RIT)</a
+		>. This website serves as portfolio showcasing some of my projects, work experience, and
+		personal interests. For any inquiries or potential collaborations, please contact me at
+		<a href="mailto:mail@mattglei.ch">mail@mattglei.ch</a>.
+	</p>
 </main>
 
 <style>
 	main {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		min-height: 100vh;
 		padding: 0 20px;
-		width: 100%;
+		max-width: 1000px;
 	}
 
-	.content {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		max-width: 900px;
+	.hi {
+		margin-top: 10px;
+		margin-bottom: 5px;
 	}
 </style>
