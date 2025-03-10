@@ -1,4 +1,8 @@
 <script lang="ts">
+	import '../styles/global.css';
+	import '../styles/fonts.css';
+	import '../styles/variables.css';
+
 	import Nav from '$lib/nav.svelte';
 
 	let { children } = $props();
