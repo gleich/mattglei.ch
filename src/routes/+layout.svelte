@@ -4,9 +4,12 @@
 	import '../styles/variables.css';
 
 	import Nav from '$lib/nav.svelte';
+	import Fonts from '$lib/fonts.svelte';
 
 	let { children } = $props();
 </script>
+
+<Fonts />
 
 <div class="container">
 	<div class="main">

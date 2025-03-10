@@ -1,0 +1,32 @@
+<!-- generated from /scripts/fonts. do not manually edit. -->
+
+<svelte:head>
+	<link
+		rel="preload"
+		href="/fonts/ibm_plex_mono/bold.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/ibm_plex_sans/medium.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/inter/bold.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/inter/extra_bold.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+</svelte:head>

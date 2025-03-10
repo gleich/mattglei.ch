@@ -46,6 +46,12 @@ html:before {
 	z-index: -1;
 }
 
+::selection {
+	background-color: var(--foreground);
+	text-decoration-color: var(--background);
+	color: var(--background);
+}
+
 /* custom scrollbar */
 *::-webkit-scrollbar {
 	width: 0.2rem;

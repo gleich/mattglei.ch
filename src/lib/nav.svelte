@@ -7,9 +7,9 @@
 	import { page } from '$app/state';
 </script>
 
-{#snippet social(name: string, href: string, icon: Component)}
+{#snippet social(name: string, href: string, Icon: Component)}
 	<a {href} title={name} target="_blank" class="social">
-		<svelte:component this={icon} />
+		<Icon />
 	</a>
 {/snippet}
 
@@ -23,12 +23,12 @@
 
 <nav>
 	<div class="bar">
-		<div class="left">
+		<a href="/" class="left">
 			<div class="logo">
 				<Logo invert />
 			</div>
 			<h2 class="name">Matt Gleich</h2>
-		</div>
+		</a>
 		{@render socials('bar-socials')}
 	</div>
 	{@render socials('socials-under-bar')}
@@ -45,7 +45,6 @@
 	nav {
 		width: 100%;
 		margin-top: 200px;
-		padding: 10px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -91,6 +90,8 @@
 	.left {
 		display: flex;
 		align-items: center;
+		color: var(--foreground);
+		text-decoration: none;
 	}
 
 	.bar-socials {

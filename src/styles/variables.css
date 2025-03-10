@@ -1,5 +1,6 @@
 :root {
 	--border-radius: 5px;
+	--box-shadow: 0 0 10px var(--background);
 
 	--foreground: white;
 	--background: rgb(21, 25, 27);
@@ -15,7 +16,7 @@
 	--blue-selection: rgb(16, 30, 54);
 
 	--red-foreground: rgb(243, 9, 40);
-	--red-background: rgb(47, 19, 21);
+	--red-background: rgb(61 36 38);
 }
 
 @media (prefers-color-scheme: light) {
