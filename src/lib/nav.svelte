@@ -13,6 +13,14 @@
 	</a>
 {/snippet}
 
+{#snippet socials(className: string)}
+	<div class={className}>
+		{@render social('GitHub', 'https://github.com/gleich', Github)}
+		{@render social('Instagram', 'https://instagram.com/mattglei.ch', Instagram)}
+		{@render social('Linkedin', 'https://www.linkedin.com/in/matt-gleich/', Linkedin)}
+	</div>
+{/snippet}
+
 <nav>
 	<div class="bar">
 		<div class="left">
@@ -21,29 +29,27 @@
 			</div>
 			<h2 class="name">Matt Gleich</h2>
 		</div>
-		<div class="socials">
-			{@render social('GitHub', 'https://github.com/gleich', Github)}
-			{@render social('Instagram', 'https://instagram.com/mattglei.ch', Instagram)}
-			{@render social('Linkedin', 'https://www.linkedin.com/in/matt-gleich/', Linkedin)}
-		</div>
+		{@render socials('bar-socials')}
 	</div>
+	{@render socials('socials-under-bar')}
 	<div class="links">
 		<a href="/" class={page.url.pathname === '/' ? 'current-link' : ''}>~</a>
-		<a href="/writing" class={page.url.pathname === '/writing' ? 'current-link' : ''}>/writing</a>
-		<a href="/photos" class={page.url.pathname === '/photos' ? 'current-link' : ''}>/photos</a>
-		<a href="/workouts" class={page.url.pathname === '/workouts' ? 'current-link' : ''}>/workouts</a
-		>
-		<a href="/music" class={page.url.pathname === '/music' ? 'current-link' : ''}>/music</a>
+		<a href="/writing" class={page.url.pathname === '/writing' ? 'current-link' : ''}>writing</a>
+		<a href="/photos" class={page.url.pathname === '/photos' ? 'current-link' : ''}>photos</a>
+		<a href="/workouts" class={page.url.pathname === '/workouts' ? 'current-link' : ''}>workouts</a>
+		<a href="/music" class={page.url.pathname === '/music' ? 'current-link' : ''}>music</a>
 	</div>
 </nav>
 
 <style>
 	nav {
 		width: 100%;
+		margin-top: 200px;
 		padding: 10px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		gap: 10px;
 	}
 
 	.bar {
@@ -56,7 +62,6 @@
 		z-index: 99;
 		overflow: hidden;
 		width: 100%;
-		margin-bottom: 10px;
 	}
 
 	.links {
@@ -68,6 +73,7 @@
 		padding: 0px 10px;
 		align-items: center;
 		flex-wrap: wrap;
+		font-size: 1rem;
 		justify-content: space-evenly;
 	}
 
@@ -87,10 +93,16 @@
 		align-items: center;
 	}
 
-	.socials {
+	.bar-socials {
 		display: flex;
 		gap: 15px;
 		margin-right: 15px;
+	}
+
+	.socials-under-bar {
+		display: none;
+		gap: 20px;
+		margin: 5px 0;
 	}
 
 	.social {
@@ -105,6 +117,7 @@
 		line-height: 75%;
 		margin-left: 10px;
 		margin-right: 10px;
+		text-wrap: nowrap;
 	}
 
 	.logo {
@@ -116,5 +129,36 @@
 		justify-content: center;
 		margin-right: 3px;
 		background-color: var(--foreground);
+	}
+
+	@media (max-width: 500px) {
+		.bar-socials {
+			display: none;
+		}
+
+		.socials-under-bar {
+			display: flex;
+		}
+	}
+
+	@media (max-width: 400px) {
+		nav {
+			margin-top: 100px;
+		}
+
+		.links a {
+			margin: 4px;
+		}
+
+		.name {
+			font-size: 12vw;
+		}
+
+		.links {
+			max-width: 300px;
+			padding: 2px;
+			width: fit-content;
+			justify-content: space-evenly;
+		}
 	}
 </style>

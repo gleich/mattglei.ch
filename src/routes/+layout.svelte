@@ -22,7 +22,6 @@
 	.main {
 		display: flex;
 		align-content: center;
-		margin-top: 200px;
 		flex-direction: column;
 		width: 100%;
 		max-width: 1000px;
