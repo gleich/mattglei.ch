@@ -83,6 +83,11 @@
 		font-weight: 800;
 	}
 
+	.section-name::selection {
+		color: var(--foreground);
+		background-color: var(--background);
+	}
+
 	.live-sources {
 		background-color: var(--red-background);
 		border-bottom-left-radius: var(--border-radius);
@@ -148,6 +153,15 @@
 		font-size: 13.5px;
 		border-bottom-left-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
+	}
+
+	@media (max-width: 500px) {
+		.live-source-icon {
+			display: none;
+		}
+		.live-source-separator {
+			padding-left: 0px;
+		}
 	}
 
 	@-webkit-keyframes dot-blink {

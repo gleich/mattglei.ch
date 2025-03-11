@@ -34,6 +34,7 @@ export async function loadFromLCP<T>(cache: Cache, fetch: SvelteFetch): Promise<
 	}
 	const res = await fetch(`https://lcp.dev.mattglei.ch/${pathName}`, {
 		method: 'GET',
+		cache: 'no-store',
 		headers: {
 			Authorization: `Bearer ${LCP_TOKEN}`
 		}

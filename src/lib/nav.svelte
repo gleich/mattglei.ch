@@ -31,7 +31,6 @@
 		</a>
 		{@render socials('bar-socials')}
 	</div>
-	{@render socials('socials-under-bar')}
 	<div class="links">
 		<a href="/" class={page.url.pathname === '/' ? 'current-link' : ''}>~</a>
 		<a href="/writing" class={page.url.pathname === '/writing' ? 'current-link' : ''}>writing</a>
@@ -39,6 +38,7 @@
 		<a href="/workouts" class={page.url.pathname === '/workouts' ? 'current-link' : ''}>workouts</a>
 		<a href="/music" class={page.url.pathname === '/music' ? 'current-link' : ''}>music</a>
 	</div>
+	{@render socials('socials-under-bar')}
 </nav>
 
 <style>
@@ -48,7 +48,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 10px;
 	}
 
 	.bar {
@@ -61,29 +60,37 @@
 		z-index: 99;
 		overflow: hidden;
 		width: 100%;
+		box-shadow: var(--box-shadow);
 	}
 
 	.links {
 		display: flex;
 		max-width: 500px;
-		width: 100%;
-		background-color: var(--blue-background);
+		width: 96%;
+		background-color: var(--real-background);
+		border: 1px solid var(--border);
 		border-radius: var(--border-radius);
 		padding: 0px 10px;
+		padding-top: 2px;
 		align-items: center;
 		flex-wrap: wrap;
 		font-size: 1rem;
 		justify-content: space-evenly;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		margin: 0px 30px;
 	}
 
 	.links a {
 		padding: 2px 10px;
 		margin: 5px;
 		text-decoration: none;
+		color: var(--foreground);
 	}
 
 	.current-link {
-		background-color: var(--blue-selection);
+		background-color: var(--green-background);
+		color: var(--green-foreground) !important;
 		border-radius: 2px;
 	}
 
