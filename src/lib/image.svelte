@@ -14,20 +14,8 @@
 		width: number;
 		aspectRatio?: string;
 	} = $props();
-
-	const loaded = $state(false);
-	function onload() {}
 </script>
 
-{#if !loaded && placeholder}
-	<img
-		{src}
-		{alt}
-		{height}
-		{width}
-		style={aspectRatio ? `aspect-ratio: ${aspectRatio}` : undefined}
-	/>
-{/if}
 <img
 	{src}
 	loading="lazy"
@@ -35,6 +23,13 @@
 	{alt}
 	{height}
 	{width}
-	{onload}
-	style={`display: ${loaded ? 'block' : 'none'}; ${aspectRatio ? `aspect-ratio: ${aspectRatio}` : ''}`}
+	style={`${aspectRatio ? `aspect-ratio: ${aspectRatio};` : ''} ${placeholder ? `background-image: url('${placeholder}');` : ''}`}
 />
+
+<style>
+	img {
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+</style>
