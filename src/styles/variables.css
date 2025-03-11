@@ -17,6 +17,7 @@
 
 	--red-foreground: rgb(243, 9, 40);
 	--red-background: rgb(61 36 38);
+	--red-border: rgb(134 34 41);
 }
 
 @media (prefers-color-scheme: light) {

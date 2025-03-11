@@ -70,7 +70,7 @@ html:before {
 *::before,
 *::after {
 	box-sizing: border-box;
-	font-size: 16.5px;
+	font-size: 16px;
 }
 
 a {

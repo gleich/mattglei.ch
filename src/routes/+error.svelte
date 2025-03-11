@@ -48,4 +48,8 @@
 		padding: 30px;
 		border-radius: var(--border-radius);
 	}
+
+	h1 {
+		font-size: 25px;
+	}
 </style>

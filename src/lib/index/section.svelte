@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fromNow } from '$lib/time';
+	import dayjs from 'dayjs';
 	import type { Component, Snippet } from 'svelte';
 
 	export interface Source {
@@ -42,7 +44,14 @@
 			</div>
 		{/if}
 	</div>
-	{@render children()}
+	<div class="children">
+		{@render children()}
+	</div>
+	{#if liveData}
+		<div class="updated-container">
+			Data cached & processed by [{fromNow(dayjs(liveData.updated), dayjs())}]
+		</div>
+	{/if}
 </section>
 
 <style>
@@ -77,10 +86,13 @@
 	.live-sources {
 		background-color: var(--red-background);
 		border-bottom-left-radius: var(--border-radius);
+		border-top-right-radius: var(--border-radius);
+		border: 1px solid var(--red-border);
 		display: flex;
 		align-items: center;
 		padding: 0px 10px;
 		font-family: 'IBM Plex Mono';
+		font-weight: 600;
 	}
 
 	.live-circle {
@@ -99,7 +111,7 @@
 
 	.live-from,
 	.live-source-name {
-		font-size: 14.5px;
+		font-size: 13.5px;
 	}
 
 	.live-source {
@@ -110,13 +122,32 @@
 	}
 
 	.live-source-icon {
-		width: 17px;
-		height: 17px;
+		width: 16px;
+		height: 16px;
 	}
 
 	.live-source-separator {
 		padding-left: 8px;
 		color: var(--red-foreground);
+	}
+
+	.children {
+		padding: 10px;
+	}
+
+	.updated-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 5px;
+		color: var(--green-foreground);
+		background: var(--green-background);
+		border: 1px solid var(--green-border);
+		font-family: 'IBM Plex Mono';
+		font-weight: 500;
+		font-size: 13.5px;
+		border-bottom-left-radius: var(--border-radius);
+		border-bottom-right-radius: var(--border-radius);
 	}
 
 	@-webkit-keyframes dot-blink {
