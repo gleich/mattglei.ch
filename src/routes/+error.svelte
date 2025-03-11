@@ -31,7 +31,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 60%;
 	}
 
 	svg {
@@ -40,6 +39,7 @@
 	}
 
 	.container {
+		margin-top: max(20vh, 20px);
 		display: flex;
 		align-items: center;
 		gap: 20px;

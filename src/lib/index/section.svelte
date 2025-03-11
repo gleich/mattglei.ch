@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { fromNow } from '$lib/time';
 	import dayjs from 'dayjs';
-	import type { Component, Snippet } from 'svelte';
+	import { onMount, type Component, type Snippet } from 'svelte';
 
 	export interface Source {
 		name: string;
 		icon: Component;
 		url: string;
-		iconLeftMargin: string;
-		iconRightMargin: string;
+		iconLeftMargin?: string;
+		iconRightMargin?: string;
 	}
 
 	export interface LiveData {
@@ -16,8 +16,17 @@
 		updated: Date;
 	}
 
-	const { name, children, liveData }: { name: string; children: Snippet; liveData?: LiveData } =
+	const { name, liveData, children }: { name: string; liveData?: LiveData; children: Snippet } =
 		$props();
+
+	const updated = dayjs(liveData?.updated);
+	let now = $state(dayjs());
+	onMount(() => {
+		const interval = setInterval(() => {
+			now = dayjs();
+		}, 10);
+		return () => clearInterval(interval);
+	});
 </script>
 
 <section id={name.toLowerCase()}>
@@ -31,7 +40,7 @@
 					<a class="live-source" href={source.url} target="_blank">
 						<div
 							class="live-source-icon"
-							style={`margin-left: ${source.iconLeftMargin}; margin-right: ${source.iconRightMargin}`}
+							style={`margin-left: ${source.iconLeftMargin ?? '10px'}; margin-right: ${source.iconRightMargin ?? '9px'}`}
 						>
 							<source.icon color={'var(--red-foreground)'} />
 						</div>
@@ -49,7 +58,7 @@
 	</div>
 	{#if liveData}
 		<div class="updated-container">
-			Data cached & processed by [{fromNow(dayjs(liveData.updated), dayjs())}]
+			Data cached & processed by [{fromNow(updated, now)}]
 		</div>
 	{/if}
 </section>
@@ -129,6 +138,7 @@
 	.live-source-icon {
 		width: 16px;
 		height: 16px;
+		margin-bottom: 1px;
 	}
 
 	.live-source-separator {

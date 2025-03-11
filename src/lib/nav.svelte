@@ -32,11 +32,12 @@
 		{@render socials('bar-socials')}
 	</div>
 	<div class="links">
-		<a href="/" class={page.url.pathname === '/' ? 'current-link' : ''}>~</a>
+		<a href="/" class={page.url.pathname === '/' ? 'current-link' : ''}>home</a>
 		<a href="/writing" class={page.url.pathname === '/writing' ? 'current-link' : ''}>writing</a>
 		<a href="/photos" class={page.url.pathname === '/photos' ? 'current-link' : ''}>photos</a>
 		<a href="/workouts" class={page.url.pathname === '/workouts' ? 'current-link' : ''}>workouts</a>
 		<a href="/music" class={page.url.pathname === '/music' ? 'current-link' : ''}>music</a>
+		<a href="/contact" class={page.url.pathname === '/contact' ? 'current-link' : ''}>contact</a>
 	</div>
 	{@render socials('socials-under-bar')}
 </nav>
@@ -44,7 +45,7 @@
 <style>
 	nav {
 		width: 100%;
-		margin-top: 200px;
+		margin-top: 100px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -65,13 +66,14 @@
 
 	.links {
 		display: flex;
-		max-width: 500px;
+		max-width: 600px;
 		width: 96%;
 		background-color: var(--real-background);
 		border: 1px solid var(--border);
 		border-radius: var(--border-radius);
 		padding: 0px 10px;
 		padding-top: 2px;
+		padding-bottom: 1px;
 		align-items: center;
 		flex-wrap: wrap;
 		font-size: 1rem;
