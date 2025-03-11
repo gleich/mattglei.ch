@@ -44,6 +44,7 @@
 			recently played music.
 		</p>
 
+		<h3 class="playlists-header">Playlists</h3>
 		<div class="playlists">
 			{#each music.data.playlist_summaries as summary}
 				<Playlist {summary} />
@@ -56,13 +57,21 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		margin-bottom: 10px;
 	}
 
 	.playlists {
 		display: flex;
 		overflow-x: scroll;
-		gap: 20px;
-		padding-bottom: 5px;
+		gap: 15px;
+		padding-bottom: 8px;
+		border: 1.5px dashed var(--border);
+		padding: 10px;
+	}
+
+	.playlists-header {
+		width: 100%;
+		text-align: center;
+		padding: 5px 0px;
 	}
 </style>

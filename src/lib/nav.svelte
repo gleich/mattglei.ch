@@ -27,7 +27,7 @@
 			<div class="logo">
 				<Logo invert />
 			</div>
-			<h2 class="name">Matt Gleich</h2>
+			<h1 class="name">Matt Gleich</h1>
 		</a>
 		{@render socials('bar-socials')}
 	</div>
@@ -123,7 +123,6 @@
 	.name {
 		font-family: 'Inter';
 		font-weight: bold;
-		font-size: 2.9rem;
 		line-height: 75%;
 		margin-left: 10px;
 		margin-right: 10px;

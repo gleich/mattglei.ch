@@ -33,7 +33,7 @@
 	<div class="header-container">
 		<h2 class="section-name">{name}</h2>
 		{#if liveData}
-			<div class="live-sources">
+			<div class="live">
 				<span class="live-circle"></span>
 				<p class="live-from">LIVE FROM</p>
 				{#each liveData.sources as source, index}
@@ -80,10 +80,10 @@
 	.header-container {
 		display: flex;
 		justify-content: space-between;
+		margin-bottom: 5px;
 	}
 
 	.section-name {
-		font-size: 1.5rem;
 		color: var(--background);
 		background-color: var(--foreground);
 		padding: 2px 15px;
@@ -97,16 +97,17 @@
 		background-color: var(--background);
 	}
 
-	.live-sources {
+	.live {
 		background-color: var(--red-background);
 		border-bottom-left-radius: var(--border-radius);
 		border-top-right-radius: var(--border-radius);
 		border: 1px solid var(--red-border);
 		display: flex;
 		align-items: center;
-		padding: 0px 10px;
+		padding: 5px 10px;
 		font-family: 'IBM Plex Mono';
 		font-weight: 600;
+		height: fit-content;
 	}
 
 	.live-circle {
