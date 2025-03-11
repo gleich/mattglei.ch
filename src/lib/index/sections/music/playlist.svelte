@@ -10,8 +10,8 @@
 		<div class="collage">
 			{#each summary.first_four_tracks as track}
 				<Image
-					src={track.album_art_url}
-					alt={track.track}
+					src={track.album_art_preview_url}
+					alt={`Album art for ${track.track} by ${track.artist}`}
 					height={100}
 					width={100}
 					placeholder={track.album_art_blurhash}

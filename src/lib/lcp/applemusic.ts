@@ -8,6 +8,7 @@ export interface Song {
 	artist: string;
 	duration_in_millis: number;
 	album_art_url: string;
+	album_art_preview_url: string;
 	album_art_blurhash: string;
 	url: string;
 	id: string;
