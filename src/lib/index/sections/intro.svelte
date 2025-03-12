@@ -1,3 +1,7 @@
+<script>
+	import Resume from '$lib/resume.svelte';
+</script>
+
 <div class="container">
 	<p>Hey, I'm Matt Gleich</p>
 	<p>
@@ -5,7 +9,8 @@
 			>Rochester Institute of Technology (RIT)</a
 		>. This website serves as portfolio showcasing some of my projects, work experience, and
 		personal interests. For any inquiries or potential collaborations, please contact me at
-		<a href="mailto:mail@mattglei.ch">mail@mattglei.ch</a>.
+		<a href="mailto:mail@mattglei.ch">mail@mattglei.ch</a>. More of my professional work is detailed
+		in my <Resume />.
 	</p>
 </div>
 
