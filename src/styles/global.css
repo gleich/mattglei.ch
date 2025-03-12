@@ -17,6 +17,7 @@ html {
 	background-color: var(--background);
 	position: relative;
 	scrollbar-width: 0.2rem;
+	overflow-y: scroll;
 
 	/* default font configuration */
 	font-feature-settings: 'zero';
