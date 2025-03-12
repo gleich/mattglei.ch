@@ -34,4 +34,10 @@
 		max-width: 1000px;
 		padding: 0px 10px;
 	}
+
+	@media (max-width: 450px) {
+		.main {
+			padding: 0px 5px;
+		}
+	}
 </style>

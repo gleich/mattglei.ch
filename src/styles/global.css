@@ -97,6 +97,22 @@ h3 {
 	font-size: 1.45rem;
 }
 
+@media (max-width: 500px) {
+	*,
+	*::before,
+	*::after {
+		font-size: 15px;
+	}
+
+	h2 {
+		font-size: 1.45rem;
+	}
+
+	h3 {
+		font-size: 1.3rem;
+	}
+}
+
 button {
 	background-color: var(--foreground);
 	color: var(--background);

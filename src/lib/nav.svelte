@@ -67,7 +67,7 @@
 	.links {
 		display: flex;
 		max-width: 600px;
-		width: 96%;
+		width: 98%;
 		background-color: var(--real-background);
 		border: 1px solid var(--border);
 		border-radius: var(--border-radius);
@@ -80,7 +80,7 @@
 		justify-content: space-evenly;
 		border-top-left-radius: 0px;
 		border-top-right-radius: 0px;
-		margin: 0px 30px;
+		margin: 0px 20px;
 	}
 
 	.links a {
@@ -113,6 +113,7 @@
 		display: none;
 		gap: 20px;
 		margin: 5px 0;
+		margin-top: 20px;
 	}
 
 	.social {
@@ -141,6 +142,10 @@
 	}
 
 	@media (max-width: 500px) {
+		.links {
+			justify-content: center;
+		}
+
 		.bar-socials {
 			display: none;
 		}
@@ -155,8 +160,14 @@
 			margin-top: 100px;
 		}
 
+		.links {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
 		.links a {
 			margin: 4px;
+			text-align: center;
 		}
 
 		.name {

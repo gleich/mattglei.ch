@@ -57,13 +57,18 @@
 		{@render children()}
 	</div>
 	{#if liveData}
-		<div class="updated-container">
+		<p class="updated-container">
 			{#if liveData.updated}
-				Data cached & processed by [{fromNow(updated, now)}]
+				Data <span class="updated-detailed">&nbsp;cached & processed&nbsp;</span><span
+					class="updated-concise">&nbsp;updated&nbsp;</span
+				>
+				by lcp&nbsp;<span class="updated-detailed">[</span>{fromNow(updated, now)}<span
+					class="updated-detailed">]</span
+				>
 			{:else}
 				loading
 			{/if}
-		</div>
+		</p>
 	{/if}
 </section>
 
@@ -94,6 +99,7 @@
 		border-bottom-right-radius: var(--border-radius);
 		font-family: 'Inter';
 		font-weight: 800;
+		height: fit-content;
 	}
 
 	.section-name::selection {
@@ -104,21 +110,22 @@
 	.live {
 		background-color: var(--red-background);
 		border-bottom-left-radius: var(--border-radius);
-		border-top-right-radius: var(--border-radius);
-		border: 1px solid var(--red-border);
+		border-left: 1px solid var(--red-border);
+		border-bottom: 1px solid var(--red-border);
 		display: flex;
 		align-items: center;
 		padding: 5px 10px;
 		font-family: 'IBM Plex Mono';
 		font-weight: 600;
 		height: fit-content;
+		overflow: hidden;
 	}
 
 	.live-circle {
 		width: 7px;
 		height: 7px;
-		margin-right: 13px;
-		margin-left: 5px;
+		margin-right: 12px;
+		margin-left: 4px;
 		background-color: var(--red-foreground);
 		border-radius: 50%;
 		animation: dot-blink 0.4s linear alternate infinite;
@@ -162,20 +169,51 @@
 		padding: 5px;
 		color: var(--green-foreground);
 		background: var(--green-background);
-		border: 1px solid var(--green-border);
+		border-top: 1px solid var(--green-border);
 		font-family: 'IBM Plex Mono';
 		font-weight: 500;
 		font-size: 13.5px;
-		border-bottom-left-radius: var(--border-radius);
-		border-bottom-right-radius: var(--border-radius);
 	}
 
-	@media (max-width: 500px) {
+	.updated-detailed,
+	.updated-concise {
+		font-size: inherit;
+	}
+
+	.updated-concise {
+		display: none;
+	}
+
+	@media (max-width: 450px) {
 		.live-source-icon {
 			display: none;
 		}
+
+		.live-from::after {
+			content: '\00a0';
+		}
+
 		.live-source-separator {
 			padding-left: 0px;
+		}
+
+		.updated-detailed {
+			display: none;
+		}
+
+		.updated-concise {
+			display: block;
+		}
+	}
+
+	@media (max-width: 370px) {
+		.live-circle {
+			display: none;
+		}
+
+		.section-name {
+			padding-left: 8px;
+			padding-right: 8px;
 		}
 	}
 

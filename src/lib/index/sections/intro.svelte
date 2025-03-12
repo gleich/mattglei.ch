@@ -14,7 +14,15 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+		margin: 10px;
 		margin-top: 70px;
 		margin-bottom: 40px;
+	}
+
+	@media (max-width: 400px) {
+		.container {
+			margin-top: 40px;
+			margin-bottom: 30px;
+		}
 	}
 </style>
