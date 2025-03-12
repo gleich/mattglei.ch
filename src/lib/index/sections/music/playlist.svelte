@@ -9,14 +9,14 @@
 	<div class="collage-container">
 		<div class="collage">
 			{#each summary.first_four_tracks as track}
-				<Image
-					src={track.album_art_preview_url}
-					alt={`Album art for ${track.track} by ${track.artist}`}
-					height={100}
-					width={100}
-					placeholder={track.album_art_blurhash}
-					aspectRatio="1/1"
-				/>
+				<div class="collage-image">
+					<Image
+						src={track.album_art_preview_url}
+						alt={`Album art for ${track.track} by ${track.artist}`}
+						placeholder={track.album_art_blurhash}
+						aspectRatio="1/1"
+					/>
+				</div>
 			{/each}
 		</div>
 		<p class="name">{summary.name}</p>
@@ -47,6 +47,11 @@
 		grid-auto-rows: 1fr;
 	}
 
+	.collage-image {
+		width: 100%;
+		height: 100%;
+	}
+
 	.name {
 		border-top: 1px solid var(--border);
 		background-color: rgba(28, 21, 33, 0.7);
@@ -67,5 +72,12 @@
 		padding: 3px 0px;
 		font-size: 14px;
 		width: 100%;
+	}
+
+	@media (max-width: 500px) {
+		.collage {
+			width: 150px;
+			height: 150px;
+		}
 	}
 </style>
