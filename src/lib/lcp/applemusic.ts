@@ -1,9 +1,9 @@
 export interface CacheData {
-	recently_played: Song[];
-	playlist_summaries: PlaylistSummary[];
+	recently_played: AppleMusicSong[];
+	playlist_summaries: AppleMusicPlaylistSummary[];
 }
 
-export interface Song {
+export interface AppleMusicSong {
 	track: string;
 	artist: string;
 	duration_in_millis: number;
@@ -14,17 +14,17 @@ export interface Song {
 	id: string;
 }
 
-export interface PlaylistSummary {
+export interface AppleMusicPlaylistSummary {
 	name: string;
 	id: string;
 	track_count: number;
-	first_four_tracks: Song[];
+	first_four_tracks: AppleMusicSong[];
 }
 
-export interface Playlist {
+export interface AppleMusicPlaylist {
 	name: string;
 	id: string;
-	tracks: Song[];
+	tracks: AppleMusicSong[];
 	last_modified: Date;
 	url: string;
 }

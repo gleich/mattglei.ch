@@ -160,6 +160,8 @@
 
 	.children {
 		padding: 10px;
+		padding-top: 20px;
+		padding-bottom: 10px;
 	}
 
 	.updated-container {

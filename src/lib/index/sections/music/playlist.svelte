@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Image from '$lib/image.svelte';
-	import type { PlaylistSummary } from '$lib/lcp/applemusic';
+	import type { AppleMusicPlaylistSummary } from '$lib/lcp/applemusic';
 
-	const { summary }: { summary: PlaylistSummary } = $props();
+	const { summary }: { summary: AppleMusicPlaylistSummary } = $props();
 </script>
 
 <div class="container">

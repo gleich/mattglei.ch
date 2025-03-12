@@ -4,6 +4,7 @@
 	import type { CacheData } from '$lib/lcp/applemusic';
 	import type { Response } from '$lib/lcp/lcp.server';
 	import Playlist from './playlist.svelte';
+	import Song from './song.svelte';
 
 	interface Artist {
 		name: string;
@@ -47,11 +48,24 @@
 				recently played music.
 			</p>
 
-			<h3 class="playlists-header">Playlists</h3>
-			<div class="playlists">
-				{#each music.data.playlist_summaries as summary}
-					<Playlist {summary} />
-				{/each}
+			<div>
+				<h3 class="header">Playlists</h3>
+				<div class="section">
+					{#each music.data.playlist_summaries as summary}
+						<Playlist {summary} />
+					{/each}
+				</div>
+			</div>
+
+			<div>
+				<h3 class="header">Recently Played Songs</h3>
+				<div class="section songs">
+					{#each music.data.recently_played.slice(0, 5) as song}
+						<div class="song-container">
+							<Song {song} />
+						</div>
+					{/each}
+				</div>
 			</div>
 		</div>
 	{:else}
@@ -64,20 +78,30 @@
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 10px;
-	}
-
-	.playlists {
-		display: flex;
-		overflow-x: scroll;
 		gap: 15px;
-		padding-bottom: 8px;
-		border: 1.5px dashed var(--border);
-		padding: 10px;
 	}
 
-	.playlists-header {
+	.header {
 		width: 100%;
 		text-align: center;
 		padding: 5px 0px;
+	}
+
+	.section {
+		display: flex;
+		overflow-x: scroll;
+		gap: 15px;
+		border-top: 1.5px dashed var(--border);
+		padding: 10px;
+	}
+
+	.songs {
+		overflow-x: auto;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.song-container {
+		flex: 0 0 calc(20% - 12px);
 	}
 </style>
