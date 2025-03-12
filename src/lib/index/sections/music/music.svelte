@@ -49,21 +49,21 @@
 			</p>
 
 			<div>
-				<h3 class="header">Playlists</h3>
-				<div class="section">
-					{#each music.data.playlist_summaries as summary}
-						<Playlist {summary} />
-					{/each}
-				</div>
-			</div>
-
-			<div>
 				<h3 class="header">Recently Played Songs</h3>
 				<div class="section songs">
 					{#each music.data.recently_played.slice(0, 5) as song}
 						<div class="song-container">
 							<Song {song} />
 						</div>
+					{/each}
+				</div>
+			</div>
+
+			<div>
+				<h3 class="header">Playlists</h3>
+				<div class="section">
+					{#each music.data.playlist_summaries as summary}
+						<Playlist {summary} />
 					{/each}
 				</div>
 			</div>
