@@ -111,7 +111,7 @@
 
 	.socials-under-bar {
 		display: none;
-		gap: 20px;
+		gap: 30px;
 		margin: 5px 0;
 		margin-top: 20px;
 	}
@@ -144,6 +144,15 @@
 	@media (max-width: 500px) {
 		.links {
 			justify-content: center;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			width: 90%;
+		}
+
+		.links a {
+			margin: 4px;
+			padding: 5px;
+			text-align: center;
 		}
 
 		.bar-socials {
@@ -160,25 +169,12 @@
 			margin-top: 100px;
 		}
 
-		.links {
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-		}
-
-		.links a {
-			margin: 4px;
-			text-align: center;
-		}
-
 		.name {
 			font-size: 12vw;
 		}
 
 		.links {
-			max-width: 300px;
 			padding: 2px;
-			width: fit-content;
-			justify-content: space-evenly;
 		}
 	}
 </style>

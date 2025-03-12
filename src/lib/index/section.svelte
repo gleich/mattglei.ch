@@ -185,6 +185,11 @@
 	}
 
 	@media (max-width: 450px) {
+		.live {
+			padding-top: 3px;
+			padding-bottom: 3px;
+		}
+
 		.live-source-icon {
 			display: none;
 		}
