@@ -17,13 +17,13 @@
 
 <div class="sections">
 	{#await data.music}
-		<p>Loading music...</p>
+		<Music loading />
 	{:then music}
 		<Music {music} />
 	{/await}
 
 	{#await data.workouts}
-		<p>Loading workouts...</p>
+		<Workouts loading />
 	{:then workouts}
 		<Workouts {workouts} />
 	{/await}

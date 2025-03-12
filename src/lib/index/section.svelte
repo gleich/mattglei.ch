@@ -13,7 +13,7 @@
 
 	export interface LiveData {
 		sources: Source[];
-		updated: Date;
+		updated?: Date;
 	}
 
 	const { name, liveData, children }: { name: string; liveData?: LiveData; children: Snippet } =
@@ -58,7 +58,11 @@
 	</div>
 	{#if liveData}
 		<div class="updated-container">
-			Data cached & processed by [{fromNow(updated, now)}]
+			{#if liveData.updated}
+				Data cached & processed by [{fromNow(updated, now)}]
+			{:else}
+				loading
+			{/if}
 		</div>
 	{/if}
 </section>

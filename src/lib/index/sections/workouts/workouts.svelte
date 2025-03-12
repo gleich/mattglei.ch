@@ -5,7 +5,7 @@
 	import type { Workout } from '$lib/lcp/workouts';
 	import Section from '../../section.svelte';
 
-	const { workouts }: { workouts: Response<Workout[]> } = $props();
+	const { workouts, loading }: { workouts?: Response<Workout[]>; loading?: boolean } = $props();
 </script>
 
 <Section
@@ -27,8 +27,12 @@
 				iconRightMargin: '7px'
 			}
 		],
-		updated: workouts.updated
+		updated: workouts?.updated
 	}}
 >
-	<p>foo</p>
+	{#if loading}
+		<p>loading workouts...</p>
+	{:else}
+		<p>foo</p>
+	{/if}
 </Section>

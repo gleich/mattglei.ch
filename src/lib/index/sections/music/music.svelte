@@ -20,37 +20,43 @@
 		{ name: 'Deftones', url: 'https://www.deftones.com' }
 	];
 
-	const { music }: { music: Response<CacheData> } = $props();
+	const { music, loading }: { music?: Response<CacheData>; loading?: boolean } = $props();
 </script>
 
 <Section
 	name="Music"
 	liveData={{
 		sources: [{ name: 'Apple Music', icon: Applemusic, url: 'https://www.apple.com/apple-music/' }],
-		updated: music.updated
+		updated: music?.updated
 	}}
 >
-	<div class="container">
-		<p>
-			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite
-			artists are
-			{#each favArtists as artist, index}
-				{#if index != favArtists.length && index != 0},{/if}
-				{#if index + 1 === favArtists.length}
-					and
-				{/if}
-				<a href={artist.url} target="_blank" rel="noopener noreferrer">{artist.name}</a>
-			{/each}. Below is my collection of playlists that I've made over the years as well as my
-			recently played music.
-		</p>
+	{#if loading}
+		<p>loading music...</p>
+	{:else if music}
+		<div class="container">
+			<p>
+				I love a lot of different types of music ranging from electronic to jazz. A few of my
+				favorite artists are
+				{#each favArtists as artist, index}
+					{#if index != favArtists.length && index != 0},{/if}
+					{#if index + 1 === favArtists.length}
+						and
+					{/if}
+					<a href={artist.url} target="_blank" rel="noopener noreferrer">{artist.name}</a>
+				{/each}. Below is my collection of playlists that I've made over the years as well as my
+				recently played music.
+			</p>
 
-		<h3 class="playlists-header">Playlists</h3>
-		<div class="playlists">
-			{#each music.data.playlist_summaries as summary}
-				<Playlist {summary} />
-			{/each}
+			<h3 class="playlists-header">Playlists</h3>
+			<div class="playlists">
+				{#each music.data.playlist_summaries as summary}
+					<Playlist {summary} />
+				{/each}
+			</div>
 		</div>
-	</div>
+	{:else}
+		<p>Failed to load music</p>
+	{/if}
 </Section>
 
 <style>
