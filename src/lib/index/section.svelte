@@ -62,9 +62,8 @@
 				Data <span class="updated-detailed">&nbsp;cached & processed&nbsp;</span><span
 					class="updated-concise">&nbsp;updated&nbsp;</span
 				>
-				by lcp&nbsp;<span class="updated-detailed">[</span>{fromNow(updated, now)}<span
-					class="updated-detailed">]</span
-				>
+				by&nbsp;<a href="/lcp" class="lcp-link">lcp</a>&nbsp;<span class="updated-detailed">[</span
+				>{fromNow(updated, now)}<span class="updated-detailed">]</span>
 			{:else}
 				loading
 			{/if}
@@ -175,6 +174,11 @@
 		font-family: 'IBM Plex Mono';
 		font-weight: 500;
 		font-size: 13.5px;
+	}
+
+	.lcp-link {
+		color: inherit;
+		font-size: inherit;
 	}
 
 	.updated-detailed,

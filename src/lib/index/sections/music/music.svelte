@@ -51,10 +51,8 @@
 			<div>
 				<h3 class="header">Recently Played Songs</h3>
 				<div class="section songs">
-					{#each music.data.recently_played.slice(0, 5) as song}
-						<div class="song-container">
-							<Song {song} />
-						</div>
+					{#each music.data.recently_played.slice(0, 4) as song}
+						<Song {song} width="calc(25% - 20px)" />
 					{/each}
 				</div>
 			</div>
@@ -91,17 +89,13 @@
 		display: flex;
 		overflow-x: scroll;
 		gap: 15px;
-		border-top: 1.5px dashed var(--border);
+		border-top: 1.3px solid var(--border);
 		padding: 10px;
 	}
 
 	.songs {
 		overflow-x: auto;
-		align-items: center;
+		align-items: stretch;
 		justify-content: center;
-	}
-
-	.song-container {
-		flex: 0 0 calc(20% - 12px);
 	}
 </style>

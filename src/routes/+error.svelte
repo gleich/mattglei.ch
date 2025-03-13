@@ -36,6 +36,7 @@
 	svg {
 		height: 40px;
 		width: auto;
+		animation: blink 1s infinite;
 	}
 
 	.container {
@@ -51,5 +52,15 @@
 
 	h1 {
 		font-size: 25px;
+	}
+
+	@keyframes blink {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.5;
+		}
 	}
 </style>
