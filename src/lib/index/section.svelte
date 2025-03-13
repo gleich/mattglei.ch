@@ -147,9 +147,9 @@
 	}
 
 	.live-source-icon {
-		width: 16px;
-		height: 16px;
-		margin-bottom: 1px;
+		width: 15px;
+		height: 15px;
+		margin-bottom: 2.5px;
 	}
 
 	.live-source-separator {

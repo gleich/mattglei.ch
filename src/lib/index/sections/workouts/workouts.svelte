@@ -24,7 +24,7 @@
 				icon: Hevy,
 				url: 'https://www.hevyapp.com',
 				iconLeftMargin: '10px',
-				iconRightMargin: '7px'
+				iconRightMargin: '8px'
 			}
 		],
 		updated: workouts?.updated
