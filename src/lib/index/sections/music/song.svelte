@@ -6,7 +6,12 @@
 	const { song, width }: { song: AppleMusicSong; width: string } = $props();
 </script>
 
-<div class="container" style={`width: ${width};`}>
+<a
+	href={song.url}
+	title={`View ${song.track} on Apple Music`}
+	class="container"
+	style={`width: ${width};`}
+>
 	<div class="image">
 		<Image
 			src={song.album_art_url}
@@ -17,13 +22,14 @@
 	</div>
 	<Scrolling gap={15} delay={2} speed={15}><span class="track">{song.track}</span></Scrolling>
 	<Scrolling gap={15} delay={2} speed={15}><span class="artist">{song.artist}</span></Scrolling>
-</div>
+</a>
 
 <style>
 	.container {
 		display: flex;
 		flex-direction: column;
 		flex: 1;
+		text-decoration: none;
 	}
 
 	.image {
@@ -37,6 +43,8 @@
 	.track,
 	.artist {
 		font-size: 14.5px;
+		text-decoration: none;
+		color: var(--foreground);
 	}
 
 	.artist {
