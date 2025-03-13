@@ -44,7 +44,6 @@
 		display: flex;
 		flex-direction: row;
 		position: relative;
-		width: 100%;
 	}
 
 	.container::before,

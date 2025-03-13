@@ -3,16 +3,10 @@
 	import type { AppleMusicSong } from '$lib/lcp/applemusic';
 	import Scrolling from '$lib/scrolling.svelte';
 
-	const { song, width }: { song: AppleMusicSong; width: string } = $props();
+	const { song }: { song: AppleMusicSong } = $props();
 </script>
 
-<a
-	href={song.url}
-	title={`View ${song.track} on Apple Music`}
-	class="container"
-	target="_blank"
-	style={`width: ${width};`}
->
+<a href={song.url} title={`View "${song.track}" on Apple Music`} class="container" target="_blank">
 	<div class="image">
 		<Image
 			src={song.album_art_url}
@@ -21,15 +15,16 @@
 			aspectRatio="1/1"
 		/>
 	</div>
-	<Scrolling gap={15} delay={2} speed={15}><span class="track">{song.track}</span></Scrolling>
-	<Scrolling gap={15} delay={2} speed={15}><span class="artist">{song.artist}</span></Scrolling>
+	<div>
+		<Scrolling gap={15} delay={2} speed={15}><span class="track">{song.track}</span></Scrolling>
+		<Scrolling gap={15} delay={2} speed={15}><span class="artist">{song.artist}</span></Scrolling>
+	</div>
 </a>
 
 <style>
 	.container {
 		display: flex;
 		flex-direction: column;
-		flex: 1;
 		text-decoration: none;
 	}
 
