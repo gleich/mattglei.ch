@@ -10,6 +10,7 @@
 	href={song.url}
 	title={`View ${song.track} on Apple Music`}
 	class="container"
+	target="_blank"
 	style={`width: ${width};`}
 >
 	<div class="image">
