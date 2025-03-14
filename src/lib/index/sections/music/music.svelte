@@ -122,12 +122,15 @@
 		}
 
 		.section {
-			padding-left: 5px;
-			padding-right: 5px;
+			padding-left: 0px;
+			padding-right: 0px;
 		}
 
+		.section {
+			gap: 10px;
+		}
 		.song {
-			width: calc(50% - 10px);
+			width: calc(50% - 5px);
 		}
 	}
 </style>
