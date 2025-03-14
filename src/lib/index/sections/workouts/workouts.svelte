@@ -3,9 +3,10 @@
 	import Strava from '$lib/icons/strava.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import type { Workout } from '$lib/lcp/workouts';
+	import Loading from '$lib/loading.svelte';
 	import Section from '../../section.svelte';
 
-	const { workouts, loading }: { workouts?: LcpResponse<Workout[] | null>; loading?: boolean } =
+	const { workouts, loading }: { workouts?: LcpResponse<Workout[]> | null; loading?: boolean } =
 		$props();
 </script>
 
@@ -32,7 +33,7 @@
 	}}
 >
 	{#if loading}
-		<p>loading workouts...</p>
+		<Loading />
 	{:else}
 		<p>foo</p>
 	{/if}

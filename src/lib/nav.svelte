@@ -25,7 +25,7 @@
 	<div class="bar">
 		<a href="/" class="left">
 			<div class="logo">
-				<Logo invert />
+				<Logo invert stroke="8" />
 			</div>
 			<h1 class="name">Matt Gleich</h1>
 		</a>
@@ -45,7 +45,7 @@
 <style>
 	nav {
 		width: 100%;
-		margin-top: 100px;
+		margin-top: 50px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

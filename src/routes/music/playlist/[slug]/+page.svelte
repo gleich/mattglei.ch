@@ -3,14 +3,18 @@
 	import Error from '$lib/error.svelte';
 	import Song from '$lib/index/sections/music/song.svelte';
 	import type { AppleMusicPlaylist } from '$lib/lcp/applemusic.server';
+	import Loading from '$lib/loading.svelte';
 	import { renderDuration } from '$lib/time';
 	import TimeSince from '$lib/time-since.svelte';
+	import type { PlaylistData } from './proxy+page.server';
 
-	const { data }: { data: AppleMusicPlaylist | null } = $props();
+	const { data }: { data: PlaylistData } = $props();
 </script>
 
-{#await data}
-	<p>loading</p>
+{#await data.playlist}
+	<div class="loading">
+		<Loading />
+	</div>
 {:then playlistData}
 	{#if playlistData}
 		<DynamicHead
@@ -45,6 +49,13 @@
 {/await}
 
 <style>
+	.loading {
+		display: flex;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+
 	.header {
 		display: flex;
 		flex-direction: column;

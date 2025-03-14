@@ -20,6 +20,7 @@ export async function loadFromLCP<T>(
 	cache: Cache,
 	fetch: SvelteFetch
 ): Promise<LcpResponse<T> | null> {
+	// await sleep(1000);
 	let pathName: string;
 	switch (cache) {
 		case Cache.Workouts:

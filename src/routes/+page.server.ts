@@ -4,8 +4,8 @@ import type { Workout } from '$lib/lcp/workouts';
 import type { PageServerLoad } from './$types';
 
 export interface SectionData {
-	workouts: LcpResponse<Workout[] | null>;
-	music: LcpResponse<CacheData | null>;
+	workouts: LcpResponse<Workout[]> | null;
+	music: LcpResponse<CacheData> | null;
 }
 
 export const load: PageServerLoad = async ({ fetch }: { fetch: SvelteFetch }) => ({

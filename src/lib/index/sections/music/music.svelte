@@ -4,6 +4,7 @@
 	import Section from '$lib/index/section.svelte';
 	import type { CacheData } from '$lib/lcp/applemusic.server';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
+	import Loading from '$lib/loading.svelte';
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
 
@@ -22,7 +23,7 @@
 		{ name: 'Deftones', url: 'https://www.deftones.com' }
 	];
 
-	const { music, loading }: { music?: LcpResponse<CacheData | null>; loading?: boolean } = $props();
+	const { music, loading }: { music?: LcpResponse<CacheData> | null; loading?: boolean } = $props();
 </script>
 
 <Section
@@ -33,7 +34,7 @@
 	}}
 >
 	{#if loading}
-		<p>loading music...</p>
+		<Loading />
 	{:else if music != null}
 		<div class="container">
 			<p>
