@@ -8,10 +8,12 @@
 	const { data }: { data: SectionData } = $props();
 </script>
 
-<DynamicHead
-	title="Matt Gleich"
-	description="student, software engineer, cyclist, and photographer"
-/>
+<svelte:head>
+	<DynamicHead
+		title="Matt Gleich"
+		description="student, software engineer, cyclist, and photographer"
+	/>
+</svelte:head>
 
 <Intro />
 

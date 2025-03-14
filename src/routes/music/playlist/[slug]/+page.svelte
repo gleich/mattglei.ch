@@ -1,8 +1,8 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
 	import Error from '$lib/error.svelte';
+	import Playlist from '$lib/index/sections/music/playlist.svelte';
 	import Song from '$lib/index/sections/music/song.svelte';
-	import type { AppleMusicPlaylist } from '$lib/lcp/applemusic.server';
 	import Loading from '$lib/loading.svelte';
 	import { renderDuration } from '$lib/time';
 	import TimeSince from '$lib/time-since.svelte';
@@ -11,17 +11,25 @@
 	const { data }: { data: PlaylistData } = $props();
 </script>
 
+<svelte:head>
+	{#await data.playlist then playlistData}
+		{#if playlistData}
+			<DynamicHead
+				title={`${playlistData.name} playlist`}
+				description={`${playlistData.tracks.length} tracks`}
+			/>
+		{:else}
+			<DynamicHead title="404 Not found" description="Playlist not found" />
+		{/if}
+	{/await}
+</svelte:head>
+
 {#await data.playlist}
 	<div class="loading">
 		<Loading />
 	</div>
 {:then playlistData}
 	{#if playlistData}
-		<DynamicHead
-			title={`${playlistData.name} playlist`}
-			description={`${playlistData.tracks.length} tracks`}
-		/>
-
 		<div class="header">
 			<h2>{playlistData.name}</h2>
 			<div class="stats">

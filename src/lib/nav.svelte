@@ -166,7 +166,7 @@
 
 	@media (max-width: 400px) {
 		nav {
-			margin-top: 100px;
+			margin-top: 20px;
 		}
 
 		.name {
