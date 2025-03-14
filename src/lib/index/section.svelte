@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fromNow } from '$lib/time';
+	import TimeSince from '$lib/time-since.svelte';
 	import dayjs from 'dayjs';
 	import { onMount, type Component, type Snippet } from 'svelte';
 
@@ -18,15 +19,6 @@
 
 	const { name, liveData, children }: { name: string; liveData?: LiveData; children: Snippet } =
 		$props();
-
-	const updated = dayjs(liveData?.updated);
-	let now = $state(dayjs());
-	onMount(() => {
-		const interval = setInterval(() => {
-			now = dayjs();
-		}, 10);
-		return () => clearInterval(interval);
-	});
 </script>
 
 <section id={name.toLowerCase()}>
@@ -63,7 +55,7 @@
 					class="updated-concise">&nbsp;updated&nbsp;</span
 				>
 				by&nbsp;<a href="/lcp" class="lcp-link">lcp</a>&nbsp;<span class="updated-detailed">[</span
-				>{fromNow(updated, now)}<span class="updated-detailed">]</span>
+				><TimeSince time={liveData.updated} /><span class="updated-detailed">]</span>
 			{:else}
 				loading
 			{/if}

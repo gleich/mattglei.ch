@@ -3,6 +3,8 @@
 	import Error from '$lib/error.svelte';
 	import Song from '$lib/index/sections/music/song.svelte';
 	import type { AppleMusicPlaylist } from '$lib/lcp/applemusic.server';
+	import { renderDuration } from '$lib/time';
+	import TimeSince from '$lib/time-since.svelte';
 
 	const { data }: { data: AppleMusicPlaylist | null } = $props();
 </script>
@@ -17,7 +19,18 @@
 		/>
 
 		<div class="header">
-			<h2>{data!.name}</h2>
+			<h2>{playlistData.name}</h2>
+			<div class="stats">
+				<p>
+					{playlistData.tracks.length} songs - {renderDuration(
+						playlistData.tracks.reduce(
+							(total: number, s: { duration_in_millis: number }) => total + s.duration_in_millis,
+							0
+						) / 1000
+					)}
+				</p>
+				<p>Last updated <TimeSince time={playlistData.last_modified} /></p>
+			</div>
 		</div>
 		<div class="songs">
 			{#each playlistData.tracks as song}
@@ -34,10 +47,18 @@
 <style>
 	.header {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		margin-top: 40px;
 		margin-bottom: 30px;
+	}
+
+	.stats {
+		color: grey;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
 	.songs {
@@ -46,6 +67,7 @@
 		gap: 10px;
 		align-items: center;
 		justify-content: center;
+		margin-bottom: 20px;
 	}
 
 	.song {
