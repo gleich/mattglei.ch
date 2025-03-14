@@ -1,7 +1,8 @@
 import { LCP_TOKEN } from '$env/static/private';
-import type { SvelteFetch } from '../../routes/+page.server';
 
-export interface Response<T> {
+export type SvelteFetch = (input: RequestInfo, init?: RequestInit) => Promise<Response>;
+
+export interface LcpResponse<T> {
 	updated: Date;
 	data: T;
 }
@@ -15,8 +16,10 @@ export enum Cache {
 
 // const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-export async function loadFromLCP<T>(cache: Cache, fetch: SvelteFetch): Promise<Response<T>> {
-	// await sleep(5000);
+export async function loadFromLCP<T>(
+	cache: Cache,
+	fetch: SvelteFetch
+): Promise<LcpResponse<T> | null> {
 	let pathName: string;
 	switch (cache) {
 		case Cache.Workouts:
@@ -32,13 +35,18 @@ export async function loadFromLCP<T>(cache: Cache, fetch: SvelteFetch): Promise<
 			pathName = 'applemusic';
 			break;
 	}
-	const res = await fetch(`https://lcp.dev.mattglei.ch/${pathName}`, {
-		method: 'GET',
-		cache: 'no-store',
-		headers: {
-			Authorization: `Bearer ${LCP_TOKEN}`
-		}
-	});
-	const data: Response<T> = await res.json();
-	return data;
+	const url = `https://lcp.dev.mattglei.ch/${pathName}`;
+	try {
+		const res = await fetch(url, {
+			method: 'GET',
+			cache: 'no-store',
+			headers: {
+				Authorization: `Bearer ${LCP_TOKEN}`
+			}
+		});
+		return await res.json();
+	} catch (error) {
+		console.error(`error when trying to fetch ${url}:`, error);
+		return null;
+	}
 }

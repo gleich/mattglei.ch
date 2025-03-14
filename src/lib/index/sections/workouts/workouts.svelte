@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Hevy from '$lib/icons/hevy.svelte';
 	import Strava from '$lib/icons/strava.svelte';
-	import type { Response } from '$lib/lcp/lcp.server';
+	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import type { Workout } from '$lib/lcp/workouts';
 	import Section from '../../section.svelte';
 
-	const { workouts, loading }: { workouts?: Response<Workout[]>; loading?: boolean } = $props();
+	const { workouts, loading }: { workouts?: LcpResponse<Workout[] | null>; loading?: boolean } =
+		$props();
 </script>
 
 <Section

@@ -33,5 +33,6 @@
 	.sections {
 		display: flex;
 		flex-direction: column;
+		gap: 10px;
 	}
 </style>

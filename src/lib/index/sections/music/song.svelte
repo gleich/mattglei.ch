@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Image from '$lib/image.svelte';
-	import type { AppleMusicSong } from '$lib/lcp/applemusic';
+	import type { AppleMusicSong } from '$lib/lcp/applemusic.server';
 	import Scrolling from '$lib/scrolling.svelte';
 
 	const { song }: { song: AppleMusicSong } = $props();

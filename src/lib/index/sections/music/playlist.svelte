@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Image from '$lib/image.svelte';
-	import type { AppleMusicPlaylistSummary } from '$lib/lcp/applemusic';
+	import type { AppleMusicPlaylistSummary } from '$lib/lcp/applemusic.server';
 
 	const { summary }: { summary: AppleMusicPlaylistSummary } = $props();
 </script>
 
-<div class="container">
+<a href={`/music/playlist/${summary.id}`} class="container">
 	<div class="collage-container">
 		<div class="collage">
 			{#each summary.first_four_tracks as track}
@@ -24,13 +24,14 @@
 	<button class="view-more">
 		View {summary.track_count} tracks
 	</button>
-</div>
+</a>
 
 <style>
 	.container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		text-decoration: inherit;
 	}
 
 	.collage-container {

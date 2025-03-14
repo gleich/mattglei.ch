@@ -1,8 +1,9 @@
 <script lang="ts">
+	import Error from '$lib/error.svelte';
 	import Applemusic from '$lib/icons/applemusic.svelte';
 	import Section from '$lib/index/section.svelte';
-	import type { CacheData } from '$lib/lcp/applemusic';
-	import type { Response } from '$lib/lcp/lcp.server';
+	import type { CacheData } from '$lib/lcp/applemusic.server';
+	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
 
@@ -21,7 +22,7 @@
 		{ name: 'Deftones', url: 'https://www.deftones.com' }
 	];
 
-	const { music, loading }: { music?: Response<CacheData>; loading?: boolean } = $props();
+	const { music, loading }: { music?: LcpResponse<CacheData | null>; loading?: boolean } = $props();
 </script>
 
 <Section
@@ -33,7 +34,7 @@
 >
 	{#if loading}
 		<p>loading music...</p>
-	{:else if music}
+	{:else if music != null}
 		<div class="container">
 			<p>
 				I love a lot of different types of music ranging from electronic to jazz. A few of my
@@ -51,7 +52,7 @@
 			<div>
 				<h3 class="header">Recently Played Songs</h3>
 				<div class="section songs">
-					{#each music.data.recently_played.slice(0, 4) as song}
+					{#each music.data!.recently_played.slice(0, 4) as song}
 						<div class="song">
 							<Song {song} />
 						</div>
@@ -62,14 +63,14 @@
 			<div>
 				<h3 class="header">Playlists</h3>
 				<div class="section">
-					{#each music.data.playlist_summaries as summary}
+					{#each music.data!.playlist_summaries as summary}
 						<Playlist {summary} />
 					{/each}
 				</div>
 			</div>
 		</div>
 	{:else}
-		<p>Failed to load music</p>
+		<Error msg="Failed to load" />
 	{/if}
 </Section>
 
@@ -78,7 +79,6 @@
 		display: flex;
 		flex-direction: column;
 		margin-bottom: 10px;
-		gap: 15px;
 	}
 
 	.header {
@@ -120,8 +120,13 @@
 			display: none;
 		}
 
+		.section {
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+
 		.song {
-			width: calc(50% - 10px);
+			width: calc(50%);
 		}
 	}
 </style>

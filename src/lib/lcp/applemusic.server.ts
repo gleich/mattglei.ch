@@ -1,3 +1,20 @@
+import { LCP_TOKEN } from '$env/static/private';
+import type { SvelteFetch } from './lcp.server';
+
+export async function loadPlaylistFromLCP(
+	id: string,
+	fetch: SvelteFetch
+): Promise<AppleMusicPlaylist | null> {
+	const res = await fetch(`https://lcp.dev.mattglei.ch/applemusic/playlists/${id}`, {
+		method: 'GET',
+		cache: 'no-store',
+		headers: {
+			Authorization: `Bearer ${LCP_TOKEN}`
+		}
+	});
+	return await res.json();
+}
+
 export interface CacheData {
 	recently_played: AppleMusicSong[];
 	playlist_summaries: AppleMusicPlaylistSummary[];
