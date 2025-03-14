@@ -10,10 +10,18 @@
 		placeholder?: string;
 		aspectRatio?: string;
 	} = $props();
+
+	let img: HTMLElement;
+
+	function removeBackground() {
+		img.style.backgroundImage = 'none';
+	}
 </script>
 
 <img
 	{src}
+	bind:this={img}
+	onload={removeBackground}
 	loading="lazy"
 	decoding="async"
 	{alt}
