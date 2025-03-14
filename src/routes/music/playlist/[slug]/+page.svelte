@@ -1,7 +1,6 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
 	import Error from '$lib/error.svelte';
-	import Playlist from '$lib/index/sections/music/playlist.svelte';
 	import Song from '$lib/index/sections/music/song.svelte';
 	import Loading from '$lib/loading.svelte';
 	import { renderDuration } from '$lib/time';
