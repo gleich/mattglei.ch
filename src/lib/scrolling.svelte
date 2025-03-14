@@ -21,6 +21,7 @@
 	class="container"
 	style:--duration={`${duration}s`}
 	style:--delay={`${delay}s`}
+	style:--gradient-width={overflowing ? '10px' : '0px'}
 	style:--gap={overflowing ? `${gap}px` : '0px'}
 >
 	<div
@@ -52,7 +53,7 @@
 		position: absolute;
 		top: 0;
 		bottom: 0;
-		width: 10px;
+		width: var(--gradient-width);
 		z-index: 2;
 		pointer-events: none;
 	}
