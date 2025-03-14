@@ -127,7 +127,7 @@
 		}
 
 		.song {
-			width: calc(50%);
+			width: calc(50% - 10px);
 		}
 	}
 </style>
