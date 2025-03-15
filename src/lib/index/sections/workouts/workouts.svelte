@@ -10,6 +10,7 @@
 	import Section from '../../section.svelte';
 	import Map from './map.svelte';
 	import SportIcon from './sport-icon.svelte';
+	import Stats from './stats.svelte';
 
 	const { workouts, loading }: { workouts?: LcpResponse<LcpWorkout[]> | null; loading?: boolean } =
 		$props();
@@ -57,6 +58,9 @@
 							<Map {workout} />
 						{/if}
 					{/if}
+					<div class="stats">
+						<Stats {workout} />
+					</div>
 				</div>
 			{/each}
 		</div>
@@ -81,11 +85,15 @@
 		color: grey;
 		font-family: 'IBM Plex Mono';
 		font-size: 13.5px;
-		margin-bottom: 5px;
 		font-weight: 400;
+		margin-bottom: 5px;
 	}
 
 	.workout {
 		width: 50%;
+	}
+
+	.stats {
+		margin-top: 5px;
 	}
 </style>
