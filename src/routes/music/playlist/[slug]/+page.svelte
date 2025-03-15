@@ -2,7 +2,6 @@
 	import DynamicHead from '$lib/dynamic-head.svelte';
 	import Error from '$lib/error.svelte';
 	import Song from '$lib/index/sections/music/song.svelte';
-	import Loading from '$lib/loading.svelte';
 	import { renderDuration } from '$lib/time';
 	import TimeSince from '$lib/time-since.svelte';
 	import type { PlaylistData } from './proxy+page.server';
@@ -15,10 +14,18 @@
 		<DynamicHead
 			title={`${data.playlist.name} playlist`}
 			description={`${data.playlist.tracks.length} tracks`}
-			opengraphImage={null}
+			ogImageURL={data.playlist.tracks[0].album_art_url}
+			ogImageHeight="600"
+			ogImageWidth="600"
 		/>
 	{:else}
-		<DynamicHead title="404 Not found" description="Playlist not found" opengraphImage={null} />
+		<DynamicHead
+			title="404 Not found"
+			description="Playlist not found"
+			ogImageURL={''}
+			ogImageWidth="0"
+			ogImageHeight="0"
+		/>
 	{/if}
 </svelte:head>
 

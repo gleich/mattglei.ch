@@ -2,12 +2,16 @@
 	const {
 		title,
 		description,
-		opengraphImage = 'opengraph.png',
+		ogImageURL,
+		ogImageWidth,
+		ogImageHeight,
 		keywords = []
 	}: {
 		title: string;
 		description: string;
-		opengraphImage?: string | null;
+		ogImageURL: string;
+		ogImageWidth: string;
+		ogImageHeight: string;
 		keywords?: string[];
 	} = $props();
 
@@ -32,10 +36,6 @@
 
 	const siteName = 'mattglei.ch';
 	const siteURL = `https://${siteName}`;
-
-	const ogImageURL = opengraphImage ? `${siteURL}/${opengraphImage}` : '';
-	const ogImageWidth = '1200';
-	const ogImageHeight = '630';
 </script>
 
 <title>{title}</title>
