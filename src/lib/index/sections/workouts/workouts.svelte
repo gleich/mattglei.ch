@@ -57,9 +57,24 @@
 					<div class="workout">
 						<div class="header">
 							<SportIcon sport_type={workout.sport_type} />
-							<Scrolling gap={10} speed={20}>
-								<h3>{workout.name}</h3>
-							</Scrolling>
+							<a
+								href={workout.platform === 'strava'
+									? `https://www.strava.com/activities/${workout.id}`
+									: `https://hevy.com/workout/${workout.id}`}
+								class="header-link"
+								target="_blank"
+							>
+								<Scrolling gap={10} speed={20}>
+									<h3>{workout.name}</h3>
+								</Scrolling>
+								<div class="platform-icon">
+									{#if workout.platform === 'strava'}
+										<Strava />
+									{:else if workout.platform === 'hevy'}
+										<Hevy />
+									{/if}
+								</div>
+							</a>
 						</div>
 						<p class="time">
 							<FormattedDate time={workout.start_date} timezone={workout.timezone.split(' ')[1]} />
@@ -90,13 +105,27 @@
 
 	.workouts {
 		display: flex;
-		gap: 15px;
+		gap: 20px;
 	}
 
 	.header {
 		display: flex;
 		align-items: center;
 		gap: 13px;
+	}
+
+	.header-link {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		color: inherit;
+		text-decoration: inherit;
+	}
+
+	.platform-icon {
+		width: 21px;
+		height: 21px;
 	}
 
 	.time {
