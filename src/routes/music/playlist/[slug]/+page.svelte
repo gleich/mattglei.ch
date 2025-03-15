@@ -3,7 +3,7 @@
 	import Error from '$lib/error.svelte';
 	import Song from '$lib/index/sections/music/song.svelte';
 	import { renderDuration } from '$lib/time';
-	import TimeSince from '$lib/time-since.svelte';
+	import Since from '$lib/time/since.svelte';
 	import type { PlaylistData } from './proxy+page.server';
 
 	const { data }: { data: PlaylistData } = $props();
@@ -41,7 +41,7 @@
 					) / 1000
 				)}
 			</p>
-			<p>Last updated <TimeSince time={data.playlist.last_modified} /></p>
+			<p>Last updated <Since time={data.playlist.last_modified} /></p>
 		</div>
 	</div>
 	<div class="songs">

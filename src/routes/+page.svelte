@@ -21,16 +21,16 @@
 <Intro />
 
 <div class="sections">
-	{#await data.music}
-		<Music loading />
-	{:then music}
-		<Music {music} />
-	{/await}
-
 	{#await data.workouts}
 		<Workouts loading />
 	{:then workouts}
 		<Workouts {workouts} />
+	{/await}
+
+	{#await data.music}
+		<Music loading />
+	{:then music}
+		<Music {music} />
 	{/await}
 </div>
 

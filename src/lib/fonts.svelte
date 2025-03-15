@@ -17,6 +17,13 @@
 	/>
 	<link
 		rel="preload"
+		href="/fonts/ibm_plex_mono/normal.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
 		href="/fonts/ibm_plex_sans/medium.woff2"
 		as="font"
 		type="font/woff2"

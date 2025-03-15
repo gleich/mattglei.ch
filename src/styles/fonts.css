@@ -13,6 +13,12 @@
 }
 
 @font-face {
+	font-family: 'IBM Plex Mono';
+	src: url('/fonts/ibm_plex_mono/normal.woff2');
+	font-weight: 400;
+}
+
+@font-face {
 	font-family: 'IBM Plex Sans';
 	src: url('/fonts/ibm_plex_sans/medium.woff2');
 	font-weight: 500;

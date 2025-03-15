@@ -1,49 +1,51 @@
-export function extractSportType(sport_type: string): [string, string] {
-	const icon_folder = '/icons/activities/strava/';
-	let name: string;
-	let icon_name: string;
+import Gravel from '$lib/icons/workouts/gravel.svelte';
+import Hike from '$lib/icons/workouts/hike.svelte';
+import Kayak from '$lib/icons/workouts/kayak.svelte';
+import Mtb from '$lib/icons/workouts/mtb.svelte';
+import Pickleball from '$lib/icons/workouts/pickleball.svelte';
+import Ride from '$lib/icons/workouts/ride.svelte';
+import Run from '$lib/icons/workouts/run.svelte';
+import Walk from '$lib/icons/workouts/walk.svelte';
+import WeightTraining from '$lib/icons/workouts/weight-training.svelte';
+import WorkoutIcon from '$lib/icons/workouts/workout.svelte';
+import type { Component } from 'svelte';
+
+export function iconFromType(sport_type: string): Component {
 	switch (sport_type) {
 		case 'Run':
-			name = sport_type;
-			icon_name = 'run.svg';
-			break;
+			return Run;
 		case 'GravelRide':
-			name = 'Gravel Ride';
-			icon_name = 'gravel.svg';
-			break;
+			return Gravel;
 		case 'Hike':
-			name = sport_type;
-			icon_name = 'hike.svg';
-			break;
+			return Hike;
 		case 'Walk':
-			name = sport_type;
-			icon_name = 'walk.svg';
-			break;
+			return Walk;
 		case 'Ride':
-			name = sport_type;
-			icon_name = 'ride.svg';
-			break;
+			return Ride;
 		case 'MountainBikeRide':
-			name = 'Mountain Bike Ride';
-			icon_name = 'mtb.svg';
-			break;
+			return Mtb;
 		case 'Kayaking':
-			name = sport_type;
-			icon_name = 'kayak.svg';
-			break;
+			return Kayak;
 		case 'Pickleball':
-			name = sport_type;
-			icon_name = 'pickle.svg';
-			break;
+			return Pickleball;
 		case 'WeightTraining':
-			name = 'Weight Training';
-			icon_name = 'weight-training.svg';
-			break;
+			return WeightTraining;
 		default:
-			name = 'Workout';
-			icon_name = 'workout.svg';
+			return WorkoutIcon;
 	}
-	return [name, icon_folder + icon_name];
+}
+
+export function nameFromType(sport_type: string): string {
+	switch (sport_type) {
+		case 'GravelRide':
+			return 'Gravel Ride';
+		case 'MountainBikeRide':
+			return 'Mountain Bike Ride';
+		case 'WeightTraining':
+			return 'Weight Training';
+		default:
+			return sport_type;
+	}
 }
 
 export interface Workout {

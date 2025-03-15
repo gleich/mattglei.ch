@@ -1,7 +1,7 @@
 <script lang="ts">
 	import dayjs, { type Dayjs } from 'dayjs';
 	import { onMount } from 'svelte';
-	import { fromNow } from './time';
+	import { fromNow } from '$lib/time';
 
 	const { time }: { time: Date } = $props();
 

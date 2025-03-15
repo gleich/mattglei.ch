@@ -1,8 +1,33 @@
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
+import timezone from 'dayjs/plugin/timezone';
 
 dayjs.extend(duration);
+dayjs.extend(timezone);
+
+export function renderDate(date: Dayjs, now: Dayjs, tz: string): string {
+	const timezone = tz.split(' ')[1];
+	const dayjsDate = dayjs(date).tz(timezone);
+	const yesterday = now.subtract(1, 'day');
+	let dayOfWeek: string;
+	if (
+		now.date() == dayjsDate.date() &&
+		now.year() == dayjsDate.year() &&
+		now.month() == dayjsDate.month()
+	) {
+		dayOfWeek = 'Today';
+	} else if (
+		yesterday.date() == dayjsDate.date() &&
+		yesterday.year() == dayjsDate.year() &&
+		yesterday.month() == dayjsDate.month()
+	) {
+		dayOfWeek = 'Yesterday';
+	} else {
+		dayOfWeek = dayjsDate.format('dddd, MMM D');
+	}
+	return dayjsDate.format(`[${dayOfWeek}] [@] h:mm A`);
+}
 
 export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 	const yearsDiff = Math.abs(date.diff(currentTime, 'year'));
