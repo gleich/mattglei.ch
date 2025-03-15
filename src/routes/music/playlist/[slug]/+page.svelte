@@ -11,58 +11,43 @@
 </script>
 
 <svelte:head>
-	{#await data.playlist then playlistData}
-		{#if playlistData}
-			<DynamicHead
-				title={`${playlistData.name} playlist`}
-				description={`${playlistData.tracks.length} tracks`}
-			/>
-		{:else}
-			<DynamicHead title="404 Not found" description="Playlist not found" />
-		{/if}
-	{/await}
+	{#if data.playlist}
+		<DynamicHead
+			title={`${data.playlist.name} playlist`}
+			description={`${data.playlist.tracks.length} tracks`}
+		/>
+	{:else}
+		<DynamicHead title="404 Not found" description="Playlist not found" />
+	{/if}
 </svelte:head>
 
-{#await data.playlist}
-	<div class="loading">
-		<Loading />
+{#if data.playlist}
+	<div class="header">
+		<h2>{data.playlist.name}</h2>
+		<div class="stats">
+			<p>
+				{data.playlist.tracks.length} songs - {renderDuration(
+					data.playlist.tracks.reduce(
+						(total: number, s: { duration_in_millis: number }) => total + s.duration_in_millis,
+						0
+					) / 1000
+				)}
+			</p>
+			<p>Last updated <TimeSince time={data.playlist.last_modified} /></p>
+		</div>
 	</div>
-{:then playlistData}
-	{#if playlistData}
-		<div class="header">
-			<h2>{playlistData.name}</h2>
-			<div class="stats">
-				<p>
-					{playlistData.tracks.length} songs - {renderDuration(
-						playlistData.tracks.reduce(
-							(total: number, s: { duration_in_millis: number }) => total + s.duration_in_millis,
-							0
-						) / 1000
-					)}
-				</p>
-				<p>Last updated <TimeSince time={playlistData.last_modified} /></p>
+	<div class="songs">
+		{#each data.playlist.tracks as song}
+			<div class="song">
+				<Song {song} />
 			</div>
-		</div>
-		<div class="songs">
-			{#each playlistData.tracks as song}
-				<div class="song">
-					<Song {song} />
-				</div>
-			{/each}
-		</div>
-	{:else}
-		<Error msg="404: Playlist not found" />
-	{/if}
-{/await}
+		{/each}
+	</div>
+{:else}
+	<Error msg="404: Playlist not found" />
+{/if}
 
 <style>
-	.loading {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		justify-content: center;
-	}
-
 	.header {
 		display: flex;
 		flex-direction: column;
