@@ -14,17 +14,13 @@
 		<DynamicHead
 			title={`${data.playlist.name} playlist`}
 			description={`${data.playlist.tracks.length} tracks`}
-			ogImageURL={data.playlist.tracks[0].album_art_url}
-			ogImageHeight="600"
-			ogImageWidth="600"
+			opengraphImage={{ url: data.playlist.tracks[0].album_art_url, height: '600', width: '600' }}
 		/>
 	{:else}
 		<DynamicHead
 			title="404 Not found"
 			description="Playlist not found"
-			ogImageURL={''}
-			ogImageWidth="0"
-			ogImageHeight="0"
+			opengraphImage={{ url: '', width: '0', height: '0' }}
 		/>
 	{/if}
 </svelte:head>

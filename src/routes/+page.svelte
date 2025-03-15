@@ -12,9 +12,7 @@
 	<DynamicHead
 		title="Matt Gleich"
 		description="student, software engineer, cyclist, and photographer"
-		ogImageURL="https://mattglei.ch/opengraph.png"
-		ogImageWidth="1200"
-		ogImageHeight="630"
+		opengraphImage={{ url: 'https://mattglei.ch/opengraph.png', width: '1200', height: '630' }}
 	/>
 </svelte:head>
 

@@ -2,18 +2,20 @@
 	const {
 		title,
 		description,
-		ogImageURL,
-		ogImageWidth,
-		ogImageHeight,
+		opengraphImage,
 		keywords = []
 	}: {
 		title: string;
 		description: string;
-		ogImageURL: string;
-		ogImageWidth: string;
-		ogImageHeight: string;
+		opengraphImage: OpenGraphImage;
 		keywords?: string[];
 	} = $props();
+
+	export interface OpenGraphImage {
+		url: string;
+		width: string;
+		height: string;
+	}
 
 	keywords.concat([
 		'matt gleich',
@@ -51,9 +53,9 @@
 <meta property="og:url" content={siteURL} />
 <meta property="og:site_name" content={siteName} />
 <meta property="og:locale" content="en-US" />
-<meta property="og:image" content={ogImageURL} />
-<meta property="og:image:width" content={ogImageWidth} />
-<meta property="og:image:height" content={ogImageHeight} />
+<meta property="og:image" content={opengraphImage.url} />
+<meta property="og:image:width" content={opengraphImage.width} />
+<meta property="og:image:height" content={opengraphImage.height} />
 <meta property="og:type" content="website" />
 
 <!-- twitter -->
@@ -61,6 +63,6 @@
 <meta property="twitter:creator" content="@matt_gleich" />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={ogImageURL} />
-<meta property="twitter:image:width" content={ogImageWidth} />
-<meta property="twitter:image:height" content={ogImageHeight} />
+<meta property="twitter:image" content={opengraphImage.url} />
+<meta property="twitter:image:width" content={opengraphImage.width} />
+<meta property="twitter:image:height" content={opengraphImage.height} />
