@@ -5,6 +5,8 @@
 	import Logo from '$lib/logo.svelte';
 	import type { Component } from 'svelte';
 	import { page } from '$app/state';
+
+	const links = ['', 'writing', 'photos', 'workouts', 'experience', 'contact'];
 </script>
 
 {#snippet social(name: string, href: string, Icon: Component)}
@@ -32,12 +34,9 @@
 		{@render socials('bar-socials')}
 	</div>
 	<div class="links">
-		<a href="/" class={page.url.pathname === '/' ? 'current-link' : ''}>home</a>
-		<a href="/writing" class={page.url.pathname === '/writing' ? 'current-link' : ''}>writing</a>
-		<a href="/photos" class={page.url.pathname === '/photos' ? 'current-link' : ''}>photos</a>
-		<a href="/workouts" class={page.url.pathname === '/workouts' ? 'current-link' : ''}>workouts</a>
-		<a href="/music" class={page.url.pathname === '/music' ? 'current-link' : ''}>music</a>
-		<a href="/contact" class={page.url.pathname === '/contact' ? 'current-link' : ''}>contact</a>
+		{#each links as link}
+			<a href={`/${link}`} class={page.url.pathname === `/${link}` ? 'current-link' : ''}>{link}</a>
+		{/each}
 	</div>
 	{@render socials('socials-under-bar')}
 </nav>
