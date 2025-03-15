@@ -15,9 +15,10 @@
 		<DynamicHead
 			title={`${data.playlist.name} playlist`}
 			description={`${data.playlist.tracks.length} tracks`}
+			opengraphImage={null}
 		/>
 	{:else}
-		<DynamicHead title="404 Not found" description="Playlist not found" />
+		<DynamicHead title="404 Not found" description="Playlist not found" opengraphImage={null} />
 	{/if}
 </svelte:head>
 

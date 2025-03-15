@@ -2,8 +2,14 @@
 	const {
 		title,
 		description,
+		opengraphImage = 'opengraph.png',
 		keywords = []
-	}: { title: string; description: string; keywords?: string[] } = $props();
+	}: {
+		title: string;
+		description: string;
+		opengraphImage?: string | null;
+		keywords?: string[];
+	} = $props();
 
 	keywords.concat([
 		'matt gleich',
@@ -27,7 +33,7 @@
 	const siteName = 'mattglei.ch';
 	const siteURL = `https://${siteName}`;
 
-	const ogImageURL = `${siteURL}/opengraph.png`;
+	const ogImageURL = opengraphImage ? `${siteURL}/${opengraphImage}` : '';
 	const ogImageWidth = '1200';
 	const ogImageHeight = '630';
 </script>
