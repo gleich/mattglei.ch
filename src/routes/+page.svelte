@@ -12,7 +12,7 @@
 	<DynamicHead
 		title="Matt Gleich"
 		description="student, software engineer, cyclist, and photographer"
-		ogImageURL="https://mattgleich/opengraph.png"
+		ogImageURL="https://mattglei.ch/opengraph.png"
 		ogImageWidth="1200"
 		ogImageHeight="630"
 	/>
