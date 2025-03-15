@@ -14,6 +14,9 @@
 
 	const { workouts, loading }: { workouts?: LcpResponse<LcpWorkout[]> | null; loading?: boolean } =
 		$props();
+
+	const stravaURL = 'https://www.strava.com/about';
+	const hevyURL = 'https://www.hevyapp.com';
 </script>
 
 <Section
@@ -23,14 +26,14 @@
 			{
 				name: 'Strava',
 				icon: Strava,
-				url: 'https://www.strava.com/about',
+				url: stravaURL,
 				iconLeftMargin: '8px',
 				iconRightMargin: '5px'
 			},
 			{
 				name: 'Hevy',
 				icon: Hevy,
-				url: 'https://www.hevyapp.com',
+				url: hevyURL,
 				iconLeftMargin: '10px',
 				iconRightMargin: '8px'
 			}
@@ -41,28 +44,37 @@
 	{#if loading}
 		<Loading />
 	{:else if workouts != null}
-		<div class="workouts">
-			{#each workouts.data.slice(0, 2) as workout}
-				<div class="workout">
-					<div class="header">
-						<SportIcon sport_type={workout.sport_type} />
-						<Scrolling gap={10} speed={20}>
-							<h3>{workout.name}</h3>
-						</Scrolling>
-					</div>
-					<p class="time">
-						<FormattedDate time={workout.start_date} timezone={workout.timezone.split(' ')[1]} />
-					</p>
-					{#if workout.platform === 'strava'}
-						{#if workout.has_map}
-							<Map {workout} />
+		<div class="container">
+			<p>
+				One of my favorite things is staying active and enjoying the outdoors. I grew up in New
+				Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those
+				things I especially love cycling mainly through gravel cycling, road cycling, and mountain
+				biking. Recently I've been getting into lifting which has been a ton of fun. Below are 2 of
+				my most recent <a href={stravaURL} target="_blank">Strava</a>/<a href={hevyURL}>Hevy</a> workouts:
+			</p>
+			<div class="workouts">
+				{#each workouts.data.slice(0, 2) as workout}
+					<div class="workout">
+						<div class="header">
+							<SportIcon sport_type={workout.sport_type} />
+							<Scrolling gap={10} speed={20}>
+								<h3>{workout.name}</h3>
+							</Scrolling>
+						</div>
+						<p class="time">
+							<FormattedDate time={workout.start_date} timezone={workout.timezone.split(' ')[1]} />
+						</p>
+						{#if workout.platform === 'strava'}
+							{#if workout.has_map}
+								<Map {workout} />
+							{/if}
 						{/if}
-					{/if}
-					<div class="stats">
-						<Stats {workout} />
+						<div class="stats">
+							<Stats {workout} />
+						</div>
 					</div>
-				</div>
-			{/each}
+				{/each}
+			</div>
 		</div>
 	{:else}
 		<Error msg="Failed to load" />
@@ -70,6 +82,12 @@
 </Section>
 
 <style>
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
 	.workouts {
 		display: flex;
 		gap: 15px;
