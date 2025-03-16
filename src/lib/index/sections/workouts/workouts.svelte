@@ -8,6 +8,7 @@
 	import Scrolling from '$lib/scrolling.svelte';
 	import FormattedDate from '$lib/time/formatted-date.svelte';
 	import Section from '../../section.svelte';
+	import Lift from './lift.svelte';
 	import Map from './map.svelte';
 	import SportIcon from './sport-icon.svelte';
 	import Stats from './stats.svelte';
@@ -64,7 +65,7 @@
 								class="header-link"
 								target="_blank"
 							>
-								<Scrolling gap={10} speed={20}>
+								<Scrolling>
 									<h3>{workout.name}</h3>
 								</Scrolling>
 								<div class="platform-icon">
@@ -83,6 +84,8 @@
 							{#if workout.has_map}
 								<Map {workout} />
 							{/if}
+						{:else if workout.platform === 'hevy'}
+							<Lift {workout} />
 						{/if}
 						<div class="stats">
 							<Stats {workout} />
@@ -104,6 +107,8 @@
 	}
 
 	.workouts {
+		border-top: 1px solid var(--border);
+		padding-top: 10px;
 		display: flex;
 		gap: 20px;
 	}
@@ -142,5 +147,17 @@
 
 	.stats {
 		margin-top: 5px;
+	}
+
+	@media (max-width: 715px) {
+		.workouts {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.workout {
+			width: 100%;
+			max-width: 500px;
+		}
 	}
 </style>

@@ -16,8 +16,8 @@
 		/>
 	</div>
 	<div>
-		<Scrolling gap={15} delay={2} speed={15}><span class="track">{song.track}</span></Scrolling>
-		<Scrolling gap={15} delay={2} speed={15}><span class="artist">{song.artist}</span></Scrolling>
+		<Scrolling><span class="track">{song.track}</span></Scrolling>
+		<Scrolling><span class="artist">{song.artist}</span></Scrolling>
 	</div>
 </a>
 

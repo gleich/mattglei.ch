@@ -2,11 +2,11 @@
 	import { type Snippet } from 'svelte';
 
 	const {
-		gap = 5,
-		delay = 0,
-		speed = 20,
+		gap = 15,
+		delay = 2,
+		speed = 15,
 		children
-	}: { gap: number; speed: number; delay?: number; children: Snippet } = $props();
+	}: { gap?: number; speed?: number; delay?: number; children: Snippet } = $props();
 
 	let containerWidth = $state(0);
 	let marqueeWidth = $state(0);
