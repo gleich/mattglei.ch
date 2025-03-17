@@ -36,7 +36,7 @@
 	<div class="links">
 		{#each links as link}
 			<a href={`/${link}`} class={page.url.pathname === `/${link}` ? 'current-link' : ''}
-				>{link === '' ? '/' : link}</a
+				>{link === '' ? 'home' : link}</a
 			>
 		{/each}
 	</div>

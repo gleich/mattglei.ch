@@ -107,10 +107,9 @@
 	}
 
 	.workouts {
-		border-top: 1px solid var(--border);
 		padding-top: 10px;
 		display: flex;
-		gap: 20px;
+		gap: 10px;
 	}
 
 	.header {
@@ -143,6 +142,10 @@
 
 	.workout {
 		width: 50%;
+		border: 1px solid var(--border);
+		padding: 5px 10px;
+		border-radius: var(--border-radius);
+		box-shadow: var(--box-shadow);
 	}
 
 	.stats {

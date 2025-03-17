@@ -50,7 +50,7 @@
 				recently played music.
 			</p>
 
-			<div>
+			<div class="section-container">
 				<h3 class="header">Recently Played Songs</h3>
 				<div class="section songs">
 					{#each music.data!.recently_played.slice(0, 4) as song}
@@ -61,7 +61,7 @@
 				</div>
 			</div>
 
-			<div>
+			<div class="section-container">
 				<h3 class="header">Playlists</h3>
 				<div class="section">
 					{#each music.data!.playlist_summaries as summary}
@@ -79,20 +79,28 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		margin-bottom: 10px;
+		gap: 15px;
 	}
 
 	.header {
 		width: 100%;
 		text-align: center;
-		padding: 5px 0px;
+		padding: 10px;
+	}
+
+	.section-container {
+		border: 1px solid var(--border);
+		padding: 5px;
+		padding-top: 0px;
+		box-shadow: var(--box-shadow);
+		border-radius: var(--border-radius);
 	}
 
 	.section {
 		display: flex;
 		overflow-x: scroll;
 		gap: 15px;
-		border-top: 1.3px solid var(--border);
+		border-top: 1px solid var(--border);
 		padding: 10px;
 	}
 
