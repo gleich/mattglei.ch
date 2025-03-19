@@ -104,6 +104,18 @@
 		grid-column: span 2;
 	}
 
+	@media (prefers-color-scheme: light) {
+		.set-number {
+			background-color: rgb(205, 205, 205);
+		}
+
+		.warmup-set-number {
+			background-color: rgb(255, 145, 0) !important;
+			border-color: rgb(174, 113, 0) !important;
+			color: white;
+		}
+	}
+
 	@media (max-width: 850px) {
 		.sets {
 			grid-template-columns: 1fr;
