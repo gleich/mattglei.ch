@@ -15,16 +15,16 @@
 					class="exercise-name"
 				>
 					<Scrolling>
-						{`#${exerciseIndex + 1}: ${exercise.title.replaceAll('(', ']').replaceAll(')', ']')}`}
+						{`#${exerciseIndex + 1}: ${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
 					</Scrolling>
 				</a>
 				<div class="sets">
 					{#each exercise.sets as set, setIndex}
-						<div class="set">
-							<div class="set-number" title={set.type == 'warmup' ? 'Warmup Set' : undefined}>
+						<div class={`${set.type === 'warmup' ? 'warmup-set' : ''} set`}>
+							<div class={`${set.type === 'warmup' ? 'warmup-set-number' : ''} set-number`}>
 								{set.type === 'warmup' ? 'Warmup Set' : `Set #${setIndex + 1}`}
 							</div>
-							<div>
+							<div class="set-value">
 								{Math.round(set.weight_kg * 2.2046226218)} lbs × {set.reps} reps
 							</div>
 						</div>
@@ -59,6 +59,12 @@
 		text-decoration: inherit;
 	}
 
+	.warmup-set-number {
+		color: rgb(255, 115, 0);
+		background-color: rgb(55, 36, 0) !important;
+		border: 1.5px solid rgb(158, 71, 0) !important;
+	}
+
 	.set-number {
 		border: 1.5px solid var(--border);
 		background-color: rgb(46, 49, 52);
@@ -67,6 +73,12 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		white-space: nowrap;
+	}
+
+	.set-value {
+		width: 115px;
+		white-space: nowrap;
 	}
 
 	.sets {
@@ -88,15 +100,22 @@
 		font-size: 15px;
 	}
 
-	@media (max-width: 800px) {
-		.sets {
-			gap: 2px;
-		}
+	.warmup-set {
+		grid-column: span 2;
 	}
 
-	@media (max-width: 770px) {
+	@media (max-width: 850px) {
 		.sets {
 			grid-template-columns: 1fr;
+			gap: 4px;
+		}
+
+		.set-number {
+			width: 25%;
+		}
+
+		.warmup-set {
+			grid-column: span 1;
 		}
 	}
 
@@ -104,11 +123,25 @@
 		.sets {
 			grid-template-columns: 1fr 1fr;
 		}
+
+		.warmup-set {
+			grid-column: span 2;
+		}
 	}
 
-	@media (max-width: 380px) {
+	@media (max-width: 420px) {
+		.warmup-set {
+			grid-column: span 1;
+		}
+
+		.set-number {
+			width: 28%;
+			min-width: 100px;
+		}
+
 		.sets {
 			grid-template-columns: 1fr;
+			gap: 4px;
 		}
 	}
 </style>
