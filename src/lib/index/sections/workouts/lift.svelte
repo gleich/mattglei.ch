@@ -24,9 +24,15 @@
 							<div class={`${set.type === 'warmup' ? 'warmup-set-number' : ''} set-number`}>
 								{set.type === 'warmup' ? 'Warmup Set' : `Set #${setIndex + 1}`}
 							</div>
-							<div class="set-value">
-								{Math.round(set.weight_kg * 2.2046226218)} lbs × {set.reps} reps
-							</div>
+							{#if set.weight_kg === 0}
+								<div class="zero-weight-set-value">
+									{set.reps} reps
+								</div>
+							{:else}
+								<div class="set-value">
+									{Math.round(set.weight_kg * 2.2046226218)} lbs × {set.reps} reps
+								</div>
+							{/if}
 						</div>
 					{/each}
 				</div>
@@ -78,6 +84,10 @@
 
 	.set-value {
 		width: 115px;
+		white-space: nowrap;
+	}
+
+	.zero-weight-set-value {
 		white-space: nowrap;
 	}
 
