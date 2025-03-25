@@ -33,6 +33,7 @@
 		width: 100%;
 		height: 100%;
 		background-size: cover;
+		object-fit: cover;
 		background-position: center;
 		background-repeat: no-repeat;
 		display: block;

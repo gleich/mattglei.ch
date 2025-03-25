@@ -9,21 +9,19 @@
 	const { data }: { data: PlaylistData } = $props();
 </script>
 
-<svelte:head>
-	{#if data.playlist}
-		<DynamicHead
-			title={`${data.playlist.name} playlist`}
-			description={`${data.playlist.tracks.length} tracks`}
-			opengraphImage={{ url: data.playlist.tracks[0].album_art_url, height: '600', width: '600' }}
-		/>
-	{:else}
-		<DynamicHead
-			title="404 Not found"
-			description="Playlist not found"
-			opengraphImage={{ url: '', width: '0', height: '0' }}
-		/>
-	{/if}
-</svelte:head>
+{#if data.playlist}
+	<DynamicHead
+		title={`${data.playlist.name} playlist`}
+		description={`${data.playlist.tracks.length} tracks`}
+		opengraphImage={{ url: data.playlist.tracks[0].album_art_url, height: '600', width: '600' }}
+	/>
+{:else}
+	<DynamicHead
+		title="404 Not found"
+		description="Playlist not found"
+		opengraphImage={{ url: '', width: '0', height: '0' }}
+	/>
+{/if}
 
 {#if data.playlist}
 	<div class="header">

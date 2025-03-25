@@ -119,6 +119,7 @@ button {
 	color: var(--background);
 	border: 1px solid var(--border);
 	font-family: inherit;
+	font-size: inherit;
 	border-radius: var(--border-radius);
 	transition:
 		background-color 0.2s ease,
@@ -126,7 +127,8 @@ button {
 }
 
 button:hover {
-	background-color: var(--real-background);
+	background-color: var(--border);
+	border: 1px solid grey;
 	color: var(--foreground);
 	cursor: pointer;
 }

@@ -153,6 +153,9 @@
 		padding: 10px;
 		padding-top: 10px;
 		padding-bottom: 10px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
 	}
 
 	.updated-container {

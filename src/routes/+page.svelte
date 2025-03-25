@@ -2,19 +2,17 @@
 	import DynamicHead from '$lib/dynamic-head.svelte';
 	import Intro from '$lib/index/sections/intro.svelte';
 	import Music from '$lib/index/sections/music/music.svelte';
+	import Photos from '$lib/index/sections/photos.svelte';
 	import Workouts from '$lib/index/sections/workouts/workouts.svelte';
 	import type { SectionData } from './+page.server';
 
 	const { data }: { data: SectionData } = $props();
 </script>
 
-<svelte:head>
-	<DynamicHead
-		title="Matt Gleich"
-		description="student, software engineer, cyclist, and photographer"
-		opengraphImage={{ url: 'https://mattglei.ch/opengraph.png', width: '1200', height: '630' }}
-	/>
-</svelte:head>
+<DynamicHead
+	title="Matt Gleich"
+	description="student, software engineer, cyclist, and photographer"
+/>
 
 <Intro />
 
@@ -30,6 +28,8 @@
 	{:then music}
 		<Music {music} />
 	{/await}
+
+	<Photos />
 </div>
 
 <style>

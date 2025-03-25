@@ -45,54 +45,52 @@
 	{#if loading}
 		<Loading />
 	{:else if workouts != null}
-		<div class="container">
-			<p>
-				One of my favorite things is staying active and enjoying the outdoors. I grew up in New
-				Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those
-				things I especially love cycling mainly through gravel cycling, road cycling, and mountain
-				biking. Recently I've been getting into lifting which has been a ton of fun. Below are 2 of
-				my most recent <a href={stravaURL} target="_blank">Strava</a>/<a href={hevyURL}>Hevy</a> workouts:
-			</p>
-			<div class="workouts">
-				{#each workouts.data.slice(0, 2) as workout}
-					<div class="workout">
-						<div class="header">
-							<SportIcon sport_type={workout.sport_type} />
-							<a
-								href={workout.platform === 'strava'
-									? `https://www.strava.com/activities/${workout.id}`
-									: `https://hevy.com/workout/${workout.id}`}
-								class="header-link"
-								target="_blank"
-							>
-								<Scrolling>
-									<h3>{workout.name}</h3>
-								</Scrolling>
-								<div class="platform-icon">
-									{#if workout.platform === 'strava'}
-										<Strava />
-									{:else if workout.platform === 'hevy'}
-										<Hevy />
-									{/if}
-								</div>
-							</a>
-						</div>
-						<p class="time">
-							<FormattedDate time={workout.start_date} timezone={workout.timezone.split(' ')[1]} />
-						</p>
-						{#if workout.platform === 'strava'}
-							{#if workout.has_map}
-								<Map {workout} />
-							{/if}
-						{:else if workout.platform === 'hevy'}
-							<Lift {workout} />
-						{/if}
-						<div class="stats">
-							<Stats {workout} />
-						</div>
+		<p>
+			One of my favorite things is staying active and enjoying the outdoors. I grew up in New
+			Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those
+			things I especially love cycling mainly through gravel cycling, road cycling, and mountain
+			biking. Recently I've been getting into lifting which has been a ton of fun. Below are 2 of my
+			most recent <a href={stravaURL} target="_blank">Strava</a>/<a href={hevyURL}>Hevy</a> workouts:
+		</p>
+		<div class="workouts">
+			{#each workouts.data.slice(0, 2) as workout}
+				<div class="workout">
+					<div class="header">
+						<SportIcon sport_type={workout.sport_type} />
+						<a
+							href={workout.platform === 'strava'
+								? `https://www.strava.com/activities/${workout.id}`
+								: `https://hevy.com/workout/${workout.id}`}
+							class="header-link"
+							target="_blank"
+						>
+							<Scrolling>
+								<h3>{workout.name}</h3>
+							</Scrolling>
+							<div class="platform-icon">
+								{#if workout.platform === 'strava'}
+									<Strava />
+								{:else if workout.platform === 'hevy'}
+									<Hevy />
+								{/if}
+							</div>
+						</a>
 					</div>
-				{/each}
-			</div>
+					<p class="time">
+						<FormattedDate time={workout.start_date} timezone={workout.timezone.split(' ')[1]} />
+					</p>
+					{#if workout.platform === 'strava'}
+						{#if workout.has_map}
+							<Map {workout} />
+						{/if}
+					{:else if workout.platform === 'hevy'}
+						<Lift {workout} />
+					{/if}
+					<div class="stats">
+						<Stats {workout} />
+					</div>
+				</div>
+			{/each}
 		</div>
 	{:else}
 		<Error msg="Failed to load" />
@@ -100,12 +98,6 @@
 </Section>
 
 <style>
-	.container {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-
 	.workouts {
 		padding-top: 10px;
 		display: flex;
