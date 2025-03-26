@@ -25,7 +25,7 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		min-height: 100vh;
+		min-height: calc(100vh - 10px);
 		opacity: 0;
 		animation: fadeUp 0.5s ease-out forwards;
 	}
