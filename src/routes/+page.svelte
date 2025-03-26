@@ -2,7 +2,7 @@
 	import DynamicHead from '$lib/dynamic-head.svelte';
 	import Intro from '$lib/index/sections/intro.svelte';
 	import MusicSection from '$lib/index/sections/music/music-section.svelte';
-	import PhotosSection from '$lib/index/sections/photos/photos-section.svelte';
+	import PhotoSection from '$lib/index/sections/photos/photo-section.svelte';
 	import WorkoutsSection from '$lib/index/sections/workouts/workouts-section.svelte';
 	import type { SectionData } from './+page.server';
 
@@ -29,7 +29,7 @@
 		<MusicSection {music} />
 	{/await}
 
-	<PhotosSection />
+	<PhotoSection />
 </div>
 
 <style>
