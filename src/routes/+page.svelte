@@ -1,9 +1,9 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
 	import Intro from '$lib/index/sections/intro.svelte';
-	import Music from '$lib/index/sections/music/music.svelte';
-	import Photos from '$lib/index/sections/photos.svelte';
-	import Workouts from '$lib/index/sections/workouts/workouts.svelte';
+	import MusicSection from '$lib/index/sections/music/music-section.svelte';
+	import PhotosSection from '$lib/index/sections/photos/photos-section.svelte';
+	import WorkoutsSection from '$lib/index/sections/workouts/workouts-section.svelte';
 	import type { SectionData } from './+page.server';
 
 	const { data }: { data: SectionData } = $props();
@@ -18,18 +18,18 @@
 
 <div class="sections">
 	{#await data.workouts}
-		<Workouts loading />
+		<WorkoutsSection loading />
 	{:then workouts}
-		<Workouts {workouts} />
+		<WorkoutsSection {workouts} />
 	{/await}
 
 	{#await data.music}
-		<Music loading />
+		<MusicSection loading />
 	{:then music}
-		<Music {music} />
+		<MusicSection {music} />
 	{/await}
 
-	<Photos />
+	<PhotosSection />
 </div>
 
 <style>

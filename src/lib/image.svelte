@@ -14,7 +14,9 @@
 	let img: HTMLElement;
 
 	function removeBackground() {
-		img.style.backgroundImage = 'none';
+		if (img.style.backgroundImage) {
+			img.style.backgroundImage = 'none';
+		}
 	}
 </script>
 

@@ -1,6 +1,6 @@
 <script>
-	import PhotoGallery from '$lib/photo-gallery.svelte';
-	import Section from '../section.svelte';
+	import PhotoGallery from '$lib/index/sections/photos/photo-gallery.svelte';
+	import Section from '../../section.svelte';
 </script>
 
 <Section name="Photos">

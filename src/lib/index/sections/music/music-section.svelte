@@ -34,7 +34,7 @@
 	}}
 >
 	{#if loading}
-		<Loading />
+		<Loading expectedHeight="720px" />
 	{:else if music != null}
 		<div class="container">
 			<p>

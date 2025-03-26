@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
 	import Logo from './logo.svelte';
+
+	const { expectedHeight }: { expectedHeight: string } = $props();
 </script>
 
-<div class="container">
+<div class="container" style:--expected-height={expectedHeight}>
 	<div class="logo">
 		<Logo />
 	</div>
@@ -13,6 +15,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		height: var(--expected-height);
 	}
 
 	.logo {
