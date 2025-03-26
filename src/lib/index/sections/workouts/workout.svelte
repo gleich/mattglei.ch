@@ -19,6 +19,7 @@
 			href={workout.platform === 'strava'
 				? `https://www.strava.com/activities/${workout.id}`
 				: `https://hevy.com/workout/${workout.id}`}
+			title={`View "${workout.name}" on ${workout.platform === 'strava' ? 'Strava' : 'Hevy'}`}
 			class="header-link"
 			target="_blank"
 		>
