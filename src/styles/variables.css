@@ -6,8 +6,10 @@
 	--button-foreground: white;
 
 	--foreground: white;
-	--background: rgb(21, 25, 27);
-	--real-background: rgb(41, 43, 45);
+	--actual-background: rgb(21, 25, 27);
+	/* the actual color of the background once the textured background is applied */
+	--actual-background-color: rgb(34, 35, 37);
+	--background: rgb(41, 43, 45);
 	--border: rgb(67, 67, 67);
 
 	--green-foreground: rgb(0 217 107);
@@ -31,8 +33,9 @@
 		--button-foreground: black;
 
 		--foreground: rgb(28, 31, 33);
+		--actual-background: #f4f4f4;
 		--background: #f4f4f4;
-		--real-background: #f4f4f4;
+		--actual-background-color: #f4f4f4;
 		--border: rgb(167, 167, 167);
 
 		--green-foreground: rgb(25, 119, 30);

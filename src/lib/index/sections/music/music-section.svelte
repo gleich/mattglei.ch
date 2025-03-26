@@ -55,7 +55,7 @@
 				<div class="section songs">
 					{#each music.data!.recently_played.slice(0, 4) as song}
 						<div class="song">
-							<Song {song} />
+							<Song {song} scrollingColor="var(--background)" />
 						</div>
 					{/each}
 				</div>

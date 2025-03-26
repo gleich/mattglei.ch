@@ -73,7 +73,7 @@
 		border-radius: var(--border-radius);
 		border: 1px solid var(--border);
 		box-shadow: var(--box-shadow);
-		background-color: var(--real-background);
+		background-color: var(--background);
 		overflow: hidden;
 	}
 

@@ -66,7 +66,7 @@
 		display: flex;
 		max-width: 600px;
 		width: 98%;
-		background-color: var(--real-background);
+		background-color: var(--background);
 		border: 1px solid rgb(29, 29, 29);
 		border-radius: var(--border-radius);
 		padding-bottom: 1px;

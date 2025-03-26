@@ -14,7 +14,7 @@ h6 {
 html {
 	color-scheme: dark;
 	color: var(--foreground);
-	background-color: var(--background);
+	background-color: var(--actual-background);
 	position: relative;
 	scrollbar-width: 0.2rem;
 	overflow-y: scroll;

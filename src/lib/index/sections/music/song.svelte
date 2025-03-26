@@ -3,7 +3,10 @@
 	import type { AppleMusicSong } from '$lib/lcp/applemusic.server';
 	import Scrolling from '$lib/scrolling.svelte';
 
-	const { song }: { song: AppleMusicSong } = $props();
+	const {
+		song,
+		scrollingColor = 'var(--actual-background-color)'
+	}: { song: AppleMusicSong; scrollingColor?: string } = $props();
 </script>
 
 <a href={song.url} title={`View "${song.track}" on Apple Music`} class="container" target="_blank">
@@ -16,8 +19,9 @@
 		/>
 	</div>
 	<div>
-		<Scrolling><span class="track">{song.track}</span></Scrolling>
-		<Scrolling><span class="artist">{song.artist}</span></Scrolling>
+		<Scrolling backgroundColor={scrollingColor}><span class="track">{song.track}</span></Scrolling>
+		<Scrolling backgroundColor={scrollingColor}><span class="artist">{song.artist}</span></Scrolling
+		>
 	</div>
 </a>
 

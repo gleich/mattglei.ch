@@ -57,7 +57,7 @@
 		padding: 5px 10px;
 		border-radius: var(--border-radius);
 		box-shadow: var(--box-shadow);
-		background-color: var(--real-background);
+		background-color: var(--background);
 	}
 
 	.header {
