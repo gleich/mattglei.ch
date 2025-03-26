@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Image from '$lib/image.svelte';
 	import type { Workout } from '$lib/lcp/workouts';
 	import Stats from '$lib/stats.svelte';
 	import { renderDuration } from '$lib/time';

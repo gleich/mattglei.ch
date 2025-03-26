@@ -32,7 +32,7 @@
 		flex-direction: column;
 		width: 100%;
 		max-width: 1000px;
-		padding: 0px 10px;
+		padding: 0 20px;
 		padding-bottom: 30px;
 	}
 

@@ -50,19 +50,16 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		gap: 10px;
 	}
 
 	.bar {
 		display: flex;
-		border-radius: var(--border-radius);
-		background-color: var(--real-background);
-		border: 1px solid var(--border);
 		align-items: center;
 		justify-content: space-between;
 		z-index: 99;
 		overflow: hidden;
 		width: 100%;
-		box-shadow: var(--box-shadow);
 	}
 
 	.links {
@@ -70,17 +67,13 @@
 		max-width: 600px;
 		width: 98%;
 		background-color: var(--real-background);
-		border: 1px solid var(--border);
+		border: 1px solid rgb(29, 29, 29);
 		border-radius: var(--border-radius);
-		padding: 0px 10px;
-		padding-top: 2px;
 		padding-bottom: 1px;
 		align-items: center;
 		flex-wrap: wrap;
 		font-size: 1rem;
 		justify-content: space-evenly;
-		border-top-left-radius: 0px;
-		border-top-right-radius: 0px;
 		margin: 0px 20px;
 	}
 
@@ -132,14 +125,15 @@
 	}
 
 	.logo {
-		width: 55px;
-		height: 55px;
-		padding: 4px;
+		width: 50px;
+		height: 50px;
+		padding: 3px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		margin-right: 3px;
 		background-color: var(--foreground);
+		border-radius: var(--border-radius);
 	}
 
 	@media (max-width: 500px) {

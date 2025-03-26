@@ -76,7 +76,7 @@
 	}
 
 	.song {
-		width: 185px;
+		width: 184px;
 	}
 
 	@media (max-width: 400px) {

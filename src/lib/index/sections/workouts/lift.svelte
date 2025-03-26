@@ -39,6 +39,7 @@
 	.container {
 		max-width: 100%;
 		overflow-y: scroll;
+		overflow-x: hidden;
 		aspect-ratio: 440/240;
 		height: auto;
 		margin-bottom: 10px;
@@ -77,7 +78,8 @@
 	}
 
 	.set-value {
-		width: 115px;
+		width: 110px;
+		font-size: 14.5px;
 		white-space: nowrap;
 	}
 

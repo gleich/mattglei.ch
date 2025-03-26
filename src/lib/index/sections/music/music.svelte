@@ -85,7 +85,7 @@
 	.header {
 		width: 100%;
 		text-align: center;
-		padding: 10px;
+		padding: 5px;
 	}
 
 	.section-container {

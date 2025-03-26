@@ -20,7 +20,7 @@
 		height: 15px;
 		margin-right: 5px;
 		position: relative;
-		bottom: -2px;
+		bottom: -2.5px;
 		margin-left: 2px;
 	}
 </style>
