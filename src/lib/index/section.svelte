@@ -115,9 +115,10 @@
 	.live-circle {
 		width: 7px;
 		height: 7px;
-		margin-right: 12px;
-		margin-left: 4px;
+		margin-right: 14px;
+		margin-left: 5px;
 		background-color: var(--red-foreground);
+		box-shadow: 0px 0px 10px var(--red-foreground);
 		border-radius: 50%;
 		animation: dot-blink 0.4s linear alternate infinite;
 	}
