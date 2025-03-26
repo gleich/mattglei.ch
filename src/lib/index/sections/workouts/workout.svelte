@@ -50,6 +50,15 @@
 </div>
 
 <style>
+	.workout {
+		width: 100%;
+		border: 1px solid var(--border);
+		padding: 5px 10px;
+		border-radius: var(--border-radius);
+		box-shadow: var(--box-shadow);
+		background-color: var(--real-background);
+	}
+
 	.header {
 		display: flex;
 		align-items: center;
@@ -76,14 +85,6 @@
 		font-size: 13.5px;
 		font-weight: 400;
 		margin-bottom: 5px;
-	}
-
-	.workout {
-		width: 100%;
-		border: 1px solid var(--border);
-		padding: 5px 10px;
-		border-radius: var(--border-radius);
-		box-shadow: var(--box-shadow);
 	}
 
 	.stats {
