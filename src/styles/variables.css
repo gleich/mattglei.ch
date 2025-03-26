@@ -2,6 +2,9 @@
 	--border-radius: 5px;
 	--box-shadow: 0px 0px 10px rgb(10, 10, 10);
 
+	--button-background: rgb(53, 53, 53);
+	--button-foreground: white;
+
 	--foreground: white;
 	--background: rgb(21, 25, 27);
 	--real-background: rgb(34, 36, 37);
@@ -22,14 +25,17 @@
 
 @media (prefers-color-scheme: light) {
 	:root {
-		--box-shadow: 0px 0px 10px rgb(129, 129, 129);
+		--box-shadow: 0px 0px 15px rgb(188, 188, 188);
+
+		--button-background: rgb(229, 229, 229);
+		--button-foreground: black;
 
 		--foreground: rgb(28, 31, 33);
-		--background: #dddddd;
-		--real-background: rgb(220, 220, 220, 0.9);
+		--background: #f4f4f4;
+		--real-background: #f4f4f4;
 		--border: rgb(167, 167, 167);
 
-		--green-foreground: rgb(46, 125, 50);
+		--green-foreground: rgb(25, 119, 30);
 		--green-background: rgb(179, 228, 183);
 		--green-border: rgb(67, 160, 71);
 

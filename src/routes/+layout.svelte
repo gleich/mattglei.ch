@@ -24,6 +24,8 @@
 		display: flex;
 		justify-content: center;
 		min-height: 100vh;
+		opacity: 0;
+		animation: fadeUp 0.5s ease-out forwards;
 	}
 
 	.main {
@@ -39,6 +41,17 @@
 	@media (max-width: 450px) {
 		.main {
 			padding: 0px 5px;
+		}
+	}
+
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(10px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 </style>

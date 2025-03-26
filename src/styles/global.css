@@ -115,8 +115,8 @@ h3 {
 }
 
 button {
-	background-color: var(--foreground);
-	color: var(--background);
+	background-color: var(--button-background);
+	color: var(--button-foreground);
 	border: 1px solid var(--border);
 	font-family: inherit;
 	font-size: inherit;
@@ -127,8 +127,8 @@ button {
 }
 
 button:hover {
-	background-color: var(--border);
+	background-color: var(--button-foreground);
 	border: 1px solid grey;
-	color: var(--foreground);
+	color: var(--button-background);
 	cursor: pointer;
 }

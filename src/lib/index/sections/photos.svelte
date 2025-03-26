@@ -11,7 +11,7 @@
 		a Nikon Z7II. Here is a few of my favorite photo's I've taken over the years:
 	</p>
 	<PhotoGallery count={6} />
-	<a href="/photos"><button> View More </button></a>
+	<a href="/photos"><button>View More Photos</button></a>
 </Section>
 
 <style>

@@ -33,6 +33,7 @@
 		</a>
 		{@render socials('bar-socials')}
 	</div>
+	{@render socials('socials-under-name')}
 	<div class="links">
 		{#each links as link}
 			<a href={`/${link}`} class={page.url.pathname === `/${link}` ? 'current-link' : ''}
@@ -40,7 +41,6 @@
 			>
 		{/each}
 	</div>
-	{@render socials('socials-under-bar')}
 </nav>
 
 <style>
@@ -103,11 +103,10 @@
 		margin-right: 15px;
 	}
 
-	.socials-under-bar {
+	.socials-under-name {
 		display: none;
-		gap: 30px;
+		gap: 50px;
 		margin: 5px 0;
-		margin-top: 20px;
 	}
 
 	.social {
@@ -144,17 +143,28 @@
 			width: 90%;
 		}
 
+		nav {
+			align-items: center;
+			justify-content: center;
+		}
+
 		.links a {
 			margin: 4px;
 			padding: 5px;
 			text-align: center;
+			width: 80%;
+		}
+
+		.bar {
+			align-items: center;
+			justify-content: center;
 		}
 
 		.bar-socials {
 			display: none;
 		}
 
-		.socials-under-bar {
+		.socials-under-name {
 			display: flex;
 		}
 	}
