@@ -5,6 +5,7 @@
 
 	import Nav from '$lib/nav.svelte';
 	import Fonts from '$lib/fonts.svelte';
+	import Copyright from '$lib/copyright.svelte';
 
 	let { children } = $props();
 </script>
@@ -14,15 +15,16 @@
 <div class="container">
 	<div class="main">
 		<Nav />
-
 		{@render children()}
+		<Copyright />
 	</div>
 </div>
 
 <style>
 	.container {
 		display: flex;
-		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 		min-height: 100vh;
 		opacity: 0;
 		animation: fadeUp 0.5s ease-out forwards;

@@ -112,6 +112,7 @@
 	.social {
 		width: 30px;
 		height: 30px;
+		color: var(--foreground);
 	}
 
 	.name {

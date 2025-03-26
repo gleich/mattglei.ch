@@ -1,7 +1,7 @@
 <svg
 	xmlns="http://www.w3.org/2000/svg"
 	fill="none"
-	stroke="var(--blue-foreground)"
+	stroke="currentColor"
 	stroke-linecap="round"
 	stroke-linejoin="round"
 	stroke-width="2"

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-	><g fill="var(--foreground)"
+	><g fill="currentColor"
 		><path
 			d="M8.33 15.35v.22c.001 1.31.32 2.6.93 3.76L11.23 23h1.54l1.97-3.68a8.04 8.04 0 00.93-3.75v-4.13l-1.34.72v3.41a6.68 6.68 0 01-.78 3.12L12 21.57l-1.55-2.88a6.679 6.679 0 01-.78-3.12v-.94z"
 		></path><path
