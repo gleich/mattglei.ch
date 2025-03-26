@@ -26,12 +26,15 @@
 		);
 	} else if (workout.average_heartrate) {
 		stats.set('Avg. Heart Rate', `${workout.average_heartrate} bpm`);
-	} else if (workout.hevy_volume_kg) {
+	}
+
+	if (workout.hevy_volume_kg) {
 		stats.set(
 			'Total Volume',
 			`${Math.round(workout.hevy_volume_kg * 2.2046226218).toLocaleString()} lbs`
 		);
-	} else if (workout.hevy_set_count) {
+	}
+	if (workout.hevy_set_count) {
 		stats.set('Sets', `${workout.hevy_set_count ?? 0}`);
 	}
 </script>
