@@ -3,6 +3,7 @@
 	import Intro from '$lib/index/sections/intro.svelte';
 	import MusicSection from '$lib/index/sections/music/music-section.svelte';
 	import PhotoSection from '$lib/index/sections/photos/photo-section.svelte';
+	import ProjectSection from '$lib/index/sections/projects/project-section.svelte';
 	import WorkoutsSection from '$lib/index/sections/workouts/workouts-section.svelte';
 	import type { SectionData } from './+page.server';
 
@@ -17,6 +18,12 @@
 <Intro />
 
 <div class="sections">
+	{#await data.projects}
+		<ProjectSection loading />
+	{:then projects}
+		<ProjectSection {projects} />
+	{/await}
+
 	{#await data.workouts}
 		<WorkoutsSection loading />
 	{:then workouts}

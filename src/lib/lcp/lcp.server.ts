@@ -14,13 +14,14 @@ export enum Cache {
 	AppleMusic
 }
 
-// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 export async function loadFromLCP<T>(
 	cache: Cache,
 	fetch: SvelteFetch
 ): Promise<LcpResponse<T> | null> {
+	// uncomment to check loading animation for each section
+	// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 	// await sleep(1000);
+
 	let pathName: string;
 	switch (cache) {
 		case Cache.Workouts:
