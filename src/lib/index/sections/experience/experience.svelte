@@ -1,0 +1,122 @@
+<script lang="ts">
+	import type { Dayjs } from 'dayjs';
+
+	const {
+		role,
+		company,
+		startDate,
+		endDate,
+		url,
+		icon,
+		description
+	}: {
+		role: string;
+		company: string;
+		startDate?: Dayjs | null;
+		endDate?: Dayjs | null;
+		url: string;
+		icon: string;
+		description: string;
+	} = $props();
+
+	const timeFormat = 'MMM YY';
+</script>
+
+<div class="container">
+	<a href={url} target="_blank" class="title">
+		<img src={`/experiences/${icon}`} alt={company} class="icon" />
+		<div class="title-text">
+			<div class="left">
+				<h3 class="company">{company}</h3>
+				<p class="role">{role}</p>
+			</div>
+			<div class="right">
+				<p class="date">
+					{#if startDate && endDate}
+						{startDate.format(timeFormat)} - {endDate.format(timeFormat)}
+					{:else if startDate}
+						{startDate.format(timeFormat)} - Present
+					{:else}
+						Upcoming
+					{/if}
+				</p>
+			</div>
+		</div>
+	</a>
+	<p>{description}</p>
+</div>
+
+<style>
+	.container {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid var(--border);
+		border-radius: var(--border-radius);
+		box-shadow: var(--box-shadow);
+		padding: 10px;
+		gap: 10px;
+	}
+
+	.title {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		text-decoration: inherit;
+		color: inherit;
+	}
+
+	.title-text {
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.left {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.company {
+		line-height: 95%;
+	}
+
+	.icon {
+		width: 45px;
+		height: 45px;
+		border-radius: var(--border-radius);
+	}
+
+	.role {
+		color: var(--green-foreground);
+		font-size: 14px;
+		background-color: var(--green-background);
+		width: fit-content;
+		padding: 2px 4px;
+		line-height: 100%;
+		border-radius: 2px;
+	}
+
+	.date {
+		color: grey;
+		font-size: 15px;
+	}
+
+	@media (max-width: 500px) {
+		.container {
+			padding: 5px;
+		}
+
+		.title {
+			gap: 5px;
+		}
+
+		.role {
+			font-size: 13px;
+		}
+
+		.date {
+			font-size: 14px;
+		}
+	}
+</style>

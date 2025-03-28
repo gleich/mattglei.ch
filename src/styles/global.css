@@ -132,3 +132,12 @@ button:hover {
 	color: var(--button-background);
 	cursor: pointer;
 }
+
+ul {
+	padding-left: 5px;
+	list-style-position: inside;
+}
+
+li::marker {
+	content: '- ';
+}

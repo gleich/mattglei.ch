@@ -6,7 +6,7 @@
 	import type { Component } from 'svelte';
 	import { page } from '$app/state';
 
-	const links = ['', 'writing', 'photos', 'workouts', 'experience', 'contact'];
+	const links = ['', 'writing', 'photos', 'workouts'];
 </script>
 
 {#snippet social(name: string, href: string, Icon: Component)}
@@ -140,7 +140,7 @@
 		.links {
 			justify-content: center;
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-columns: repeat(2, 1fr);
 			width: 90%;
 		}
 

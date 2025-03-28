@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
+	import ExperienceSection from '$lib/index/sections/experience/experience-section.svelte';
 	import Intro from '$lib/index/sections/intro.svelte';
 	import MusicSection from '$lib/index/sections/music/music-section.svelte';
 	import PhotoSection from '$lib/index/sections/photos/photo-section.svelte';
@@ -23,6 +24,8 @@
 	{:then projects}
 		<ProjectSection {projects} />
 	{/await}
+
+	<ExperienceSection />
 
 	{#await data.workouts}
 		<WorkoutsSection loading />

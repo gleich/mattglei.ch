@@ -67,8 +67,8 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		margin-top: 20px;
-		margin-bottom: 20px;
+		margin-top: 10px;
+		margin-bottom: 10px;
 		width: 100%;
 		border-radius: var(--border-radius);
 		border: 1px solid var(--border);
@@ -80,7 +80,6 @@
 	.header-container {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 5px;
 	}
 
 	.section-name {
@@ -152,8 +151,6 @@
 
 	.children {
 		padding: 10px;
-		padding-top: 10px;
-		padding-bottom: 10px;
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
@@ -187,6 +184,10 @@
 	}
 
 	@media (max-width: 450px) {
+		.children {
+			padding: 5px;
+		}
+
 		.live {
 			padding-top: 3px;
 			padding-bottom: 3px;

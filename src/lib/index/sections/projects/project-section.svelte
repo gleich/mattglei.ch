@@ -74,6 +74,9 @@
 				</a>
 			{/each}
 		</div>
+		<a href="https://github.com/gleich?tab=repositories" target="_blank">
+			<button>View More Projects</button>
+		</a>
 	{:else}
 		<Error msg="Failed to load projects" />
 	{/if}
@@ -140,6 +143,11 @@
 	.updated {
 		color: grey;
 		font-size: 14.5px;
+	}
+
+	button {
+		width: 100%;
+		padding: 5px;
 	}
 
 	@media (max-width: 670px) {
