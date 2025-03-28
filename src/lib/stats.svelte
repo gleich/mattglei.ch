@@ -33,7 +33,7 @@
 	}
 
 	.value {
-		font-size: 18px;
+		font-size: 17px;
 	}
 
 	.value-name {
