@@ -36,38 +36,36 @@
 	{#if loading}
 		<Loading expectedHeight="720px" />
 	{:else if music != null}
-		<div class="container">
-			<p>
-				I love a lot of different types of music ranging from electronic to jazz. A few of my
-				favorite artists are
-				{#each favArtists as artist, index}
-					{#if index != favArtists.length && index != 0},{/if}
-					{#if index + 1 === favArtists.length}
-						and
-					{/if}
-					<a href={artist.url} target="_blank" rel="noopener noreferrer">{artist.name}</a>
-				{/each}. Below is my collection of playlists that I've made over the years as well as my
-				recently played music.
-			</p>
+		<p>
+			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite
+			artists are
+			{#each favArtists as artist, index}
+				{#if index != favArtists.length && index != 0},{/if}
+				{#if index + 1 === favArtists.length}
+					and
+				{/if}
+				<a href={artist.url} target="_blank" rel="noopener noreferrer">{artist.name}</a>
+			{/each}. Below is my collection of playlists that I've made over the years as well as my
+			recently played music.
+		</p>
 
-			<div class="section-container">
-				<h3 class="header">Recently Played Songs</h3>
-				<div class="section songs">
-					{#each music.data!.recently_played.slice(0, 4) as song}
-						<div class="song">
-							<Song {song} scrollingColor="var(--background)" />
-						</div>
-					{/each}
-				</div>
+		<div class="section-container">
+			<h3 class="header">Recently Played Songs</h3>
+			<div class="section songs">
+				{#each music.data!.recently_played.slice(0, 4) as song}
+					<div class="song">
+						<Song {song} scrollingColor="var(--background)" />
+					</div>
+				{/each}
 			</div>
+		</div>
 
-			<div class="section-container">
-				<h3 class="header">Playlists</h3>
-				<div class="section">
-					{#each music.data!.playlist_summaries as summary}
-						<Playlist {summary} />
-					{/each}
-				</div>
+		<div class="section-container">
+			<h3 class="header">Playlists</h3>
+			<div class="section">
+				{#each music.data!.playlist_summaries as summary}
+					<Playlist {summary} />
+				{/each}
 			</div>
 		</div>
 	{:else}
@@ -76,12 +74,6 @@
 </Section>
 
 <style>
-	.container {
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-	}
-
 	.header {
 		width: 100%;
 		text-align: center;

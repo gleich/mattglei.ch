@@ -39,15 +39,31 @@
 	{#if loading}
 		<Loading expectedHeight="500px" />
 	{:else if projects != null}
+		<p class="intro">
+			I love to build and explore everything from <a
+				href="https://github.com/gleich/pcbs"
+				target="_blank">PCBs</a
+			>
+			to <a href="https://github.com/gleich/lcp-2" target="_blank">REST APIs</a>. Recently I've
+			really been enjoying working with
+			<a href="https://svelte.dev" target="_blank">Svelte/SvelteKit</a>
+			and <a href="https://go.dev" target="_blank">Go</a>. Here are a few of my top projects that
+			are open-source from my GitHub:
+		</p>
 		<div class="projects">
 			{#each projects.data as project}
-				<div class="project">
+				<a
+					class="project"
+					href={project.url}
+					title={`View "${project.owner}/${project.name}" on GitHub`}
+					target="_blank"
+				>
 					<div class="top">
 						<div class="name">
 							<div class="github-icon">
 								<Github />
 							</div>
-							<p>{project.name}</p>
+							<p>{project.owner}/{project.name}</p>
 						</div>
 						<p class="language" style:--language-color={project.language_color}>
 							{project.language}
@@ -55,7 +71,7 @@
 					</div>
 					<p class="description">{project.description}</p>
 					<p class="updated">Updated <Since time={project.updated_at} /></p>
-				</div>
+				</a>
 			{/each}
 		</div>
 	{:else}
@@ -71,6 +87,8 @@
 	}
 
 	.project {
+		text-decoration: inherit;
+		color: inherit;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
@@ -92,7 +110,8 @@
 		display: flex;
 		color: var(--green-foreground);
 		background-color: var(--green-background);
-		padding: 0px 5px;
+		border: 1px solid var(--green-border);
+		padding: 1px 5px;
 		border-radius: 2px;
 		gap: 7px;
 	}
@@ -121,5 +140,11 @@
 	.updated {
 		color: grey;
 		font-size: 14.5px;
+	}
+
+	@media (max-width: 670px) {
+		.projects {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>
