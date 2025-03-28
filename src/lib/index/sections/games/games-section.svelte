@@ -88,5 +88,9 @@
 		.games {
 			grid-template-columns: 1fr;
 		}
+
+		.games > *:nth-child(n + 4) {
+			display: none;
+		}
 	}
 </style>
