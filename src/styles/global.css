@@ -133,11 +133,13 @@ button:hover {
 	cursor: pointer;
 }
 
+ol,
 ul {
 	padding-left: 5px;
 	list-style-position: inside;
 }
 
-li::marker {
-	content: '- ';
+ol,
+ul {
+	margin: 0;
 }

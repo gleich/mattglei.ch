@@ -4,8 +4,9 @@
 
 <div class="container">
 	<p class="copyright">
-		© Matt Gleich {new Date().getFullYear()}.
-		<span class="all-rights-reserved">All rights reserved.</span>
+		© Matt Gleich {new Date().getFullYear()}<span class="all-rights-reserved">
+			. All rights reserved.</span
+		>
 	</p>
 	<a class="github-link" href="https://github.com/gleich/mattglei.ch" target="_blank">
 		<div class="github-icon"><Github /></div>
