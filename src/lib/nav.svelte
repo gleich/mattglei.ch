@@ -47,6 +47,7 @@
 	nav {
 		width: 100%;
 		margin-top: 50px;
+		margin-bottom: 80px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

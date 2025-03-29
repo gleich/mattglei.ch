@@ -24,7 +24,7 @@
 
 <style>
 	.intro {
-		padding: 20px 0;
+		padding-bottom: 20px;
 	}
 
 	.workouts {

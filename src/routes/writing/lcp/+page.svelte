@@ -1,7 +1,7 @@
 <script>
 	import DynamicHead from '$lib/dynamic-head.svelte';
 	import Writing from '$lib/writing.svelte';
-	import dayjs from 'dayjs';
+	import writings from '../writings';
 </script>
 
 <DynamicHead
@@ -9,7 +9,7 @@
 	description="Lightweight cache proxy written in Go. Backend service for caching, processing, and aggregating data from APIs like the Strava and GitHub API."
 />
 
-<Writing title="lcp: Lightweight Cache & Proxy" publishedTime={new Date()}>
+<Writing title="lcp: Lightweight Cache & Proxy" publishedTime={writings.get('lcp') ?? new Date()}>
 	<section>
 		<h3>What is lcp?</h3>
 		<p>

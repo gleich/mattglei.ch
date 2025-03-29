@@ -54,7 +54,8 @@
 				Data <span class="updated-detailed">&nbsp;cached & processed&nbsp;</span><span
 					class="updated-concise">&nbsp;updated&nbsp;</span
 				>
-				by&nbsp;<a href="/lcp" class="lcp-link">lcp</a>&nbsp;<span class="updated-detailed">[</span
+				by&nbsp;<a href="/writing/lcp" class="lcp-link">lcp</a>&nbsp;<span class="updated-detailed"
+					>[</span
 				><Since time={liveData.updated} /><span class="updated-detailed">]</span>
 			{:else}
 				loading
