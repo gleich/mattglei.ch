@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Card from '$lib/card.svelte';
 	import Hevy from '$lib/icons/hevy.svelte';
 	import Strava from '$lib/icons/strava.svelte';
 	import type { Workout } from '$lib/lcp/workouts';
@@ -12,52 +13,49 @@
 	const { workout }: { workout: Workout } = $props();
 </script>
 
-<div class="workout">
-	<div class="header">
-		<SportIcon sport_type={workout.sport_type} />
-		<a
-			href={workout.platform === 'strava'
-				? `https://www.strava.com/activities/${workout.id}`
-				: `https://hevy.com/workout/${workout.id}`}
-			title={`View "${workout.name}" on ${workout.platform === 'strava' ? 'Strava' : 'Hevy'}`}
-			class="header-link"
-			target="_blank"
-		>
-			<Scrolling>
-				<h3>{workout.name}</h3>
-			</Scrolling>
-			<div class="platform-icon">
-				{#if workout.platform === 'strava'}
-					<Strava />
-				{:else if workout.platform === 'hevy'}
-					<Hevy />
-				{/if}
-			</div>
-		</a>
-	</div>
-	<p class="time">
-		<FormattedDate time={workout.start_date} timezone={workout.timezone.split(' ')[1]} />
-	</p>
-	{#if workout.platform === 'strava'}
-		{#if workout.has_map}
-			<Map {workout} />
+<Card>
+	<div class="workout">
+		<div class="header">
+			<SportIcon sport_type={workout.sport_type} />
+			<a
+				href={workout.platform === 'strava'
+					? `https://www.strava.com/activities/${workout.id}`
+					: `https://hevy.com/workout/${workout.id}`}
+				title={`View "${workout.name}" on ${workout.platform === 'strava' ? 'Strava' : 'Hevy'}`}
+				class="header-link"
+				target="_blank"
+			>
+				<Scrolling>
+					<h3>{workout.name}</h3>
+				</Scrolling>
+				<div class="platform-icon">
+					{#if workout.platform === 'strava'}
+						<Strava />
+					{:else if workout.platform === 'hevy'}
+						<Hevy />
+					{/if}
+				</div>
+			</a>
+		</div>
+		<p class="time">
+			<FormattedDate time={workout.start_date} timezone={workout.timezone.split(' ')[1]} />
+		</p>
+		{#if workout.platform === 'strava'}
+			{#if workout.has_map}
+				<Map {workout} />
+			{/if}
+		{:else if workout.platform === 'hevy'}
+			<Lift {workout} />
 		{/if}
-	{:else if workout.platform === 'hevy'}
-		<Lift {workout} />
-	{/if}
-	<div class="stats">
-		<Stats {workout} />
+		<div class="stats">
+			<Stats {workout} />
+		</div>
 	</div>
-</div>
+</Card>
 
 <style>
 	.workout {
 		width: 100%;
-		border: 1px solid var(--border);
-		padding: 5px 10px;
-		border-radius: var(--border-radius);
-		box-shadow: var(--box-shadow);
-		background-color: var(--background);
 	}
 
 	.header {

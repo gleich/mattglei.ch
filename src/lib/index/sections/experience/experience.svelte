@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Card from '$lib/card.svelte';
 	import type { Dayjs } from 'dayjs';
 
 	const {
@@ -22,38 +23,36 @@
 	const timeFormat = 'MMM YY';
 </script>
 
-<div class="container">
-	<a href={url} target="_blank" class="title">
-		<img src={`/experiences/${icon}`} alt={company} class="icon" />
-		<div class="title-text">
-			<div class="left">
-				<h3 class="company">{company}</h3>
-				<p class="role">{role}</p>
+<Card>
+	<div class="container">
+		<a href={url} target="_blank" class="title">
+			<img src={`/experiences/${icon}`} alt={company} class="icon" />
+			<div class="title-text">
+				<div class="left">
+					<h3 class="company">{company}</h3>
+					<p class="role">{role}</p>
+				</div>
+				<div class="right">
+					<p class="date">
+						{#if startDate && endDate}
+							{startDate.format(timeFormat)} - {endDate.format(timeFormat)}
+						{:else if startDate}
+							{startDate.format(timeFormat)} - Present
+						{:else}
+							Incoming
+						{/if}
+					</p>
+				</div>
 			</div>
-			<div class="right">
-				<p class="date">
-					{#if startDate && endDate}
-						{startDate.format(timeFormat)} - {endDate.format(timeFormat)}
-					{:else if startDate}
-						{startDate.format(timeFormat)} - Present
-					{:else}
-						Incoming
-					{/if}
-				</p>
-			</div>
-		</div>
-	</a>
-	<p>{description}</p>
-</div>
+		</a>
+		<p>{description}</p>
+	</div>
+</Card>
 
 <style>
 	.container {
 		display: flex;
 		flex-direction: column;
-		border: 1px solid var(--border);
-		border-radius: var(--border-radius);
-		box-shadow: var(--box-shadow);
-		padding: 10px;
 		gap: 10px;
 	}
 
@@ -103,10 +102,6 @@
 	}
 
 	@media (max-width: 500px) {
-		.container {
-			padding: 5px;
-		}
-
 		.title {
 			gap: 5px;
 		}

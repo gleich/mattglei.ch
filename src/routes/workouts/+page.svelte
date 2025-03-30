@@ -7,12 +7,12 @@
 	const { data }: { data: WorkoutData } = $props();
 </script>
 
-<DynamicHead title="Workouts" description="Recent workouts from Hevy and Strava" />
+<DynamicHead title="Workouts" description="Recent workouts from Hevy/Strava" />
 
 {#if data.workouts}
-	<p class="intro">Here are {data.workouts.data.length} of my latest workouts from Strava/Hevy:</p>
+	<h2>Workouts</h2>
 	<div class="workouts">
-		{#each data.workouts.data as workout}
+		{#each data.workouts.data.slice(0, 14) as workout}
 			<div class="workout">
 				<Workout {workout} />
 			</div>
@@ -23,8 +23,8 @@
 {/if}
 
 <style>
-	.intro {
-		padding-bottom: 20px;
+	h2 {
+		margin-bottom: 30px;
 	}
 
 	.workouts {

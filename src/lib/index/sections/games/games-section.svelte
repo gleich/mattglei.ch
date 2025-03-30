@@ -1,11 +1,11 @@
 <script lang="ts">
+	import Card from '$lib/card.svelte';
 	import Error from '$lib/error.svelte';
 	import Steam from '$lib/icons/steam.svelte';
 	import Section from '$lib/index/section.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import type { Game } from '$lib/lcp/steam';
 	import Loading from '$lib/loading.svelte';
-	import Scrolling from '$lib/scrolling.svelte';
 	import Stats from '$lib/stats.svelte';
 	import { renderDuration } from '$lib/time';
 
@@ -20,7 +20,7 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="450px" />
+		<Loading expectedHeight="447px" />
 	{:else if games != null}
 		<p>
 			To relax I like to occasionally play games with some of my friends. Here are my recently
@@ -29,22 +29,24 @@
 
 		<div class="games">
 			{#each games.data.slice(0, 6) as game}
-				<a href={game.url} target="_blank" class="game" title={`View "${game.name}" on Steam`}>
-					<img class="game-picture" src={game.header_url} alt={`${game.name} header`} />
-					<div class="stats">
-						<Stats
-							stats={new Map([
-								['Playtime', renderDuration(game.playtime_forever * 100)],
-								[
-									'Achievements',
-									typeof game.achievement_progress === 'number'
-										? game.achievement_progress.toPrecision(3) + '%'
-										: 'N/A'
-								]
-							])}
-						/>
-					</div>
-				</a>
+				<Card padding="0">
+					<a href={game.url} target="_blank" class="game" title={`View "${game.name}" on Steam`}>
+						<img class="game-picture" src={game.header_url} alt={`${game.name} header`} />
+						<div class="stats">
+							<Stats
+								stats={new Map([
+									['Playtime', renderDuration(game.playtime_forever * 100)],
+									[
+										'Achievements',
+										typeof game.achievement_progress === 'number'
+											? game.achievement_progress.toPrecision(3) + '%'
+											: 'N/A'
+									]
+								])}
+							/>
+						</div>
+					</a>
+				</Card>
 			{/each}
 		</div>
 	{:else}
@@ -65,9 +67,6 @@
 	}
 
 	.game {
-		border: 1px solid var(--border);
-		box-shadow: var(--box-shadow);
-		border-radius: var(--border-radius);
 		overflow: hidden;
 		color: inherit;
 		text-decoration: inherit;
@@ -84,7 +83,7 @@
 		}
 	}
 
-	@media (max-width: 500px) {
+	@media (max-width: 400px) {
 		.games {
 			grid-template-columns: 1fr;
 		}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Card from '$lib/card.svelte';
 	import { fromNow } from '$lib/time';
 	import Since from '$lib/time/since.svelte';
 	import dayjs from 'dayjs';
@@ -21,61 +22,56 @@
 		$props();
 </script>
 
-<section id={name.toLowerCase()}>
-	<div class="header-container">
-		<h2 class="section-name">{name}</h2>
-		{#if liveData}
-			<div class="live">
-				<span class="live-circle"></span>
-				<p class="live-from">LIVE FROM</p>
-				{#each liveData.sources as source, index}
-					<a class="live-source" href={source.url} target="_blank">
-						<div
-							class="live-source-icon"
-							style={`margin-left: ${source.iconLeftMargin ?? '10px'}; margin-right: ${source.iconRightMargin ?? '9px'}`}
-						>
-							<source.icon color={'var(--red-foreground)'} />
-						</div>
-						<p class="live-source-name">{source.name.toUpperCase()}</p>
-					</a>
-					{#if index + 1 != liveData.sources.length}
-						<p class="live-source-separator">/</p>
-					{/if}
-				{/each}
-			</div>
-		{/if}
-	</div>
-	<div class="children">
-		{@render children()}
-	</div>
-	{#if liveData}
-		<p class="updated-container">
-			{#if liveData.updated}
-				Data <span class="updated-detailed">&nbsp;cached & processed&nbsp;</span><span
-					class="updated-concise">&nbsp;updated&nbsp;</span
-				>
-				by&nbsp;<a href="/writing/lcp" class="lcp-link">lcp</a>&nbsp;<span class="updated-detailed"
-					>[</span
-				><Since time={liveData.updated} /><span class="updated-detailed">]</span>
-			{:else}
-				loading
+<Card padding="0">
+	<section id={name.toLowerCase()}>
+		<div class="header-container">
+			<h2 class="section-name">{name}</h2>
+			{#if liveData}
+				<div class="live">
+					<span class="live-circle"></span>
+					<p class="live-from">LIVE FROM</p>
+					{#each liveData.sources as source, index}
+						<a class="live-source" href={source.url} target="_blank">
+							<div
+								class="live-source-icon"
+								style={`margin-left: ${source.iconLeftMargin ?? '10px'}; margin-right: ${source.iconRightMargin ?? '9px'}`}
+							>
+								<source.icon color={'var(--red-foreground)'} />
+							</div>
+							<p class="live-source-name">{source.name.toUpperCase()}</p>
+						</a>
+						{#if index + 1 != liveData.sources.length}
+							<p class="live-source-separator">/</p>
+						{/if}
+					{/each}
+				</div>
 			{/if}
-		</p>
-	{/if}
-</section>
+		</div>
+		<div class="children">
+			{@render children()}
+		</div>
+		{#if liveData}
+			<p class="updated-container">
+				{#if liveData.updated}
+					Data <span class="updated-detailed">&nbsp;cached & processed&nbsp;</span><span
+						class="updated-concise">&nbsp;updated&nbsp;</span
+					>
+					by&nbsp;<a href="/writing/lcp" class="lcp-link">lcp</a>&nbsp;<span
+						class="updated-detailed">[</span
+					><Since time={liveData.updated} /><span class="updated-detailed">]</span>
+				{:else}
+					loading
+				{/if}
+			</p>
+		{/if}
+	</section>
+</Card>
 
 <style>
 	section {
 		display: flex;
 		flex-direction: column;
-		margin-top: 10px;
-		margin-bottom: 10px;
 		width: 100%;
-		border-radius: var(--border-radius);
-		border: 1px solid var(--border);
-		box-shadow: var(--box-shadow);
-		background-color: var(--background);
-		overflow: hidden;
 	}
 
 	.header-container {

@@ -1,21 +1,22 @@
 <script lang="ts">
-	import dayjs from 'dayjs';
 	import type { Snippet } from 'svelte';
-	import advancedFormat from 'dayjs/plugin/advancedFormat';
+	import DynamicHead from './dynamic-head.svelte';
 
-	dayjs.extend(advancedFormat);
+	export interface WritingData {
+		title: string;
+		publishedDate: string;
+		description: string;
+	}
 
-	const {
-		title,
-		publishedTime,
-		children
-	}: { title: string; publishedTime: Date; children: Snippet } = $props();
+	const { writing, children }: { writing: WritingData; children: Snippet } = $props();
 </script>
 
+<DynamicHead title={writing.title} description={writing.description} />
+
 <div class="container">
-	<h2 class="title">{title}</h2>
+	<h2 class="title">{writing.title}</h2>
 	<p class="subtitle">
-		{dayjs(publishedTime).format('MMMM Do YYYY')}
+		{writing.publishedDate}
 	</p>
 	<div class="children">
 		{@render children()}
@@ -24,15 +25,16 @@
 
 <style>
 	.title {
-		margin-top: 30px;
+		text-align: center;
 	}
 
 	.subtitle {
+		text-align: center;
 		color: grey;
 	}
 
 	.children {
-		margin-top: 30px;
+		margin-top: 50px;
 		margin-bottom: 20px;
 		display: flex;
 		flex-direction: column;

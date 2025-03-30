@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Card from '$lib/card.svelte';
 	import Error from '$lib/error.svelte';
 	import Github from '$lib/icons/github.svelte';
 	import Section from '$lib/index/section.svelte';
@@ -37,7 +38,7 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="402px" />
+		<Loading expectedHeight="432px" />
 	{:else if projects != null}
 		<p class="intro">
 			I love to build and explore everything from <a
@@ -52,26 +53,28 @@
 		</p>
 		<div class="projects">
 			{#each projects.data as project}
-				<a
-					class="project"
-					href={project.url}
-					title={`View "${project.owner}/${project.name}" on GitHub`}
-					target="_blank"
-				>
-					<div class="top">
-						<div class="name">
-							<div class="github-icon">
-								<Github />
+				<Card>
+					<a
+						class="project"
+						href={project.url}
+						title={`View "${project.owner}/${project.name}" on GitHub`}
+						target="_blank"
+					>
+						<div class="top">
+							<div class="name">
+								<div class="github-icon">
+									<Github />
+								</div>
+								<p>{project.owner}/{project.name}</p>
 							</div>
-							<p>{project.owner}/{project.name}</p>
+							<p class="language" style:--language-color={project.language_color}>
+								{project.language}
+							</p>
 						</div>
-						<p class="language" style:--language-color={project.language_color}>
-							{project.language}
-						</p>
-					</div>
-					<p class="description">{project.description}</p>
-					<p class="updated">Updated <Since time={project.updated_at} /></p>
-				</a>
+						<p class="description">{project.description}</p>
+						<p class="updated">Updated <Since time={project.updated_at} /></p>
+					</a>
+				</Card>
 			{/each}
 		</div>
 		<a href="https://github.com/gleich?tab=repositories" target="_blank">
@@ -96,10 +99,6 @@
 		align-items: center;
 		flex-direction: column;
 		justify-content: space-between;
-		border: 1px solid var(--border);
-		box-shadow: var(--box-shadow);
-		border-radius: var(--border-radius);
-		padding: 5px;
 		gap: 8px;
 	}
 

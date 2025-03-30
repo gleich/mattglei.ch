@@ -41,4 +41,14 @@
 		font-size: 12px;
 		color: grey;
 	}
+
+	@media (max-width: 550px) {
+		.value {
+			font-size: 16px;
+		}
+
+		.value-name {
+			font-size: 10px;
+		}
+	}
 </style>

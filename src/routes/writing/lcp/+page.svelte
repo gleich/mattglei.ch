@@ -1,15 +1,39 @@
-<script>
-	import DynamicHead from '$lib/dynamic-head.svelte';
+<script lang="ts">
 	import Writing from '$lib/writing.svelte';
 	import writings from '../writings';
+	import type { LCPData } from './+page.server';
+	import CacheStatus from './cache-status.svelte';
+
+	const { data }: { data: LCPData } = $props();
 </script>
 
-<DynamicHead
-	title="lcp: Lightweight Cache & Proxy"
-	description="Lightweight cache proxy written in Go. Backend service for caching, processing, and aggregating data from APIs like the Strava and GitHub API."
-/>
+<Writing writing={writings.get('lcp')!}>
+	<section>
+		<h3>Cache Statuses</h3>
+		<div class="statuses">
+			{#await data.projects}
+				<p>Loading projects cache...</p>
+			{:then projects}
+				<CacheStatus name="Projects" updated={projects?.updated} />
+			{/await}
+			{#await data.workouts}
+				<p>Loading workouts cache...</p>
+			{:then workouts}
+				<CacheStatus name="Workouts" updated={workouts?.updated} />
+			{/await}
+			{#await data.music}
+				<p>Loading music cache...</p>
+			{:then music}
+				<CacheStatus name="Music" updated={music?.updated} />
+			{/await}
+			{#await data.games}
+				<p>Loading games cache...</p>
+			{:then games}
+				<CacheStatus name="Games" updated={games?.updated} />
+			{/await}
+		</div>
+	</section>
 
-<Writing title="lcp: Lightweight Cache & Proxy" publishedTime={writings.get('lcp') ?? new Date()}>
 	<section>
 		<h3>What is lcp?</h3>
 		<p>
@@ -197,6 +221,13 @@
 
 	ol > p {
 		padding-top: 5px;
+	}
+
+	.statuses {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		width: fit-content;
 	}
 
 	.custom-list {
