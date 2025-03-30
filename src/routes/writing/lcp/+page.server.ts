@@ -5,8 +5,6 @@ import type { Game } from '$lib/lcp/steam';
 import type { Workout } from '$lib/lcp/workouts';
 import type { PageServerLoad } from './$types';
 
-export const prerender = true;
-
 export interface LCPData {
 	workouts: LcpResponse<Workout[]> | null;
 	music: LcpResponse<CacheData> | null;
