@@ -39,7 +39,7 @@
 	}
 
 	.children {
-		margin-top: 50px;
+		margin-top: 40px;
 		margin-bottom: 20px;
 		display: flex;
 		flex-direction: column;

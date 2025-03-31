@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Card from '$lib/card.svelte';
-	import Image from '$lib/image.svelte';
+	import Github from '$lib/icons/github.svelte';
+	import ViewButton from '$lib/view-button.svelte';
 	import Writing from '$lib/writing.svelte';
 	import writings from '../writings';
 	import type { LCPData } from './+page.server';
@@ -10,6 +11,10 @@
 </script>
 
 <Writing writing={writings.get('lcp')!}>
+	<a class="view-on-github" href="https://github.com/gleich/lcp-2" target="_blank">
+		<ViewButton on="GitHub" icon={Github} />
+	</a>
+
 	<Card>
 		<h3>Cache Status Overview</h3>
 		<div class="statuses">
@@ -209,6 +214,15 @@
 </Writing>
 
 <style>
+	.view-on-github {
+		text-decoration: inherit;
+		max-width: 200px;
+		width: 100%;
+		flex-shrink: 0;
+		align-self: center;
+		margin-bottom: 30px;
+	}
+
 	ol > li {
 		color: var(--green-foreground);
 		background-color: var(--green-background);
