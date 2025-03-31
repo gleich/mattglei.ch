@@ -44,7 +44,7 @@
 		</a>
 	</div>
 	<div class="songs">
-		{#each data.playlist.tracks as song}
+		{#each data.playlist.tracks as song (song.id)}
 			<div class="song">
 				<Song {song} />
 			</div>

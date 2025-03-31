@@ -49,7 +49,7 @@
 			most recent <a href={stravaURL} target="_blank">Strava</a>/<a href={hevyURL}>Hevy</a> workouts:
 		</p>
 		<div class="workouts">
-			{#each workouts.data.slice(0, 2) as workout}
+			{#each workouts.data.slice(0, 2) as workout (workout.id)}
 				<div class="workout">
 					<Workout {workout} />
 				</div>

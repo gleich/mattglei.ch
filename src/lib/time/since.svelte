@@ -1,5 +1,5 @@
 <script lang="ts">
-	import dayjs, { type Dayjs } from 'dayjs';
+	import dayjs from 'dayjs';
 	import { onMount } from 'svelte';
 	import { fromNow } from '$lib/time';
 

@@ -35,7 +35,7 @@
 	</div>
 	{@render socials('socials-under-name')}
 	<div class="links">
-		{#each links as link}
+		{#each links as link (link)}
 			<a href={`/${link}`} class={page.url.pathname === `/${link}` ? 'current-link' : ''}
 				>{link === '' ? 'home' : link}</a
 			>

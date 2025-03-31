@@ -40,7 +40,7 @@
 		<p>
 			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite
 			artists are
-			{#each favArtists as artist, index}
+			{#each favArtists as artist, index (artist.url)}
 				{#if index != favArtists.length && index != 0},{/if}
 				{#if index + 1 === favArtists.length}
 					and
@@ -53,7 +53,7 @@
 		<Card>
 			<h3 class="header">Recently Played Songs</h3>
 			<div class="section songs">
-				{#each music.data!.recently_played.slice(0, 4) as song}
+				{#each music.data!.recently_played.slice(0, 4) as song (song.id)}
 					<div class="song">
 						<Song {song} scrollingColor="var(--background)" />
 					</div>
@@ -64,7 +64,7 @@
 		<Card>
 			<h3 class="header">Playlists</h3>
 			<div class="section playlists">
-				{#each music.data!.playlist_summaries as summary}
+				{#each music.data!.playlist_summaries as summary (summary.id)}
 					<Playlist {summary} />
 				{/each}
 			</div>

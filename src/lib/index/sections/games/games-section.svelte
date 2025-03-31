@@ -28,7 +28,7 @@
 		</p>
 
 		<div class="games">
-			{#each games.data.slice(0, 6) as game}
+			{#each games.data.slice(0, 6) as game (game.app_id)}
 				<Card padding="0">
 					<a href={game.url} target="_blank" class="game" title={`View "${game.name}" on Steam`}>
 						<img class="game-picture" src={game.header_url} alt={`${game.name} header`} />

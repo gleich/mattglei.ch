@@ -54,7 +54,7 @@
 
 <svelte:window bind:innerWidth />
 <div class="photos">
-	{#each photos.slice(0, count) as photo}
+	{#each photos.slice(0, count) as photo (photo.src)}
 		<div class="photo {photo.width > photo.height ? 'horizontal' : 'vertical'}">
 			<Image src={photo.src} placeholder={photo.placeholder} alt={photo.alt} />
 		</div>

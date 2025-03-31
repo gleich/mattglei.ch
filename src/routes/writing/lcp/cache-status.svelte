@@ -35,7 +35,7 @@
 </script>
 
 <div class="container">
-	<p class="frame">{@html frame}</p>
+	<p class="frame">{frame}</p>
 	<p class="online">ONLINE</p>
 	<p class="name">{name} <span class="cache-text"> cache</span></p>
 	<p class="updated"><Since time={updated ?? new Date()} /></p>

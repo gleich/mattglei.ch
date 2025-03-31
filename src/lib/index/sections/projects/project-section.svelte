@@ -53,7 +53,7 @@
 			are open-source from my GitHub:
 		</p>
 		<div class="projects">
-			{#each projects.data as project}
+			{#each projects.data as project (project.id)}
 				<Card>
 					<a
 						class="project"

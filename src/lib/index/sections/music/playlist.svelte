@@ -8,7 +8,7 @@
 <a href={`/music/playlist/${summary.id}`} class="container">
 	<div class="collage-container">
 		<div class="collage">
-			{#each summary.first_four_tracks as track}
+			{#each summary.first_four_tracks as track (track.id)}
 				<div class="collage-image">
 					<Image
 						src={track.album_art_preview_url}

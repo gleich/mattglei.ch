@@ -9,7 +9,7 @@
 <h2>Writing</h2>
 
 <div class="writings">
-	{#each writings as [slug, writing]}
+	{#each writings as [slug, writing] (slug)}
 		<Card>
 			<a href={`/writing/${slug}`} class="writing">
 				<h3 class="title">{writing.title}</h3>

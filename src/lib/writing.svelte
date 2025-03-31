@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import DynamicHead, { type OpenGraphImage } from './dynamic-head.svelte';
+	import DynamicHead from './dynamic-head.svelte';
 
 	export interface WritingData {
 		title: string;

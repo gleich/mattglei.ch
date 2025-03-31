@@ -28,7 +28,7 @@
 				<div class="live">
 					<span class="live-circle"></span>
 					<p class="live-from">LIVE FROM</p>
-					{#each liveData.sources as source, index}
+					{#each liveData.sources as source, index (source.name)}
 						<a class="live-source" href={source.url} target="_blank">
 							<div
 								class="live-source-icon"

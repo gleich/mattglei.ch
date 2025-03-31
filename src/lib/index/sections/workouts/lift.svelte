@@ -7,7 +7,7 @@
 
 <div class="container">
 	<div class="table">
-		{#each workout.hevy_exercises ?? [] as exercise, exerciseIndex}
+		{#each workout.hevy_exercises ?? [] as exercise, exerciseIndex (exercise.exercise_template_id)}
 			<div>
 				<a
 					href={`https://hevy.com/exercise/${exercise.exercise_template_id}`}
@@ -19,7 +19,7 @@
 					</Scrolling>
 				</a>
 				<div class="sets">
-					{#each exercise.sets as set, setIndex}
+					{#each exercise.sets as set, setIndex (set.type + setIndex)}
 						<div class={`${set.type === 'warmup' ? 'warmup-set' : ''} set`}>
 							<div class={`${set.type === 'warmup' ? 'warmup-set-number' : ''} set-number`}>
 								{set.type === 'warmup' ? 'Warmup Set' : `Set #${setIndex + 1}`}

@@ -26,7 +26,6 @@ export default ts.config(
 	{
 		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
 		ignores: ['eslint.config.js', 'svelte.config.js'],
-
 		languageOptions: {
 			parserOptions: {
 				projectService: true,
@@ -34,6 +33,12 @@ export default ts.config(
 				parser: ts.parser,
 				svelteConfig
 			}
+		}
+	},
+	{
+		rules: {
+			'no-unused-vars': 'off',
+			'@typescript-eslint/no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true }]
 		}
 	}
 );
