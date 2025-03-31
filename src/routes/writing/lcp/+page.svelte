@@ -93,9 +93,9 @@
 				With Steam, for example, there is no endpoint from the Steam REST API to get your games with
 				the achievement data all in one request. So, for every game you need to make a request to
 				load the achievement data. All of this is done by lcp so that when a request is made to
-				lcp.dev.mattglei.ch/steam/cache it returns the games with their achievements all in one
-				request. This cuts down +25 requests to the Steam REST API with each request taking +400ms
-				down to one request that takes ~200ms.
+				lcp.dev.mattglei.ch/steam it returns the games with their achievements all in one request.
+				This cuts down +25 requests to the Steam REST API with each request taking +400ms down to
+				one request that takes ~200ms.
 			</p>
 			<li>Prevent hitting API rate limits</li>
 			<p>

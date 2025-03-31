@@ -6,7 +6,7 @@
 
 <DynamicHead title="Writing" description="Matt Gleich's writings" />
 
-<h2>Writings</h2>
+<h2>Writing</h2>
 
 <div class="writings">
 	{#each writings as [slug, writing]}
