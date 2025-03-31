@@ -5,14 +5,18 @@ export async function loadPlaylistFromLCP(
 	id: string,
 	fetch: SvelteFetch
 ): Promise<AppleMusicPlaylist | null> {
-	const res = await fetch(`https://lcp.dev.mattglei.ch/applemusic/playlists/${id}`, {
-		method: 'GET',
-		cache: 'no-store',
-		headers: {
-			Authorization: `Bearer ${LCP_TOKEN}`
-		}
-	});
-	return await res.json();
+	try {
+		const res = await fetch(`https://lcp.dev.mattglei.ch/applemusic/playlists/${id}`, {
+			method: 'GET',
+			cache: 'no-store',
+			headers: {
+				Authorization: `Bearer ${LCP_TOKEN}`
+			}
+		});
+		return await res.json();
+	} catch {
+		return null;
+	}
 }
 
 export interface CacheData {
