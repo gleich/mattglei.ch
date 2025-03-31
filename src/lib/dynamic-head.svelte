@@ -3,7 +3,7 @@
 		title,
 		description,
 		opengraphImage = {
-			url: 'https://beta.mattglei.ch/opengraph.png',
+			url: 'https://mattglei.ch/opengraph.png',
 			width: '1200',
 			height: '630'
 		},

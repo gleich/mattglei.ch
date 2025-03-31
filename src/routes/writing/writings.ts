@@ -15,7 +15,7 @@ const writings: Map<string, WritingData> = new Map([
 			description:
 				'Technical writeup of a lightweight cache proxy written in Go. Backend service for caching, processing, and aggregating data from APIs like the Strava and GitHub API.',
 			opengraphImage: {
-				url: 'https://beta.mattglei.ch/writings/lcp/opengraph.png',
+				url: 'https://mattglei.ch/writings/lcp/opengraph.png',
 				width: '1200',
 				height: '630'
 			}
