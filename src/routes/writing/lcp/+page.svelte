@@ -9,7 +9,7 @@
 
 <Writing writing={writings.get('lcp')!}>
 	<section>
-		<h3>Cache Statuses</h3>
+		<h3>Cache Status Overview</h3>
 		<div class="statuses">
 			{#await data.projects}
 				<p>Loading projects cache...</p>
@@ -221,6 +221,10 @@
 
 	ol > p {
 		padding-top: 5px;
+	}
+
+	h3 {
+		margin-bottom: 5px;
 	}
 
 	.statuses {

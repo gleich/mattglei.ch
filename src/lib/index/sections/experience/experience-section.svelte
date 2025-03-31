@@ -3,6 +3,8 @@
 	import dayjs from 'dayjs';
 	import Experience from './experience.svelte';
 	import Resume from '$lib/resume.svelte';
+	import Linkedin from '$lib/icons/linkedin.svelte';
+	import ViewButton from '$lib/view-button.svelte';
 </script>
 
 <Section name="Experience">
@@ -44,25 +46,11 @@
 			url="https://rootly.com"
 			description="Developed the official CLI for rootly.com and wrote its documentation, built a Go-based library for interacting with the Rootly API, and implemented both a GitHub action and a Homebrew tap for the CLI."
 		/>
-		<Experience
-			role="Cloud Automation Intern"
-			icon="bottomline.webp"
-			company="Bottomline"
-			startDate={dayjs(new Date(2021, 5))}
-			endDate={dayjs(new Date(2021, 7))}
-			url="https://bottomline.com"
-			description="Built a Go-based documentation tool for shared GitLab pipelines, improved the base Docker images used by all lines of business, won the intern innovation challenge for the second consecutive year, began developing a custom Puppet module, and automated release notes for the shared GitLab pipelines repository."
-		/>
-		<Experience
-			role="Cloud Automation Intern"
-			icon="bottomline.webp"
-			company="Bottomline"
-			startDate={dayjs(new Date(2020, 5))}
-			endDate={dayjs(new Date(2020, 7))}
-			url="https://bottomline.com"
-			description="Configured the infrastructure for the self-hosted GitLab switch from BitBucket, built a Python release automation tool, helped create and present an inner-source contribution model, and outlined an open-source strategy at Bottomline—earning my team first place in the Intern Innovation Challenge."
-		/>
 	</div>
+
+	<a class="view-more" href="https://www.linkedin.com/in/matt-gleich/" target="_blank">
+		<ViewButton more on="LinkedIn" icon={Linkedin} /></a
+	>
 </Section>
 
 <style>
@@ -70,6 +58,10 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 10px;
+	}
+
+	.view-more {
+		text-decoration: inherit;
 	}
 
 	@media (max-width: 820px) {

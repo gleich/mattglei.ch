@@ -1,5 +1,6 @@
 <script>
 	import PhotoGallery from '$lib/index/sections/photos/photo-gallery.svelte';
+	import ViewButton from '$lib/view-button.svelte';
 	import Section from '../../section.svelte';
 </script>
 
@@ -11,12 +12,11 @@
 		a Nikon Z7II. Here is a few of my favorite photo's I've taken over the years:
 	</p>
 	<PhotoGallery count={6} />
-	<a href="/photos"><button>View More Photos</button></a>
+	<a class="view-more" href="/photos"><ViewButton of="photo gallery" /></a>
 </Section>
 
 <style>
-	button {
-		width: 100%;
-		padding: 5px 0;
+	.view-more {
+		text-decoration: inherit;
 	}
 </style>

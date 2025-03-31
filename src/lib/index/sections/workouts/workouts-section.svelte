@@ -5,7 +5,7 @@
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import { type Workout as LcpWorkout } from '$lib/lcp/workouts';
 	import Loading from '$lib/loading.svelte';
-	import ViewMore from '$lib/view-more.svelte';
+	import ViewButton from '$lib/view-button.svelte';
 	import Section from '../../section.svelte';
 	import Workout from './workout.svelte';
 
@@ -55,7 +55,9 @@
 				</div>
 			{/each}
 		</div>
-		<ViewMore of="Workouts" url="/workouts" />
+		<a class="view-more" href="/workouts">
+			<ViewButton more of="workouts" />
+		</a>
 	{:else}
 		<Error msg="Failed to load" />
 	{/if}
@@ -69,6 +71,10 @@
 
 	.workout {
 		width: 50%;
+	}
+
+	.view-more {
+		text-decoration: inherit;
 	}
 
 	@media (max-width: 730px) {
