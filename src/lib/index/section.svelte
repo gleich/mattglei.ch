@@ -1,9 +1,7 @@
 <script lang="ts">
 	import Card from '$lib/card.svelte';
-	import { fromNow } from '$lib/time';
 	import Since from '$lib/time/since.svelte';
-	import dayjs from 'dayjs';
-	import { onMount, type Component, type Snippet } from 'svelte';
+	import { type Component, type Snippet } from 'svelte';
 
 	export interface Source {
 		name: string;
@@ -148,9 +146,10 @@
 
 	.children {
 		padding: 10px;
+		padding-top: 20px;
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+		gap: 20px;
 	}
 
 	.updated-container {
@@ -164,6 +163,7 @@
 		font-family: 'IBM Plex Mono';
 		font-weight: 500;
 		font-size: 13.5px;
+		margin-top: 10px;
 	}
 
 	.lcp-link {

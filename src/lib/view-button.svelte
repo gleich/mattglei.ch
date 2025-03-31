@@ -40,9 +40,9 @@
 	.icon {
 		width: 15px;
 		height: 15px;
+		color: var(--foreground);
 		margin-left: 7px;
 		margin-right: 6px;
-		display: flex;
-		align-items: center;
+		margin-bottom: 2.5px;
 	}
 </style>
