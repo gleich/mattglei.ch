@@ -16,7 +16,7 @@
 		as well as large-mature fintech companies like
 		<a href="https://bottomline.com" target="_blank">Bottomline Technologies</a>. You can find more
 		information in my <Resume /> or on my
-		<a href="https://linkedin.com/matt-gleich" target="_blank">Linkedin</a>.
+		<a href="https://linkedin.com/matt-gleich" target="_blank">LinkedIn</a>.
 	</p>
 
 	<div class="experiences">
