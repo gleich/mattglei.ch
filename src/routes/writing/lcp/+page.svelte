@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Card from '$lib/card.svelte';
+	import Image from '$lib/image.svelte';
 	import Writing from '$lib/writing.svelte';
 	import writings from '../writings';
 	import type { LCPData } from './+page.server';
@@ -53,6 +54,7 @@
 
 	<Card>
 		<h3>System Overview</h3>
+		<img class="overview-diagram" src="/writings/lcp/overview.webp" alt="Overview diagram" />
 		<p>
 			The diagram above illustrates how each cache gets updated. There are two main types of caches
 			here:
@@ -242,5 +244,10 @@
 
 	.custom-list p::before {
 		content: '- ';
+	}
+
+	.overview-diagram {
+		width: 100%;
+		height: auto;
 	}
 </style>

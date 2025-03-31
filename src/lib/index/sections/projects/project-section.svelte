@@ -78,7 +78,7 @@
 				</Card>
 			{/each}
 		</div>
-		<a class="view-more" href="https://github.com/gleich?tab=repositories">
+		<a class="view-more" href="https://github.com/gleich?tab=repositories" target="_blank">
 			<ViewButton more on="GitHub" icon={Github} />
 		</a>
 	{:else}

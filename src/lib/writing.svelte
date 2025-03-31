@@ -1,17 +1,22 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import DynamicHead from './dynamic-head.svelte';
+	import DynamicHead, { type OpenGraphImage } from './dynamic-head.svelte';
 
 	export interface WritingData {
 		title: string;
 		publishedDate: string;
 		description: string;
+		opengraphImage?: OpenGraphImage;
 	}
 
 	const { writing, children }: { writing: WritingData; children: Snippet } = $props();
 </script>
 
-<DynamicHead title={writing.title} description={writing.description} />
+<DynamicHead
+	title={writing.title}
+	description={writing.description}
+	opengraphImage={writing.opengraphImage}
+/>
 
 <div class="container">
 	<h2 class="title">{writing.title}</h2>
