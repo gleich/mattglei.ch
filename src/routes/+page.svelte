@@ -14,7 +14,7 @@
 
 <DynamicHead
 	title="Matt Gleich"
-	description="student, software engineer, cyclist, and photographer"
+	description="3rd year computer science at the Rochester Institute of Technology (RIT)"
 />
 
 <Intro />
