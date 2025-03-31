@@ -41,4 +41,21 @@
 		color: grey;
 		margin-bottom: 10px;
 	}
+
+	@media (max-width: 600px) {
+		.writings {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 500px) {
+		h2 {
+			margin-bottom: 20px;
+			margin-left: 10px;
+		}
+
+		.writings {
+			margin: 0 10px;
+		}
+	}
 </style>
