@@ -2,7 +2,11 @@
 	const {
 		title,
 		description,
-		opengraphImage = { url: 'https://mattglei.ch/opengraph.png', width: '1200', height: '630' },
+		opengraphImage = {
+			url: 'https://beta.mattglei.ch/opengraph.png',
+			width: '1200',
+			height: '630'
+		},
 		keywords = []
 	}: {
 		title: string;
