@@ -62,6 +62,7 @@
 		color: var(--green-foreground);
 		background-color: var(--green-background);
 		padding: 0 5px;
+		margin: 0 5px;
 		border-radius: 2px;
 	}
 

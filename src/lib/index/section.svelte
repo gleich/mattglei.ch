@@ -36,7 +36,7 @@
 								class="live-source-icon"
 								style={`margin-left: ${source.iconLeftMargin ?? '10px'}; margin-right: ${source.iconRightMargin ?? '9px'}`}
 							>
-								<source.icon color={'var(--red-foreground)'} />
+								<source.icon />
 							</div>
 							<p class="live-source-name">{source.name.toUpperCase()}</p>
 						</a>

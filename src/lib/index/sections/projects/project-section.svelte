@@ -7,6 +7,7 @@
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import Loading from '$lib/loading.svelte';
 	import Since from '$lib/time/since.svelte';
+	import ViewMore from '$lib/view-more.svelte';
 
 	const { projects, loading }: { projects?: LcpResponse<Repository[]> | null; loading?: boolean } =
 		$props();
@@ -77,9 +78,7 @@
 				</Card>
 			{/each}
 		</div>
-		<a href="https://github.com/gleich?tab=repositories" target="_blank">
-			<button>View More Projects</button>
-		</a>
+		<ViewMore on="GitHub" url="https://github.com/gleich?tab=repositories" icon={Github} newTab />
 	{:else}
 		<Error msg="Failed to load projects" />
 	{/if}
@@ -142,11 +141,6 @@
 	.updated {
 		color: grey;
 		font-size: 14.5px;
-	}
-
-	button {
-		width: 100%;
-		padding: 5px;
 	}
 
 	@media (max-width: 670px) {
