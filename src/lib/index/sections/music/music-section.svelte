@@ -35,7 +35,7 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="763px" />
+		<Loading expectedHeight="783px" />
 	{:else if music != null}
 		<p>
 			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite
@@ -86,6 +86,7 @@
 		overflow-x: scroll;
 		gap: 15px;
 		border-top: 1px solid var(--border);
+		padding-top: 10px;
 	}
 
 	.songs {
