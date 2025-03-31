@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Card from '$lib/card.svelte';
 	import Writing from '$lib/writing.svelte';
 	import writings from '../writings';
 	import type { LCPData } from './+page.server';
@@ -8,7 +9,7 @@
 </script>
 
 <Writing writing={writings.get('lcp')!}>
-	<section>
+	<Card>
 		<h3>Cache Status Overview</h3>
 		<div class="statuses">
 			{#await data.projects}
@@ -32,9 +33,9 @@
 				<CacheStatus name="Games" updated={games?.updated} />
 			{/await}
 		</div>
-	</section>
+	</Card>
 
-	<section>
+	<Card>
 		<h3>What is lcp?</h3>
 		<p>
 			lcp is a backend service I wrote that aggregates, processes, and caches data from a number of
@@ -48,9 +49,9 @@
 			mainly thanks to the way that caching is done in a protected memory space and that data is aggregated
 			from multiple sources. Down below is more technical explanations of how lcp works.
 		</p>
-	</section>
+	</Card>
 
-	<section>
+	<Card>
 		<h3>System Overview</h3>
 		<p>
 			The diagram above illustrates how each cache gets updated. There are two main types of caches
@@ -75,9 +76,9 @@
 			caching happens in different threads so to ensure thread-safe memory interactions this
 			protected memory space is used.
 		</p>
-	</section>
+	</Card>
 
-	<section>
+	<Card>
 		<h3>Main benefits</h3>
 		<ol>
 			<li>Fast response times</li>
@@ -110,9 +111,9 @@
 				being down is even greater.
 			</p>
 		</ol>
-	</section>
+	</Card>
 
-	<section>
+	<Card>
 		<h3>Design decisions</h3>
 		<ol>
 			<li>Couldn't this be simpler?</li>
@@ -202,7 +203,7 @@
 				section to load independently on the front end.
 			</p>
 		</ol>
-	</section>
+	</Card>
 </Writing>
 
 <style>
