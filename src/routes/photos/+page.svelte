@@ -12,7 +12,7 @@
 <PhotoGallery />
 
 <a class="view-more" href="https://instagram.com/mattglei.ch" target="_blank">
-	<ViewButton more on="Instagram" icon={Instagram} />
+	<ViewButton more on="Instagram" icon={Instagram} iconPaddingBottom="0px" />
 </a>
 
 <style>
