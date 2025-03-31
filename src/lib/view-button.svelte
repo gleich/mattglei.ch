@@ -52,4 +52,12 @@
 		margin-right: 6px;
 		margin-bottom: var(--icon-padding-bottom);
 	}
+
+	@media (max-width: 500px) {
+		.icon {
+			width: 16px;
+			height: 16px;
+			margin-bottom: calc(var(--icon-padding-bottom) - 3px);
+		}
+	}
 </style>

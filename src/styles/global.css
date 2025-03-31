@@ -127,7 +127,7 @@ button {
 }
 
 button:hover {
-	background-color: var(--border);
+	background-color: var(--button-background-hover);
 	cursor: pointer;
 }
 
