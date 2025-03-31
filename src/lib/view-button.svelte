@@ -5,8 +5,15 @@
 		on,
 		of,
 		more,
-		icon: Icon
-	}: { on?: string; more?: boolean; of?: string; icon?: Component } = $props();
+		icon: Icon,
+		iconPaddingBottom = '4px'
+	}: {
+		on?: string;
+		more?: boolean;
+		of?: string;
+		icon?: Component;
+		iconPaddingBottom?: string;
+	} = $props();
 </script>
 
 <button>
@@ -21,7 +28,7 @@
 	{/if}
 
 	{#if Icon}
-		<div class="icon">
+		<div class="icon" style:--icon-padding-bottom={iconPaddingBottom}>
 			<Icon />
 		</div>
 	{/if}
@@ -43,6 +50,6 @@
 		color: var(--foreground);
 		margin-left: 7px;
 		margin-right: 6px;
-		margin-bottom: 2.5px;
+		margin-bottom: var(--icon-padding-bottom);
 	}
 </style>

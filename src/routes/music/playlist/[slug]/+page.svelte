@@ -40,7 +40,7 @@
 			<p>Last updated <Since time={data.playlist.last_modified} /></p>
 		</div>
 		<a class="view-on-apple-music" href={data.playlist.url} target="_blank">
-			<ViewButton on="Apple Music" icon={Applemusic} />
+			<ViewButton on="Apple Music" icon={Applemusic} iconPaddingBottom="1.5px" />
 		</a>
 	</div>
 	<div class="songs">

@@ -27,7 +27,7 @@
 	onMount(() => {
 		const interval = setInterval(() => {
 			frameIndex = (frameIndex + 1) % loadingFrames.length;
-		}, 40);
+		}, 30);
 		return () => clearInterval(interval);
 	});
 

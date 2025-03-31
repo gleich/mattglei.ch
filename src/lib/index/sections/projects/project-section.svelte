@@ -39,7 +39,7 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="432px" />
+		<Loading expectedHeight="472px" />
 	{:else if projects != null}
 		<p class="intro">
 			I love to build and explore everything from <a
@@ -66,7 +66,7 @@
 								<div class="github-icon">
 									<Github />
 								</div>
-								<p>{project.owner}/{project.name}</p>
+								<p>{project.name}</p>
 							</div>
 							<p class="language" style:--language-color={project.language_color}>
 								{project.language}
