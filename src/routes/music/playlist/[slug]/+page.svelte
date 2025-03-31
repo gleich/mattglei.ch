@@ -18,11 +18,7 @@
 		opengraphImage={{ url: data.playlist.tracks[0].album_art_url, height: '600', width: '600' }}
 	/>
 {:else}
-	<DynamicHead
-		title="404 Not found"
-		description="Playlist not found"
-		opengraphImage={{ url: '', width: '0', height: '0' }}
-	/>
+	<DynamicHead title="404 Not found" description="Playlist not found" />
 {/if}
 
 {#if data.playlist}
