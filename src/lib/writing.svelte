@@ -6,17 +6,12 @@
 		title: string;
 		publishedDate: string;
 		description: string;
-		opengraphImage?: OpenGraphImage;
 	}
 
 	const { writing, children }: { writing: WritingData; children: Snippet } = $props();
 </script>
 
-<DynamicHead
-	title={writing.title}
-	description={writing.description}
-	opengraphImage={writing.opengraphImage}
-/>
+<DynamicHead title={writing.title} description={writing.description} />
 
 <div class="container">
 	<h2 class="title">{writing.title}</h2>
