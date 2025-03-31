@@ -63,7 +63,7 @@
 
 		<Card>
 			<h3 class="header">Playlists</h3>
-			<div class="section">
+			<div class="section playlists">
 				{#each music.data!.playlist_summaries as summary}
 					<Playlist {summary} />
 				{/each}
@@ -86,7 +86,6 @@
 		overflow-x: scroll;
 		gap: 15px;
 		border-top: 1px solid var(--border);
-		padding: 10px;
 	}
 
 	.songs {
@@ -97,6 +96,10 @@
 
 	.song {
 		width: calc(25% - 10px);
+	}
+
+	.playlists {
+		padding-bottom: 10px;
 	}
 
 	@media (max-width: 700px) {

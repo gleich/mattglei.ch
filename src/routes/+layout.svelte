@@ -6,8 +6,9 @@
 	import Nav from '$lib/nav.svelte';
 	import Fonts from '$lib/fonts.svelte';
 	import Copyright from '$lib/copyright.svelte';
+	import type { Snippet } from 'svelte';
 
-	let { children } = $props();
+	const { children }: { children: Snippet } = $props();
 </script>
 
 <Fonts />
@@ -16,7 +17,9 @@
 	<div class="main">
 		<Nav />
 		{@render children()}
-		<Copyright />
+		<div class="copyright">
+			<Copyright />
+		</div>
 	</div>
 </div>
 
@@ -25,19 +28,23 @@
 		display: flex;
 		align-items: center;
 		flex-direction: column;
-		min-height: calc(100vh - 10px);
+		min-height: 100vh;
 		opacity: 0;
 		animation: fadeUp 0.5s ease-out forwards;
 	}
 
 	.main {
 		display: flex;
-		align-content: center;
 		flex-direction: column;
 		width: 100%;
+		flex: 1;
 		max-width: 1000px;
 		padding: 0 20px;
 		padding-bottom: 30px;
+	}
+
+	.copyright {
+		margin-top: auto;
 	}
 
 	@media (max-width: 450px) {
