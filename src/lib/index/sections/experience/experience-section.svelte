@@ -51,7 +51,7 @@
 	</div>
 
 	<a class="view-more" href="https://www.linkedin.com/in/matt-gleich/" target="_blank">
-		<ViewButton more on="LinkedIn" icon={Linkedin} /></a
+		<ViewButton more on="LinkedIn" icon={Linkedin} iconPaddingBottom="1.5px" /></a
 	>
 </Section>
 

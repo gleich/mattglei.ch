@@ -5,12 +5,14 @@
 <div class="container">
 	<p>Hey, I'm Matt Gleich</p>
 	<p>
-		I'm a third-year Computer Science student at the <a href="https://rit.edu" target="_blank"
-			>Rochester Institute of Technology (RIT)</a
-		>. This website serves as portfolio showcasing some of my projects, work experience, and
-		personal interests. For any inquiries or potential collaborations, please contact me at
-		<a href="mailto:mail@mattglei.ch">mail@mattglei.ch</a>. More of my professional work is detailed
-		in my <Resume />.
+		I'm a third-year Computer Science student at the
+		<a href="https://rit.edu" target="_blank">Rochester Institute of Technology (RIT)</a>. This
+		website serves as a portfolio showcasing some of my projects, work experience, and personal
+		interests. I am committed to applying my technical skills to develop practical solutions and
+		consistently strive to expand my expertise. If you'd like to discuss a project or explore
+		potential opportunities, please contact me at
+		<a href="mailto:mail@mattglei.ch">mail@mattglei.ch</a>. Additional details about my professional
+		work are in my <Resume />.
 	</p>
 </div>
 

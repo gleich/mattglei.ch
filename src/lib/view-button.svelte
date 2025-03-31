@@ -6,7 +6,7 @@
 		of,
 		more,
 		icon: Icon,
-		iconPaddingBottom = '4px'
+		iconPaddingBottom = '3px'
 	}: {
 		on?: string;
 		more?: boolean;
@@ -45,8 +45,8 @@
 	}
 
 	.icon {
-		width: 15px;
-		height: 15px;
+		width: 16px;
+		height: 16px;
 		color: var(--foreground);
 		margin-left: 7px;
 		margin-right: 6px;
