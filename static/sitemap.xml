@@ -5,7 +5,16 @@
             <loc>http://mattglei.ch/</loc>
         </url>
         <url>
-            <loc>http://mattglei.ch/lcp</loc>
+            <loc>http://mattglei.ch/photos</loc>
+        </url>
+        <url>
+            <loc>http://mattglei.ch/workouts</loc>
+        </url>
+        <url>
+            <loc>http://mattglei.ch/writing</loc>
+        </url>
+        <url>
+            <loc>http://mattglei.ch/writing/lcp</loc>
         </url>
     </urlset>
 </xml>
