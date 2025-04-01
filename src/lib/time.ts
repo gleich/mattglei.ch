@@ -48,33 +48,46 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 
 	const hoursDiff = Math.abs(date.diff(currentTime, 'hour')) % 24;
 	const minutesDiff = Math.abs(date.diff(currentTime, 'minute')) % 60;
+	const msDiff = Math.abs(date.diff(currentTime, 'millisecond'));
+	const secondsDiff = (msDiff / 1000) % 60;
 
-	let fromNow: string;
+	let fromNowStr = '';
 
 	if (yearsDiff > 0) {
-		fromNow = `${yearsDiff} ${yearsDiff === 1 ? 'year' : 'years'} ${monthsDiff} ${monthsDiff === 1 ? 'month' : 'months'}`;
+		fromNowStr = `${yearsDiff} ${yearsDiff === 1 ? 'year' : 'years'}`;
+		if (monthsDiff > 0) {
+			fromNowStr += ` ${monthsDiff} ${monthsDiff === 1 ? 'month' : 'months'}`;
+		}
 	} else if (monthsDiff > 0) {
-		fromNow = `${monthsDiff} ${monthsDiff === 1 ? 'month' : 'months'} ${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
-	} else if (weeksDiff > 0 && daysDiff === 0) {
-		fromNow = `${weeksDiff} ${weeksDiff === 1 ? 'week' : 'weeks'} ${hoursDiff}hr`;
+		fromNowStr = `${monthsDiff} ${monthsDiff === 1 ? 'month' : 'months'}`;
+		if (daysDiff > 0) {
+			fromNowStr += ` ${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
+		}
 	} else if (weeksDiff > 0) {
-		fromNow = `${weeksDiff} ${weeksDiff === 1 ? 'week' : 'weeks'} ${daysDiff}d`;
-	} else if (daysDiff > 0) {
-		fromNow = `${daysDiff}d ${hoursDiff}hr`;
+		fromNowStr = `${weeksDiff} ${weeksDiff === 1 ? 'week' : 'weeks'}`;
+		if (daysDiff > 0) {
+			fromNowStr += ` ${daysDiff}d`;
+		}
+	} else if (totalDaysDiff > 0) {
+		fromNowStr = `${daysDiff}d`;
+		if (hoursDiff > 0) {
+			fromNowStr += ` ${hoursDiff}hr`;
+		}
 	} else if (hoursDiff > 0) {
-		fromNow = `${hoursDiff}hr ${minutesDiff}m`;
+		fromNowStr = `${hoursDiff}hr`;
+		if (minutesDiff > 0) {
+			fromNowStr += ` ${minutesDiff}m`;
+		}
 	} else if (minutesDiff > 0) {
-		const msDiff = Math.abs(date.diff(currentTime, 'millisecond'));
-		const msAfterMinutes = msDiff % (60 * 1000);
-		const secondsWithFraction = msAfterMinutes / 1000;
-		fromNow = `${minutesDiff}m ${secondsWithFraction.toFixed(2)}s`;
+		fromNowStr = `${minutesDiff}m`;
+		if (secondsDiff > 0) {
+			fromNowStr += ` ${secondsDiff.toFixed(2)}s`;
+		}
 	} else {
-		const msDiff = Math.abs(date.diff(currentTime, 'millisecond'));
-		const secondsWithFraction = msDiff / 1000;
-		fromNow = `${secondsWithFraction.toFixed(2)}s`;
+		fromNowStr = `${secondsDiff.toFixed(2)}s`;
 	}
 
-	return fromNow + ' ago';
+	return fromNowStr + ' ago';
 }
 
 export function renderDuration(seconds: number): string {
