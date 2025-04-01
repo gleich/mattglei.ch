@@ -38,7 +38,7 @@
 			</a>
 		</div>
 		<p class="time">
-			<FormattedDate time={workout.start_date} timezone={workout.timezone.split(' ')[1]} />
+			<FormattedDate time={workout.start_date} />
 		</p>
 		{#if workout.platform === 'strava'}
 			{#if workout.has_map}
