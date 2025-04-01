@@ -13,7 +13,7 @@
 	const { workout }: { workout: Workout } = $props();
 </script>
 
-<Card>
+<Card padding="0">
 	<div class="workout">
 		<div class="header">
 			<SportIcon sport_type={workout.sport_type} />
@@ -47,15 +47,14 @@
 		{:else if workout.platform === 'hevy'}
 			<Lift {workout} />
 		{/if}
-		<div class="stats">
-			<Stats {workout} />
-		</div>
+		<Stats {workout} />
 	</div>
 </Card>
 
 <style>
 	.workout {
 		width: 100%;
+		padding: 5px;
 	}
 
 	.header {
@@ -84,9 +83,5 @@
 		font-size: 13.5px;
 		font-weight: 400;
 		margin-bottom: 5px;
-	}
-
-	.stats {
-		margin-top: 5px;
 	}
 </style>

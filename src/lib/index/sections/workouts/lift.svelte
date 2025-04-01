@@ -42,7 +42,6 @@
 		overflow-x: hidden;
 		aspect-ratio: 440/240;
 		height: auto;
-		margin-bottom: 10px;
 		border: 1px solid var(--border);
 		border-radius: var(--border-radius);
 	}

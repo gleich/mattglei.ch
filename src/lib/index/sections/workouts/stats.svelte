@@ -38,4 +38,12 @@
 	}
 </script>
 
-<Stats {stats} />
+<div class="container">
+	<Stats {stats} />
+</div>
+
+<style>
+	.container {
+		margin-top: 10px;
+	}
+</style>
