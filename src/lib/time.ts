@@ -9,22 +9,31 @@ dayjs.extend(timezone);
 export function renderDate(date: Dayjs, now: Dayjs): string {
 	const dayjsDate = dayjs(date);
 	const yesterday = now.subtract(1, 'day');
+	const tomorrow = now.add(1, 'day');
 	let dayOfWeek: string;
+
 	if (
-		now.date() == dayjsDate.date() &&
-		now.year() == dayjsDate.year() &&
-		now.month() == dayjsDate.month()
+		now.date() === dayjsDate.date() &&
+		now.year() === dayjsDate.year() &&
+		now.month() === dayjsDate.month()
 	) {
 		dayOfWeek = 'Today';
 	} else if (
-		yesterday.date() == dayjsDate.date() &&
-		yesterday.year() == dayjsDate.year() &&
-		yesterday.month() == dayjsDate.month()
+		yesterday.date() === dayjsDate.date() &&
+		yesterday.year() === dayjsDate.year() &&
+		yesterday.month() === dayjsDate.month()
 	) {
 		dayOfWeek = 'Yesterday';
+	} else if (
+		tomorrow.date() === dayjsDate.date() &&
+		tomorrow.year() === dayjsDate.year() &&
+		tomorrow.month() === dayjsDate.month()
+	) {
+		dayOfWeek = 'Tomorrow';
 	} else {
 		dayOfWeek = dayjsDate.format('dddd, MMM D');
 	}
+
 	return dayjsDate.format(`[${dayOfWeek}] [@] h:mm A`);
 }
 
