@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Card from '$lib/card.svelte';
+	import Image from '$lib/image.svelte';
 	import type { Dayjs } from 'dayjs';
 
 	const {
@@ -26,7 +27,9 @@
 <Card>
 	<div class="container">
 		<a href={url} target="_blank" class="title">
-			<img src={`/experiences/${icon}`} alt={company} class="icon" />
+			<div class="icon">
+				<Image src={`/experiences/${icon}`} alt={company} height={100} width={100} />
+			</div>
 			<div class="title-text">
 				<div class="left">
 					<h3 class="company">{company}</h3>
@@ -84,6 +87,8 @@
 		width: 45px;
 		height: 45px;
 		border-radius: var(--border-radius);
+		flex-shrink: 0;
+		overflow: hidden;
 	}
 
 	.role {

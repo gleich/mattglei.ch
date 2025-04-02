@@ -10,6 +10,8 @@
 		src={workout.map_image_url as string}
 		alt="Mapbox Map"
 		placeholder={workout.map_blur_image}
+		width={504}
+		height={924}
 	/>
 </div>
 

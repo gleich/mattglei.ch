@@ -47,7 +47,6 @@
 	.icon {
 		width: 16px;
 		height: 16px;
-		color: var(--foreground);
 		margin-left: 7px;
 		margin-right: 6px;
 		margin-bottom: var(--icon-padding-bottom);

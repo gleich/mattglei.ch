@@ -16,6 +16,8 @@
 			alt={`${song.track} by ${song.artist}`}
 			placeholder={song.album_art_blurhash}
 			aspectRatio="1/1"
+			width={600}
+			height={600}
 		/>
 	</div>
 	<div>

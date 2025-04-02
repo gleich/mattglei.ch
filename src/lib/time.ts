@@ -34,7 +34,7 @@ export function renderDate(date: Dayjs, now: Dayjs): string {
 		dayOfWeek = dayjsDate.format('dddd, MMM D');
 	}
 
-	return dayjsDate.format(`[${dayOfWeek}] [@] h:mm A`);
+	return dayjsDate.format(`[${dayOfWeek}] [at] h:mm A`);
 }
 
 export function fromNow(date: Dayjs, currentTime: Dayjs): string {

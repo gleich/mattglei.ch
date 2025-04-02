@@ -39,7 +39,7 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="472px" />
+		<Loading expectedHeight="439px" />
 	{:else if projects != null}
 		<p class="intro">
 			I love to build and explore everything from <a
@@ -100,7 +100,6 @@
 		align-items: center;
 		flex-direction: column;
 		justify-content: space-between;
-		gap: 8px;
 	}
 
 	.top {
@@ -128,6 +127,8 @@
 	.description {
 		align-self: center;
 		text-align: center;
+		margin-top: 8px;
+		margin-bottom: 5px;
 	}
 
 	.language {
@@ -142,7 +143,7 @@
 
 	.updated {
 		color: grey;
-		font-size: 14.5px;
+		font-size: 13.5px;
 	}
 
 	.view-more {

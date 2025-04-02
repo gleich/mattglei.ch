@@ -78,13 +78,14 @@
 	}
 
 	.section-name {
-		color: var(--background);
-		background-color: var(--foreground);
-		padding: 2px 15px;
+		background-color: rgba(108, 108, 108, 0.269);
+		border: 1px solid var(--border);
+		border-top: 0;
+		border-left: 0;
+		padding: 1px 15px;
 		border-bottom-right-radius: var(--border-radius);
 		font-family: 'Inter';
 		font-weight: 800;
-		height: fit-content;
 	}
 
 	.section-name::selection {
@@ -99,7 +100,7 @@
 		border-bottom: 1px solid var(--red-border);
 		display: flex;
 		align-items: center;
-		padding: 5px 10px;
+		padding: 6px 10px;
 		font-family: 'IBM Plex Mono';
 		font-weight: 600;
 		height: fit-content;
@@ -109,12 +110,11 @@
 	.live-circle {
 		width: 7px;
 		height: 7px;
-		margin-right: 14px;
-		margin-left: 5px;
+		margin-right: 12px;
+		margin-left: 3px;
 		background-color: var(--red-foreground);
-		box-shadow: 0px 0px 10px var(--red-foreground);
 		border-radius: 50%;
-		animation: dot-blink 0.4s linear alternate infinite;
+		animation: dot-blink 0.8s step-start infinite;
 	}
 
 	.live-from {
@@ -134,9 +134,9 @@
 	}
 
 	.live-source-icon {
-		width: 15px;
-		height: 15px;
-		margin-bottom: 2.5px;
+		width: 14px;
+		height: 14px;
+		display: flex;
 	}
 
 	.live-source-separator {
@@ -146,10 +146,10 @@
 
 	.children {
 		padding: 10px;
-		padding-top: 20px;
+		padding-top: 10px;
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 15px;
 	}
 
 	.updated-container {
@@ -178,6 +178,12 @@
 
 	.updated-concise {
 		display: none;
+	}
+
+	@media (prefers-color-scheme: light) {
+		.section-name {
+			background-color: rgba(208, 208, 208, 0.269);
+		}
 	}
 
 	@media (max-width: 450px) {
@@ -223,26 +229,24 @@
 	}
 
 	@-webkit-keyframes dot-blink {
-		0% {
-			opacity: 20%;
+		0%,
+		49.999% {
+			opacity: 1;
 		}
-		50% {
-			opacity: 100%;
-		}
+		50%,
 		100% {
-			opacity: 100%;
+			opacity: 0;
 		}
 	}
 
 	@keyframes dot-blink {
-		0% {
-			opacity: 20%;
+		0%,
+		49.999% {
+			opacity: 1;
 		}
-		50% {
-			opacity: 100%;
-		}
+		50%,
 		100% {
-			opacity: 100%;
+			opacity: 0;
 		}
 	}
 </style>

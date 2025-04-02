@@ -2,6 +2,7 @@
 	import Card from '$lib/card.svelte';
 	import Error from '$lib/error.svelte';
 	import Steam from '$lib/icons/steam.svelte';
+	import Image from '$lib/image.svelte';
 	import Section from '$lib/index/section.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import type { Game } from '$lib/lcp/steam';
@@ -20,7 +21,7 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="467px" />
+		<Loading expectedHeight="445px" />
 	{:else if games != null}
 		<p>
 			To relax I like to occasionally play games with some of my friends. Here are my recently
@@ -31,7 +32,9 @@
 			{#each games.data.slice(0, 6) as game (game.app_id)}
 				<Card padding="0">
 					<a href={game.url} target="_blank" class="game" title={`View "${game.name}" on Steam`}>
-						<img class="game-picture" src={game.header_url} alt={`${game.name} header`} />
+						<div class="game-picture">
+							<Image src={game.header_url} alt={`${game.name} header`} height={215} width={460} />
+						</div>
 						<div class="stats">
 							<Stats
 								stats={new Map([
@@ -74,7 +77,7 @@
 
 	.stats {
 		padding: 5px 0;
-		padding-top: 2px;
+		padding-bottom: 3px;
 	}
 
 	@media (max-width: 710px) {

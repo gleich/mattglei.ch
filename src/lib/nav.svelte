@@ -68,8 +68,8 @@
 		max-width: 600px;
 		width: 98%;
 		background-color: var(--background);
-		border: 1px solid rgb(29, 29, 29);
 		border-radius: var(--border-radius);
+		border: 1px solid var(--border);
 		padding-bottom: 1px;
 		align-items: center;
 		flex-wrap: wrap;

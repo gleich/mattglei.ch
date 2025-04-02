@@ -121,9 +121,7 @@ button {
 	font-family: inherit;
 	font-size: inherit;
 	border-radius: var(--border-radius);
-	transition:
-		background-color 0.2s ease,
-		color 0.2s ease;
+	transition: background-color 0.2s ease;
 }
 
 button:hover {
@@ -140,8 +138,4 @@ ul {
 ol,
 ul {
 	margin: 0;
-}
-
-svg {
-	height: fit-content;
 }

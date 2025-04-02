@@ -59,13 +59,14 @@
 
 	.workout {
 		width: 100%;
-		padding: 10px;
+		padding: 5px;
 	}
 
 	.header {
 		display: flex;
 		align-items: center;
-		gap: 5px;
+		justify-content: center;
+		gap: 7px;
 	}
 
 	.header-link {
@@ -80,6 +81,7 @@
 	.platform-icon {
 		width: 21px;
 		height: 21px;
+		margin-right: 5px;
 	}
 
 	.time {
@@ -87,6 +89,7 @@
 		font-family: 'IBM Plex Mono';
 		font-size: 13.5px;
 		font-weight: 400;
-		margin-bottom: 5px;
+		margin-top: 2px;
+		margin-bottom: 3px;
 	}
 </style>
