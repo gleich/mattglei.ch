@@ -141,3 +141,7 @@ ol,
 ul {
 	margin: 0;
 }
+
+svg {
+	height: fit-content;
+}

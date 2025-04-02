@@ -52,15 +52,20 @@
 </Card>
 
 <style>
+	h3 {
+		line-height: 120%;
+		overflow-y: hidden;
+	}
+
 	.workout {
 		width: 100%;
-		padding: 5px;
+		padding: 10px;
 	}
 
 	.header {
 		display: flex;
 		align-items: center;
-		gap: 13px;
+		gap: 5px;
 	}
 
 	.header-link {

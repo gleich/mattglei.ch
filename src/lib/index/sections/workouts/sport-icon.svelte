@@ -7,12 +7,19 @@
 </script>
 
 <div class="icon" title={sport.name}>
-	<sport.icon></sport.icon>
+	<sport.icon class="sport-icon"></sport.icon>
 </div>
 
 <style>
 	.icon {
-		width: 25px;
-		height: 25px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 28px;
+		background-color: var(--green-background);
+		color: var(--green-foreground);
+		padding: 3px 5px;
+		border-radius: 2px;
 	}
 </style>
