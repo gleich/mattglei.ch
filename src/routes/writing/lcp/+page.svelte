@@ -76,9 +76,9 @@
 		</ol>
 		<p>
 			A <b>protected memory space</b> in this context is just a
-			<a href="https://en.wikipedia.org/wiki/Lock_(computer_science)">mutex lock</a>. All of this
-			caching happens in different threads so to ensure thread-safe memory interactions this
-			protected memory space is used.
+			<a href="https://en.wikipedia.org/wiki/Lock_(computer_science)" target="_blank">mutex lock</a
+			>. All of this caching happens in different threads so to ensure thread-safe memory
+			interactions this protected memory space is used.
 		</p>
 	</WritingSection>
 

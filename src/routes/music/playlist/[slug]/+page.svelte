@@ -23,17 +23,19 @@
 
 {#if data.playlist}
 	<div class="header">
-		<h2>{data.playlist.name}</h2>
-		<div class="stats">
-			<p>
-				{data.playlist.tracks.length} songs - {renderDuration(
-					data.playlist.tracks.reduce(
-						(total: number, s: { duration_in_millis: number }) => total + s.duration_in_millis,
-						0
-					) / 1000
-				)}
-			</p>
-			<p>Last updated <Since time={data.playlist.last_modified} /></p>
+		<div class="header-info">
+			<h2>{data.playlist.name}</h2>
+			<div class="stats">
+				<p>Last updated <Since time={data.playlist.last_modified} /></p>
+				<p>
+					{data.playlist.tracks.length} songs - {renderDuration(
+						data.playlist.tracks.reduce(
+							(total: number, s: { duration_in_millis: number }) => total + s.duration_in_millis,
+							0
+						) / 1000
+					)}
+				</p>
+			</div>
 		</div>
 		<a class="view-on-apple-music" href={data.playlist.url} target="_blank">
 			<ViewButton on="Apple Music" icon={AppleMusicIcon} iconPaddingBottom="1.5px" />
@@ -53,17 +55,14 @@
 <style>
 	.header {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
 		margin-bottom: 30px;
+		flex-direction: column;
 	}
 
 	.stats {
 		color: grey;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 	}
 
 	.songs {
@@ -80,10 +79,8 @@
 	}
 
 	.view-on-apple-music {
-		text-decoration: inherit;
 		margin-top: 20px;
-		width: 100%;
-		max-width: 250px;
+		text-decoration: inherit;
 	}
 
 	@media (max-width: 400px) {
