@@ -6,44 +6,50 @@
 </script>
 
 <div class="container">
-	<div class="table">
-		{#each workout.hevy_exercises ?? [] as exercise, exerciseIndex (exercise.exercise_template_id)}
-			<div>
-				<a
-					href={`https://hevy.com/exercise/${exercise.exercise_template_id}`}
-					target="_blank"
-					class="exercise-name"
-				>
-					<Scrolling>
-						{`#${exerciseIndex + 1}: ${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
-					</Scrolling>
-				</a>
-				<div class="sets">
-					{#each exercise.sets as set, setIndex (set.type + setIndex)}
-						<div class={`${set.type === 'warmup' ? 'warmup-set' : ''} set`}>
-							<div class={`${set.type === 'warmup' ? 'warmup-set-number' : ''} set-number`}>
-								{set.type === 'warmup' ? 'Warmup Set' : `Set #${setIndex + 1}`}
+	<div class="scroll-container">
+		<div class="table">
+			{#each workout.hevy_exercises ?? [] as exercise, exerciseIndex (exercise.exercise_template_id)}
+				<div>
+					<a
+						href={`https://hevy.com/exercise/${exercise.exercise_template_id}`}
+						target="_blank"
+						class="exercise-name"
+					>
+						<Scrolling>
+							{`#${exerciseIndex + 1}: ${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
+						</Scrolling>
+					</a>
+					<div class="sets">
+						{#each exercise.sets as set, setIndex (set.type + setIndex)}
+							<div class={`${set.type === 'warmup' ? 'warmup-set' : ''} set`}>
+								<div class={`${set.type === 'warmup' ? 'warmup-set-number' : ''} set-number`}>
+									{set.type === 'warmup' ? 'Warmup Set' : `Set #${setIndex + 1}`}
+								</div>
+								<div class="set-value">
+									{Math.round(set.weight_kg * 2.2046226218)} lbs × {set.reps} reps
+								</div>
 							</div>
-							<div class="set-value">
-								{Math.round(set.weight_kg * 2.2046226218)} lbs × {set.reps} reps
-							</div>
-						</div>
-					{/each}
+						{/each}
+					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </div>
 
 <style>
 	.container {
+		border-radius: var(--border-radius);
+		overflow: hidden;
+	}
+
+	.scroll-container {
 		max-width: 100%;
 		overflow-y: scroll;
 		overflow-x: hidden;
 		aspect-ratio: 440/240;
 		height: auto;
 		border: 1px solid var(--border);
-		border-radius: var(--border-radius);
 	}
 
 	.exercise-name {

@@ -26,8 +26,7 @@
 			<h2 class="section-name">{name}</h2>
 			{#if liveData}
 				<div class="live">
-					<span class="live-circle"></span>
-					<p class="live-from">LIVE FROM</p>
+					<p class="live-from"><span class="live-word">LIVE</span> FROM</p>
 					{#each liveData.sources as source, index (source.name)}
 						<a class="live-source" href={source.url} target="_blank">
 							<div
@@ -88,11 +87,6 @@
 		font-weight: 800;
 	}
 
-	.section-name::selection {
-		color: var(--foreground);
-		background-color: var(--background);
-	}
-
 	.live {
 		background-color: var(--red-background);
 		border-bottom-left-radius: var(--border-radius);
@@ -100,21 +94,17 @@
 		border-bottom: 1px solid var(--red-border);
 		display: flex;
 		align-items: center;
-		padding: 6px 10px;
+		padding: 4px 15px;
+		padding-right: 12px;
 		font-family: 'IBM Plex Mono';
 		font-weight: 600;
 		height: fit-content;
 		overflow: hidden;
 	}
 
-	.live-circle {
-		width: 7px;
-		height: 7px;
-		margin-right: 12px;
-		margin-left: 3px;
-		background-color: var(--red-foreground);
-		border-radius: 50%;
-		animation: dot-blink 0.8s step-start infinite;
+	.live-word {
+		font-size: inherit;
+		animation: blink 1s step-start infinite;
 	}
 
 	.live-from {
@@ -134,7 +124,7 @@
 	}
 
 	.live-source-icon {
-		width: 14px;
+		width: 13px;
 		height: 14px;
 		display: flex;
 	}
@@ -218,35 +208,31 @@
 	}
 
 	@media (max-width: 370px) {
-		.live-circle {
-			display: none;
-		}
-
 		.section-name {
 			padding-left: 8px;
 			padding-right: 8px;
 		}
 	}
 
-	@-webkit-keyframes dot-blink {
+	@-webkit-keyframes blink {
 		0%,
 		49.999% {
-			opacity: 1;
+			opacity: 100%;
 		}
 		50%,
 		100% {
-			opacity: 0;
+			opacity: 40%;
 		}
 	}
 
-	@keyframes dot-blink {
+	@keyframes blink {
 		0%,
 		49.999% {
-			opacity: 1;
+			opacity: 100%;
 		}
 		50%,
 		100% {
-			opacity: 0;
+			opacity: 40%;
 		}
 	}
 </style>

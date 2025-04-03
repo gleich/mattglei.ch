@@ -50,7 +50,7 @@
 			recently played music.
 		</p>
 
-		<Card>
+		<Card padding="0">
 			<h3 class="header">Recently Played Songs</h3>
 			<div class="section songs">
 				{#each music.data!.recently_played.slice(0, 4) as song (song.id)}
@@ -61,7 +61,7 @@
 			</div>
 		</Card>
 
-		<Card>
+		<Card padding="0">
 			<h3 class="header">Playlists</h3>
 			<div class="section playlists">
 				{#each music.data!.playlist_summaries as summary (summary.id)}
@@ -78,7 +78,7 @@
 	.header {
 		width: 100%;
 		text-align: center;
-		padding-bottom: 10px;
+		padding: 5px 0;
 	}
 
 	.section {
@@ -87,6 +87,7 @@
 		gap: 15px;
 		border-top: 1px solid var(--border);
 		padding-top: 10px;
+		padding: 10px;
 	}
 
 	.songs {

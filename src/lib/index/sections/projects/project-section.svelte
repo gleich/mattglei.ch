@@ -66,7 +66,7 @@
 								<div class="github-icon">
 									<Github />
 								</div>
-								<p>{project.name}</p>
+								<p>{project.owner}/{project.name}</p>
 							</div>
 							<p class="language" style:--language-color={project.language_color}>
 								{project.language}
