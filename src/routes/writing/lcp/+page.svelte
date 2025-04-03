@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
 	import GithubIcon from '$lib/icons/github-icon.svelte';
 	import ViewButton from '$lib/view-button.svelte';
-	import Writing from '$lib/writing.svelte';
+	import WritingSection from '$lib/writing/writing-section.svelte';
+	import Writing from '$lib/writing/writing.svelte';
 	import writings from '../writings';
 	import type { LCPData } from './+page.server';
 	import CacheStatus from './cache-status.svelte';
@@ -15,8 +15,7 @@
 		<ViewButton on="GitHub" icon={GithubIcon} />
 	</a>
 
-	<Card>
-		<h3>Cache Status Overview</h3>
+	<WritingSection title="Cache Status Overview">
 		<div class="statuses">
 			{#await data.projects}
 				<p>Loading projects cache...</p>
@@ -39,10 +38,9 @@
 				<CacheStatus name="Games" updated={games?.updated} />
 			{/await}
 		</div>
-	</Card>
+	</WritingSection>
 
-	<Card>
-		<h3>What is lcp?</h3>
+	<WritingSection title="What is lcp?">
 		<p>
 			lcp is a backend service I wrote that aggregates, processes, and caches data from a number of
 			APIs. This data is then exposed as a REST API. It's written in the <a
@@ -55,10 +53,9 @@
 			mainly thanks to the way that caching is done in a protected memory space and that data is aggregated
 			from multiple sources. Down below is more technical explanations of how lcp works.
 		</p>
-	</Card>
+	</WritingSection>
 
-	<Card>
-		<h3>System Overview</h3>
+	<WritingSection title="System Overview">
 		<img class="overview-diagram" src="/writings/lcp/overview.webp" alt="Overview diagram" />
 		<p>
 			The diagram above illustrates how each cache gets updated. There are two main types of caches
@@ -83,10 +80,9 @@
 			caching happens in different threads so to ensure thread-safe memory interactions this
 			protected memory space is used.
 		</p>
-	</Card>
+	</WritingSection>
 
-	<Card>
-		<h3>Main benefits</h3>
+	<WritingSection title="Main Benefits">
 		<ol>
 			<li>Fast response times</li>
 			<p>
@@ -118,10 +114,9 @@
 				being down is even greater.
 			</p>
 		</ol>
-	</Card>
+	</WritingSection>
 
-	<Card>
-		<h3>Design decisions</h3>
+	<WritingSection title="Design Decisions">
 		<ol>
 			<li>Couldn't this be simpler?</li>
 			<p>
@@ -210,13 +205,12 @@
 				section to load independently on the front end.
 			</p>
 		</ol>
-	</Card>
+	</WritingSection>
 </Writing>
 
 <style>
 	.view-on-github {
 		text-decoration: inherit;
-		max-width: 200px;
 		width: 100%;
 		flex-shrink: 0;
 		align-self: center;
@@ -224,10 +218,11 @@
 	}
 
 	.statuses {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
 		gap: 5px;
-		width: fit-content;
+		align-items: center;
+		width: 100%;
 	}
 
 	.custom-list {
@@ -242,30 +237,12 @@
 	.overview-diagram {
 		width: 100%;
 		height: auto;
+		border-radius: var(--border-radius);
 	}
 
-	ol > li {
-		color: var(--green-foreground);
-		background-color: var(--green-background);
-		padding: 2px 5px;
-		margin-top: 5px;
-		width: fit-content;
-		border-radius: 2px;
-	}
-
-	ol {
-		padding-bottom: 10px;
-	}
-
-	ol p {
-		padding-left: 25px;
-	}
-
-	ol > p {
-		padding-top: 5px;
-	}
-
-	h3 {
-		margin-bottom: 5px;
+	@media (max-width: 860px) {
+		.statuses {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

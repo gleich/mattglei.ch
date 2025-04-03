@@ -1,4 +1,4 @@
-import type { WritingData } from '$lib/writing.svelte';
+import type { WritingData } from '$lib/writing/writing.svelte';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 

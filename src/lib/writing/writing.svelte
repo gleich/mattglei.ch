@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import DynamicHead from './dynamic-head.svelte';
+	import DynamicHead from '../dynamic-head.svelte';
 
 	export interface WritingData {
 		title: string;
@@ -16,7 +16,7 @@
 <DynamicHead title={writing.title} description={writing.description} keywords={writing.keywords} />
 
 <div class="container">
-	<h2 class="title">{writing.title}</h2>
+	<h2>{writing.title}</h2>
 	<div class="subtitle">
 		<p>Estimated read time: ~{writing.readTime}min</p>
 		<p>
@@ -29,12 +29,7 @@
 </div>
 
 <style>
-	.title {
-		text-align: center;
-	}
-
 	.subtitle {
-		text-align: center;
 		color: grey;
 	}
 
