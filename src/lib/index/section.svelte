@@ -83,8 +83,6 @@
 		border-left: 0;
 		padding: 1px 15px;
 		border-bottom-right-radius: var(--border-radius);
-		font-family: 'Inter';
-		font-weight: 800;
 	}
 
 	.live {
