@@ -21,11 +21,13 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="445.36px" />
+		<Loading expectedHeight="466.36px" />
 	{:else if games != null}
 		<p>
-			To relax I like to occasionally play games with some of my friends. Here are my recently
-			played games from <a href="https://store.steampowered.com/about/" target="_blank">Steam</a>:
+			To relax I like to occasionally play games with some of my friends. My favorite game of all
+			time is <a href="https://www.firewatchgame.com" target="_blank">Firewatch</a> (I've probably
+			replayed it ~8 times over the years). Here are my recently played games from
+			<a href="https://store.steampowered.com/about/" target="_blank">Steam</a>:
 		</p>
 
 		<div class="games">
