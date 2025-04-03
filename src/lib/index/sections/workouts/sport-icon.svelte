@@ -13,8 +13,8 @@
 <style>
 	.icon {
 		display: flex;
-		width: 30px;
-		height: 28px;
+		width: 27px;
+		height: 25px;
 		background-color: var(--green-background);
 		color: var(--green-foreground);
 		padding: 3px 5px;
