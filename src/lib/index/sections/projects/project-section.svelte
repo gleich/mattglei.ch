@@ -39,7 +39,7 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="439px" />
+		<Loading expectedHeight="439.3px" />
 	{:else if projects != null}
 		<p class="intro">
 			I love to build and explore everything from <a
