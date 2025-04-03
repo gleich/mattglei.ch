@@ -82,7 +82,7 @@
 			<ViewButton more on="GitHub" icon={GithubIcon} />
 		</a>
 	{:else}
-		<Error msg="Failed to load projects" />
+		<Error msg="Failed to load project data" />
 	{/if}
 </Section>
 

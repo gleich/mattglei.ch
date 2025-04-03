@@ -72,7 +72,7 @@
 			</div>
 		</Card>
 	{:else}
-		<Error msg="Failed to load" />
+		<Error msg="Failed to load music data" />
 	{/if}
 </Section>
 

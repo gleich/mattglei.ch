@@ -59,7 +59,7 @@
 			<ViewButton more of="workouts" />
 		</a>
 	{:else}
-		<Error msg="Failed to load" />
+		<Error msg="Failed to load workout data" />
 	{/if}
 </Section>
 

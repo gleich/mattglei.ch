@@ -55,7 +55,7 @@
 			{/each}
 		</div>
 	{:else}
-		<Error msg="Failed to load games" />
+		<Error msg="Failed to load game data" />
 	{/if}
 </Section>
 
