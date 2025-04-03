@@ -77,7 +77,7 @@
 	}
 
 	.section-name {
-		background-color: rgba(108, 108, 108, 0.269);
+		background-color: #3b3d3e;
 		border: 1px solid var(--border);
 		border-top: 0;
 		border-left: 0;
@@ -174,7 +174,7 @@
 
 	@media (prefers-color-scheme: light) {
 		.section-name {
-			background-color: rgba(208, 208, 208, 0.269);
+			background-color: #eaeaea;
 		}
 	}
 
