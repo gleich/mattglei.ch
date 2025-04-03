@@ -1,8 +1,10 @@
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 dayjs.extend(duration);
+dayjs.extend(advancedFormat);
 
 export function renderDate(date: Dayjs, now: Dayjs): string {
 	const dayjsDate = dayjs(date);
@@ -29,7 +31,7 @@ export function renderDate(date: Dayjs, now: Dayjs): string {
 	) {
 		dayOfWeek = 'Tomorrow';
 	} else {
-		dayOfWeek = dayjsDate.format('dddd, MMM D');
+		dayOfWeek = dayjsDate.format('dddd, MMM Do');
 	}
 
 	return dayjsDate.format(`[${dayOfWeek}] [at] h:mm A`);
