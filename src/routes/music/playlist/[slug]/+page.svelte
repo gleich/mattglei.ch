@@ -24,7 +24,7 @@
 {#if data.playlist}
 	<div class="header">
 		<div class="header-info">
-			<h2>{data.playlist.name}</h2>
+			<h2>{data.playlist.name} Playlist</h2>
 			<div class="stats">
 				<p>Last updated <Since time={data.playlist.last_modified} /></p>
 				<p>
