@@ -122,11 +122,6 @@
 		}
 
 		.section {
-			padding-left: 0px;
-			padding-right: 0px;
-		}
-
-		.section {
 			gap: 10px;
 		}
 		.song {
