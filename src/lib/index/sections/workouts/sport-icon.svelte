@@ -13,8 +13,6 @@
 <style>
 	.icon {
 		display: flex;
-		align-items: center;
-		justify-content: center;
 		width: 30px;
 		height: 28px;
 		background-color: var(--green-background);
