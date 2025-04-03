@@ -1,37 +1,37 @@
-import Gravel from '$lib/icons/workouts/gravel.svelte';
-import Hike from '$lib/icons/workouts/hike.svelte';
-import Kayak from '$lib/icons/workouts/kayak.svelte';
-import Mtb from '$lib/icons/workouts/mtb.svelte';
-import Pickleball from '$lib/icons/workouts/pickleball.svelte';
-import Ride from '$lib/icons/workouts/ride.svelte';
-import Run from '$lib/icons/workouts/run.svelte';
-import Walk from '$lib/icons/workouts/walk.svelte';
-import WeightTraining from '$lib/icons/workouts/weight-training.svelte';
-import WorkoutIcon from '$lib/icons/workouts/workout.svelte';
+import GravelIcon from '$lib/icons/workouts/gravel-icon.svelte';
+import HikeIcon from '$lib/icons/workouts/hike-icon.svelte';
+import KayakIcon from '$lib/icons/workouts/kayak-icon.svelte';
+import MtbIcon from '$lib/icons/workouts/mtb-icon.svelte';
+import PickleballIcon from '$lib/icons/workouts/pickleball-icon.svelte';
+import RideIcon from '$lib/icons/workouts/ride-icon.svelte';
+import RunIcon from '$lib/icons/workouts/run-icon.svelte';
+import WalkIcon from '$lib/icons/workouts/walk-icon.svelte';
+import WeightTrainingIcon from '$lib/icons/workouts/weight-training-icon.svelte';
+import WorkoutIconIcon from '$lib/icons/workouts/workout-icon.svelte';
 import type { Component } from 'svelte';
 
 export function iconFromType(sport_type: string): Component {
 	switch (sport_type) {
 		case 'Run':
-			return Run;
+			return RunIcon;
 		case 'GravelRide':
-			return Gravel;
+			return GravelIcon;
 		case 'Hike':
-			return Hike;
+			return HikeIcon;
 		case 'Walk':
-			return Walk;
+			return WalkIcon;
 		case 'Ride':
-			return Ride;
+			return RideIcon;
 		case 'MountainBikeRide':
-			return Mtb;
+			return MtbIcon;
 		case 'Kayaking':
-			return Kayak;
+			return KayakIcon;
 		case 'Pickleball':
-			return Pickleball;
+			return PickleballIcon;
 		case 'WeightTraining':
-			return WeightTraining;
+			return WeightTrainingIcon;
 		default:
-			return WorkoutIcon;
+			return WorkoutIconIcon;
 	}
 }
 

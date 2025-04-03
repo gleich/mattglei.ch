@@ -1,7 +1,7 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
 	import Error from '$lib/error.svelte';
-	import Applemusic from '$lib/icons/applemusic.svelte';
+	import AppleMusicIcon from '$lib/icons/apple-music-icon.svelte';
 	import Song from '$lib/index/sections/music/song.svelte';
 	import { renderDuration } from '$lib/time';
 	import Since from '$lib/time/since.svelte';
@@ -36,7 +36,7 @@
 			<p>Last updated <Since time={data.playlist.last_modified} /></p>
 		</div>
 		<a class="view-on-apple-music" href={data.playlist.url} target="_blank">
-			<ViewButton on="Apple Music" icon={Applemusic} iconPaddingBottom="1.5px" />
+			<ViewButton on="Apple Music" icon={AppleMusicIcon} iconPaddingBottom="1.5px" />
 		</a>
 	</div>
 	<div class="songs">

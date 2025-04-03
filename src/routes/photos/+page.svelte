@@ -1,6 +1,6 @@
 <script>
 	import DynamicHead from '$lib/dynamic-head.svelte';
-	import Instagram from '$lib/icons/instagram.svelte';
+	import InstagramIcon from '$lib/icons/instagram-icon.svelte';
 	import PhotoGallery from '$lib/index/sections/photos/photo-gallery.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 </script>
@@ -12,7 +12,7 @@
 <PhotoGallery />
 
 <a class="view-more" href="https://instagram.com/mattglei.ch" target="_blank">
-	<ViewButton more on="Instagram" icon={Instagram} iconPaddingBottom="0px" />
+	<ViewButton more on="Instagram" icon={InstagramIcon} iconPaddingBottom="0px" />
 </a>
 
 <style>

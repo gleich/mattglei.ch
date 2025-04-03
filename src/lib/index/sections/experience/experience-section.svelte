@@ -3,7 +3,7 @@
 	import dayjs from 'dayjs';
 	import Experience from './experience.svelte';
 	import Resume from '$lib/resume.svelte';
-	import Linkedin from '$lib/icons/linkedin.svelte';
+	import LinkedinButton from '$lib/icons/linkedin-icon.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 </script>
 
@@ -51,7 +51,7 @@
 	</div>
 
 	<a class="view-more" href="https://www.linkedin.com/in/matt-gleich/" target="_blank">
-		<ViewButton more on="LinkedIn" icon={Linkedin} iconPaddingBottom="1.5px" /></a
+		<ViewButton more on="LinkedIn" icon={LinkedinButton} iconPaddingBottom="1.5px" /></a
 	>
 </Section>
 

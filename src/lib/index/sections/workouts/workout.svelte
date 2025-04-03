@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Card from '$lib/card.svelte';
-	import Hevy from '$lib/icons/hevy.svelte';
-	import Strava from '$lib/icons/strava.svelte';
+	import HevyWorkout from '$lib/icons/hevy-icon.svelte';
+	import StravaIcon from '$lib/icons/strava-icon.svelte';
 	import type { Workout } from '$lib/lcp/workouts';
 	import Scrolling from '$lib/scrolling.svelte';
 	import FormattedDate from '$lib/time/formatted-date.svelte';
@@ -30,9 +30,9 @@
 				</Scrolling>
 				<div class="platform-icon">
 					{#if workout.platform === 'strava'}
-						<Strava />
+						<StravaIcon />
 					{:else if workout.platform === 'hevy'}
-						<Hevy />
+						<HevyWorkout />
 					{/if}
 				</div>
 			</a>

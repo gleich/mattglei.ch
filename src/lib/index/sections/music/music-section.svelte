@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Card from '$lib/card.svelte';
 	import Error from '$lib/error.svelte';
-	import Applemusic from '$lib/icons/applemusic.svelte';
+	import AppleMusicIcon from '$lib/icons/apple-music-icon.svelte';
 	import Section from '$lib/index/section.svelte';
 	import type { CacheData } from '$lib/lcp/applemusic.server';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
@@ -30,7 +30,9 @@
 <Section
 	name="Music"
 	liveData={{
-		sources: [{ name: 'Apple Music', icon: Applemusic, url: 'https://www.apple.com/apple-music/' }],
+		sources: [
+			{ name: 'Apple Music', icon: AppleMusicIcon, url: 'https://www.apple.com/apple-music/' }
+		],
 		updated: music?.updated
 	}}
 >

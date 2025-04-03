@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Card from '$lib/card.svelte';
 	import Error from '$lib/error.svelte';
-	import Steam from '$lib/icons/steam.svelte';
+	import SteamIcon from '$lib/icons/steam-icon.svelte';
 	import Image from '$lib/image.svelte';
 	import Section from '$lib/index/section.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
@@ -16,7 +16,7 @@
 <Section
 	name="Games"
 	liveData={{
-		sources: [{ name: 'Steam', icon: Steam, url: 'https://store.steampowered.com/about/' }],
+		sources: [{ name: 'Steam', icon: SteamIcon, url: 'https://store.steampowered.com/about/' }],
 		updated: games?.updated
 	}}
 >

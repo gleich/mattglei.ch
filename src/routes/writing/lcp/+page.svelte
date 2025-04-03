@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card from '$lib/card.svelte';
-	import Github from '$lib/icons/github.svelte';
+	import GithubIcon from '$lib/icons/github-icon.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import Writing from '$lib/writing.svelte';
 	import writings from '../writings';
@@ -12,7 +12,7 @@
 
 <Writing writing={writings.get('lcp')!}>
 	<a class="view-on-github" href="https://github.com/gleich/lcp-2" target="_blank">
-		<ViewButton on="GitHub" icon={Github} />
+		<ViewButton on="GitHub" icon={GithubIcon} />
 	</a>
 
 	<Card>

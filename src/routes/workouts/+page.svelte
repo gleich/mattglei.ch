@@ -1,7 +1,7 @@
 <script lang="ts">
 	import DynamicHead from '$lib/dynamic-head.svelte';
 	import Error from '$lib/error.svelte';
-	import Strava from '$lib/icons/strava.svelte';
+	import StravaIcon from '$lib/icons/strava-icon.svelte';
 	import Workout from '$lib/index/sections/workouts/workout.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import type { WorkoutData } from './+page.server';
@@ -21,7 +21,7 @@
 		{/each}
 	</div>
 	<a class="view-more" href="https://www.strava.com/athletes/30124266" target="_blank">
-		<ViewButton more on="Strava" icon={Strava} /></a
+		<ViewButton more on="Strava" icon={StravaIcon} /></a
 	>
 {:else}
 	<Error msg="Failed to load workouts" />

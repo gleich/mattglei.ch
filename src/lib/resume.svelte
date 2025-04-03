@@ -1,10 +1,10 @@
 <script>
-	import File from './icons/file.svelte';
+	import FileIcon from './icons/file-icon.svelte';
 </script>
 
 <a href="/resume.pdf" target="_blank" class="container">
 	<span class="icon">
-		<File />
+		<FileIcon />
 	</span>
 	<span class="text">résumé</span>
 </a>

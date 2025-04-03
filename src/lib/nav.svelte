@@ -1,7 +1,7 @@
 <script lang="ts">
-	import Github from '$lib/icons/github.svelte';
-	import Instagram from '$lib/icons/instagram.svelte';
-	import Linkedin from '$lib/icons/linkedin.svelte';
+	import GitHubIcon from '$lib/icons/github-icon.svelte';
+	import InstagramIcon from '$lib/icons/instagram-icon.svelte';
+	import LinkedinIcon from '$lib/icons/linkedin-icon.svelte';
 	import Logo from '$lib/logo.svelte';
 	import type { Component } from 'svelte';
 	import { page } from '$app/state';
@@ -17,9 +17,9 @@
 
 {#snippet socials(className: string)}
 	<div class={className}>
-		{@render social('GitHub', 'https://github.com/gleich', Github)}
-		{@render social('Instagram', 'https://instagram.com/mattglei.ch', Instagram)}
-		{@render social('Linkedin', 'https://www.linkedin.com/in/matt-gleich/', Linkedin)}
+		{@render social('GitHub', 'https://github.com/gleich', GitHubIcon)}
+		{@render social('Instagram', 'https://instagram.com/mattglei.ch', InstagramIcon)}
+		{@render social('Linkedin', 'https://www.linkedin.com/in/matt-gleich/', LinkedinIcon)}
 	</div>
 {/snippet}
 

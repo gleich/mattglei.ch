@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Pause from '$lib/icons/pause.svelte';
-	import Play from '$lib/icons/play.svelte';
+	import PauseIcon from '$lib/icons/pause-icon.svelte';
+	import PlayIcon from '$lib/icons/play-icon.svelte';
 	import Image from '$lib/image.svelte';
 	import type { AppleMusicSong } from '$lib/lcp/applemusic.server';
 	import Scrolling from '$lib/scrolling.svelte';
@@ -29,9 +29,9 @@
 			>
 				<audio bind:paused src={song.preview_audio_url} loop></audio>
 				{#if paused}
-					<Play />
+					<PlayIcon />
 				{:else}
-					<Pause />
+					<PauseIcon />
 				{/if}
 			</div>
 		{/if}

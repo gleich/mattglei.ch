@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Card from '$lib/card.svelte';
 	import Error from '$lib/error.svelte';
-	import Github from '$lib/icons/github.svelte';
+	import GithubIcon from '$lib/icons/github-icon.svelte';
 	import Section from '$lib/index/section.svelte';
 	import type { Repository } from '$lib/lcp/github';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
@@ -34,7 +34,7 @@
 <Section
 	name="Projects"
 	liveData={{
-		sources: [{ name: 'GitHub', icon: Github, url: 'https://github.com' }],
+		sources: [{ name: 'GitHub', icon: GithubIcon, url: 'https://github.com' }],
 		updated: projects?.updated
 	}}
 >
@@ -64,7 +64,7 @@
 						<div class="top">
 							<div class="name">
 								<div class="github-icon">
-									<Github />
+									<GithubIcon />
 								</div>
 								<p>{project.owner}/{project.name}</p>
 							</div>
@@ -79,7 +79,7 @@
 			{/each}
 		</div>
 		<a class="view-more" href="https://github.com/gleich?tab=repositories" target="_blank">
-			<ViewButton more on="GitHub" icon={Github} />
+			<ViewButton more on="GitHub" icon={GithubIcon} />
 		</a>
 	{:else}
 		<Error msg="Failed to load projects" />

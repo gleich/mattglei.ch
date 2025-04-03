@@ -1,5 +1,5 @@
 <script>
-	import Github from './icons/github.svelte';
+	import GithubIcon from './icons/github-icon.svelte';
 </script>
 
 <div class="container">
@@ -9,7 +9,7 @@
 		>
 	</p>
 	<a class="github-link" href="https://github.com/gleich/mattglei.ch" target="_blank">
-		<div class="github-icon"><Github /></div>
+		<div class="github-icon"><GithubIcon /></div>
 		gleich/mattglei.ch</a
 	>
 </div>

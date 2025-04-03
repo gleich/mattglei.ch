@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Error from '$lib/error.svelte';
-	import Hevy from '$lib/icons/hevy.svelte';
-	import Strava from '$lib/icons/strava.svelte';
+	import HevyIcon from '$lib/icons/hevy-icon.svelte';
+	import StravaIcon from '$lib/icons/strava-icon.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import { type Workout as LcpWorkout } from '$lib/lcp/workouts';
 	import Loading from '$lib/loading.svelte';
@@ -22,14 +22,14 @@
 		sources: [
 			{
 				name: 'Strava',
-				icon: Strava,
+				icon: StravaIcon,
 				url: stravaURL,
 				iconLeftMargin: '8px',
 				iconRightMargin: '5px'
 			},
 			{
 				name: 'Hevy',
-				icon: Hevy,
+				icon: HevyIcon,
 				url: hevyURL,
 				iconLeftMargin: '10px',
 				iconRightMargin: '8px'
