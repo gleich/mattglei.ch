@@ -40,29 +40,4 @@
 		flex-direction: column;
 		gap: 20px;
 	}
-
-	:global(ol > li) {
-		color: var(--green-foreground);
-		background-color: var(--green-background);
-		padding: 2px 5px;
-		margin-top: 5px;
-		width: fit-content;
-		border-radius: 2px;
-	}
-
-	:global(ol) {
-		padding-bottom: 10px;
-	}
-
-	:global(ol p) {
-		padding-left: 25px;
-	}
-
-	:global(ol > p) {
-		padding-top: 5px;
-	}
-
-	:global(h3) {
-		margin-bottom: 5px;
-	}
 </style>

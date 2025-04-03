@@ -243,4 +243,29 @@
 		width: 100%;
 		height: auto;
 	}
+
+	ol > li {
+		color: var(--green-foreground);
+		background-color: var(--green-background);
+		padding: 2px 5px;
+		margin-top: 5px;
+		width: fit-content;
+		border-radius: 2px;
+	}
+
+	ol {
+		padding-bottom: 10px;
+	}
+
+	ol p {
+		padding-left: 25px;
+	}
+
+	ol > p {
+		padding-top: 5px;
+	}
+
+	h3 {
+		margin-bottom: 5px;
+	}
 </style>
