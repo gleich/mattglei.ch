@@ -90,6 +90,6 @@
 		font-size: 13.5px;
 		font-weight: 400;
 		margin-top: 2px;
-		margin-bottom: 3px;
+		margin-bottom: 7px;
 	}
 </style>
