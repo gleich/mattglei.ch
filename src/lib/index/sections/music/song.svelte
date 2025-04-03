@@ -22,7 +22,11 @@
 			aspectRatio="1/1"
 		/>
 		{#if song.preview_audio_url}
-			<div class="play-audio-button" onpointerdown={() => (paused = !paused)}>
+			<div
+				title={`${paused ? 'Play' : 'Pause'} preview of "${song.track}"`}
+				class="play-audio-button"
+				onpointerdown={() => (paused = !paused)}
+			>
 				<audio bind:paused src={song.preview_audio_url} loop></audio>
 				{#if paused}
 					<Play />
@@ -61,16 +65,17 @@
 	}
 
 	.play-audio-button {
-		background-color: rgba(37, 54, 48);
+		background-color: var(--green-background);
 		backdrop-filter: blur(4px);
 		color: var(--green-foreground);
 		border: 2px solid var(--green-border);
+		cursor: pointer;
 		border-radius: 50%;
 		width: fit-content;
 		position: absolute;
 		z-index: 10;
-		width: 25px;
-		height: 25px;
+		width: 27px;
+		height: 27px;
 		bottom: 5px;
 		left: 5px;
 	}
