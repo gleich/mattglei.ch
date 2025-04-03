@@ -27,7 +27,7 @@
 		flex-direction: column;
 		gap: 5px;
 		margin: 10px;
-		margin-bottom: 40px;
+		margin-bottom: 60px;
 	}
 
 	.rit-icon {
