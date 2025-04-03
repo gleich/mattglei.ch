@@ -6,18 +6,23 @@
 		title: string;
 		publishedDate: string;
 		description: string;
+		keywords: string[];
+		readTime: number;
 	}
 
 	const { writing, children }: { writing: WritingData; children: Snippet } = $props();
 </script>
 
-<DynamicHead title={writing.title} description={writing.description} />
+<DynamicHead title={writing.title} description={writing.description} keywords={writing.keywords} />
 
 <div class="container">
 	<h2 class="title">{writing.title}</h2>
-	<p class="subtitle">
-		{writing.publishedDate}
-	</p>
+	<div class="subtitle">
+		<p>Estimated read time: ~{writing.readTime}min</p>
+		<p>
+			{writing.publishedDate}
+		</p>
+	</div>
 	<div class="children">
 		{@render children()}
 	</div>

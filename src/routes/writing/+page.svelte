@@ -1,7 +1,7 @@
 <script lang="ts">
 	import writings from './writings';
-	import Card from '$lib/card.svelte';
 	import DynamicHead from '$lib/dynamic-head.svelte';
+	import Card from '$lib/card.svelte';
 </script>
 
 <DynamicHead title="Writing" description="Matt Gleich's writings" />
@@ -12,19 +12,35 @@
 	{#each writings as [slug, writing] (slug)}
 		<Card>
 			<a href={`/writing/${slug}`} class="writing">
-				<h3 class="title">{writing.title}</h3>
-				<p class="date">{writing.publishedDate}</p>
-				<p>{writing.description}</p>
+				<div class="title">
+					<h3>{writing.title}</h3>
+					<p class="date">{writing.publishedDate}</p>
+				</div>
+				<div class="keywords">
+					{#each writing.keywords as keyword (keyword)}
+						<p class="keyword">{keyword}</p>
+					{/each}
+				</div>
+				<p class="description">{writing.description}</p>
+				<button class="read-button"
+					><p>Read</p>
+					<p class="estimated-time">Estimated Time: ~{writing.readTime}min</p></button
+				>
 			</a>
 		</Card>
 	{/each}
 </div>
 
 <style>
+	.title {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.writings {
 		margin-top: 30px;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.writing {
@@ -32,9 +48,18 @@
 		text-decoration: inherit;
 	}
 
-	.title,
-	.date {
-		text-align: center;
+	.keywords {
+		display: flex;
+		gap: 10px;
+		margin: 5px 0;
+	}
+
+	.keyword {
+		color: var(--green-foreground);
+		background-color: var(--green-background);
+		padding: 3px 5px;
+		border-radius: 2px;
+		font-size: 14px;
 	}
 
 	.date {
@@ -42,9 +67,25 @@
 		margin-bottom: 10px;
 	}
 
+	.description {
+		margin-top: 10px;
+		margin-bottom: 5px;
+	}
+
+	.read-button {
+		width: 100%;
+		padding: 10px;
+		margin-top: 5px;
+	}
+
+	.estimated-time {
+		font-size: 14px;
+		color: grey;
+	}
+
 	@media (max-width: 600px) {
-		.writings {
-			grid-template-columns: 1fr;
+		.title {
+			flex-direction: column;
 		}
 	}
 
