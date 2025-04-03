@@ -117,7 +117,6 @@
 	}
 
 	.name {
-		font-family: 'Inter';
 		font-weight: bold;
 		line-height: 75%;
 		margin-left: 10px;
