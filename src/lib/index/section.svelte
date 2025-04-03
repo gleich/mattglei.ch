@@ -98,7 +98,8 @@
 		padding-right: 12px;
 		font-family: 'IBM Plex Mono';
 		font-weight: 600;
-		height: fit-content;
+		height: 28px;
+		flex-grow: 0;
 		overflow: hidden;
 	}
 
@@ -109,6 +110,7 @@
 
 	.live-from {
 		color: var(--red-foreground);
+		flex-grow: 0;
 	}
 
 	.live-from,
@@ -153,7 +155,7 @@
 		font-family: 'IBM Plex Mono';
 		font-weight: 500;
 		font-size: 13.5px;
-		margin-top: 10px;
+		margin-top: 5px;
 	}
 
 	.lcp-link {
@@ -182,8 +184,10 @@
 		}
 
 		.live {
-			padding-top: 3px;
+			padding-top: 2px;
 			padding-bottom: 3px;
+			padding-left: 10px;
+			padding-right: 5px;
 		}
 
 		.live-source-icon {

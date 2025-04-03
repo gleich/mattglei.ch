@@ -1,10 +1,8 @@
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
-import timezone from 'dayjs/plugin/timezone';
 
 dayjs.extend(duration);
-dayjs.extend(timezone);
 
 export function renderDate(date: Dayjs, now: Dayjs): string {
 	const dayjsDate = dayjs(date);

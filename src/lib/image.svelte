@@ -3,16 +3,12 @@
 		src,
 		alt,
 		placeholder,
-		aspectRatio,
-		width,
-		height
+		aspectRatio
 	}: {
 		src: string;
 		alt: string;
 		placeholder?: string;
 		aspectRatio?: string;
-		width: number;
-		height: number;
 	} = $props();
 
 	let img: HTMLElement;
@@ -31,8 +27,6 @@
 	loading="lazy"
 	decoding="async"
 	{alt}
-	{width}
-	{height}
 	style={`${aspectRatio ? `aspect-ratio: ${aspectRatio};` : ''} ${placeholder ? `background-image: url('${placeholder}');` : ''}`}
 />
 

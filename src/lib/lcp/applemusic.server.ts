@@ -33,6 +33,7 @@ export interface AppleMusicSong {
 	album_art_blurhash: string;
 	url: string;
 	id: string;
+	preview_audio_url: string | null;
 }
 
 export interface AppleMusicPlaylistSummary {
