@@ -1,5 +1,5 @@
 <script lang="ts">
-	const {
+	let {
 		title,
 		description,
 		opengraphImage = {
@@ -21,7 +21,7 @@
 		height: string;
 	}
 
-	keywords.concat([
+	keywords = keywords.concat([
 		'matt gleich',
 		'matt',
 		'gleich',
