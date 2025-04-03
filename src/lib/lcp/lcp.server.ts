@@ -20,7 +20,7 @@ export async function loadFromLCP<T>(
 ): Promise<LcpResponse<T> | null> {
 	// uncomment to check loading animation for each section
 	// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-	// await sleep(1000);
+	// await sleep(10000);
 
 	let pathName: string;
 	switch (cache) {

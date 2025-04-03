@@ -15,7 +15,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: calc(var(--expected-height) - 30px);
+		height: calc(var(--expected-height) - 20px);
 	}
 
 	.logo {
