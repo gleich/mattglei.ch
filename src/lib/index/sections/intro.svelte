@@ -31,8 +31,8 @@
 	}
 
 	.rit-icon {
-		width: 20px;
-		height: 20px;
+		width: 19px;
+		height: 19px;
 		position: relative;
 		bottom: -4px;
 		margin: 0 2px;
@@ -44,6 +44,17 @@
 	.rit-link {
 		color: #f76900;
 		display: inline-block;
+	}
+
+	@media (max-width: 500px) {
+		.container {
+			gap: 10px;
+		}
+
+		.rit-icon {
+			width: 17px;
+			height: 17px;
+		}
 	}
 
 	@media (max-width: 400px) {
