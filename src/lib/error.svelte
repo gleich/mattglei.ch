@@ -39,6 +39,7 @@
 
 	h1 {
 		font-size: 25px;
+		font-family: 'IBM Plex Sans';
 	}
 
 	@keyframes blink {
