@@ -88,7 +88,6 @@
 		color: grey;
 		font-family: 'IBM Plex Mono';
 		font-size: 13.5px;
-		font-weight: 400;
 		margin-top: 2px;
 		margin-bottom: 7px;
 	}
