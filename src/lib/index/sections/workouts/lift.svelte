@@ -40,6 +40,7 @@
 <style>
 	.container {
 		border-radius: var(--border-radius);
+		border: 1px solid var(--border);
 		overflow: hidden;
 	}
 
@@ -49,7 +50,6 @@
 		overflow-x: hidden;
 		aspect-ratio: 440/240;
 		height: auto;
-		border: 1px solid var(--border);
 	}
 
 	.exercise-name {
