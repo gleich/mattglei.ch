@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
 	import Error from '$lib/error.svelte';
 	import AppleMusicIcon from '$lib/icons/apple-music-icon.svelte';
 	import Section from '$lib/index/section.svelte';
@@ -37,7 +36,7 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="733.13px" />
+		<Loading expectedHeight="754.73px" />
 	{:else if music != null}
 		<p>
 			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite
@@ -52,25 +51,25 @@
 			recently played music.
 		</p>
 
-		<Card padding="0">
+		<div>
 			<h3 class="header">Recently Played Songs</h3>
 			<div class="section songs">
 				{#each music.data!.recently_played.slice(0, 4) as song (song.id)}
 					<div class="song">
-						<Song {song} scrollingColor="var(--background)" />
+						<Song {song} />
 					</div>
 				{/each}
 			</div>
-		</Card>
+		</div>
 
-		<Card padding="0">
+		<div>
 			<h3 class="header">Playlists</h3>
 			<div class="section playlists">
 				{#each music.data!.playlist_summaries as summary (summary.id)}
 					<Playlist {summary} />
 				{/each}
 			</div>
-		</Card>
+		</div>
 	{:else}
 		<Error msg="Failed to load music data" />
 	{/if}

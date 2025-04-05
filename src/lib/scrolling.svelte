@@ -5,13 +5,11 @@
 		gap = 15,
 		delay = 2,
 		speed = 15,
-		backgroundColor = 'var(--actual-background-color)',
 		children
 	}: {
 		gap?: number;
 		speed?: number;
 		delay?: number;
-		backgroundColor?: string;
 		children: Snippet;
 	} = $props();
 
@@ -30,7 +28,6 @@
 	style:--delay={`${delay}s`}
 	style:--gradient-width={overflowing ? '10px' : '0px'}
 	style:--gap={overflowing ? `${gap}px` : '0px'}
-	style:--scroll-background-color={backgroundColor}
 >
 	<div
 		class={`marquee ${overflowing ? 'scroll-animation' : ''}`}
@@ -68,12 +65,12 @@
 
 	.container::before {
 		left: 0;
-		background: linear-gradient(to right, var(--scroll-background-color), rgba(255, 255, 255, 0));
+		background: linear-gradient(to right, var(--background), rgba(255, 255, 255, 0));
 	}
 
 	.container::after {
 		right: 0;
-		background: linear-gradient(to left, var(--scroll-background-color), rgba(255, 255, 255, 0));
+		background: linear-gradient(to left, var(--background), rgba(255, 255, 255, 0));
 	}
 
 	.marquee {

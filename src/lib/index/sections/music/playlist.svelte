@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Card from '$lib/card.svelte';
 	import Image from '$lib/image.svelte';
 	import type { AppleMusicPlaylistSummary } from '$lib/lcp/applemusic.server';
 
@@ -6,24 +7,26 @@
 </script>
 
 <a href={`/music/playlist/${summary.id}`} class="container">
-	<div class="collage-container">
-		<div class="collage">
-			{#each summary.first_four_tracks as track (track.id)}
-				<div class="collage-image">
-					<Image
-						src={track.album_art_preview_url}
-						alt={`Album art for ${track.track} by ${track.artist}`}
-						placeholder={track.album_art_blurhash}
-						aspectRatio="1/1"
-					/>
-				</div>
-			{/each}
+	<Card padding="0">
+		<div class="collage-container">
+			<div class="collage">
+				{#each summary.first_four_tracks as track (track.id)}
+					<div class="collage-image">
+						<Image
+							src={track.album_art_preview_url}
+							alt={`Album art for ${track.track} by ${track.artist}`}
+							placeholder={track.album_art_blurhash}
+							aspectRatio="1/1"
+						/>
+					</div>
+				{/each}
+			</div>
+			<p class="name">{summary.name}</p>
 		</div>
-		<p class="name">{summary.name}</p>
-	</div>
-	<button class="view-more">
-		View {summary.track_count} tracks
-	</button>
+		<button class="view-more">
+			View {summary.track_count} tracks
+		</button>
+	</Card>
 </a>
 
 <style>
@@ -40,6 +43,8 @@
 
 	.collage {
 		border-radius: var(--border-radius);
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
 		overflow: hidden;
 		width: 200px;
 		height: 200px;
@@ -58,9 +63,6 @@
 		background-color: rgba(28, 21, 33, 0.7);
 		backdrop-filter: blur(4px);
 		color: white;
-		border-radius: var(--border-radius);
-		border-top-left-radius: 0px;
-		border-top-right-radius: 0px;
 		padding: 2px 4px;
 		width: 100%;
 		text-align: center;
@@ -69,10 +71,10 @@
 	}
 
 	.view-more {
-		margin-top: 10px;
+		margin: 10px;
 		padding: 3px 0px;
 		font-size: 14px;
-		width: 100%;
+		width: calc(100% - 20px);
 	}
 
 	@media (max-width: 500px) {

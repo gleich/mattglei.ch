@@ -1,52 +1,51 @@
 <script lang="ts">
+	import Card from '$lib/card.svelte';
 	import PauseIcon from '$lib/icons/pause-icon.svelte';
 	import PlayIcon from '$lib/icons/play-icon.svelte';
 	import Image from '$lib/image.svelte';
 	import type { AppleMusicSong } from '$lib/lcp/applemusic.server';
 	import Scrolling from '$lib/scrolling.svelte';
 
-	const {
-		song,
-		scrollingColor = 'var(--actual-background-color)'
-	}: { song: AppleMusicSong; scrollingColor?: string } = $props();
+	const { song }: { song: AppleMusicSong } = $props();
 
 	let paused = $state(true);
 </script>
 
-<div class="container">
-	<div class="image">
-		<Image
-			src={song.album_art_url}
-			alt={`${song.track} by ${song.artist}`}
-			placeholder={song.album_art_blurhash}
-			aspectRatio="1/1"
-		/>
-		{#if song.preview_audio_url}
-			<div
-				title={`${paused ? 'Play' : 'Pause'} preview of "${song.track}"`}
-				class="play-audio-button"
-				onpointerdown={() => (paused = !paused)}
-			>
-				<audio bind:paused src={song.preview_audio_url} loop></audio>
-				{#if paused}
-					<PlayIcon />
-				{:else}
-					<PauseIcon />
-				{/if}
-			</div>
-		{/if}
-	</div>
-	<a
-		href={song.url}
-		title={`View "${song.track}" on Apple Music`}
-		target="_blank"
-		class="apple-music-link"
-	>
-		<Scrolling backgroundColor={scrollingColor}><span class="track">{song.track}</span></Scrolling>
-		<Scrolling backgroundColor={scrollingColor}><span class="artist">{song.artist}</span></Scrolling
+<Card padding="0">
+	<div class="container">
+		<div class="image">
+			<Image
+				src={song.album_art_url}
+				alt={`${song.track} by ${song.artist}`}
+				placeholder={song.album_art_blurhash}
+				aspectRatio="1/1"
+			/>
+			{#if song.preview_audio_url}
+				<div
+					title={`${paused ? 'Play' : 'Pause'} preview of "${song.track}"`}
+					class="play-audio-button"
+					onpointerdown={() => (paused = !paused)}
+				>
+					<audio bind:paused src={song.preview_audio_url} loop></audio>
+					{#if paused}
+						<PlayIcon />
+					{:else}
+						<PauseIcon />
+					{/if}
+				</div>
+			{/if}
+		</div>
+		<a
+			href={song.url}
+			title={`View "${song.track}" on Apple Music`}
+			target="_blank"
+			class="apple-music-link"
 		>
-	</a>
-</div>
+			<Scrolling><span class="track">{song.track}</span></Scrolling>
+			<Scrolling><span class="artist">{song.artist}</span></Scrolling>
+		</a>
+	</div>
+</Card>
 
 <style>
 	.container {
@@ -59,8 +58,9 @@
 		width: 100%;
 		height: auto;
 		border-radius: var(--border-radius);
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
 		overflow: hidden;
-		margin-bottom: 3px;
 		position: relative;
 	}
 
@@ -86,6 +86,10 @@
 		font-size: 14.5px;
 		text-decoration: none;
 		color: var(--foreground);
+	}
+
+	.apple-music-link {
+		margin: 10px 0;
 	}
 
 	.artist {
