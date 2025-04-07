@@ -60,6 +60,7 @@
 
 	.name {
 		border-top: 1px solid var(--border);
+		border-bottom: 1px solid var(--border);
 		background-color: rgba(28, 21, 33, 0.7);
 		backdrop-filter: blur(4px);
 		color: white;
