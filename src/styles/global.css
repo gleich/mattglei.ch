@@ -133,13 +133,18 @@ button {
 	border-radius: var(--border-radius);
 	transition:
 		background-color 0.2s ease,
-		box-shadow 0.5s ease;
+		box-shadow 0.3s ease;
+	box-shadow:
+		0px 1px 5px var(--box-shadow-color),
+		inset 0px 1px 5px transparent;
 }
 
 button:hover {
 	background-color: var(--button-background-hover);
 	cursor: pointer;
-	box-shadow: 0px 1px 10px var(--box-shadow-color);
+	box-shadow:
+		0px 1px 5px transparent,
+		inset 0px 1px 7px var(--box-shadow-color);
 }
 
 ol,
