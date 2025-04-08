@@ -82,6 +82,10 @@
 		flex: 0 0 calc(25% - 3px);
 	}
 
+	.photo {
+		box-shadow: var(--box-shadow);
+	}
+
 	@media (max-width: 560px) {
 		.photo.horizontal {
 			flex-basis: calc(70% - 3px);
