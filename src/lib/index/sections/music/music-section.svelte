@@ -5,7 +5,6 @@
 	import type { CacheData } from '$lib/lcp/applemusic.server';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import Loading from '$lib/loading.svelte';
-	import Scrolling from '$lib/scrolling.svelte';
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
 
@@ -54,15 +53,13 @@
 
 		<div>
 			<h3 class="header">Recently Played Songs</h3>
-			<Scrolling gap={15}>
-				<div class="section songs">
-					{#each music.data!.recently_played as song (song.id)}
-						<div class="song">
-							<Song {song} />
-						</div>
-					{/each}
-				</div>
-			</Scrolling>
+			<div class="section songs">
+				{#each music.data!.recently_played as song (song.id)}
+					<div class="song">
+						<Song {song} />
+					</div>
+				{/each}
+			</div>
 		</div>
 
 		<div>
@@ -95,7 +92,7 @@
 	}
 
 	.song {
-		max-width: 200px;
+		min-width: 200px;
 	}
 
 	.playlists {
