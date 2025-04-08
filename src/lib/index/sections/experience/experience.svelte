@@ -42,7 +42,7 @@
 						{:else if startDate}
 							{startDate.format(timeFormat)} - Present
 						{:else}
-							Incoming
+							Upcoming
 						{/if}
 					</p>
 				</div>
