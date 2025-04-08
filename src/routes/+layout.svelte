@@ -29,8 +29,7 @@
 		align-items: center;
 		flex-direction: column;
 		min-height: 100vh;
-		opacity: 0;
-		animation: fadeUp 0.5s ease-out forwards;
+		overflow: hidden;
 	}
 
 	.main {
@@ -41,6 +40,8 @@
 		max-width: 1000px;
 		padding: 0 20px;
 		padding-bottom: 30px;
+		animation: fade-up 0.5s ease-out forwards;
+		opacity: 0;
 	}
 
 	.copyright {
@@ -53,7 +54,7 @@
 		}
 	}
 
-	@keyframes fadeUp {
+	@keyframes fade-up {
 		from {
 			opacity: 0;
 			transform: translateY(10px);
