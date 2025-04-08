@@ -54,7 +54,7 @@
 		<div>
 			<h3 class="header">Recently Played Songs</h3>
 			<div class="section songs">
-				{#each music.data!.recently_played.slice(0, 4) as song (song.id)}
+				{#each music.data!.recently_played as song (song.id)}
 					<div class="song">
 						<Song {song} />
 					</div>
@@ -91,40 +91,21 @@
 		padding: 10px;
 	}
 
-	.songs {
-		overflow-x: auto;
-		align-items: stretch;
-		justify-content: center;
-	}
-
 	.song {
-		width: calc(25% - 10px);
+		min-width: 200px;
 	}
 
 	.playlists {
 		padding-bottom: 10px;
 	}
 
-	@media (max-width: 700px) {
-		.song:nth-child(3) {
-			display: none;
-		}
-
-		.song {
-			width: calc(33% - 10px);
-		}
-	}
-
 	@media (max-width: 500px) {
-		.song:nth-child(4) {
-			display: none;
-		}
-
 		.section {
 			gap: 10px;
 		}
+
 		.song {
-			width: calc(50% - 5px);
+			min-width: 150px;
 		}
 	}
 </style>
