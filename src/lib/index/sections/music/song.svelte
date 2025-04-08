@@ -89,7 +89,7 @@
 	}
 
 	.apple-music-link {
-		margin: 5px 2px;
+		margin: 5px 3px;
 	}
 
 	.artist {
