@@ -20,7 +20,7 @@
 		border-top: 0.5px solid var(--border);
 		padding: 5px 0;
 		margin-top: 30px;
-		margin-bottom: 10px;
+		margin-bottom: 50px;
 		display: flex;
 		justify-content: space-between;
 	}

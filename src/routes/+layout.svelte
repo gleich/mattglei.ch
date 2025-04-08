@@ -39,7 +39,7 @@
 		flex: 1;
 		max-width: 1000px;
 		padding: 0 20px;
-		padding-bottom: 30px;
+		padding-bottom: 0;
 		animation: fade-up 0.5s ease-out forwards;
 		opacity: 0;
 	}
