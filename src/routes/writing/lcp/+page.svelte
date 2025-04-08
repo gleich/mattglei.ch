@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GithubIcon from '$lib/icons/github-icon.svelte';
+	import Image from '$lib/image.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import WritingSection from '$lib/writing/writing-section.svelte';
 	import Writing from '$lib/writing/writing.svelte';
@@ -56,7 +57,15 @@
 	</WritingSection>
 
 	<WritingSection title="System Overview">
-		<img class="overview-diagram" src="/writings/lcp/overview.webp" alt="Overview diagram" />
+		<div class="overview-diagram">
+			<Image
+				src="/writings/lcp/overview.webp"
+				alt="Overview diagram"
+				height={2145}
+				width={3916}
+				placeholder="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAA1ZJREFUWEeVVwlSG0EMHL3Hm9icxsaEJBRFOP7/HA81o6ulmYUKRbEHu5bU6m7JdNr9qkV/ain9ovKtfsDz9l9/2l4r1E77H/6BU78ZX9QrCglYPA7EsdM5JDsGov8K3nM9XTgCVj0ikVDJIOTi1xFA8BwNur+SBLBaxb8HRwS8JQ6tQi64T+EXJOUlbAbd3zxIw6H/UPXIgxA65oHB5dyCaYHwRrtFx70mAMSzqqH62rEYSYjcm1Q/clbuSJF0PJyE5yP7tXo7hgR6/iPrV1sAhAYU6HC6B+WlikWGYwKpLgv6tQpGBGuhu8ej8kxJwPI711Ib7JhEo+SqDwgeCYHhcfUVAYT2fw7oPV387ZkWnJOQcz2ia5nxfGdCHC0kL3DQ7dNd4ABWXM/sRiEJNIIJ6+cu6PpzuIU+1897sGIMVks9c/UdDUBC6onW29s/94IQFLylO+HVy61LFQJZ9TmJrxCYIeKqs7kSPuLy9caNCBNolQsRCyaB80ID2pFPaDChqH0kA128XZsDKRsNelWCkLHzAdKvqrohkeSWsykrj9Du/QqsmKvWfncETI4gSfx8CK6VByLaBE8zRQqh7celeGyUWwiOnoBywsqVf2s+EHYMt1T6+XEx50CA3xUh8zFi3ILmdqSho4PENK8+0BKwvorUuvQM/uJktIEkoGHVuhisbEMeOBoS/XjfBRlyz5nqMw50T8gcmCXSnzFw+TRP1FoLLW8tARjFID9NxuSYPyBxIGxHnZFCPMsFqhdDouV1GxHAQWQ8UILCTjCRHqsgT8QxKKMhVrz84wR0AZ234PsEenDVYeZBsl9rYy2FlpetXIP+BxRcotZHLLYFbr8ZFZ1BivGMA5tnaYHqNJOw5aVTMWxEsBCJDAP8iIJIjskdRzNtnpQDawgIe5HFaqOCQi89+MAQ3e0/oUCbv1tnFi4fEyRcWa15PnqZe6kN3xoR94WW31vhH0gRrRcSGSYxsJ5J6MQQESoLVJHmB9pNWh4ZgfAFRHdBRAH6JwKKsBOtkhBV5l/5OAVaHkSG+pTa8Tn2Pr6IC6gEBgRMDeiFuhIICRVNWk7zBPoDNprFKJILx75DItGsgTrQZh3HmgDufL4D6nq+9p1QtkAxoTUfyC3w61I+Ab8WmzjyfXXoAAAAAElFTkSuQmCC"
+			/>
+		</div>
 		<p>
 			The diagram above illustrates how each cache gets updated. There are two main types of caches
 			here:
