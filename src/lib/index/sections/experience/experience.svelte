@@ -28,7 +28,7 @@
 	<div class="container">
 		<a href={url} target="_blank" class="title">
 			<div class="icon">
-				<Image src={`/experiences/${icon}`} alt={company} />
+				<Image src={`/experiences/${icon}`} alt={company} width={100} height={100} />
 			</div>
 			<div class="title-text">
 				<div class="left">

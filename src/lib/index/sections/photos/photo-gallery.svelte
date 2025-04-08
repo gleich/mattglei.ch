@@ -56,7 +56,13 @@
 <div class="photos">
 	{#each photos.slice(0, count) as photo (photo.src)}
 		<div class="photo {photo.width > photo.height ? 'horizontal' : 'vertical'}">
-			<Image src={photo.src} placeholder={photo.placeholder} alt={photo.alt} />
+			<Image
+				src={photo.src}
+				placeholder={photo.placeholder}
+				alt={photo.alt}
+				width={photo.width}
+				height={photo.height}
+			/>
 		</div>
 	{/each}
 </div>

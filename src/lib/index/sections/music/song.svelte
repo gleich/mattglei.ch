@@ -18,6 +18,8 @@
 				src={song.album_art_url}
 				alt={`${song.track} by ${song.artist}`}
 				placeholder={song.album_art_blurhash}
+				height={217}
+				width={217}
 				aspectRatio="1/1"
 			/>
 			{#if song.preview_audio_url}

@@ -16,6 +16,8 @@
 							src={track.album_art_preview_url}
 							alt={`Album art for ${track.track} by ${track.artist}`}
 							placeholder={track.album_art_blurhash}
+							height={100}
+							width={100}
 							aspectRatio="1/1"
 						/>
 					</div>

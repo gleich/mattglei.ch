@@ -3,10 +3,14 @@
 		src,
 		alt,
 		placeholder,
+		height,
+		width,
 		aspectRatio
 	}: {
 		src: string;
 		alt: string;
+		height: number;
+		width: number;
 		placeholder?: string;
 		aspectRatio?: string;
 	} = $props();
@@ -27,6 +31,8 @@
 	loading="lazy"
 	decoding="async"
 	{alt}
+	{height}
+	{width}
 	style={`${aspectRatio ? `aspect-ratio: ${aspectRatio};` : ''} ${placeholder ? `background-image: url('${placeholder}');` : ''}`}
 />
 
