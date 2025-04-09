@@ -70,6 +70,7 @@
 
 	.view-more {
 		text-decoration: inherit;
+		margin-bottom: 5px;
 	}
 
 	@media (max-width: 820px) {

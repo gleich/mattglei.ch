@@ -20,5 +20,6 @@
 <style>
 	.view-more {
 		text-decoration: inherit;
+		margin-bottom: 5px;
 	}
 </style>
