@@ -70,7 +70,6 @@
 		background-color: var(--green-background);
 		backdrop-filter: blur(4px);
 		color: var(--green-foreground);
-		border: 2px solid var(--green-border);
 		cursor: pointer;
 		border-radius: 50%;
 		width: fit-content;
