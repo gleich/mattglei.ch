@@ -68,13 +68,13 @@
 	.warmup-set-number {
 		color: rgb(255, 115, 0);
 		background-color: rgb(55, 36, 0) !important;
-		border: 2px solid rgb(158, 71, 0) !important;
+		border: 1.5 solid rgb(158, 71, 0) !important;
 		padding: 0 15px !important;
 		padding-bottom: 1px !important;
 	}
 
 	.set-number {
-		border: 2px solid var(--border);
+		border: 1.5px solid var(--border);
 		background-color: rgb(46, 49, 52);
 		padding: 0px 7px;
 		font-size: 13px;
