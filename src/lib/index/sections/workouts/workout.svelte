@@ -26,7 +26,7 @@
 				target="_blank"
 			>
 				<Scrolling>
-					<h3>{workout.name}</h3>
+					<h4>{workout.name}</h4>
 				</Scrolling>
 				<div class="platform-icon">
 					{#if workout.platform === 'strava'}
@@ -52,7 +52,7 @@
 </Card>
 
 <style>
-	h3 {
+	h4 {
 		line-height: 120%;
 		overflow-y: hidden;
 	}

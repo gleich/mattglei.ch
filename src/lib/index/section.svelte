@@ -23,7 +23,7 @@
 <Card padding="0">
 	<section id={name.toLowerCase()}>
 		<div class="header-container">
-			<h2 class="section-name">{name}</h2>
+			<h3 class="section-name">{name}</h3>
 			{#if liveData}
 				<div class="live">
 					<p class="live-from"><span class="live-word">LIVE</span> FROM</p>

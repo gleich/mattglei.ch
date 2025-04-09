@@ -32,7 +32,7 @@
 			</div>
 			<div class="title-text">
 				<div class="left">
-					<h3 class="company">{company}</h3>
+					<h4 class="company">{company}</h4>
 					<p class="role">{role}</p>
 				</div>
 				<div class="right">

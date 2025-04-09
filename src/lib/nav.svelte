@@ -176,7 +176,8 @@
 		}
 
 		.name {
-			font-size: 12vw;
+			font-size: 13vw;
+			margin-right: 0;
 		}
 
 		.links {

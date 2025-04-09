@@ -6,12 +6,12 @@
 </script>
 
 <Card>
-	<h3>{title}</h3>
+	<h4>{title}</h4>
 	{@render children()}
 </Card>
 
 <style>
-	h3 {
+	h4 {
 		margin-bottom: 5px;
 	}
 </style>

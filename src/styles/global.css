@@ -93,6 +93,7 @@ h4,
 h5,
 h6 {
 	font-family: 'Inter';
+	font-weight: 800;
 }
 
 h1 {
@@ -100,11 +101,14 @@ h1 {
 }
 
 h2 {
-	font-size: 1.7rem;
-	font-weight: 800;
+	font-size: 2rem;
 }
 
 h3 {
+	font-size: 1.7rem;
+}
+
+h4 {
 	font-size: 1.45rem;
 }
 
@@ -116,10 +120,14 @@ h3 {
 	}
 
 	h2 {
-		font-size: 1.4rem;
+		font-size: min(1.9rem, 13vw);
 	}
 
 	h3 {
+		font-size: 1.4rem;
+	}
+
+	h4 {
 		font-size: 1.3rem;
 	}
 }

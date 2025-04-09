@@ -13,7 +13,7 @@
 		<Card>
 			<a href={`/writing/${slug}`} class="writing">
 				<div class="title">
-					<h3>{writing.title}</h3>
+					<h4>{writing.title}</h4>
 					<p class="date">{writing.publishedDate}</p>
 				</div>
 				<div class="keywords">
