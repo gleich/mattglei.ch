@@ -77,11 +77,12 @@
 	}
 
 	.section-name {
-		background-color: #3b3d3e;
+		background-color: #343537;
 		border: 1px solid var(--border);
 		border-top: 0;
 		border-left: 0;
 		padding: 1px 15px;
+		padding-bottom: 2px;
 		border-bottom-right-radius: var(--border-radius);
 	}
 
