@@ -16,14 +16,16 @@
 						class="exercise-name"
 					>
 						<Scrolling>
-							{`#${exerciseIndex + 1}: ${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
+							<p>
+								{`#${exerciseIndex + 1}: ${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
+							</p>
 						</Scrolling>
 					</a>
 					<div class="sets">
 						{#each exercise.sets as set, setIndex (set.type + setIndex)}
 							<div class={`${set.type === 'warmup' ? 'warmup-set' : ''} set`}>
 								<div class={`${set.type === 'warmup' ? 'warmup-set-number' : ''} set-number`}>
-									{set.type === 'warmup' ? 'Warmup Set' : `Set #${setIndex + 1}`}
+									{set.type === 'warmup' ? 'Warmup' : `Set #${setIndex + 1}`}
 								</div>
 								<div class="set-value">
 									{Math.round(set.weight_kg * 2.2046226218)} lbs × {set.reps} reps
@@ -49,14 +51,12 @@
 		overflow-y: scroll;
 		overflow-x: hidden;
 		aspect-ratio: 440/240;
-		height: auto;
 	}
 
 	.exercise-name {
 		display: flex;
-		align-items: center;
-		justify-content: center;
 		width: 100%;
+		justify-content: center;
 		background-color: var(--green-background);
 		border: 1px solid var(--green-border);
 		color: var(--green-foreground);
@@ -68,11 +68,13 @@
 	.warmup-set-number {
 		color: rgb(255, 115, 0);
 		background-color: rgb(55, 36, 0) !important;
-		border: 1.5px solid rgb(158, 71, 0) !important;
+		border: 2px solid rgb(158, 71, 0) !important;
+		padding: 0 15px !important;
+		padding-bottom: 1px !important;
 	}
 
 	.set-number {
-		border: 1.5px solid var(--border);
+		border: 2px solid var(--border);
 		background-color: rgb(46, 49, 52);
 		padding: 0px 7px;
 		font-size: 13px;
@@ -80,6 +82,7 @@
 		align-items: center;
 		justify-content: center;
 		white-space: nowrap;
+		border-radius: 3px;
 	}
 
 	.set-value {
@@ -96,7 +99,7 @@
 		justify-content: center;
 		grid-column: 50%;
 		gap: 5px;
-		margin: 5px 0px;
+		margin: 7px 0px;
 	}
 
 	.set {
