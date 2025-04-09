@@ -49,7 +49,12 @@ html:before {
 	z-index: -1;
 }
 
-::selection,
+::selection {
+	background-color: var(--foreground);
+	text-decoration-color: var(--background);
+	color: var(--background);
+}
+
 ::-moz-selection {
 	background-color: var(--foreground);
 	text-decoration-color: var(--background);
