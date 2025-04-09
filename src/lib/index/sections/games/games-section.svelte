@@ -21,7 +21,7 @@
 	}}
 >
 	{#if loading}
-		<Loading expectedHeight="466.36px" />
+		<Loading height={466.36} />
 	{:else if games != null}
 		<p>
 			To relax I like to occasionally play games with some of my friends. My favorite game of all

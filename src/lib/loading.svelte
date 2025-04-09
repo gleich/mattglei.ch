@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Logo from './logo.svelte';
 
-	const { expectedHeight }: { expectedHeight: string } = $props();
+	const { height }: { height: number } = $props();
 </script>
 
-<div class="container" style:--expected-height={expectedHeight}>
+<div class="container" style:--expected-height={`${height}px`}>
 	<div class="logo">
 		<Logo />
 	</div>
