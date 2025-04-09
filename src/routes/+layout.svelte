@@ -50,7 +50,7 @@
 
 	@media (max-width: 450px) {
 		.main {
-			padding: 0px 5px;
+			padding: 0px 10px;
 		}
 	}
 

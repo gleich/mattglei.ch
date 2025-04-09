@@ -23,18 +23,20 @@
 		flex-direction: column;
 		gap: 5px;
 		margin: 10px;
+		margin-top: 0;
 		margin-bottom: 60px;
 	}
 
 	@media (max-width: 500px) {
 		.container {
 			gap: 10px;
+			margin-left: 0;
+			margin-right: 0;
 		}
 	}
 
 	@media (max-width: 400px) {
 		.container {
-			margin-top: 40px;
 			margin-bottom: 30px;
 		}
 	}

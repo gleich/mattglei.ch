@@ -147,6 +147,7 @@
 		nav {
 			align-items: center;
 			justify-content: center;
+			margin-bottom: 60px;
 		}
 
 		.links a {
