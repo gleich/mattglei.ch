@@ -2,40 +2,74 @@
 	import type { Workout } from '$lib/lcp/workouts';
 	import Stats from '$lib/stats.svelte';
 	import { renderDuration } from '$lib/time';
+	import { onMount } from 'svelte';
 
 	const { workout }: { workout: Workout } = $props();
 
-	const stats = new Map<string, string>([['Duration', renderDuration(workout.moving_time)]]);
-	const distanceInMiles = (workout.distance * 0.621) / 1000;
-	if (workout.distance) {
-		stats.set('Distance', `${distanceInMiles.toPrecision(3)} mi`);
-	} else if (workout.calories) {
-		stats.set('Calories Burned', workout.calories?.toLocaleString() + ' cal');
-	}
-	if (workout.sport_type == 'Run') {
-		const totalSecondsPerMile = workout.moving_time / distanceInMiles;
-		const minutesPerMile = Math.floor(totalSecondsPerMile / 60);
-		const secondsPerMile = Math.floor(totalSecondsPerMile % 60);
-		stats.set('Avg. Pace', `${minutesPerMile}:${secondsPerMile.toString().padStart(2, '0')}/mi`);
-	} else if (workout.total_elevation_gain > 304.8) {
-		// if more than 1,000 ft of elevation gain
-		stats.set(
-			'Elevation Gain',
-			`${Math.round(workout.total_elevation_gain * 3.280839895).toLocaleString()} ft`
-		);
-	} else if (workout.average_heartrate) {
-		stats.set('Avg. Heart Rate', `${workout.average_heartrate} bpm`);
-	}
+	let imperialUnits = $state(false);
+	let stats = $derived(
+		new Map<string, string>([['Duration', renderDuration(workout.moving_time)]])
+	);
 
-	if (workout.hevy_volume_kg) {
-		stats.set(
-			'Total Volume',
-			`${Math.round(workout.hevy_volume_kg * 2.2046226218).toLocaleString()} lbs`
-		);
-	}
-	if (workout.hevy_set_count) {
-		stats.set('Sets', `${workout.hevy_set_count ?? 0}`);
-	}
+	onMount(() => {
+		const locale = navigator.language;
+		imperialUnits = locale === 'en-US';
+
+		if (workout.distance) {
+			const distanceKm = workout.distance / 1000;
+			const distanceMiles = distanceKm * 0.621371;
+
+			stats.set(
+				'Distance',
+				imperialUnits ? `${distanceMiles.toPrecision(3)} mi` : `${distanceKm.toPrecision(3)} km`
+			);
+		} else if (workout.calories) {
+			stats.set('Calories Burned', workout.calories?.toLocaleString() + ' cal');
+		}
+
+		if (workout.sport_type === 'Run' && workout.distance) {
+			if (imperialUnits) {
+				const distanceKm = workout.distance / 1000;
+				const distanceMiles = distanceKm * 0.621371;
+				const totalSecondsPerMile = workout.moving_time / distanceMiles;
+				const minutesPerMile = Math.floor(totalSecondsPerMile / 60);
+				const secondsPerMile = Math.floor(totalSecondsPerMile % 60);
+				stats.set(
+					'Avg. Pace',
+					`${minutesPerMile}:${secondsPerMile.toString().padStart(2, '0')}/mi`
+				);
+			} else {
+				const distanceKm = workout.distance / 1000;
+				const totalSecondsPerKm = workout.moving_time / distanceKm;
+				const minutesPerKm = Math.floor(totalSecondsPerKm / 60);
+				const secondsPerKm = Math.floor(totalSecondsPerKm % 60);
+				stats.set('Avg. Pace', `${minutesPerKm}:${secondsPerKm.toString().padStart(2, '0')}/km`);
+			}
+		} else if (workout.total_elevation_gain && workout.total_elevation_gain > 304.8) {
+			stats.set(
+				'Elevation Gain',
+				`${Math.round(
+					imperialUnits ? workout.total_elevation_gain * 3.28084 : workout.total_elevation_gain
+				).toLocaleString()} ${imperialUnits ? 'ft' : 'm'}`
+			);
+		} else if (workout.average_heartrate) {
+			stats.set('Avg. Heart Rate', `${workout.average_heartrate} bpm`);
+		}
+
+		if (workout.hevy_volume_kg) {
+			stats.set(
+				'Total Volume',
+				`${Math.round(
+					imperialUnits ? workout.hevy_volume_kg * 2.2046226218 : workout.hevy_volume_kg
+				).toLocaleString()} ${imperialUnits ? 'lbs' : 'kg'}`
+			);
+		}
+		if (workout.hevy_set_count) {
+			stats.set('Sets', `${workout.hevy_set_count ?? 0}`);
+		}
+
+		stats = new Map(stats);
+	});
 </script>
 
 <div class="container">
