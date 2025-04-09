@@ -247,6 +247,8 @@
 		width: 100%;
 		height: auto;
 		border-radius: var(--border-radius);
+		overflow: hidden;
+		margin: 10px 0;
 	}
 
 	@media (max-width: 860px) {
