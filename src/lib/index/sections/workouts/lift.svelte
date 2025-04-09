@@ -120,8 +120,8 @@
 		}
 
 		.warmup-set-number {
-			background-color: rgb(255, 199, 125) !important;
-			border-color: rgb(211, 137, 0) !important;
+			background-color: rgb(248 200 151) !important;
+			border-color: rgba(255, 128, 0, 0.627) !important;
 			color: black;
 		}
 	}
