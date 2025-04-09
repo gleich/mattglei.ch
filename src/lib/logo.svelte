@@ -25,6 +25,7 @@
 		animation: spin infinite 20s linear;
 		transform-origin: 250px 250px;
 		transform-box: view-box;
+		will-change: transform;
 	}
 
 	@keyframes spin {

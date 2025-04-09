@@ -23,11 +23,13 @@ html {
 	font-feature-settings: 'zero';
 	font-family: 'IBM Plex Sans';
 	font-weight: 500;
+	font-size: 16px;
 
 	/* font optimizations */
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
 	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 /* textured background */
@@ -47,7 +49,8 @@ html:before {
 	z-index: -1;
 }
 
-::selection {
+::selection,
+::-moz-selection {
 	background-color: var(--foreground);
 	text-decoration-color: var(--background);
 	color: var(--background);
@@ -71,7 +74,6 @@ html:before {
 *::before,
 *::after {
 	box-sizing: border-box;
-	font-size: 16px;
 }
 
 a {
@@ -113,9 +115,7 @@ h4 {
 }
 
 @media (max-width: 500px) {
-	*,
-	*::before,
-	*::after {
+	html {
 		font-size: 15px;
 	}
 
@@ -145,6 +145,7 @@ button {
 	box-shadow:
 		var(--box-shadow),
 		inset 0px 1px 5px transparent;
+	will-change: transform, opacity;
 }
 
 button:hover {
@@ -153,6 +154,11 @@ button:hover {
 	box-shadow:
 		0px 1px 5px transparent,
 		inset 0px 0px 4px var(--box-shadow-color);
+}
+
+button:focus {
+	outline: 2px solid var(--blue-foreground);
+	outline-offset: 2px;
 }
 
 ol,

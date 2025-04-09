@@ -118,6 +118,7 @@ func writeCSS(fonts []font) {
 		css.WriteString(fmt.Sprintf("\tfont-family: '%s';\n", f.family))
 		css.WriteString(fmt.Sprintf("\tsrc: url('%s');\n", f.src))
 		css.WriteString(fmt.Sprintf("\tfont-weight: %d;\n", f.weight))
+		css.WriteString(fmt.Sprintf("\tfont-display: swap;\n"))
 		if f.style != "" {
 			css.WriteString(fmt.Sprintf("\tfont-style: %s;\n", f.style))
 		}
