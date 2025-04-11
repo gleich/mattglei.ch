@@ -104,7 +104,7 @@
 
 	.live-word {
 		font-size: inherit;
-		animation: blink 1s step-start infinite;
+		animation: blink 1s ease infinite;
 	}
 
 	.live-from {
@@ -201,6 +201,10 @@
 			padding-left: 0px;
 		}
 
+		.updated-container {
+			margin-top: 10px;
+		}
+
 		.updated-detailed {
 			display: none;
 		}
@@ -219,23 +223,23 @@
 
 	@-webkit-keyframes blink {
 		0%,
-		49.999% {
+		70% {
 			opacity: 100%;
 		}
-		50%,
+		80%,
 		100% {
-			opacity: 40%;
+			opacity: 30%;
 		}
 	}
 
 	@keyframes blink {
 		0%,
-		49.999% {
+		70% {
 			opacity: 100%;
 		}
-		50%,
+		80%,
 		100% {
-			opacity: 40%;
+			opacity: 30%;
 		}
 	}
 </style>
