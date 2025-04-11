@@ -81,8 +81,8 @@
 		border: 1px solid var(--border);
 		border-top: 0;
 		border-left: 0;
-		padding: 1px 15px;
-		padding-bottom: 2px;
+		padding: 2px 15px;
+		padding-bottom: 4px;
 		border-bottom-right-radius: var(--border-radius);
 		box-shadow: inset 0px 0px 6px var(--box-shadow-color);
 	}
@@ -219,6 +219,7 @@
 		.section-name {
 			padding-left: 8px;
 			padding-right: 8px;
+			box-shadow: inset 0px 0px 4px var(--box-shadow-color);
 		}
 	}
 
