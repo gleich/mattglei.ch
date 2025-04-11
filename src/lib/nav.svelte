@@ -138,8 +138,8 @@
 
 	@media (max-width: 500px) {
 		.links {
-			justify-content: center;
 			display: grid;
+			justify-content: center;
 			grid-template-columns: repeat(2, 1fr);
 			width: 90%;
 		}
@@ -154,7 +154,6 @@
 			margin: 4px;
 			padding: 5px;
 			text-align: center;
-			width: 80%;
 		}
 
 		.bar {
