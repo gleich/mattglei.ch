@@ -89,8 +89,9 @@
 		font-family: 'IBM Plex Mono';
 		font-size: 13.5px;
 		font-weight: 400;
-		margin-top: 2px;
-		margin-bottom: 7px;
+		margin-top: 1.5px;
+		margin-bottom: 4px;
+		margin-left: 2px;
 	}
 
 	@media (max-width: 500px) {

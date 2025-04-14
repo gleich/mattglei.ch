@@ -27,7 +27,7 @@
 	<div class="bar">
 		<a href="/" class="left">
 			<div class="logo">
-				<Logo invert stroke="8" />
+				<Logo stroke="8" />
 			</div>
 			<h1 class="name">Matt Gleich</h1>
 		</a>
@@ -69,7 +69,8 @@
 		width: 98%;
 		background-color: var(--background);
 		border-radius: var(--border-radius);
-		border: 1px solid var(--border);
+		border: 0.5px solid var(--border);
+		box-shadow: var(--box-shadow);
 		padding-bottom: 1px;
 		align-items: center;
 		flex-wrap: wrap;
@@ -111,8 +112,8 @@
 	}
 
 	.social {
-		width: 30px;
-		height: 30px;
+		width: 32px;
+		height: 32px;
 		color: var(--foreground);
 	}
 
@@ -127,13 +128,15 @@
 	.logo {
 		width: 50px;
 		height: 50px;
-		padding: 3px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		margin-right: 3px;
-		background-color: var(--foreground);
+		padding: 3px;
+		background: var(--background);
 		border-radius: var(--border-radius);
+		border: 1px solid var(--border);
+		box-shadow: inset 0px 0px 5px var(--box-shadow-color);
 	}
 
 	@media (max-width: 500px) {
