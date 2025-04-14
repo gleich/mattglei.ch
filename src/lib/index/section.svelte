@@ -97,7 +97,7 @@
 		padding: 4px 15px;
 		padding-right: 12px;
 		font-family: 'IBM Plex Mono';
-		font-weight: 600;
+		font-weight: 500;
 		height: 28px;
 		flex-grow: 0;
 		overflow: hidden;
