@@ -92,4 +92,10 @@
 		margin-top: 2px;
 		margin-bottom: 7px;
 	}
+
+	@media (max-width: 500px) {
+		.time {
+			font-size: 12.5px;
+		}
+	}
 </style>

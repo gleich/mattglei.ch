@@ -183,6 +183,11 @@
 			padding: 5px;
 		}
 
+		.section-name {
+			padding-top: 3px;
+			padding-bottom: 4px;
+		}
+
 		.live {
 			padding-top: 2px;
 			padding-bottom: 3px;
