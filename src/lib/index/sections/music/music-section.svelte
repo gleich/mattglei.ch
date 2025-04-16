@@ -102,10 +102,11 @@
 	@media (max-width: 500px) {
 		.section {
 			gap: 10px;
+			padding-left: 5px;
 		}
 
 		.song {
-			min-width: 150px;
+			min-width: 200px;
 		}
 	}
 </style>
