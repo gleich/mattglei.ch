@@ -1,4 +1,6 @@
 <script lang="ts">
+	import {page} from '$app/state'
+
 	let {
 		title,
 		description,
@@ -46,16 +48,17 @@
 
 <svelte:head>
 	<title>{title}</title>
+	<link rel="canonical" href={page.url.href.replaceAll('http://', 'https://').replace(/\/$/, '')}>
 	<meta name="description" content={description} />
 
 	<link rel="author" href={siteURL} />
 	<meta name="author" content={name} />
-	<meta name="keywords" content={keywords.join(',')} />
+	<meta name="keywords" content={keywords.join(', ')} />
 
 	<!-- opengraph -->
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={title} />
-	<meta property="og:url" content={siteURL} />
+	<meta property="og:url" content={page.url.href} />
 	<meta property="og:site_name" content={siteName} />
 	<meta property="og:locale" content="en-US" />
 	<meta property="og:image" content={opengraphImage.url} />
