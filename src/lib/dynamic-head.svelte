@@ -39,27 +39,22 @@
 		'kcf technologies',
 		'kcf'
 	]);
-
-	const name = 'Matt Gleich';
-
-	const siteName = 'mattglei.ch';
-	const siteURL = `https://${siteName}`;
 </script>
 
 <svelte:head>
 	<title>{title}</title>
 	<link rel="canonical" href={page.url.href.replaceAll('http://', 'https://').replace(/\/$/, '')}>
 	<meta name="description" content={description} />
+	<meta name="url" content={page.url.href}>
 
-	<link rel="author" href={siteURL} />
-	<meta name="author" content={name} />
+	<meta name="author" content="Matt Gleich" />
 	<meta name="keywords" content={keywords.join(', ')} />
 
 	<!-- opengraph -->
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={title} />
 	<meta property="og:url" content={page.url.href} />
-	<meta property="og:site_name" content={siteName} />
+	<meta property="og:site_name" content="mattglei.ch" />
 	<meta property="og:locale" content="en-US" />
 	<meta property="og:image" content={opengraphImage.url} />
 	<meta property="og:image:width" content={opengraphImage.width} />
