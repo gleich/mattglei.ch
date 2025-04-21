@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Error from '$lib/error.svelte';
 	import HevyIcon from '$lib/icons/hevy-icon.svelte';
 	import StravaIcon from '$lib/icons/strava-icon.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import { type Workout as LcpWorkout } from '$lib/lcp/workouts';
 	import Loading from '$lib/loading.svelte';
 	import ViewButton from '$lib/view-button.svelte';
+	import { Error } from '@gleich/ui';
 	import Section from '../../section.svelte';
 	import Workout from './workout.svelte';
 

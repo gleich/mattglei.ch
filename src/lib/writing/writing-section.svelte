@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
+	import { Card } from '@gleich/ui';
 	import type { Snippet } from 'svelte';
 
 	const { title, children }: { title: string; children: Snippet } = $props();

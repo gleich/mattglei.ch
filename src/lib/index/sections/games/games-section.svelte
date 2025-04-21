@@ -1,14 +1,12 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
-	import Error from '$lib/error.svelte';
 	import SteamIcon from '$lib/icons/steam-icon.svelte';
-	import Image from '$lib/image.svelte';
 	import Section from '$lib/index/section.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import type { Game } from '$lib/lcp/steam';
 	import Loading from '$lib/loading.svelte';
 	import Stats from '$lib/stats.svelte';
 	import { renderDuration } from '$lib/time';
+	import { Card, Error, Image } from '@gleich/ui';
 
 	const { loading, games }: { loading?: boolean; games?: LcpResponse<Game[]> | null } = $props();
 </script>

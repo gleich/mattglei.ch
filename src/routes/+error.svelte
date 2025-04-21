@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import Error from '$lib/error.svelte';
+	import { Error } from '@gleich/ui';
 </script>
 
 <main>

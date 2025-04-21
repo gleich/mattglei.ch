@@ -1,11 +1,10 @@
 <script lang="ts">
-	import DynamicHead from '$lib/dynamic-head.svelte';
-	import Error from '$lib/error.svelte';
 	import AppleMusicIcon from '$lib/icons/apple-music-icon.svelte';
 	import Song from '$lib/index/sections/music/song.svelte';
 	import { renderDuration } from '$lib/time';
 	import Since from '$lib/time/since.svelte';
 	import ViewButton from '$lib/view-button.svelte';
+	import { DynamicHead, Error } from '@gleich/ui';
 	import type { PlaylistData } from './proxy+page.server';
 
 	const { data }: { data: PlaylistData } = $props();

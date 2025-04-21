@@ -1,6 +1,5 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
-	import Image from '$lib/image.svelte';
+	import { Card, Image } from '@gleich/ui';
 	import type { Dayjs } from 'dayjs';
 
 	const {

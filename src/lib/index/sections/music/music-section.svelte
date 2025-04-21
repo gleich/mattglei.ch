@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Error from '$lib/error.svelte';
 	import AppleMusicIcon from '$lib/icons/apple-music-icon.svelte';
 	import Section from '$lib/index/section.svelte';
 	import type { CacheData } from '$lib/lcp/applemusic.server';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import Loading from '$lib/loading.svelte';
+	import { Error } from '@gleich/ui';
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
 

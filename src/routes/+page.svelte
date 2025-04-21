@@ -1,5 +1,4 @@
 <script lang="ts">
-	import DynamicHead from '$lib/dynamic-head.svelte';
 	import ExperienceSection from '$lib/index/sections/experience/experience-section.svelte';
 	import GamesSection from '$lib/index/sections/games/games-section.svelte';
 	import Intro from '$lib/index/sections/intro.svelte';
@@ -7,6 +6,7 @@
 	import PhotoSection from '$lib/index/sections/photos/photo-section.svelte';
 	import ProjectSection from '$lib/index/sections/projects/project-section.svelte';
 	import WorkoutsSection from '$lib/index/sections/workouts/workouts-section.svelte';
+	import { DynamicHead } from '@gleich/ui';
 	import type { SectionData } from './+page.server';
 
 	const { data }: { data: SectionData } = $props();

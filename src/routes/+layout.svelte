@@ -1,11 +1,10 @@
 <script lang="ts">
+	import '@gleich/ui/styles.css';
 	import '../styles/global.css';
-	import '../styles/fonts.css';
-	import '../styles/variables.css';
 
 	import Nav from '$lib/nav.svelte';
 	import Fonts from '$lib/fonts.svelte';
-	import Copyright from '$lib/copyright.svelte';
+	import { Copyright } from '@gleich/ui';
 	import type { Snippet } from 'svelte';
 
 	const { children }: { children: Snippet } = $props();
@@ -18,7 +17,7 @@
 		<Nav />
 		{@render children()}
 		<div class="copyright">
-			<Copyright />
+			<Copyright repo="gleich/mattglei.ch" />
 		</div>
 	</div>
 </div>

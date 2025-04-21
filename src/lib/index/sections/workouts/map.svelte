@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Image from '$lib/image.svelte';
 	import type { Workout } from '$lib/lcp/workouts';
+	import { Image } from '@gleich/ui';
 
 	const { workout }: { workout: Workout } = $props();
 </script>

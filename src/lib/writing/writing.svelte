@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { DynamicHead } from '@gleich/ui';
 	import type { Snippet } from 'svelte';
-	import DynamicHead from '../dynamic-head.svelte';
 
 	export interface WritingData {
 		title: string;

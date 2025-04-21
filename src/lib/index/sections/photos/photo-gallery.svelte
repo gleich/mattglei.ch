@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Image from '../../../image.svelte';
+	import { Image } from '@gleich/ui';
 
 	interface Photo {
 		src: string;

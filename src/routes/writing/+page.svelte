@@ -1,7 +1,6 @@
 <script lang="ts">
+	import { Card, DynamicHead } from '@gleich/ui';
 	import writings from './writings';
-	import DynamicHead from '$lib/dynamic-head.svelte';
-	import Card from '$lib/card.svelte';
 </script>
 
 <DynamicHead title="Writing" description="Matt Gleich's writings" />

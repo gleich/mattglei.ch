@@ -1,10 +1,9 @@
 <script lang="ts">
-	import DynamicHead from '$lib/dynamic-head.svelte';
-	import Error from '$lib/error.svelte';
 	import HevyIcon from '$lib/icons/hevy-icon.svelte';
 	import StravaIcon from '$lib/icons/strava-icon.svelte';
 	import Workout from '$lib/index/sections/workouts/workout.svelte';
 	import ViewButton from '$lib/view-button.svelte';
+	import { DynamicHead, Error } from '@gleich/ui';
 	import type { WorkoutData } from './+page.server';
 
 	const { data }: { data: WorkoutData } = $props();

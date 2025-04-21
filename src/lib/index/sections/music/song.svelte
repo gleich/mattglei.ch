@@ -1,10 +1,8 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
 	import PauseIcon from '$lib/icons/pause-icon.svelte';
 	import PlayIcon from '$lib/icons/play-icon.svelte';
-	import Image from '$lib/image.svelte';
 	import type { AppleMusicSong } from '$lib/lcp/applemusic.server';
-	import Scrolling from '$lib/scrolling.svelte';
+	import { Card, Image, Scrolling } from '@gleich/ui';
 
 	const { song }: { song: AppleMusicSong } = $props();
 

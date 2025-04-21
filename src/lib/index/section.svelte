@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
 	import Since from '$lib/time/since.svelte';
+	import { Card } from '@gleich/ui';
 	import { type Component, type Snippet } from 'svelte';
 
 	export interface Source {

@@ -1,8 +1,8 @@
 <script>
-	import DynamicHead from '$lib/dynamic-head.svelte';
 	import InstagramIcon from '$lib/icons/instagram-icon.svelte';
 	import PhotoGallery from '$lib/index/sections/photos/photo-gallery.svelte';
 	import ViewButton from '$lib/view-button.svelte';
+	import { DynamicHead } from '@gleich/ui';
 </script>
 
 <DynamicHead title="Photos" description="Photos gallery taken with my Nikon Z7II" />

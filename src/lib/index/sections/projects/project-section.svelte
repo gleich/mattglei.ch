@@ -1,6 +1,4 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
-	import Error from '$lib/error.svelte';
 	import GithubIcon from '$lib/icons/github-icon.svelte';
 	import Section from '$lib/index/section.svelte';
 	import type { Repository } from '$lib/lcp/github';
@@ -8,6 +6,7 @@
 	import Loading from '$lib/loading.svelte';
 	import Since from '$lib/time/since.svelte';
 	import ViewButton from '$lib/view-button.svelte';
+	import { Card, Error } from '@gleich/ui';
 
 	const { projects, loading }: { projects?: LcpResponse<Repository[]> | null; loading?: boolean } =
 		$props();

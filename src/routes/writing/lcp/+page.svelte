@@ -1,9 +1,9 @@
 <script lang="ts">
 	import GithubIcon from '$lib/icons/github-icon.svelte';
-	import Image from '$lib/image.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import WritingSection from '$lib/writing/writing-section.svelte';
 	import Writing from '$lib/writing/writing.svelte';
+	import { Image } from '@gleich/ui';
 	import writings from '../writings';
 	import type { LCPData } from './+page.server';
 	import CacheStatus from './cache-status.svelte';

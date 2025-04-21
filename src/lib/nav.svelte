@@ -2,9 +2,9 @@
 	import GitHubIcon from '$lib/icons/github-icon.svelte';
 	import InstagramIcon from '$lib/icons/instagram-icon.svelte';
 	import LinkedinIcon from '$lib/icons/linkedin-icon.svelte';
-	import Logo from '$lib/logo.svelte';
 	import type { Component } from 'svelte';
 	import { page } from '$app/state';
+	import { Logo } from '@gleich/ui';
 
 	const links = ['', 'writing', 'photos', 'workouts'];
 </script>

@@ -1,10 +1,9 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
 	import HevyWorkout from '$lib/icons/hevy-icon.svelte';
 	import StravaIcon from '$lib/icons/strava-icon.svelte';
 	import type { Workout } from '$lib/lcp/workouts';
-	import Scrolling from '$lib/scrolling.svelte';
 	import FormattedDate from '$lib/time/formatted-date.svelte';
+	import { Card, Scrolling } from '@gleich/ui';
 	import Lift from './lift.svelte';
 	import Map from './map.svelte';
 	import SportIcon from './sport-icon.svelte';

@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Card from '$lib/card.svelte';
-	import Image from '$lib/image.svelte';
 	import type { AppleMusicPlaylistSummary } from '$lib/lcp/applemusic.server';
+	import { Card, Image } from '@gleich/ui';
 
 	const { summary }: { summary: AppleMusicPlaylistSummary } = $props();
 </script>

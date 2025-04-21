@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Workout } from '$lib/lcp/workouts';
-	import Scrolling from '$lib/scrolling.svelte';
+	import { Scrolling } from '@gleich/ui';
 
 	const { workout }: { workout: Workout } = $props();
 </script>

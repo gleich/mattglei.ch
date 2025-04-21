@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Logo from './logo.svelte';
+	import { Logo } from '@gleich/ui';
 
 	const { height }: { height: number } = $props();
 </script>
