@@ -173,10 +173,6 @@
 	}
 
 	@media (max-width: 400px) {
-		nav {
-			margin-top: 20px;
-		}
-
 		.name {
 			font-size: 13vw;
 			margin-right: 0;
