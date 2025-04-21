@@ -37,8 +37,7 @@
 		width: 100%;
 		flex: 1;
 		max-width: 1000px;
-		padding: 0 20px;
-		padding-bottom: 0;
+		padding: 50px 20px;
 		animation: fade-up 0.5s ease-out forwards;
 		opacity: 0;
 	}
