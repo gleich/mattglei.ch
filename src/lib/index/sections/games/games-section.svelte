@@ -19,7 +19,7 @@
 	}}
 >
 	{#if loading}
-		<Loading height={466.36} />
+		<Loading height={471.17} />
 	{:else if games != null}
 		<p>
 			To relax I like to occasionally play games with some of my friends. My favorite game of all
@@ -77,7 +77,6 @@
 
 	.stats {
 		padding: 5px 0;
-		padding-bottom: 3px;
 	}
 
 	@media (max-width: 710px) {
