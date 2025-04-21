@@ -58,7 +58,7 @@
 
 	.workout {
 		width: 100%;
-		padding: 5px;
+		padding: 10px;
 	}
 
 	.header {
