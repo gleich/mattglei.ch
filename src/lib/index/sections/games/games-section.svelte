@@ -38,7 +38,7 @@
 						<div class="stats">
 							<Stats
 								stats={new Map([
-									['Playtime', renderDuration(game.playtime_forever * 100)],
+									['Playtime', renderDuration(game.playtime_forever * 60)],
 									[
 										'Achievements',
 										typeof game.achievement_progress === 'number'
