@@ -3,10 +3,27 @@
 	import PlayIcon from '$lib/icons/play-icon.svelte';
 	import type { AppleMusicSong } from '$lib/lcp/applemusic.server';
 	import { Card, Image, Scrolling } from '@gleich/ui';
+	import { currentAudio } from './playing';
 
 	const { song }: { song: AppleMusicSong } = $props();
 
+	let audioElement: HTMLAudioElement | null = $state(null);
 	let paused = $state(true);
+
+	function toggle() {
+		if (paused) {
+			currentAudio.update((prev) => {
+				if (prev && prev !== audioElement) {
+					prev.pause();
+				}
+				return audioElement;
+			});
+			audioElement?.play();
+		} else {
+			audioElement?.pause();
+			currentAudio.update((prev) => (prev === audioElement ? null : prev));
+		}
+	}
 </script>
 
 <Card padding="0">
@@ -24,9 +41,9 @@
 				<div
 					title={`${paused ? 'Play' : 'Pause'} preview of "${song.track}"`}
 					class="play-audio-button"
-					onpointerdown={() => (paused = !paused)}
+					onpointerdown={toggle}
 				>
-					<audio bind:paused src={song.preview_audio_url} loop></audio>
+					<audio bind:this={audioElement} bind:paused src={song.preview_audio_url} loop></audio>
 					{#if paused}
 						<PlayIcon />
 					{:else}
