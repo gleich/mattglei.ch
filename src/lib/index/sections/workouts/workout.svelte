@@ -39,13 +39,15 @@
 		<p class="time">
 			<FormattedDate time={workout.start_date} />
 		</p>
-		{#if workout.platform === 'strava'}
-			{#if workout.has_map}
-				<Map {workout} />
+		<div class="data">
+			{#if workout.platform === 'strava'}
+				{#if workout.has_map}
+					<Map {workout} />
+				{/if}
+			{:else if workout.platform === 'hevy'}
+				<Lift {workout} />
 			{/if}
-		{:else if workout.platform === 'hevy'}
-			<Lift {workout} />
-		{/if}
+		</div>
 		<Stats {workout} />
 	</div>
 </Card>
@@ -91,6 +93,12 @@
 		margin-top: 1.5px;
 		margin-bottom: 4px;
 		margin-left: 2px;
+	}
+
+	.data {
+		border-radius: var(--border-radius);
+		overflow: hidden;
+		border: 1px solid var(--border);
 	}
 
 	@media (max-width: 500px) {

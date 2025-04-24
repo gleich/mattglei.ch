@@ -14,10 +14,3 @@
 		width={924}
 	/>
 </div>
-
-<style>
-	.image {
-		border-radius: var(--border-radius);
-		overflow: hidden;
-	}
-</style>

@@ -40,12 +40,6 @@
 </div>
 
 <style>
-	.container {
-		border-radius: var(--border-radius);
-		border: 1px solid var(--border);
-		overflow: hidden;
-	}
-
 	.scroll-container {
 		max-width: 100%;
 		overflow-y: scroll;
