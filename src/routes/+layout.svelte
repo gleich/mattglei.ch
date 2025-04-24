@@ -16,7 +16,9 @@
 <div class="container">
 	<div class="main">
 		<Nav />
-		{@render children()}
+		<div class="children">
+			{@render children()}
+		</div>
 		<div class="copyright">
 			<Copyright repo="gleich/mattglei.ch" />
 		</div>
@@ -43,8 +45,12 @@
 		opacity: 0;
 	}
 
+	.children {
+		flex: 1;
+	}
+
 	.copyright {
-		margin-top: auto;
+		margin-top: 60px;
 	}
 
 	@media (max-width: 450px) {
