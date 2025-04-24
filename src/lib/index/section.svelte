@@ -126,8 +126,8 @@
 	}
 
 	.live-source-icon {
-		width: 13px;
-		height: 14px;
+		width: 14.5px;
+		height: 14.5px;
 		display: flex;
 	}
 
