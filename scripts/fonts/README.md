@@ -1,6 +1,6 @@
 # fonts script
 
-looks in [/static/fonts](../../static/fonts/) and automatically generates the follow CSS and Svelte code based on the files in that directory:
+looks in [/static/fonts](../../static/fonts/) and automatically generates the following CSS and Svelte code based on the files in that directory:
 
 ```css
 /* generated from /scripts/fonts. do not manually edit. */
