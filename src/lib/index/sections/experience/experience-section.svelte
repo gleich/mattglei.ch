@@ -9,7 +9,7 @@
 
 <Section name="Experience">
 	<p>
-		Here are some of my professional software experiences, working with small startups like <a
+		Here are some of my professional software experiences, working with startups like <a
 			href="https://stainless.com"
 			target="_blank">Stainless</a
 		>
