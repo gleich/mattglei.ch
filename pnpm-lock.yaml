@@ -15,8 +15,8 @@ importers:
         specifier: ^9.25.1
         version: 9.25.1
       '@gleich/ui':
-        specifier: ^1.0.2
-        version: 1.0.2(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)
+        specifier: ^1.0.4
+        version: 1.0.4(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)
       '@sveltejs/adapter-auto':
         specifier: ^6.0.0
         version: 6.0.0(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)(vite@6.3.3))
@@ -269,8 +269,8 @@ packages:
     resolution: {integrity: sha512-ZAoA40rNMPwSm+AeHpCq8STiNAwzWLJuP8Xv4CHIc9wv/PSuExjMrmjfYNj682vW0OOiZ1HKxzvjQr9XZIisQA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@gleich/ui@1.0.2':
-    resolution: {integrity: sha512-SvdcQk0kS/A/vcftwHdCDnrML9vj/74Bl5x9AOO5Lx7FfjAWEZGLXlShWIqMpz0qCojpWPIXOWXo7tKKp58/zw==}
+  '@gleich/ui@1.0.4':
+    resolution: {integrity: sha512-egnM8Szimt0LzGb3WiOyDqncSA+2+yqXLPquCZZhwd6wX12ApMoaCRzVlepdfypBTbGmudNy6r3I3TwsOcPjoA==}
     peerDependencies:
       '@sveltejs/kit': ^2.16.0
       svelte: ^5.0.0
@@ -1305,7 +1305,7 @@ snapshots:
       '@eslint/core': 0.13.0
       levn: 0.4.1
 
-  '@gleich/ui@1.0.2(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)':
+  '@gleich/ui@1.0.4(@sveltejs/kit@2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)':
     dependencies:
       '@sveltejs/kit': 2.20.7(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.28.2)(vite@6.3.3))(svelte@5.28.2)(vite@6.3.3)
       svelte: 5.28.2

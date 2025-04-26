@@ -4,7 +4,7 @@
 	import LinkedinIcon from '$lib/icons/linkedin-icon.svelte';
 	import type { Component } from 'svelte';
 	import { page } from '$app/state';
-	import { Logo } from '@gleich/ui';
+	import { NavLogo } from '@gleich/ui';
 
 	const links = ['', 'writing', 'photos', 'workouts'];
 </script>
@@ -26,9 +26,7 @@
 <nav>
 	<div class="bar">
 		<a href="/" class="left">
-			<div class="logo">
-				<Logo stroke="8" />
-			</div>
+			<NavLogo width="55px" />
 			<h1 class="name">Matt Gleich</h1>
 		</a>
 		{@render socials('bar-socials')}
@@ -122,20 +120,6 @@
 		margin-left: 10px;
 		margin-right: 10px;
 		text-wrap: nowrap;
-	}
-
-	.logo {
-		width: 50px;
-		height: 50px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		margin-right: 3px;
-		padding: 3px;
-		background: var(--background);
-		border-radius: var(--border-radius);
-		border: 1px solid var(--border);
-		box-shadow: inset 0px 0px 5px var(--box-shadow-color);
 	}
 
 	@media (max-width: 500px) {
