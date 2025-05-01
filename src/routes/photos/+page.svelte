@@ -7,13 +7,15 @@
 
 <DynamicHead title="Photos" description="Photos gallery taken with my Nikon Z7II" />
 
-<h2>Photo Gallery</h2>
+<main>
+	<h2>Photo Gallery</h2>
 
-<PhotoGallery />
+	<PhotoGallery />
 
-<a class="view-more" href="https://instagram.com/mattglei.ch" target="_blank">
-	<ViewButton more on="Instagram" icon={InstagramIcon} iconPaddingBottom="0px" />
-</a>
+	<a class="view-more" href="https://instagram.com/mattglei.ch" target="_blank">
+		<ViewButton more on="Instagram" icon={InstagramIcon} iconPaddingBottom="0px" />
+	</a>
+</main>
 
 <style>
 	h2 {
@@ -21,7 +23,9 @@
 	}
 
 	.view-more {
+		display: inline-block;
 		text-decoration: inherit;
-		margin-top: 20px;
+		margin-top: 30px;
+		width: 100%;
 	}
 </style>
