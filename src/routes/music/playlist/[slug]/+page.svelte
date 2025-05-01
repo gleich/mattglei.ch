@@ -58,10 +58,16 @@
 		flex-direction: column;
 	}
 
+	.header-info {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	.stats {
 		color: grey;
 		display: flex;
 		flex-direction: column;
+		align-items: flex-end;
 	}
 
 	.songs {
@@ -80,6 +86,16 @@
 	.view-on-apple-music {
 		margin-top: 20px;
 		text-decoration: inherit;
+	}
+
+	@media (max-width: 500px) {
+		.header-info {
+			flex-direction: column;
+		}
+
+		.stats {
+			align-items: flex-start;
+		}
 	}
 
 	@media (max-width: 400px) {
