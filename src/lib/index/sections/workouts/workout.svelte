@@ -83,6 +83,8 @@
 		width: 21px;
 		height: 21px;
 		margin-right: 5px;
+		margin-left: 10px;
+		flex-shrink: 0;
 	}
 
 	.time {
