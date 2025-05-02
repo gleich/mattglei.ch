@@ -20,6 +20,9 @@
 								{`#${exerciseIndex + 1}: ${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
 							</p>
 						</Scrolling>
+						{#if exercise.superset_id != undefined}
+							<p class="superset">Superset #{exercise.superset_id}</p>
+						{/if}
 					</a>
 					<div class="sets">
 						{#each exercise.sets as set, setIndex (set.type + setIndex)}
@@ -49,14 +52,20 @@
 
 	.exercise-name {
 		display: flex;
+		flex-direction: column;
 		width: 100%;
 		justify-content: center;
+		align-items: center;
 		background-color: var(--green-background);
 		border: 1px solid var(--green-border);
 		color: var(--green-foreground);
 		border-right: 0;
 		border-left: 0;
 		text-decoration: inherit;
+	}
+
+	.superset {
+		font-size: 14px;
 	}
 
 	.warmup-set-number {

@@ -73,6 +73,7 @@ export interface HevyExercise {
 	title: string;
 	sets: HevySet[];
 	exercise_template_id: string;
+	superset_id?: number;
 }
 
 export interface HevySet {
