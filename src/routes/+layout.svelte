@@ -5,7 +5,7 @@
 
 	import Nav from '$lib/nav.svelte';
 	import Fonts from '$lib/fonts.svelte';
-	import { Copyright } from '@gleich/ui';
+	import { FadeUp, Copyright } from '@gleich/ui';
 	import type { Snippet } from 'svelte';
 
 	const { children }: { children: Snippet } = $props();
@@ -14,15 +14,17 @@
 <Fonts />
 
 <div class="container">
-	<div class="main">
-		<Nav />
-		<div class="children">
-			{@render children()}
+	<FadeUp>
+		<div class="main">
+			<Nav />
+			<div class="children">
+				{@render children()}
+			</div>
+			<div class="copyright">
+				<Copyright repo="gleich/mattglei.ch" />
+			</div>
 		</div>
-		<div class="copyright">
-			<Copyright repo="gleich/mattglei.ch" />
-		</div>
-	</div>
+	</FadeUp>
 </div>
 
 <style>
@@ -41,8 +43,6 @@
 		flex: 1;
 		max-width: 1000px;
 		padding: 50px 20px;
-		animation: fade-up 0.5s ease-out forwards;
-		opacity: 0;
 	}
 
 	.children {
@@ -51,22 +51,5 @@
 
 	.copyright {
 		margin-top: 60px;
-	}
-
-	@media (max-width: 450px) {
-		.main {
-			padding: 40px 10px;
-		}
-	}
-
-	@keyframes fade-up {
-		from {
-			opacity: 0;
-			transform: translateY(10px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
 	}
 </style>
