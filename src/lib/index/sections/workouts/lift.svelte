@@ -102,7 +102,7 @@
 		justify-content: center;
 		grid-column: 50%;
 		gap: 5px;
-		margin: 7px 0px;
+		margin: 12px 0px;
 	}
 
 	.set {
