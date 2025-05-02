@@ -12,7 +12,7 @@
 </script>
 
 <Writing writing={writings.get('lcp')!}>
-	<a class="view-on-github" href="https://github.com/gleich/lcp-2" target="_blank">
+	<a class="view-on-github" href="https://github.com/gleich/lcp" target="_blank">
 		<ViewButton on="GitHub" icon={GithubIcon} />
 	</a>
 

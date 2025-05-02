@@ -45,8 +45,8 @@
 				href="https://github.com/gleich/pcbs"
 				target="_blank">PCBs</a
 			>
-			to <a href="https://github.com/gleich/lcp-2" target="_blank">REST APIs</a>. Recently I've
-			really been enjoying working with
+			to <a href="https://github.com/gleich/lcp" target="_blank">REST APIs</a>. Recently I've really
+			been enjoying working with
 			<a href="https://svelte.dev" target="_blank">Svelte/SvelteKit</a>
 			and <a href="https://go.dev" target="_blank">Go</a>. Here are a few of my top projects that
 			are open-source from my GitHub:
