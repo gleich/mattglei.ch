@@ -13,5 +13,5 @@ export const load: PageServerLoad = async ({
 	params: Record<string, string>;
 	fetch: SvelteFetch;
 }) => ({
-	playlist: await loadPlaylistFromLCP(params.slug, fetch)
+	playlist: await loadPlaylistFromLCP(params.playlistID, fetch)
 });
