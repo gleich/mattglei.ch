@@ -1,3 +1,3 @@
-# mattglei.ch
+# [mattglei.ch](https://mattglei.ch)
 
-my new website written in [sveltekit](https://svelte.dev)
+Personal website written with [svelte](https://svelte.dev).
