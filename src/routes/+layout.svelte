@@ -15,5 +15,13 @@
 
 <Layout repo="gleich/mattglei.ch">
 	<Nav />
-	{@render children()}
+	<div class="children">
+		{@render children()}
+	</div>
 </Layout>
+
+<style>
+	.children {
+		padding-bottom: 40px;
+	}
+</style>
