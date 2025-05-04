@@ -26,7 +26,7 @@
 <nav>
 	<div class="bar">
 		<a href="/" class="left">
-			<NavLogo width="55px" />
+			<NavLogo width="50px" />
 			<h1 class="name">Matt Gleich</h1>
 		</a>
 		{@render socials('bar-socials')}
