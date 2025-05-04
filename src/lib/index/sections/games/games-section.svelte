@@ -42,7 +42,9 @@
 									[
 										'Achievements',
 										typeof game.achievement_progress === 'number'
-											? game.achievement_progress.toPrecision(3) + '%'
+											? game.achievement_progress === 0.0
+												? '0%'
+												: game.achievement_progress.toPrecision(3) + '%'
 											: 'N/A'
 									]
 								])}
