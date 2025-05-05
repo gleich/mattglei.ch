@@ -80,7 +80,7 @@
 	}
 
 	.song {
-		width: 184px;
+		width: 192px;
 	}
 
 	.view-on-apple-music {
