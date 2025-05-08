@@ -88,19 +88,19 @@
 		text-decoration: inherit;
 	}
 
-	@media (max-width: 500px) {
+	@media (max-width: 550px) {
 		.header-info {
 			flex-direction: column;
 		}
 
-		.stats {
-			align-items: flex-start;
+		.song {
+			width: calc(50% - 5px);
 		}
 	}
 
-	@media (max-width: 400px) {
-		.song {
-			width: 40vw;
+	@media (max-width: 500px) {
+		.stats {
+			align-items: flex-start;
 		}
 	}
 </style>
