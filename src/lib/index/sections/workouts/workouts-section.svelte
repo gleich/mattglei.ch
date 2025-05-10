@@ -39,7 +39,7 @@
 	}}
 >
 	{#if loading}
-		<Loading height={539.84} />
+		<Loading height={529.75} />
 	{:else if workouts != null}
 		<p>
 			One of my favorite things is staying active and enjoying the outdoors. I grew up in New
