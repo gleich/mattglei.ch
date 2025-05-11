@@ -37,7 +37,7 @@ export async function loadFromLCP<T>(
 			pathName = 'applemusic';
 			break;
 	}
-	const url = `https://lcp.dev.mattglei.ch/${pathName}`;
+	const url = `https://lcp.mattglei.ch/${pathName}`;
 	try {
 		const res = await fetch(url, {
 			method: 'GET',

@@ -95,7 +95,7 @@
 		<ol>
 			<li>Fast response times</li>
 			<p>
-				When the site makes a request to load data from lcp.dev.mattglei.ch/strava all it is doing
+				When the site makes a request to load data from lcp.mattglei.ch/strava all it is doing
 				is reading the cached data from memory. No expensive database queries or anything.
 			</p>
 			<li>Data can be processed and aggregated</li>
@@ -103,7 +103,7 @@
 				With Steam, for example, there is no endpoint from the Steam REST API to get your games with
 				the achievement data all in one request. So, for every game you need to make a request to
 				load the achievement data. All of this is done by lcp so that when a request is made to
-				lcp.dev.mattglei.ch/steam it returns the games with their achievements all in one request.
+				lcp.mattglei.ch/steam it returns the games with their achievements all in one request.
 				This cuts down +25 requests to the Steam REST API with each request taking +400ms down to
 				one request that takes ~200ms.
 			</p>
