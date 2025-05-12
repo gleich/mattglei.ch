@@ -5,7 +5,7 @@
 <div class="container">
 	<p>Hey, I'm Matt Gleich</p>
 	<div>
-		I'm a third-year Computer Science student at the
+		I'm a rising fourth-year Computer Science student at the
 
 		<a href="https://rit.edu" target="_blank"> Rochester Institute of Technology (RIT) </a>. This
 		website serves as a portfolio showcasing some of my projects, work experience, and personal
