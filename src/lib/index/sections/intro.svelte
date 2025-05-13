@@ -7,8 +7,9 @@
 	<div>
 		I'm a rising fourth-year Computer Science student at the
 
-		<a href="https://rit.edu" target="_blank"> Rochester Institute of Technology (RIT) </a>. This
-		website serves as a portfolio showcasing some of my projects, work experience, and personal
+		<a href="https://rit.edu" target="_blank"> Rochester Institute of Technology (RIT)</a> and an
+		incoming DevOps intern at <a href="https://kcftech.com" target="_blank">KCF Technologies</a>.
+		This website serves as a portfolio showcasing some of my projects, work experience, and personal
 		interests. I am committed to applying my technical skills to develop practical solutions and
 		consistently strive to expand my expertise. If you'd like to discuss a project or explore
 		potential opportunities, please contact me at
