@@ -17,6 +17,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 60vh;
+		height: calc(60vh - 10px);
 	}
 </style>
