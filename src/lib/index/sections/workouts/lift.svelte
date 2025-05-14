@@ -17,7 +17,7 @@
 					>
 						<Scrolling>
 							<p>
-								{`#${exerciseIndex + 1}: ${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
+								{`${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
 							</p>
 						</Scrolling>
 						{#if exercise.superset_id != undefined}
@@ -26,7 +26,9 @@
 					</a>
 					<div class="sets">
 						{#each exercise.sets as set, setIndex (set.type + setIndex)}
-							<div class={`${set.type === 'warmup' ? 'warmup-set' : ''} set`}>
+							<div
+								class={`${set.type === 'warmup' && exercise.sets.length != 2 ? 'warmup-set' : ''} set`}
+							>
 								<div class={`${set.type === 'warmup' ? 'warmup-set-number' : ''} set-number`}>
 									{set.type === 'warmup' ? 'Warmup' : `Set #${setIndex + 1}`}
 								</div>
@@ -53,25 +55,22 @@
 	.exercise-name {
 		display: flex;
 		flex-direction: column;
-		width: 100%;
-		justify-content: center;
 		align-items: center;
+		justify-content: center;
 		background-color: var(--green-background);
-		border: 1px solid var(--green-border);
+		border: 0.5px solid var(--green-border);
 		color: var(--green-foreground);
 		border-right: 0;
 		border-left: 0;
+		padding: 2px;
 		text-decoration: inherit;
-	}
-
-	.superset {
-		font-size: 14px;
+		font-size: 15.5px;
 	}
 
 	.warmup-set-number {
 		color: rgb(255, 115, 0);
 		background-color: rgb(55, 36, 0) !important;
-		border: 1.5px solid rgb(158, 71, 0) !important;
+		border: 1.5px dashed rgb(158, 71, 0) !important;
 		padding: 0 15px !important;
 		padding-bottom: 1px !important;
 	}
