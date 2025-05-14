@@ -106,6 +106,7 @@
 
 	.apple-music-link {
 		margin: 5px 3px;
+		margin-top: 7px;
 	}
 
 	.artist {

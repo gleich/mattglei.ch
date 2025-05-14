@@ -36,7 +36,7 @@
 	}}
 >
 	{#if loading}
-		<Loading height={742} />
+		<Loading height={744} />
 	{:else if music != null}
 		<p>
 			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite
