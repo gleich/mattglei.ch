@@ -53,11 +53,6 @@
 </Card>
 
 <style>
-	h4 {
-		line-height: 120%;
-		overflow-y: hidden;
-	}
-
 	.workout {
 		width: 100%;
 		padding: 10px;
