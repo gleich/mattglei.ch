@@ -87,7 +87,7 @@
 		}
 	}
 
-	@media (max-width: 400px) {
+	@media (max-width: 385px) {
 		.games {
 			grid-template-columns: 1fr;
 		}
