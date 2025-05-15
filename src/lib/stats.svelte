@@ -44,7 +44,7 @@
 
 	@media (max-width: 550px) {
 		.value {
-			font-size: 14px;
+			font-size: 16px;
 		}
 
 		.value-name {
