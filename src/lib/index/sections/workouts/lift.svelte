@@ -116,6 +116,12 @@
 		grid-column: span 2;
 	}
 
+	.superset {
+		font-size: 14px;
+		line-height: 80%;
+		margin-bottom: 3px;
+	}
+
 	@media (prefers-color-scheme: light) {
 		.set-number {
 			background-color: rgb(205, 205, 205);
