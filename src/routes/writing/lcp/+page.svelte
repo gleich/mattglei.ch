@@ -21,22 +21,38 @@
 			{#await data.projects}
 				<p>Loading projects cache...</p>
 			{:then projects}
-				<CacheStatus name="Projects" updated={projects?.updated} />
+				<CacheStatus
+					name="Projects"
+					updated={projects?.updated}
+					updateFrequency="Refreshed data every 60 seconds"
+				/>
 			{/await}
 			{#await data.workouts}
 				<p>Loading workouts cache...</p>
 			{:then workouts}
-				<CacheStatus name="Workouts" updated={workouts?.updated} />
+				<CacheStatus
+					name="Workouts"
+					updated={workouts?.updated}
+					updateFrequency="Refreshing when data changes"
+				/>
 			{/await}
 			{#await data.music}
 				<p>Loading music cache...</p>
 			{:then music}
-				<CacheStatus name="Music" updated={music?.updated} />
+				<CacheStatus
+					name="Music"
+					updated={music?.updated}
+					updateFrequency="Refreshing every 30 seconds"
+				/>
 			{/await}
 			{#await data.games}
 				<p>Loading games cache...</p>
 			{:then games}
-				<CacheStatus name="Games" updated={games?.updated} />
+				<CacheStatus
+					name="Games"
+					updated={games?.updated}
+					updateFrequency="Refreshing every 5 minutes"
+				/>
 			{/await}
 		</div>
 	</WritingSection>
@@ -229,7 +245,7 @@
 	.statuses {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 5px;
+		gap: 10px;
 		align-items: center;
 		width: 100%;
 	}
@@ -251,7 +267,7 @@
 		margin: 10px 0;
 	}
 
-	@media (max-width: 860px) {
+	@media (max-width: 830px) {
 		.statuses {
 			grid-template-columns: 1fr;
 		}
