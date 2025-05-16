@@ -118,7 +118,7 @@
 
 	@media (max-width: 500px) {
 		.cache-name {
-			font-size: 15px;
+			font-size: 15.5px;
 		}
 	}
 </style>
