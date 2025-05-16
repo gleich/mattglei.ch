@@ -120,7 +120,7 @@
 	.github-icon {
 		width: 15px;
 		height: 15px;
-		padding-top: 2.5px;
+		padding-top: 1.5px;
 	}
 
 	.description {
