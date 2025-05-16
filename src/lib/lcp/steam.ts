@@ -4,6 +4,7 @@ export interface Game {
 	url: string;
 	icon_url: string;
 	header_url: string;
+	header_blur_hash: string;
 	library_url: string | undefined;
 	playtime_forever: number;
 	achievement_progress: number | undefined;

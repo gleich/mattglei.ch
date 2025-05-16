@@ -33,7 +33,13 @@
 				<Card padding="0">
 					<a href={game.url} target="_blank" class="game" title={`View "${game.name}" on Steam`}>
 						<div class="game-picture">
-							<Image src={game.header_url} alt={game.name} width={460} height={215} />
+							<Image
+								src={game.header_url}
+								alt={game.name}
+								width={460}
+								height={215}
+								placeholder={game.header_blur_hash}
+							/>
 						</div>
 						<div class="stats">
 							<Stats
