@@ -6,7 +6,7 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 dayjs.extend(duration);
 dayjs.extend(advancedFormat);
 
-export function renderDate(date: Dayjs, now: Dayjs): string {
+export function renderDate(date: Dayjs, now: Dayjs, lowercaseDayOfWeek: boolean = false): string {
 	const dayjsDate = dayjs(date);
 	const yesterday = now.subtract(1, 'day');
 	const tomorrow = now.add(1, 'day');
@@ -34,7 +34,9 @@ export function renderDate(date: Dayjs, now: Dayjs): string {
 		dayOfWeek = dayjsDate.format('dddd, MMM Do');
 	}
 
-	return dayjsDate.format(`[${dayOfWeek}] [at] h:mm A`);
+	return dayjsDate.format(
+		`[${lowercaseDayOfWeek ? dayOfWeek.toLowerCase() : dayOfWeek}] [at] h:mm A`
+	);
 }
 
 export function fromNow(date: Dayjs, currentTime: Dayjs): string {

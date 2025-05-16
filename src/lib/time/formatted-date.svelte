@@ -23,8 +23,4 @@
 	});
 </script>
 
-{#if lowercase}
-	{renderDate(dayjsTime, now).toLowerCase()} [{fromNow(dayjsTime, now).toLowerCase()}]
-{:else}
-	{renderDate(dayjsTime, now)} [{fromNow(dayjsTime, now)}]
-{/if}
+{renderDate(dayjsTime, now, lowercase)} [{fromNow(dayjsTime, now)}]

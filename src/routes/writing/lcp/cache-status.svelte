@@ -64,9 +64,10 @@
 		display: flex;
 		align-items: center;
 		padding: 4px 10px;
+		height: fit-content;
 		border-top: 0 !important;
 		border-right: 0 !important;
-		font-size: 14px;
+		font-size: 13px;
 		border-bottom-left-radius: var(--border-radius);
 	}
 
@@ -84,6 +85,7 @@
 
 	.refresh {
 		padding: 20px 10px;
+		padding-bottom: 15px;
 		display: flex;
 		gap: 10px;
 		align-items: center;
@@ -101,7 +103,6 @@
 
 	.updated {
 		color: grey;
-		border-top: 1px solid var(--border);
 		padding: 5px;
 		display: flex;
 		align-items: center;
