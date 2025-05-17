@@ -17,26 +17,24 @@ export function renderDate(date: Dayjs, now: Dayjs, lowercaseDayOfWeek: boolean 
 		now.year() === dayjsDate.year() &&
 		now.month() === dayjsDate.month()
 	) {
-		dayOfWeek = 'Today';
+		dayOfWeek = lowercaseDayOfWeek ? 'today' : 'Today';
 	} else if (
 		yesterday.date() === dayjsDate.date() &&
 		yesterday.year() === dayjsDate.year() &&
 		yesterday.month() === dayjsDate.month()
 	) {
-		dayOfWeek = 'Yesterday';
+		dayOfWeek = lowercaseDayOfWeek ? 'yesterday' : 'Yesterday';
 	} else if (
 		tomorrow.date() === dayjsDate.date() &&
 		tomorrow.year() === dayjsDate.year() &&
 		tomorrow.month() === dayjsDate.month()
 	) {
-		dayOfWeek = 'Tomorrow';
+		dayOfWeek = lowercaseDayOfWeek ? 'tomorrow' : 'Tomorrow';
 	} else {
 		dayOfWeek = dayjsDate.format('dddd, MMM Do');
 	}
 
-	return dayjsDate.format(
-		`[${lowercaseDayOfWeek ? dayOfWeek.toLowerCase() : dayOfWeek}] [at] h:mm A`
-	);
+	return dayjsDate.format(`[${dayOfWeek}] [at] h:mm A`);
 }
 
 export function fromNow(date: Dayjs, currentTime: Dayjs): string {
