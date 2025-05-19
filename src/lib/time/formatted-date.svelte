@@ -8,7 +8,7 @@
 	dayjs.extend(utc);
 	dayjs.extend(timezonePlugin);
 
-	const { time, lowercase = false }: { time: Date; lowercase?: boolean } = $props();
+	const { time }: { time: Date } = $props();
 
 	let dayjsTime = dayjs(time);
 	let now = $state(dayjs());
@@ -23,4 +23,4 @@
 	});
 </script>
 
-{renderDate(dayjsTime, now, lowercase)} [{fromNow(dayjsTime, now)}]
+{renderDate(dayjsTime, now)} [{fromNow(dayjsTime, now)}]

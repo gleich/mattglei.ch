@@ -6,7 +6,7 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 dayjs.extend(duration);
 dayjs.extend(advancedFormat);
 
-export function renderDate(date: Dayjs, now: Dayjs, lowercaseDayOfWeek: boolean = false): string {
+export function renderDate(date: Dayjs, now: Dayjs): string {
 	const dayjsDate = dayjs(date);
 	const yesterday = now.subtract(1, 'day');
 	const tomorrow = now.add(1, 'day');
@@ -17,19 +17,19 @@ export function renderDate(date: Dayjs, now: Dayjs, lowercaseDayOfWeek: boolean 
 		now.year() === dayjsDate.year() &&
 		now.month() === dayjsDate.month()
 	) {
-		dayOfWeek = lowercaseDayOfWeek ? 'today' : 'Today';
+		dayOfWeek = 'Today';
 	} else if (
 		yesterday.date() === dayjsDate.date() &&
 		yesterday.year() === dayjsDate.year() &&
 		yesterday.month() === dayjsDate.month()
 	) {
-		dayOfWeek = lowercaseDayOfWeek ? 'yesterday' : 'Yesterday';
+		dayOfWeek = 'Yesterday';
 	} else if (
 		tomorrow.date() === dayjsDate.date() &&
 		tomorrow.year() === dayjsDate.year() &&
 		tomorrow.month() === dayjsDate.month()
 	) {
-		dayOfWeek = lowercaseDayOfWeek ? 'tomorrow' : 'Tomorrow';
+		dayOfWeek = 'Tomorrow';
 	} else {
 		dayOfWeek = dayjsDate.format('dddd, MMM Do');
 	}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import RefreshIcon from '$lib/icons/refresh-icon.svelte';
-	import FormattedDate from '$lib/time/formatted-date.svelte';
+	import Since from '$lib/time/since.svelte';
 	import { Card } from '@gleich/ui';
 
 	const {
@@ -29,7 +29,7 @@
 	</div>
 	<div class="updated">
 		{#if updated}
-			Updated <FormattedDate lowercase time={updated} />
+			Updated <Since time={updated} />
 		{:else}
 			Cache is currently offline
 		{/if}
