@@ -51,7 +51,7 @@
 				<CacheStatus
 					name="Games"
 					updated={games?.updated}
-					updateFrequency="Refreshing every 5 minutes"
+					updateFrequency="Refreshing every 10 minutes"
 				/>
 			{/await}
 		</div>
