@@ -5,7 +5,11 @@
 	import { DynamicHead } from '@gleich/ui';
 </script>
 
-<DynamicHead title="Photos" description="Photos gallery taken with my Nikon Z7II" />
+<DynamicHead
+	title="Photos"
+	description="Photos gallery taken with my Nikon Z7II"
+	siteName="mattglei.ch"
+/>
 
 <main>
 	<h2>Photo Gallery</h2>

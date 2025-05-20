@@ -3,7 +3,7 @@
 	import writings from './writings';
 </script>
 
-<DynamicHead title="Writing" description="Matt Gleich's writings" />
+<DynamicHead title="Writing" description="Matt Gleich's writings" siteName="mattglei.ch" />
 
 <h2>Writing</h2>
 

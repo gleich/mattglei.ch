@@ -15,6 +15,7 @@
 <DynamicHead
 	title="Matt Gleich"
 	description="3rd year computer science at the Rochester Institute of Technology (RIT)"
+	siteName="mattglei.ch"
 />
 
 <Intro />

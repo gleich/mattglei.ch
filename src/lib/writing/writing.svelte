@@ -13,7 +13,12 @@
 	const { writing, children }: { writing: WritingData; children: Snippet } = $props();
 </script>
 
-<DynamicHead title={writing.title} description={writing.description} keywords={writing.keywords} />
+<DynamicHead
+	title={writing.title}
+	description={writing.description}
+	keywords={writing.keywords}
+	siteName="mattglei.ch"
+/>
 
 <div class="container">
 	<h2>{writing.title}</h2>
