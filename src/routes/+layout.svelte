@@ -5,8 +5,10 @@
 
 	import Nav from '$lib/nav.svelte';
 	import Fonts from '$lib/fonts.svelte';
-	import { Layout } from '@gleich/ui';
+	import { Layout, siteName } from '@gleich/ui';
 	import type { Snippet } from 'svelte';
+
+	siteName.set('mattglei.ch');
 
 	const { children }: { children: Snippet } = $props();
 </script>

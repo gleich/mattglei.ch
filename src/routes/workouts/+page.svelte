@@ -9,11 +9,7 @@
 	const { data }: { data: WorkoutData } = $props();
 </script>
 
-<DynamicHead
-	title="Workouts"
-	description="Recent workouts from Hevy/Strava"
-	siteName="mattglei.ch"
-/>
+<DynamicHead title="Workouts" description="Recent workouts from Hevy/Strava" />
 
 {#if data.workouts}
 	<h2>Workouts</h2>

@@ -15,10 +15,9 @@
 		title={`${data.playlist.name} playlist`}
 		description={`${data.playlist.tracks.length} tracks`}
 		opengraphImage={{ url: data.playlist.tracks[0].album_art_url, height: '600', width: '600' }}
-		siteName="mattglei.ch"
 	/>
 {:else}
-	<DynamicHead title="404 Not found" description="Playlist not found" siteName="mattglei.ch" />
+	<DynamicHead title="404 Not found" description="Playlist not found" />
 {/if}
 
 {#if data.playlist}

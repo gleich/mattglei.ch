@@ -15,8 +15,8 @@ importers:
         specifier: ^9.27.0
         version: 9.27.0
       '@gleich/ui':
-        specifier: ^1.2.7
-        version: 1.2.7(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)
+        specifier: ^1.2.8
+        version: 1.2.8(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)
       '@sveltejs/adapter-cloudflare':
         specifier: ^7.0.3
         version: 7.0.3(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)(vite@6.3.5))(wrangler@4.14.1(@cloudflare/workers-types@4.20250520.0))
@@ -473,8 +473,8 @@ packages:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
 
-  '@gleich/ui@1.2.7':
-    resolution: {integrity: sha512-YNPIEcoz4bAYDLNHCB5u/dsGZSAjx8thqHqEZKSZ4RGx2qfM/XSiFqIfy9TitxnXrToQTRNNvyM8AM+jl84owQ==}
+  '@gleich/ui@1.2.8':
+    resolution: {integrity: sha512-e3jlcHT4F0e0thXO0XiBc15Q4m0NVllcnfyP++aVWIckRWWUDlsSe7nPjplCq6okSysOyXzdfszk9Po/mOfUOg==}
     peerDependencies:
       '@sveltejs/kit': ^2.16.0
       svelte: ^5.0.0
@@ -1861,7 +1861,7 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
-  '@gleich/ui@1.2.7(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)':
+  '@gleich/ui@1.2.8(@sveltejs/kit@2.21.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)':
     dependencies:
       '@sveltejs/kit': 2.21.1(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.32.1)(vite@6.3.5))(svelte@5.32.1)(vite@6.3.5)
       svelte: 5.32.1

@@ -6,7 +6,6 @@
 <DynamicHead
 	title={`${page.status} ${page.error?.message}`}
 	description="Error occurred while trying to load page"
-	siteName="mattglei.ch"
 />
 
 <main>

@@ -15,7 +15,6 @@
 <DynamicHead
 	title="Matt Gleich"
 	description="Rising 4th year computer science student at the Rochester Institute of Technology (RIT). Incoming DevOps intern for KCF Technologies."
-	siteName="mattglei.ch"
 />
 
 <Intro />
