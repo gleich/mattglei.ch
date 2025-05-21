@@ -1,8 +1,15 @@
 <script lang="ts">
 	import type { Workout } from '$lib/lcp/workouts';
 	import { Scrolling } from '@gleich/ui';
+	import { onMount } from 'svelte';
 
 	const { workout }: { workout: Workout } = $props();
+
+	let imperialUnits = $state(false);
+
+	onMount(() => {
+		imperialUnits = navigator.language === 'en-US';
+	});
 </script>
 
 <div class="container">
@@ -33,7 +40,9 @@
 									{set.type === 'warmup' ? 'Warmup' : `Set #${setIndex + 1}`}
 								</div>
 								<div class="set-value">
-									{Math.round(set.weight_kg * 2.2046226218)} lbs × {set.reps} reps
+									{imperialUnits
+										? `${Math.round(set.weight_kg * 2.2046226218)} lbs`
+										: `${Math.round(set.weight_kg)}} kg`} × {set.reps} reps
 								</div>
 							</div>
 						{/each}
