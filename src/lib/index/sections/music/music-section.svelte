@@ -15,9 +15,9 @@
 
 	const favArtists: Artist[] = [
 		{ name: 'Daft Punk', url: 'https://www.daftpunk.com' },
+		{ name: 'Mac DeMarco', url: 'https://www.macdemarco.com' },
 		{ name: 'The Smiths', url: 'https://www.officialsmiths.co.uk' },
 		{ name: 'Eagles', url: 'https://eagles.com' },
-		{ name: 'Mac DeMarco', url: 'https://www.macdemarco.com' },
 		{ name: 'Fleetwood Mac', url: 'https://www.fleetwoodmacofficial.com' },
 		{ name: 'Oasis', url: 'https://oasisinet.com' },
 		{ name: 'Deftones', url: 'https://www.deftones.com' }
