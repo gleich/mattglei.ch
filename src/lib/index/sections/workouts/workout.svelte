@@ -25,7 +25,7 @@
 				target="_blank"
 			>
 				<Scrolling>
-					<h4>{workout.name}</h4>
+					<h4 class="workout-name">{workout.name}</h4>
 				</Scrolling>
 				<div class="platform-icon">
 					{#if workout.platform === 'strava'}
@@ -99,6 +99,15 @@
 	}
 
 	@media (max-width: 500px) {
+		.workout-name {
+			font-size: 1.4rem;
+		}
+
+		.platform-icon {
+			width: 19px;
+			height: 19px;
+		}
+
 		.time {
 			font-size: 12.5px;
 		}

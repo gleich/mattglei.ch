@@ -11,15 +11,13 @@
 </script>
 
 <Card padding="0">
-	<div class="container">
-		<div class="header">
-			<p class="cache-name">{name} Cache</p>
-			{#if updated}
-				<p class="online">ONLINE</p>
-			{:else}
-				<p class="offline">OFFLINE</p>
-			{/if}
-		</div>
+	<div class="header">
+		<p class="cache-name">{name} Cache</p>
+		{#if updated}
+			<p class="online">ONLINE</p>
+		{:else}
+			<p class="offline">OFFLINE</p>
+		{/if}
 	</div>
 	<div class="refresh">
 		<div class="refresh-icon">
@@ -84,8 +82,8 @@
 	}
 
 	.refresh {
-		padding: 20px 10px;
-		padding-bottom: 15px;
+		padding: 15px 10px;
+		padding-bottom: 10px;
 		display: flex;
 		gap: 10px;
 		align-items: center;
@@ -103,7 +101,7 @@
 
 	.updated {
 		color: grey;
-		padding: 5px;
+		padding-bottom: 5px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
