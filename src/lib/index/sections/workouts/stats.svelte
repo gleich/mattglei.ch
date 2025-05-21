@@ -45,7 +45,8 @@
 				const secondsPerKm = Math.floor(totalSecondsPerKm % 60);
 				stats.set('Avg. Pace', `${minutesPerKm}:${secondsPerKm.toString().padStart(2, '0')}/km`);
 			}
-		} else if (workout.total_elevation_gain && workout.total_elevation_gain > 304.8) {
+		} else if (workout.total_elevation_gain && workout.total_elevation_gain > 228.6) {
+			// show elevation if greater than 750ft
 			stats.set(
 				'Elevation Gain',
 				`${Math.round(
@@ -64,6 +65,7 @@
 				).toLocaleString()} ${imperialUnits ? 'lbs' : 'kg'}`
 			);
 		}
+
 		if (workout.hevy_set_count) {
 			stats.set('Sets', `${workout.hevy_set_count ?? 0}`);
 		}
