@@ -24,7 +24,7 @@
 				<CacheStatus
 					name="Projects"
 					updated={projects?.updated}
-					updateFrequency="Refreshed data every 60 seconds"
+					updateFrequency="Refreshing data every 60 seconds"
 				/>
 			{/await}
 			{#await data.workouts}
