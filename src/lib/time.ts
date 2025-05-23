@@ -71,10 +71,10 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 	} else if (totalDaysDiff > 0) {
 		fromNowStr = `${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
 		if (hoursDiff > 0) {
-			fromNowStr += ` ${hoursDiff}hr`;
+			fromNowStr += ` ${hoursDiff}${hoursDiff === 1 ? 'hr' : 'hrs'}`;
 		}
 	} else if (hoursDiff > 0) {
-		fromNowStr = `${hoursDiff}hr`;
+		fromNowStr = `${hoursDiff}${hoursDiff === 1 ? 'hr' : 'hrs'}`;
 		if (minutesDiff > 0) {
 			fromNowStr += ` ${minutesDiff}m`;
 		}
