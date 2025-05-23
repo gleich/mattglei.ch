@@ -83,7 +83,7 @@
 
 	.refresh {
 		padding: 15px 10px;
-		padding-bottom: 10px;
+		padding-bottom: 5px;
 		display: flex;
 		gap: 10px;
 		align-items: center;
@@ -101,7 +101,7 @@
 
 	.updated {
 		color: grey;
-		padding-bottom: 5px;
+		padding-bottom: 10px;
 		display: flex;
 		align-items: center;
 		justify-content: center;

@@ -2,39 +2,32 @@ import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 
 dayjs.extend(duration);
 dayjs.extend(advancedFormat);
+dayjs.extend(isSameOrAfter);
+dayjs.extend(isSameOrBefore);
 
 export function renderDate(date: Dayjs, now: Dayjs): string {
-	const dayjsDate = dayjs(date);
-	const yesterday = now.subtract(1, 'day');
-	const tomorrow = now.add(1, 'day');
-	let dayOfWeek: string;
+	const d = dayjs(date);
 
-	if (
-		now.date() === dayjsDate.date() &&
-		now.year() === dayjsDate.year() &&
-		now.month() === dayjsDate.month()
-	) {
-		dayOfWeek = 'Today';
-	} else if (
-		yesterday.date() === dayjsDate.date() &&
-		yesterday.year() === dayjsDate.year() &&
-		yesterday.month() === dayjsDate.month()
-	) {
-		dayOfWeek = 'Yesterday';
-	} else if (
-		tomorrow.date() === dayjsDate.date() &&
-		tomorrow.year() === dayjsDate.year() &&
-		tomorrow.month() === dayjsDate.month()
-	) {
-		dayOfWeek = 'Tomorrow';
+	let label: string;
+
+	if (d.isSame(now, 'day')) {
+		label = 'Today';
+	} else if (d.isSame(now.subtract(1, 'day'), 'day')) {
+		label = 'Yesterday';
+	} else if (d.isSame(now.add(1, 'day'), 'day')) {
+		label = 'Tomorrow';
+	} else if (d.isSame(now, 'week')) {
+		label = d.format('dddd');
 	} else {
-		dayOfWeek = dayjsDate.format('dddd, MMM Do');
+		label = d.format('MMM Do');
 	}
 
-	return dayjsDate.format(`[${dayOfWeek}] [at] h:mm A`);
+	return `${label} at ${d.format('h:mm A')}`;
 }
 
 export function fromNow(date: Dayjs, currentTime: Dayjs): string {
@@ -71,10 +64,10 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 	} else if (totalDaysDiff > 0) {
 		fromNowStr = `${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
 		if (hoursDiff > 0) {
-			fromNowStr += ` ${hoursDiff}${hoursDiff === 1 ? 'hr' : 'hrs'}`;
+			fromNowStr += ` ${hoursDiff}hr`;
 		}
 	} else if (hoursDiff > 0) {
-		fromNowStr = `${hoursDiff}${hoursDiff === 1 ? 'hr' : 'hrs'}`;
+		fromNowStr = `${hoursDiff}hr`;
 		if (minutesDiff > 0) {
 			fromNowStr += ` ${minutesDiff}m`;
 		}
