@@ -66,10 +66,10 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 	} else if (weeksDiff > 0) {
 		fromNowStr = `${weeksDiff} ${weeksDiff === 1 ? 'week' : 'weeks'}`;
 		if (daysDiff > 0) {
-			fromNowStr += ` ${daysDiff}d`;
+			fromNowStr += ` ${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
 		}
 	} else if (totalDaysDiff > 0) {
-		fromNowStr = `${daysDiff}d`;
+		fromNowStr = `${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
 		if (hoursDiff > 0) {
 			fromNowStr += ` ${hoursDiff}hr`;
 		}
