@@ -21,11 +21,12 @@
 
 	<div class="experiences">
 		<Experience
-			role="Incoming DevOps Intern"
+			role="Current DevOps Intern"
 			icon="kcftech.webp"
 			company="KCF Technologies"
 			url="https://kcftech.com"
-			description="This upcoming summer I will be working for KCF Technologies as a DevOps intern. I will be working with Terraform, AWS, and a distributed embedded system network of sensors."
+			startDate={dayjs(new Date(2025, 5))}
+			description="I am currently at KCF Technologies as a DevOps intern. I work with a wide array of technologies such as terraform, AWS, go, python, and a number of other tools. I'm also handling some linux administration tasks using infrastructure as code."
 		/>
 
 		<div class="past-experiences">
