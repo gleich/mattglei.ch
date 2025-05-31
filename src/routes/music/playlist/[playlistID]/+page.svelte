@@ -5,7 +5,7 @@
 	import Since from '$lib/time/since.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import { DynamicHead, Error } from '@gleich/ui';
-	import type { PlaylistData } from './proxy+page.server';
+	import type { PlaylistData } from './+page.server';
 
 	const { data }: { data: PlaylistData } = $props();
 </script>

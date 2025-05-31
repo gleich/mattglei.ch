@@ -1,15 +1,15 @@
 <script lang="ts">
-	import type { AppleMusicPlaylistSummary } from '$lib/lcp/applemusic.server';
+	import type { AppleMusicPlaylist } from '$lib/lcp/applemusic.server';
 	import { Card, Image } from '@gleich/ui';
 
-	const { summary }: { summary: AppleMusicPlaylistSummary } = $props();
+	const { playlist }: { playlist: AppleMusicPlaylist } = $props();
 </script>
 
-<a href={`/music/playlist/${summary.id}`} class="container">
+<a href={`/music/playlist/${playlist.id}`} class="container">
 	<Card padding="0">
 		<div class="collage-container">
 			<div class="collage">
-				{#each summary.first_four_tracks as track (track.id)}
+				{#each playlist.tracks.slice(0, 4) as track (track.id)}
 					<div class="collage-image">
 						<Image
 							src={track.album_art_preview_url}
@@ -22,10 +22,10 @@
 					</div>
 				{/each}
 			</div>
-			<p class="name">{summary.name}</p>
+			<p class="name">{playlist.name}</p>
 		</div>
 		<button class="view-more">
-			View {summary.track_count} tracks
+			View {playlist.tracks.length} tracks
 		</button>
 	</Card>
 </a>
