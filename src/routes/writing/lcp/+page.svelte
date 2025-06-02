@@ -111,7 +111,7 @@
 		<ol>
 			<li>Fast response times</li>
 			<p>
-				When the site makes a request to load data from lcp.mattglei.ch/strava all it is doing is
+				When the site makes a request to load data from lcp.mattglei.ch/workouts all it is doing is
 				reading the cached data from memory. No expensive database queries or anything.
 			</p>
 			<li>Data can be processed and aggregated</li>
