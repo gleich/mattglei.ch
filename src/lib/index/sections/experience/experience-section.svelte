@@ -26,7 +26,7 @@
 			company="KCF Technologies"
 			url="https://kcftech.com"
 			startDate={dayjs(new Date(2025, 5))}
-			description="I am currently at KCF Technologies as a DevOps intern. I work with a wide array of technologies such as terraform, AWS, Go, Python, and a number of other tools. I'm also handling some linux administration tasks using infrastructure as code."
+			description="I am currently at KCF Technologies as a DevOps intern. I work with a wide array of technologies such as Terraform, AWS, Go, Python, and a number of other tools. I'm also handling some Linux administration tasks using infrastructure as code."
 		/>
 
 		<div class="past-experiences">
