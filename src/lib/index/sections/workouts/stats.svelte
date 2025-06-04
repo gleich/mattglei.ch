@@ -21,7 +21,9 @@
 
 			stats.set(
 				'Distance',
-				imperialUnits ? `${distanceMiles.toPrecision(3)} mi` : `${distanceKm.toPrecision(3)} km`
+				imperialUnits
+					? `${distanceMiles < 1 ? distanceMiles.toPrecision(2) : distanceMiles.toPrecision(3)} mi`
+					: `${distanceKm.toPrecision(3)} km`
 			);
 		} else if (workout.calories) {
 			stats.set('Calories Burned', workout.calories?.toLocaleString() + ' cal');
