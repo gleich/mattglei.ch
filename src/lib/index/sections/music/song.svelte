@@ -105,7 +105,7 @@
 	}
 
 	.apple-music-link {
-		margin: 5px 3px;
+		margin: 5px 8px;
 		margin-top: 7px;
 	}
 
