@@ -15,7 +15,7 @@
 
 <Fonts />
 
-<Layout repo="gleich/mattglei.ch" fadeIn={false}>
+<Layout repo="gleich/mattglei.ch">
 	<Nav />
 	<div class="children">
 		{@render children()}
