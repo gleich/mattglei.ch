@@ -82,7 +82,7 @@
 		border-top: 0;
 		border-left: 0;
 		padding: 2px 15px;
-		padding-bottom: 4px;
+		padding-bottom: 3px;
 		border-bottom-right-radius: var(--border-radius);
 		box-shadow: inset 0px 0px 6px var(--box-shadow-color);
 	}
