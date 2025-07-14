@@ -60,7 +60,7 @@
 
 	.title {
 		display: flex;
-		gap: 10px;
+		gap: 7px;
 		align-items: center;
 		text-decoration: inherit;
 		color: inherit;
