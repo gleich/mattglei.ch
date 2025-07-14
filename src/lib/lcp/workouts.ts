@@ -80,4 +80,5 @@ export interface HevySet {
 	weight_kg: number;
 	reps: number;
 	type: string;
+	duration_seconds?: number;
 }

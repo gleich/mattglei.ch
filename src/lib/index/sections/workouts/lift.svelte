@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Workout } from '$lib/lcp/workouts';
+	import { renderDuration } from '$lib/time';
 	import { Scrolling } from '@gleich/ui';
 	import { onMount } from 'svelte';
 
@@ -40,9 +41,13 @@
 									{set.type === 'warmup' ? 'Warmup' : `Set #${setIndex + 1}`}
 								</div>
 								<div class="set-value">
-									{imperialUnits
-										? `${Math.round(set.weight_kg * 2.2046226218)} lbs`
-										: `${Math.round(set.weight_kg)}} kg`} × {set.reps} reps
+									{#if set.duration_seconds}
+										{renderDuration(set.duration_seconds)}
+									{:else}
+										{imperialUnits
+											? `${Math.round(set.weight_kg * 2.2046226218)} lbs`
+											: `${Math.round(set.weight_kg)}} kg`} × {set.reps} reps
+									{/if}
 								</div>
 							</div>
 						{/each}

@@ -85,23 +85,27 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 
 export function renderDuration(seconds: number): string {
 	const duration = dayjs.duration(seconds, 'seconds');
-	let formattedDuration: string;
-
 	const totalHours = Math.floor(duration.asHours());
 	const minutes = duration.minutes();
+	const remainingS = duration.seconds();
+	const milliseconds = Math.round((seconds - Math.floor(seconds)) * 1000);
+
+	let formattedDuration: string;
+
 	if (totalHours > 0) {
 		formattedDuration = `${totalHours}hr`;
-		if (minutes > 0) {
-			formattedDuration += ` ${minutes}m`;
-		}
-	} else if (seconds < 3660 && seconds > 3540) {
+		if (minutes > 0) formattedDuration += ` ${minutes}m`;
+	} else if (seconds > 3540 && seconds < 3660) {
 		formattedDuration = '1hr';
+	} else if (seconds < 60) {
+		formattedDuration =
+			(remainingS > 0 ? `${remainingS}s` : '') +
+			(milliseconds > 0 || remainingS === 0 ? ` ${milliseconds}ms` : '');
+		formattedDuration = formattedDuration.trim();
 	} else {
-		const remainingSeconds = duration.seconds();
 		formattedDuration = `${minutes}m`;
-		if (remainingSeconds > 0) {
-			formattedDuration += ` ${remainingSeconds}s`;
-		}
+		if (remainingS > 0) formattedDuration += ` ${remainingS}s`;
 	}
+
 	return formattedDuration;
 }
