@@ -3,12 +3,13 @@
 	import Stats from '$lib/stats.svelte';
 	import { renderDuration } from '$lib/time';
 	import { onMount } from 'svelte';
+	import { SvelteMap } from 'svelte/reactivity';
 
 	const { workout }: { workout: Workout } = $props();
 
 	let imperialUnits = $state(false);
 	let stats = $derived(
-		new Map<string, string>([['Duration', renderDuration(workout.moving_time)]])
+		new SvelteMap<string, string>([['Duration', renderDuration(workout.moving_time)]])
 	);
 
 	onMount(() => {
@@ -72,7 +73,7 @@
 			stats.set('Sets', `${workout.hevy_set_count ?? 0}`);
 		}
 
-		stats = new Map(stats);
+		stats = new SvelteMap(stats);
 	});
 </script>
 
