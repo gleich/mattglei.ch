@@ -6,6 +6,7 @@
 	import ViewButton from '$lib/view-button.svelte';
 	import { DynamicHead, Error } from '@gleich/ui';
 	import type { PlaylistData } from './+page.server';
+	import SpotifyIcon from '$lib/icons/spotify-icon.svelte';
 
 	const { data }: { data: PlaylistData } = $props();
 </script>
@@ -36,9 +37,19 @@
 				</p>
 			</div>
 		</div>
-		<a class="view-on-apple-music" href={data.playlist.url} target="_blank">
-			<ViewButton on="Apple Music" icon={AppleMusicIcon} iconPaddingBottom="1.5px" />
-		</a>
+		<div class="view-on-buttons">
+			<a class="view-on-button" href={data.playlist.spotify_url} target="_blank">
+				<ViewButton on="Spotify" icon={SpotifyIcon} iconPaddingBottom="1px" iconColor="#24db68" />
+			</a>
+			<a class="view-on-button" href={data.playlist.url} target="_blank">
+				<ViewButton
+					on="Apple Music"
+					icon={AppleMusicIcon}
+					iconPaddingBottom="0.5px"
+					iconColor="#fb455d"
+				/>
+			</a>
+		</div>
 	</div>
 	<div class="songs">
 		{#each data.playlist.tracks as song (song)}
@@ -83,8 +94,15 @@
 		width: 192px;
 	}
 
-	.view-on-apple-music {
-		margin-top: 20px;
+	.view-on-buttons {
+		display: flex;
+		gap: 10px;
+		margin-top: 30px;
+		margin-bottom: 10px;
+	}
+
+	.view-on-button {
+		flex: 1;
 		text-decoration: inherit;
 	}
 
@@ -101,6 +119,11 @@
 	@media (max-width: 500px) {
 		.stats {
 			align-items: flex-start;
+		}
+
+		.view-on-buttons {
+			flex-direction: column;
+			gap: 10px;
 		}
 	}
 </style>

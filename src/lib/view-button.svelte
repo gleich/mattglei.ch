@@ -6,13 +6,15 @@
 		of,
 		more,
 		icon: Icon,
-		iconPaddingBottom = '3px'
+		iconPaddingBottom = '3px',
+		iconColor = 'inherit'
 	}: {
 		on?: string;
 		more?: boolean;
 		of?: string;
 		icon?: Component;
 		iconPaddingBottom?: string;
+		iconColor?: string;
 	} = $props();
 </script>
 
@@ -28,7 +30,11 @@
 	{/if}
 
 	{#if Icon}
-		<div class="icon" style:--icon-padding-bottom={iconPaddingBottom}>
+		<div
+			class="icon"
+			style:--icon-padding-bottom={iconPaddingBottom}
+			style:--icon-color={iconColor}
+		>
 			<Icon />
 		</div>
 	{/if}
@@ -50,6 +56,7 @@
 		margin-left: 7px;
 		margin-right: 6px;
 		margin-bottom: var(--icon-padding-bottom);
+		color: var(--icon-color);
 	}
 
 	@media (max-width: 500px) {

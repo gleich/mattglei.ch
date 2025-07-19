@@ -21,4 +21,5 @@ export interface AppleMusicPlaylist {
 	tracks: AppleMusicSong[];
 	last_modified: Date;
 	url: string;
+	spotify_url: string;
 }
