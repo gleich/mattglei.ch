@@ -48,7 +48,7 @@
 			{@render children()}
 		</div>
 		{#if liveData}
-			<p class="updated-container">
+			<p class={`updated-container ${liveData.updated ? 'loaded' : 'loading'}`}>
 				{#if liveData.updated}
 					Data <span class="updated-detailed">&nbsp;cached & processed&nbsp;</span><span
 						class="updated-concise">&nbsp;updated&nbsp;</span
@@ -149,13 +149,22 @@
 		align-items: center;
 		justify-content: center;
 		padding: 5px;
-		color: var(--green-foreground);
-		background: var(--green-background);
-		border-top: 1px solid var(--green-border);
 		font-family: 'IBM Plex Mono';
 		font-weight: 500;
 		font-size: 13.5px;
 		margin-top: 5px;
+	}
+
+	.loaded {
+		color: var(--green-foreground);
+		background: var(--green-background);
+		border-top: 1px solid var(--green-border);
+	}
+
+	.loading {
+		color: var(--yellow-foreground);
+		background: var(--yellow-background);
+		border-top: 1px solid var(--yellow-border);
 	}
 
 	.lcp-link {
