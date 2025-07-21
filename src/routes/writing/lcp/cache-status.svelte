@@ -5,15 +5,18 @@
 
 	const {
 		name,
+		loading = false,
 		updated,
 		updateFrequency
-	}: { name: string; updated?: Date; updateFrequency: string } = $props();
+	}: { name: string; loading?: boolean; updated?: Date; updateFrequency?: string } = $props();
 </script>
 
 <Card padding="0">
 	<div class="header">
 		<p class="cache-name">{name} Cache</p>
-		{#if updated}
+		{#if loading}
+			<p class="loading">LOADING</p>
+		{:else if updated}
 			<p class="online">ONLINE</p>
 		{:else}
 			<p class="offline">OFFLINE</p>
@@ -26,7 +29,9 @@
 		<p>{updateFrequency}</p>
 	</div>
 	<div class="updated">
-		{#if updated}
+		{#if loading}
+			Loading...
+		{:else if updated}
 			Updated <Since time={updated} />
 		{:else}
 			Cache is currently offline
@@ -41,7 +46,7 @@
 		padding-top: 6px;
 		font-family: 'Inter';
 		font-weight: 700;
-		background-color: #343537;
+		background-color: var(--section-name-background-color);
 		box-shadow: inset 0px 0px 6px var(--box-shadow-color);
 		border: 1px solid var(--border);
 		border-top: 0;
@@ -57,7 +62,8 @@
 	}
 
 	.online,
-	.offline {
+	.offline,
+	.loading {
 		font-family: 'IBM Plex Mono';
 		display: flex;
 		align-items: center;
@@ -67,6 +73,12 @@
 		border-right: 0 !important;
 		font-size: 13px;
 		border-bottom-left-radius: var(--border-radius);
+	}
+
+	.loading {
+		color: var(--yellow-foreground);
+		background-color: var(--yellow-background);
+		border: 1px solid var(--yellow-border);
 	}
 
 	.online {

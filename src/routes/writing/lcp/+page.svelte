@@ -19,7 +19,7 @@
 	<WritingSection title="Cache Status Overview">
 		<div class="statuses">
 			{#await data.projects}
-				<p>Loading projects cache...</p>
+				<CacheStatus name="Projects" loading />
 			{:then projects}
 				<CacheStatus
 					name="Projects"
@@ -28,7 +28,7 @@
 				/>
 			{/await}
 			{#await data.workouts}
-				<p>Loading workouts cache...</p>
+				<CacheStatus name="Workouts" loading />
 			{:then workouts}
 				<CacheStatus
 					name="Workouts"
@@ -37,7 +37,7 @@
 				/>
 			{/await}
 			{#await data.music}
-				<p>Loading music cache...</p>
+				<CacheStatus name="Music" loading />
 			{:then music}
 				<CacheStatus
 					name="Music"
@@ -46,7 +46,7 @@
 				/>
 			{/await}
 			{#await data.games}
-				<p>Loading games cache...</p>
+				<CacheStatus name="Games" loading />
 			{:then games}
 				<CacheStatus
 					name="Games"

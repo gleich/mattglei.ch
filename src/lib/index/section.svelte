@@ -77,7 +77,7 @@
 	}
 
 	.section-name {
-		background-color: #343537;
+		background-color: var(--section-name-background-color);
 		border: 1px solid var(--border);
 		border-top: 0;
 		border-left: 0;
@@ -170,12 +170,6 @@
 
 	.updated-concise {
 		display: none;
-	}
-
-	@media (prefers-color-scheme: light) {
-		.section-name {
-			background-color: #eaeaea;
-		}
 	}
 
 	@media (max-width: 450px) {
