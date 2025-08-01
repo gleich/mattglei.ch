@@ -8,6 +8,15 @@
 
 	let imperialUnits = $state(false);
 
+	function formatWeight(weight: number): string {
+		const fixedWeight = weight.toFixed(1);
+		if (Number.isInteger(+fixedWeight)) {
+			return Math.round(weight).toString();
+		} else {
+			return fixedWeight;
+		}
+	}
+
 	onMount(() => {
 		imperialUnits = navigator.language === 'en-US';
 	});
@@ -45,8 +54,8 @@
 										{renderDuration(set.duration_seconds)}
 									{:else}
 										{imperialUnits
-											? `${Math.round(set.weight_kg * 2.2046226218)} lbs`
-											: `${Math.round(set.weight_kg)}} kg`} × {set.reps} reps
+											? `${formatWeight(set.weight_kg * 2.2046226218)} lbs`
+											: `${formatWeight(set.weight_kg)}} kg`} × {set.reps} reps
 									{/if}
 								</div>
 							</div>
