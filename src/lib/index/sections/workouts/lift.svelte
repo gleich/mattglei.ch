@@ -25,7 +25,7 @@
 <div class="container">
 	<div class="scroll-container">
 		<div class="table">
-			{#each workout.hevy_exercises ?? [] as exercise, exerciseIndex (exercise.exercise_template_id)}
+			{#each workout.hevy_exercises ?? [] as exercise (exercise.exercise_template_id)}
 				<div>
 					<a
 						href={`https://hevy.com/exercise/${exercise.exercise_template_id}`}
