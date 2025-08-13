@@ -20,6 +20,14 @@
 <Intro />
 
 <div class="sections">
+	{#await data.projects}
+		<ProjectSection loading />
+	{:then projects}
+		<ProjectSection {projects} />
+	{/await}
+
+	<ExperienceSection />
+
 	{#await data.workouts}
 		<WorkoutsSection loading />
 	{:then workouts}
@@ -33,14 +41,6 @@
 	{/await}
 
 	<PhotoSection />
-
-	{#await data.projects}
-		<ProjectSection loading />
-	{:then projects}
-		<ProjectSection {projects} />
-	{/await}
-
-	<ExperienceSection />
 
 	{#await data.games}
 		<GamesSection loading />
