@@ -21,12 +21,12 @@
 
 	<div class="experiences">
 		<Experience
-			role="Current DevOps Intern"
+			role="Current Associate DevOps Engineer"
 			icon="kcftech.webp"
 			company="KCF Technologies"
 			url="https://kcftech.com"
 			startDate={dayjs(new Date(2025, 5))}
-			description="I am currently at KCF Technologies as a DevOps intern. I work with a wide array of technologies such as Terraform, AWS, Rust, Python, and a number of other tools. I'm also handling some Linux administration tasks using infrastructure as code."
+			description="Continuing my full-time RIT co-op with KCF Technologies through the fall semester as an Associate DevOps Engineer on the Core Platform team. I work with technologies such as Terraform, AWS, Rust, and Python, along with various DevOps tools. My responsibilities also include Linux system administration and implementing infrastructure as code solutions."
 		/>
 
 		<div class="past-experiences">
