@@ -21,7 +21,7 @@
 
 	<div class="experiences">
 		<Experience
-			role="Current Associate DevOps Engineer"
+			role="Associate DevOps Engineer"
 			icon="kcftech.webp"
 			company="KCF Technologies"
 			url="https://kcftech.com"
