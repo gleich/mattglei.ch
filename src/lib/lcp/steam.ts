@@ -8,13 +8,4 @@ export interface Game {
 	library_url: string | undefined;
 	playtime_forever: number;
 	achievement_progress: number | undefined;
-	achievements: Achievement[] | undefined;
-}
-
-export interface Achievement {
-	api_name: string;
-	achieved: boolean;
-	icon: string;
-	display_name: string;
-	description: string | undefined;
 }
