@@ -5,7 +5,7 @@
 <div class="container">
 	<p>Hey, I'm Matt Gleich</p>
 	<div>
-		I'm a rising fourth-year computer science student at the
+		I'm a fourth-year computer science student at the
 		<a href="https://rit.edu" target="_blank">Rochester Institute of Technology (RIT)</a>
 		and currently completing a full-time co-op as an Associate DevOps Engineer at
 		<a href="https://kcftech.com" target="_blank">KCF Technologies</a>. This website serves as a
