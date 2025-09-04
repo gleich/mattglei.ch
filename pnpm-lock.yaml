@@ -15,8 +15,8 @@ importers:
         specifier: ^9.34.0
         version: 9.34.0
       '@gleich/ui':
-        specifier: ^1.3.3
-        version: 1.3.3(@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)
+        specifier: ^1.3.4
+        version: 1.3.4(@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)
       '@sveltejs/adapter-cloudflare':
         specifier: ^7.2.3
         version: 7.2.3(@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)(vite@7.1.4))(wrangler@4.33.1(@cloudflare/workers-types@4.20250831.0))
@@ -477,8 +477,8 @@ packages:
     resolution: {integrity: sha512-Z5kJ+wU3oA7MMIqVR9tyZRtjYPr4OC004Q4Rw7pgOKUOKkJfZ3O24nz3WYfGRpMDNmcOi3TwQOmgm7B7Tpii0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@gleich/ui@1.3.3':
-    resolution: {integrity: sha512-bDCnMPa0uT5IJHJNdb5zsoopi6dt0eBNPBWsUjCwofmEKEztSiXoS1qWFrfY5+ZxfcruxaHauHlYokBe2HJGSA==}
+  '@gleich/ui@1.3.4':
+    resolution: {integrity: sha512-vyP2jRpHnIn85q/2eXeIdr6XU/sa8HXuvoF785KHfCJ3gAFAxxwsGeFa7rhzIZJ9ObnQnYGhNbS8BH1dH/xBZg==}
     peerDependencies:
       '@sveltejs/kit': ^2.16.0
       svelte: ^5.0.0
@@ -2089,7 +2089,7 @@ snapshots:
       '@eslint/core': 0.15.2
       levn: 0.4.1
 
-  '@gleich/ui@1.3.3(@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)':
+  '@gleich/ui@1.3.4(@sveltejs/kit@2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)':
     dependencies:
       '@sveltejs/kit': 2.37.0(@sveltejs/vite-plugin-svelte@6.1.3(svelte@5.38.6)(vite@7.1.4))(svelte@5.38.6)(vite@7.1.4)
       svelte: 5.38.6
