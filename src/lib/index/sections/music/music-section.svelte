@@ -19,7 +19,7 @@
 		{ name: 'The Smiths', url: 'https://www.officialsmiths.co.uk' },
 		{ name: 'Eagles', url: 'https://eagles.com' },
 		{ name: 'Fleetwood Mac', url: 'https://www.fleetwoodmacofficial.com' },
-		{ name: 'Dire Straits', url: 'https://www.direstraits.com' },
+		{ name: 'Cigarettes After Sex', url: 'https://www.cigarettesaftersex.com/' },
 		{ name: 'Deftones', url: 'https://www.deftones.com' }
 	];
 
