@@ -65,7 +65,7 @@
 		<div>
 			<h3 class="header">Playlists</h3>
 			<div class="section playlists">
-				{#each music.data!.playlists as playlist (playlist.id)}
+				{#each music.data!.playlist_summaries as playlist (playlist.id)}
 					<Playlist {playlist} />
 				{/each}
 			</div>
