@@ -8,6 +8,7 @@
 	import { Error } from '@gleich/ui';
 	import Section from '../../section.svelte';
 	import Workout from './workout.svelte';
+	import { resolve } from '$app/paths';
 
 	const { workouts, loading }: { workouts?: LcpResponse<LcpWorkout[]> | null; loading?: boolean } =
 		$props();
@@ -46,7 +47,11 @@
 			Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those
 			things I especially love cycling mainly through gravel cycling, road cycling, and mountain
 			biking. Recently I've been getting into lifting which has been a ton of fun. Below are 2 of my
-			most recent <a href={stravaURL} target="_blank">Strava</a>/<a href={hevyURL}>Hevy</a> workouts:
+			most recent <a href={stravaURL} rel="external" target="_blank">Strava</a>/<a
+				href={hevyURL}
+				rel="external">Hevy</a
+			>
+			workouts:
 		</p>
 		<div class="workouts">
 			{#each workouts.data.slice(0, 2) as workout (workout.id)}
@@ -55,7 +60,7 @@
 				</div>
 			{/each}
 		</div>
-		<a class="view-more" href="/workouts">
+		<a class="view-more" href={resolve('/workouts')}>
 			<ViewButton more of="workouts" />
 		</a>
 	{:else}

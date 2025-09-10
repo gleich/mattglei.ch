@@ -33,6 +33,19 @@ export default ts.config(
 				parser: ts.parser,
 				svelteConfig
 			}
+		},
+		// should be able to removed once this gets resolved:
+		// https://github.com/sveltejs/eslint-plugin-svelte/issues/1314
+		rules: {
+			'svelte/no-navigation-without-resolve': [
+				'error',
+				{
+					ignoreGoto: true,
+					ignoreLinks: true,
+					ignorePushState: true,
+					ignoreReplaceState: true
+				}
+			]
 		}
 	},
 	{
