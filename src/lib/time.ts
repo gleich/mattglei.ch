@@ -44,6 +44,8 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 	const msDiff = Math.abs(date.diff(currentTime, 'millisecond'));
 	const secondsDiff = (msDiff / 1000) % 60;
 
+	const MONTH_THRESHOLD_DAYS = 30;
+
 	let fromNowStr = '';
 
 	if (yearsDiff > 0) {
@@ -51,10 +53,14 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 		if (monthsDiff > 0) {
 			fromNowStr += ` ${monthsDiff} ${monthsDiff === 1 ? 'month' : 'months'}`;
 		}
-	} else if (monthsDiff > 0) {
-		fromNowStr = `${monthsDiff} ${monthsDiff === 1 ? 'month' : 'months'}`;
-		if (daysDiff > 0) {
-			fromNowStr += ` ${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
+	} else if (totalMonthsDiff > 0 || totalDaysDiff >= MONTH_THRESHOLD_DAYS) {
+		const shownMonths = totalMonthsDiff > 0 ? totalMonthsDiff : 1;
+		fromNowStr = `${shownMonths} ${shownMonths === 1 ? 'month' : 'months'}`;
+		if (totalMonthsDiff > 0) {
+			const remainderDays = totalDaysDiff % 30;
+			if (remainderDays > 0) {
+				fromNowStr += ` ${remainderDays} ${remainderDays === 1 ? 'day' : 'days'}`;
+			}
 		}
 	} else if (weeksDiff > 0) {
 		fromNowStr = `${weeksDiff} ${weeksDiff === 1 ? 'week' : 'weeks'}`;
@@ -63,19 +69,13 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 		}
 	} else if (totalDaysDiff > 0) {
 		fromNowStr = `${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
-		if (hoursDiff > 0) {
-			fromNowStr += ` ${hoursDiff}hr`;
-		}
+		if (hoursDiff > 0) fromNowStr += ` ${hoursDiff}hr`;
 	} else if (hoursDiff > 0) {
 		fromNowStr = `${hoursDiff}hr`;
-		if (minutesDiff > 0) {
-			fromNowStr += ` ${minutesDiff}m`;
-		}
+		if (minutesDiff > 0) fromNowStr += ` ${minutesDiff}m`;
 	} else if (minutesDiff > 0) {
 		fromNowStr = `${minutesDiff}m`;
-		if (secondsDiff > 0) {
-			fromNowStr += ` ${secondsDiff.toFixed(2)}s`;
-		}
+		if (secondsDiff > 0) fromNowStr += ` ${secondsDiff.toFixed(2)}s`;
 	} else {
 		fromNowStr = `${secondsDiff.toFixed(2)}s`;
 	}
