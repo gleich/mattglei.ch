@@ -41,6 +41,7 @@
 		</p>
 		<div class="data">
 			{#if workout.platform === 'strava'}
+				<!-- <Graph {workout} /> -->
 				{#if workout.has_map}
 					<Map {workout} />
 				{/if}
