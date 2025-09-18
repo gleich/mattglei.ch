@@ -55,7 +55,7 @@
 									{:else}
 										{imperialUnits
 											? `${formatWeight(set.weight_kg * 2.2046226218)} lbs`
-											: `${formatWeight(set.weight_kg)}} kg`} × {set.reps} reps
+											: `${formatWeight(set.weight_kg)} kg`} × {set.reps} reps
 									{/if}
 								</div>
 							</div>
