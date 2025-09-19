@@ -6,7 +6,7 @@
 	import ViewButton from '$lib/view-button.svelte';
 	import { DynamicHead, Error } from '@gleich/ui';
 	import type { PlaylistData } from './+page.server';
-	import SpotifyIcon from '$lib/icons/spotify-icon.svelte';
+	// import SpotifyIcon from '$lib/icons/spotify-icon.svelte';
 
 	const { data }: { data: PlaylistData } = $props();
 </script>
@@ -38,13 +38,9 @@
 			</div>
 		</div>
 		<div class="view-on-buttons">
-			<a
-				class="view-on-button"
-				href={`https://open.spotify.com/playlist/${data.playlist.spotify_id}`}
-				target="_blank"
-			>
+			<!-- <a class="view-on-button" href={data.playlist.spotify_url} target="_blank">
 				<ViewButton on="Spotify" icon={SpotifyIcon} iconPaddingBottom="1px" iconColor="#24db68" />
-			</a>
+			</a> -->
 			<a class="view-on-button" href={data.playlist.url} target="_blank">
 				<ViewButton
 					on="Apple Music"
