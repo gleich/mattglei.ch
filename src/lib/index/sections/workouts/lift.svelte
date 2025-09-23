@@ -137,9 +137,7 @@
 	}
 
 	tr {
-		border: 0.5px solid var(--border);
-		border-left: 0px;
-		border-right: 0px;
+		border: 0;
 	}
 
 	th {
@@ -149,7 +147,19 @@
 
 	th,
 	td {
-		border-left: 0.5px solid var(--border);
+		border-left: 1px solid var(--border);
+	}
+
+	thead th {
+		border-bottom: 1px solid var(--border);
+	}
+
+	tbody td {
+		border-top: 1px solid var(--border);
+	}
+
+	tbody tr:last-child td {
+		border-bottom: 1px solid var(--border);
 	}
 
 	.set {
