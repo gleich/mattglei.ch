@@ -24,46 +24,61 @@
 
 <div class="container">
 	<div class="scroll-container">
-		<div class="table">
-			{#each workout.hevy_exercises ?? [] as exercise (exercise.exercise_template_id)}
-				<div>
-					<a
-						href={`https://hevy.com/exercise/${exercise.exercise_template_id}`}
-						target="_blank"
-						class="exercise-name"
-					>
-						<Scrolling>
-							<p>
-								{`${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
-							</p>
-						</Scrolling>
-						{#if exercise.superset_id != undefined}
-							<p class="superset">Superset #{exercise.superset_id}</p>
-						{/if}
-					</a>
-					<div class="sets">
-						{#each exercise.sets as set, setIndex (set.type + setIndex)}
-							<div
-								class={`${set.type === 'warmup' && exercise.sets.length != 2 ? 'warmup-set' : ''} set`}
-							>
-								<div class={`${set.type === 'warmup' ? 'warmup-set-number' : ''} set-number`}>
-									{set.type === 'warmup' ? 'Warmup' : `Set #${setIndex + 1}`}
-								</div>
-								<div class="set-value">
-									{#if set.duration_seconds}
-										{renderDuration(set.duration_seconds)}
+		{#each workout.hevy_exercises ?? [] as exercise (exercise.exercise_template_id)}
+			<div class="exercise">
+				<a
+					href={`https://hevy.com/exercise/${exercise.exercise_template_id}`}
+					target="_blank"
+					class="exercise-name"
+				>
+					<Scrolling>
+						<p>
+							{`${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
+						</p>
+					</Scrolling>
+				</a>
+				<div class="sets">
+					<table>
+						<thead>
+							<tr>
+								<th>Set #</th>
+								<th>Type</th>
+								{#if exercise.sets.at(0)?.duration_seconds}
+									<th>Time</th>
+								{:else}
+									<th>Weight & Reps</th>
+								{/if}
+							</tr>
+						</thead>
+						<tbody>
+							{#each exercise.sets as set, index (set)}
+								<tr>
+									<td>{index + 1}</td>
+									{#if set.type == 'warmup'}
+										<td class="warmup set">Warmup</td>
+									{:else if set.type == 'failure'}
+										<td class="failure set">Till Failure</td>
+									{:else if set.type === 'dropset'}
+										<td class="drop set">Dropset</td>
 									{:else}
-										{imperialUnits
-											? `${formatWeight(set.weight_kg * 2.2046226218)} lbs`
-											: `${formatWeight(set.weight_kg)} kg`} × {set.reps} reps
+										<td class="normal set">Normal</td>
 									{/if}
-								</div>
-							</div>
-						{/each}
-					</div>
+									<td>
+										{#if set.duration_seconds}
+											{renderDuration(set.duration_seconds)}
+										{:else}
+											{imperialUnits
+												? `${formatWeight(set.weight_kg * 2.2046226218)} lbs`
+												: `${formatWeight(set.weight_kg)} kg`} × {set.reps} reps
+										{/if}
+									</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
 				</div>
-			{/each}
-		</div>
+			</div>
+		{/each}
 	</div>
 </div>
 
@@ -73,6 +88,7 @@
 		overflow-y: scroll;
 		overflow-x: hidden;
 		aspect-ratio: 440/240;
+		font-size: 15px;
 	}
 
 	.exercise-name {
@@ -90,111 +106,89 @@
 		font-size: 15.5px;
 	}
 
-	.warmup-set-number {
-		color: rgb(255, 115, 0);
-		background-color: rgb(55, 36, 0) !important;
-		border: 1.5px dashed rgb(158, 71, 0) !important;
-		padding: 0 15px !important;
-		padding-bottom: 1px !important;
-	}
-
-	.set-number {
-		border: 1.5px solid var(--border);
-		background-color: rgb(46, 49, 52);
-		padding: 0px 7px;
-		font-size: 13px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		white-space: nowrap;
-		border-radius: 3px;
-	}
-
-	.set-value {
-		width: 110px;
-		font-size: 14.5px;
-		white-space: nowrap;
-	}
-
 	.sets {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
+		display: flex;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
 		grid-column: 50%;
 		gap: 5px;
-		margin: 12px 0px;
+	}
+
+	.exercise {
+		margin-bottom: 20px;
+	}
+
+	.exercise:last-child {
+		margin-bottom: 0;
+	}
+
+	table {
+		border-collapse: collapse;
+	}
+
+	table,
+	thead,
+	th {
+		margin-top: 0;
+		padding-top: 0;
+	}
+
+	td {
+		text-align: center;
+	}
+
+	tr {
+		border: 0.5px solid var(--border);
+		border-left: 0px;
+		border-right: 0px;
+	}
+
+	th {
+		color: grey;
+		font-weight: normal;
+	}
+
+	th,
+	td {
+		border-left: 0.5px solid var(--border);
 	}
 
 	.set {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 7px;
-		font-size: 15px;
+		margin: 2px 0;
+		padding: 1px 10px;
+		width: fit-content;
 	}
 
-	.warmup-set {
-		grid-column: span 2;
+	.failure {
+		background-color: var(--red-background);
+		color: var(--red-foreground);
 	}
 
-	.superset {
-		font-size: 14px;
-		line-height: 80%;
-		margin-bottom: 3px;
+	.normal {
+		background-color: #333333;
+	}
+
+	.drop {
+		background-color: #12203f;
+		color: var(--blue-foreground);
+	}
+
+	.warmup {
+		color: rgb(255, 115, 0);
+		background-color: rgb(55, 36, 0);
 	}
 
 	@media (prefers-color-scheme: light) {
-		.set-number {
-			background-color: rgb(205, 205, 205);
-		}
-
-		.warmup-set-number {
-			background-color: rgb(248 200 151) !important;
-			border-color: rgba(255, 128, 0, 0.627) !important;
+		.warmup {
+			background-color: rgb(248 200 151);
 			color: black;
 		}
-	}
 
-	@media (max-width: 850px) {
-		.sets {
-			grid-template-columns: 1fr;
-			gap: 4px;
+		.normal {
+			background-color: #fff;
 		}
 
-		.set-number {
-			width: 25%;
-		}
-
-		.warmup-set {
-			grid-column: span 1;
-		}
-	}
-
-	@media (max-width: 715px) {
-		.sets {
-			grid-template-columns: 1fr 1fr;
-		}
-
-		.warmup-set {
-			grid-column: span 2;
-		}
-	}
-
-	@media (max-width: 420px) {
-		.warmup-set {
-			grid-column: span 1;
-		}
-
-		.set-number {
-			width: 28%;
-			min-width: 100px;
-		}
-
-		.sets {
-			grid-template-columns: 1fr;
-			gap: 4px;
+		.drop {
+			background-color: #c3e4ff;
 		}
 	}
 </style>
