@@ -24,41 +24,61 @@
 
 <div class="container">
 	<div class="scroll-container">
-		<div class="table">
-			{#each workout.hevy_exercises ?? [] as exercise (exercise.exercise_template_id)}
-				<div>
-					<a
-						href={`https://hevy.com/exercise/${exercise.exercise_template_id}`}
-						target="_blank"
-						class="exercise-name"
-					>
-						<Scrolling>
-							<p>
-								{`${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
-							</p>
-						</Scrolling>
-					</a>
-					<div class="sets">
-						<table>
-							<thead>
-								<tr>
-									<th>Sets</th>
+		{#each workout.hevy_exercises ?? [] as exercise (exercise.exercise_template_id)}
+			<div class="exercise">
+				<a
+					href={`https://hevy.com/exercise/${exercise.exercise_template_id}`}
+					target="_blank"
+					class="exercise-name"
+				>
+					<Scrolling>
+						<p>
+							{`${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
+						</p>
+					</Scrolling>
+				</a>
+				<div class="sets">
+					<table>
+						<thead>
+							<tr>
+								<th>Set #</th>
+								<th>Type</th>
+								{#if exercise.sets.at(0)?.duration_seconds}
+									<th>Time</th>
+								{:else}
 									<th>Weight & Reps</th>
+								{/if}
+							</tr>
+						</thead>
+						<tbody>
+							{#each exercise.sets as set, index (set)}
+								<tr>
+									<td>{index + 1}</td>
+									{#if set.type == 'warmup'}
+										<td class="warmup set">Warmup</td>
+									{:else if set.type == 'failure'}
+										<td class="failure set">Till Failure</td>
+									{:else if set.type === 'dropset'}
+										<td class="drop set">Dropset</td>
+									{:else}
+										<td class="normal set">Normal</td>
+									{/if}
+									<td>
+										{#if set.duration_seconds}
+											{renderDuration(set.duration_seconds)}
+										{:else}
+											{imperialUnits
+												? `${formatWeight(set.weight_kg * 2.2046226218)} lbs`
+												: `${formatWeight(set.weight_kg)} kg`} × {set.reps} reps
+										{/if}
+									</td>
 								</tr>
-							</thead>
-							<tbody>
-								{#each exercise.sets as set (set)}
-									<tr>
-										<td>{formatWeight(set.weight_kg)}</td>
-										<td>{set.reps}</td>
-									</tr>
-								{/each}
-							</tbody>
-						</table>
-					</div>
+							{/each}
+						</tbody>
+					</table>
 				</div>
-			{/each}
-		</div>
+			</div>
+		{/each}
 	</div>
 </div>
 
@@ -68,6 +88,7 @@
 		overflow-y: scroll;
 		overflow-x: hidden;
 		aspect-ratio: 440/240;
+		font-size: 15px;
 	}
 
 	.exercise-name {
@@ -90,6 +111,84 @@
 		flex-direction: column;
 		grid-column: 50%;
 		gap: 5px;
-		margin: 12px 0px;
+	}
+
+	.exercise {
+		margin-bottom: 20px;
+	}
+
+	.exercise:last-child {
+		margin-bottom: 0;
+	}
+
+	table {
+		border-collapse: collapse;
+	}
+
+	table,
+	thead,
+	th {
+		margin-top: 0;
+		padding-top: 0;
+	}
+
+	td {
+		text-align: center;
+	}
+
+	tr {
+		border: 0.5px solid var(--border);
+		border-left: 0px;
+		border-right: 0px;
+	}
+
+	th {
+		color: grey;
+		font-weight: normal;
+	}
+
+	th,
+	td {
+		border-left: 0.5px solid var(--border);
+	}
+
+	.set {
+		margin: 2px 0;
+		padding: 1px 10px;
+		width: fit-content;
+	}
+
+	.failure {
+		background-color: var(--red-background);
+		color: var(--red-foreground);
+	}
+
+	.normal {
+		background-color: #333333;
+	}
+
+	.drop {
+		background-color: #12203f;
+		color: var(--blue-foreground);
+	}
+
+	.warmup {
+		color: rgb(255, 115, 0);
+		background-color: rgb(55, 36, 0);
+	}
+
+	@media (prefers-color-scheme: light) {
+		.warmup {
+			background-color: rgb(248 200 151);
+			color: black;
+		}
+
+		.normal {
+			background-color: #fff;
+		}
+
+		.drop {
+			background-color: #c3e4ff;
+		}
 	}
 </style>
