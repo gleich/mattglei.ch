@@ -154,6 +154,11 @@
 		border-left: 1px solid var(--border);
 	}
 
+	th:first-child,
+	td:first-child {
+		border-left: 0;
+	}
+
 	thead th {
 		border-bottom: 1px solid var(--border);
 	}
