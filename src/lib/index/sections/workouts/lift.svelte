@@ -173,6 +173,8 @@
 
 	.index {
 		color: grey;
+		font-family: 'IBM Plex Mono';
+		font-weight: 400;
 	}
 
 	.set {
