@@ -45,6 +45,8 @@
 								<th>Type</th>
 								{#if exercise.sets.at(0)?.duration_seconds}
 									<th>Time</th>
+								{:else if exercise.sets.every((s) => s.weight_kg === 0)}
+									<th>Reps</th>
 								{:else}
 									<th>Weight & Reps</th>
 								{/if}
@@ -66,6 +68,8 @@
 									<td>
 										{#if set.duration_seconds}
 											{renderDuration(set.duration_seconds)}
+										{:else if exercise.sets.every((s) => s.weight_kg == 0)}
+											{set.reps} reps
 										{:else}
 											{imperialUnits
 												? `${formatWeight(set.weight_kg * 2.2046226218)} lbs`
