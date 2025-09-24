@@ -55,7 +55,7 @@
 						<tbody>
 							{#each exercise.sets as set, index (set)}
 								<tr>
-									<td>{index + 1}</td>
+									<td class="index">{index + 1}</td>
 									{#if set.type == 'warmup'}
 										<td class="warmup set">Warmup</td>
 									{:else if set.type == 'failure'}
@@ -169,6 +169,10 @@
 
 	tbody tr:last-child td {
 		border-bottom: 1px solid var(--border);
+	}
+
+	.index {
+		color: grey;
 	}
 
 	.set {
