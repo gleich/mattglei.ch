@@ -191,7 +191,7 @@
 	}
 
 	.drop {
-		background-color: #12203f;
+		background-color: #222c41;
 		color: var(--blue-foreground);
 	}
 
