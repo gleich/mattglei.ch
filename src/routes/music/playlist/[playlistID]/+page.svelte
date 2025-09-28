@@ -13,7 +13,7 @@
 
 {#if data.playlist}
 	<DynamicHead
-		title={`${data.playlist.name} playlist`}
+		title={`${data.playlist.name} Playlist`}
 		description={`${data.playlist.tracks.length} tracks`}
 		opengraphImage={{ url: data.playlist.tracks[0].album_art_url, height: '600', width: '600' }}
 	/>
