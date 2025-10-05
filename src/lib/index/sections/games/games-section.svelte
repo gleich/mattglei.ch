@@ -7,63 +7,76 @@
 	import Stats from '$lib/stats.svelte';
 	import { renderDuration } from '$lib/time';
 	import { Card, Error, Image } from '@gleich/ui';
+	import { source } from 'sveltekit-sse';
 
-	const { loading, games }: { loading?: boolean; games?: LcpResponse<Game[]> | null } = $props();
+	const stream = source('https://lcp.mattglei.ch/steam/stream').select('message');
+
+	const { games: initial, loading }: { games?: LcpResponse<Game[]> | null; loading?: boolean } =
+		$props();
+	let games = $state<LcpResponse<Game[]> | null>(initial ?? null);
+
+	stream.subscribe((s) => {
+		if (s) {
+			games = JSON.parse(s);
+		}
+	});
 </script>
 
-<Section
-	name="Games"
-	liveData={{
-		sources: [{ name: 'Steam', icon: SteamIcon, url: 'https://store.steampowered.com/about/' }],
-		updated: games?.updated
-	}}
->
-	{#if loading}
-		<Loading height={483.63} />
-	{:else if games != null}
-		<p>
-			To relax I like to occasionally play games with some of my friends. My favorite game of all
-			time is <a href="https://www.firewatchgame.com" target="_blank">Firewatch</a> (I've probably
-			replayed it ~8 times over the years). Here are my recently played games from
-			<a href="https://store.steampowered.com/about/" target="_blank">Steam</a>:
-		</p>
+{#key games}
+	<Section
+		name="Games"
+		liveData={{
+			sources: [{ name: 'Steam', icon: SteamIcon, url: 'https://store.steampowered.com/about/' }],
+			updated: games?.updated
+		}}
+	>
+		{#if loading}
+			<Loading height={483.63} />
+		{:else if games != null}
+			<p>
+				To relax I like to occasionally play games with some of my friends. My favorite game of all
+				time is <a href="https://www.firewatchgame.com" target="_blank">Firewatch</a> (I've probably
+				replayed it ~8 times over the years). Here are my recently played games from
+				<a href="https://store.steampowered.com/about/" target="_blank">Steam</a>:
+			</p>
 
-		<div class="games">
-			{#each games.data.slice(0, 6) as game (game.app_id)}
-				<Card padding="0">
-					<a href={game.url} target="_blank" class="game" title={`View "${game.name}" on Steam`}>
-						<div class="game-picture">
-							<Image
-								src={game.header_url}
-								alt={game.name}
-								width={460}
-								height={215}
-								placeholder={game.header_blur_hash}
-							/>
-						</div>
-						<div class="stats">
-							<Stats
-								stats={new Map([
-									['Playtime', renderDuration(game.playtime_forever * 60)],
-									[
-										'Achievements',
-										typeof game.achievement_progress === 'number'
-											? game.achievement_progress === 0.0
-												? '0%'
-												: game.achievement_progress.toPrecision(3) + '%'
-											: 'N/A'
-									]
-								])}
-							/>
-						</div>
-					</a>
-				</Card>
-			{/each}
-		</div>
-	{:else}
-		<Error msg="Failed to load game data" />
-	{/if}
-</Section>
+			<div class="games">
+				{#each games.data.slice(0, 6) as game (game.app_id)}
+					<Card padding="0">
+						<a href={game.url} target="_blank" class="game" title={`View "${game.name}" on Steam`}>
+							<div class="game-picture">
+								<Image
+									src={game.header_url}
+									alt={game.name}
+									width={460}
+									height={215}
+									placeholder={game.header_blur_hash}
+								/>
+							</div>
+							<div class="stats">
+								<Stats
+									stats={new Map([
+										['Playtime', renderDuration(game.playtime_forever * 60)],
+										[
+											'Achievements',
+											typeof game.achievement_progress === 'number'
+												? game.achievement_progress === 0.0
+													? '0%'
+													: game.achievement_progress.toPrecision(3) + '%'
+												: 'N/A'
+										]
+									])}
+								/>
+							</div>
+						</a>
+					</Card>
+				{/each}
+			</div>
+		{:else}
+			<Error msg="Failed to load game data" />
+		{/if}
+	</Section>
+{/key}
 
 <style>
 	.games {

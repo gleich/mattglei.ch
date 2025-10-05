@@ -7,6 +7,9 @@
 	import { Error } from '@gleich/ui';
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
+	import { source } from 'sveltekit-sse';
+
+	const stream = source('https://lcp.mattglei.ch/applemusic/stream').select('message');
 
 	interface Artist {
 		name: string;
@@ -23,57 +26,67 @@
 		{ name: 'Deftones', url: 'https://www.deftones.com' }
 	];
 
-	const { music, loading }: { music?: LcpResponse<CacheData> | null; loading?: boolean } = $props();
+	const { music: initial, loading }: { music?: LcpResponse<CacheData> | null; loading?: boolean } =
+		$props();
+	let music = $state<LcpResponse<CacheData> | null>(initial ?? null);
+
+	stream.subscribe((s) => {
+		if (s) {
+			music = JSON.parse(s);
+		}
+	});
 </script>
 
-<Section
-	name="Music"
-	liveData={{
-		sources: [
-			{ name: 'Apple Music', icon: AppleMusicIcon, url: 'https://www.apple.com/apple-music/' }
-		],
-		updated: music?.updated
-	}}
->
-	{#if loading}
-		<Loading height={744} />
-	{:else if music != null}
-		<p>
-			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite
-			artists are
-			{#each favArtists as artist, index (artist.url)}
-				{#if index != favArtists.length && index != 0},{/if}
-				{#if index + 1 === favArtists.length}
-					and
-				{/if}
-				<a href={artist.url} target="_blank" rel="noopener noreferrer">{artist.name}</a>
-			{/each}. Below is my collection of playlists that I've made over the years as well as my
-			recently played music.
-		</p>
+{#key music}
+	<Section
+		name="Music"
+		liveData={{
+			sources: [
+				{ name: 'Apple Music', icon: AppleMusicIcon, url: 'https://www.apple.com/apple-music/' }
+			],
+			updated: music?.updated
+		}}
+	>
+		{#if loading}
+			<Loading height={744} />
+		{:else if music != null}
+			<p>
+				I love a lot of different types of music ranging from electronic to jazz. A few of my
+				favorite artists are
+				{#each favArtists as artist, index (artist.url)}
+					{#if index != favArtists.length && index != 0},{/if}
+					{#if index + 1 === favArtists.length}
+						and
+					{/if}
+					<a href={artist.url} target="_blank" rel="noopener noreferrer">{artist.name}</a>
+				{/each}. Below is my collection of playlists that I've made over the years as well as my
+				recently played music.
+			</p>
 
-		<div>
-			<h3 class="header">Recently Played Songs</h3>
-			<div class="section songs">
-				{#each music.data!.recently_played as song (song.id)}
-					<div class="song">
-						<Song {song} />
-					</div>
-				{/each}
+			<div>
+				<h3 class="header">Recently Played Songs</h3>
+				<div class="section songs">
+					{#each music.data!.recently_played as song (song.id)}
+						<div class="song">
+							<Song {song} />
+						</div>
+					{/each}
+				</div>
 			</div>
-		</div>
 
-		<div>
-			<h3 class="header">Playlists</h3>
-			<div class="section playlists">
-				{#each music.data!.playlist_summaries as playlist (playlist.id)}
-					<Playlist {playlist} />
-				{/each}
+			<div>
+				<h3 class="header">Playlists</h3>
+				<div class="section playlists">
+					{#each music.data!.playlist_summaries as playlist (playlist.id)}
+						<Playlist {playlist} />
+					{/each}
+				</div>
 			</div>
-		</div>
-	{:else}
-		<Error msg="Failed to load music data" />
-	{/if}
-</Section>
+		{:else}
+			<Error msg="Failed to load music data" />
+		{/if}
+	</Section>
+{/key}
 
 <style>
 	.header {
