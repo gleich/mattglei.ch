@@ -42,7 +42,7 @@
 				<CacheStatus
 					name="Music"
 					updated={music?.updated}
-					updateFrequency="Refreshing every 30 seconds"
+					updateFrequency="Refreshing every 20 seconds"
 				/>
 			{/await}
 			{#await data.games}
