@@ -24,7 +24,7 @@
 				<CacheStatus
 					name="Projects"
 					updated={projects?.updated}
-					updateFrequency="Refreshing every 10 seconds"
+					updateFrequency="Refreshing every 5 seconds"
 				/>
 			{/await}
 			{#await data.workouts}
@@ -42,7 +42,7 @@
 				<CacheStatus
 					name="Music"
 					updated={music?.updated}
-					updateFrequency="Refreshing every 20 seconds"
+					updateFrequency="Refreshing every 10 seconds"
 				/>
 			{/await}
 			{#await data.games}
