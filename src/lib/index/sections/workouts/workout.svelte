@@ -5,9 +5,10 @@
 	import FormattedDate from '$lib/time/formatted-date.svelte';
 	import { Card, Scrolling } from '@gleich/ui';
 	import Lift from './lift.svelte';
-	import Map from './map.svelte';
 	import SportIcon from './sport-icon.svelte';
 	import Stats from './stats.svelte';
+	import Graph from './graph.svelte';
+	import Map from './map.svelte';
 
 	const { workout }: { workout: Workout } = $props();
 </script>
@@ -41,9 +42,10 @@
 		</p>
 		<div class="data">
 			{#if workout.platform === 'strava'}
-				<!-- <Graph {workout} /> -->
 				{#if workout.has_map}
 					<Map {workout} />
+				{:else if workout.heartrate_data.length != 0}
+					<Graph {workout} />
 				{/if}
 			{:else if workout.platform === 'hevy'}
 				<Lift {workout} />
