@@ -8,8 +8,7 @@
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
 	import { source } from 'sveltekit-sse';
-
-	const stream = source('https://lcp.mattglei.ch/applemusic/stream').select('message');
+	import { onMount } from 'svelte';
 
 	interface Artist {
 		name: string;
@@ -30,10 +29,13 @@
 		$props();
 	let music = $state<LcpResponse<CacheData> | null>(initial ?? null);
 
-	stream.subscribe((s) => {
-		if (s) {
-			music = JSON.parse(s);
-		}
+	onMount(() => {
+		const stream = source('https://lcp.mattglei.ch/applemusic/stream').select('message');
+		stream.subscribe((s) => {
+			if (s) {
+				music = JSON.parse(s);
+			}
+		});
 	});
 </script>
 

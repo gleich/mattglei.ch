@@ -7,9 +7,8 @@
 	import Since from '$lib/time/since.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import { Card, Error } from '@gleich/ui';
+	import { onMount } from 'svelte';
 	import { source } from 'sveltekit-sse';
-
-	const stream = source('https://lcp.mattglei.ch/github/stream').select('message');
 
 	const {
 		projects: initial,
@@ -17,12 +16,6 @@
 	}: { projects?: LcpResponse<Repository[]> | null; loading?: boolean } = $props();
 
 	let projects = $state<LcpResponse<Repository[]> | null>(initial ?? null);
-
-	stream.subscribe((s) => {
-		if (s) {
-			projects = JSON.parse(s);
-		}
-	});
 
 	function hexToRgb(hex: string) {
 		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -40,6 +33,15 @@
 			const rgb = hexToRgb(p.language_color);
 			if (rgb) {
 				p.language_color = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+			}
+		});
+	});
+
+	onMount(() => {
+		const stream = source('https://lcp.mattglei.ch/github/stream').select('message');
+		stream.subscribe((s) => {
+			if (s) {
+				projects = JSON.parse(s);
 			}
 		});
 	});

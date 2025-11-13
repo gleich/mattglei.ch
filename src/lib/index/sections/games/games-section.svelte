@@ -7,18 +7,20 @@
 	import Stats from '$lib/stats.svelte';
 	import { renderDuration } from '$lib/time';
 	import { Card, Error, Image } from '@gleich/ui';
+	import { onMount } from 'svelte';
 	import { source } from 'sveltekit-sse';
-
-	const stream = source('https://lcp.mattglei.ch/steam/stream').select('message');
 
 	const { games: initial, loading }: { games?: LcpResponse<Game[]> | null; loading?: boolean } =
 		$props();
 	let games = $state<LcpResponse<Game[]> | null>(initial ?? null);
 
-	stream.subscribe((s) => {
-		if (s) {
-			games = JSON.parse(s);
-		}
+	onMount(() => {
+		const stream = source('https://lcp.mattglei.ch/steam/stream').select('message');
+		stream.subscribe((s) => {
+			if (s) {
+				games = JSON.parse(s);
+			}
+		});
 	});
 </script>
 
