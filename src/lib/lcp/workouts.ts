@@ -67,6 +67,7 @@ export interface Workout {
 	hevy_exercises?: HevyExercise[];
 	hevy_volume_kg?: number;
 	hevy_set_count?: number;
+	has_heartrate: boolean;
 }
 
 export interface HevyExercise {

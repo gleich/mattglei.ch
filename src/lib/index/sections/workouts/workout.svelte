@@ -44,7 +44,7 @@
 			{#if workout.platform === 'strava'}
 				{#if workout.has_map}
 					<Map {workout} />
-				{:else if workout.heartrate_data.length != 0}
+				{:else if workout.has_heartrate}
 					<Graph {workout} />
 				{/if}
 			{:else if workout.platform === 'hevy'}
