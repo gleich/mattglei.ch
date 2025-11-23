@@ -49,6 +49,7 @@
 								color: 'rgb(67, 67, 67)'
 							},
 							ticks: {
+								count: 6,
 								color: 'rgb(100, 100, 100)',
 								font: {
 									family: 'IBM Plex Sans'
