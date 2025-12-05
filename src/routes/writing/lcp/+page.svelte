@@ -66,9 +66,9 @@
 			>
 			and runs in a Docker container on my
 			<a href="https://caprover.com" target="_blank">Caprover server</a>. The main goal of lcp is to
-			provide <i><b>extremely fast</b></i> and very simplified data fetching for my website. This is
-			mainly thanks to the way that caching is done in a protected memory space and that data is aggregated
-			from multiple sources. Down below is more technical explanations of how lcp works.
+			provide <i><b>extremely fast</b></i> and very simplified data fetching for my website. This is mainly
+			thanks to the way that caching is done in a protected memory space and that data is aggregated from
+			multiple sources. Down below is more technical explanations of how lcp works.
 		</p>
 	</WritingSection>
 
