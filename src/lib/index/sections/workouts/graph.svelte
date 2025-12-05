@@ -8,8 +8,15 @@
 	let canvas: HTMLCanvasElement | null = $state(null);
 	let chart: Chart | null = null;
 
+	let darkmode = $state(true);
+	let lineColor = $derived(darkmode ? 'rgb(67, 67, 67)' : 'rgb(150, 150, 150)');
+
 	onMount(() => {
 		if (canvas) {
+			const media = window.matchMedia('(prefers-color-scheme: dark)');
+			darkmode = media.matches;
+			media.addEventListener('change', (event) => (darkmode = event.matches));
+
 			const hr = $state.snapshot(workout.heartrate_data);
 			chart = new Chart(canvas, {
 				type: 'line',
@@ -43,10 +50,10 @@
 						},
 						y: {
 							grid: {
-								color: 'rgb(67, 67, 67)'
+								color: lineColor
 							},
 							border: {
-								color: 'rgb(67, 67, 67)'
+								color: lineColor
 							},
 							ticks: {
 								count: 6,
@@ -77,6 +84,19 @@
 				}
 			});
 		}
+	});
+
+	$effect(() => {
+		if (!chart) return;
+		const color = lineColor;
+		const scales = chart.options.scales;
+		const y = scales?.y;
+
+		if (y?.grid) {
+			y.grid.color = color;
+		}
+
+		chart.update();
 	});
 
 	onDestroy(() => {
