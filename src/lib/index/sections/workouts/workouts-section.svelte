@@ -16,7 +16,7 @@
 		workouts: initial,
 		loading
 	}: { workouts?: LcpResponse<LcpWorkout[]> | null; loading?: boolean } = $props();
-	let workouts = $state<LcpResponse<LcpWorkout[]> | null>(initial ?? null);
+	let workouts = $derived<LcpResponse<LcpWorkout[]> | null>(initial ?? null);
 
 	const stravaURL = 'https://www.strava.com/about';
 	const hevyURL = 'https://www.hevyapp.com';

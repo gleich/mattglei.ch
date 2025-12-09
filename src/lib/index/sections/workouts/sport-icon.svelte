@@ -3,11 +3,12 @@
 
 	const { sport_type }: { sport_type: string } = $props();
 
-	const sport = { icon: iconFromType(sport_type), name: nameFromType(sport_type) };
+	const Icon = $derived(iconFromType(sport_type));
+	const name = $derived(nameFromType(sport_type));
 </script>
 
-<div class="icon" title={sport.name}>
-	<sport.icon class="sport-icon"></sport.icon>
+<div class="icon" title={name}>
+	<Icon class="sport-icon"></Icon>
 </div>
 
 <style>

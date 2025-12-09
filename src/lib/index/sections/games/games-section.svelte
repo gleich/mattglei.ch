@@ -12,7 +12,7 @@
 
 	const { games: initial, loading }: { games?: LcpResponse<Game[]> | null; loading?: boolean } =
 		$props();
-	let games = $state<LcpResponse<Game[]> | null>(initial ?? null);
+	let games = $derived<LcpResponse<Game[]> | null>(initial ?? null);
 
 	onMount(() => {
 		const stream = source('https://lcp.mattglei.ch/steam/stream').select('message');

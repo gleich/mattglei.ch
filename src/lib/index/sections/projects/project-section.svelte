@@ -15,7 +15,7 @@
 		loading
 	}: { projects?: LcpResponse<Repository[]> | null; loading?: boolean } = $props();
 
-	let projects = $state<LcpResponse<Repository[]> | null>(initial ?? null);
+	let projects = $state<LcpResponse<Repository[]> | null>(null);
 
 	function hexToRgb(hex: string) {
 		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -38,6 +38,9 @@
 	});
 
 	onMount(() => {
+		if (initial) {
+			projects = initial;
+		}
 		const stream = source('https://lcp.mattglei.ch/github/stream').select('message');
 		stream.subscribe((s) => {
 			if (s) {
