@@ -27,7 +27,7 @@
 
 	const { music: initial, loading }: { music?: LcpResponse<CacheData> | null; loading?: boolean } =
 		$props();
-	let music = $state<LcpResponse<CacheData> | null>(initial ?? null);
+	let music = $derived<LcpResponse<CacheData> | null>(initial ?? null);
 
 	onMount(() => {
 		const stream = source('https://lcp.mattglei.ch/applemusic/stream').select('message');
