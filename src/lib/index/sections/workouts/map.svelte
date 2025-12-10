@@ -23,10 +23,17 @@
 		left: 0;
 		right: 0;
 		background-color: rgba(84, 84, 84, 0.7);
+		color: white;
 		backdrop-filter: blur(4px);
 		width: 100%;
 		text-align: center;
 		font-size: 14.5px;
 		padding: 1px 0;
+	}
+
+	@media (prefers-color-scheme: light) {
+		.location {
+			background-color: rgba(128, 128, 128, 0.7);
+		}
 	}
 </style>

@@ -85,4 +85,10 @@
 			height: 150px;
 		}
 	}
+
+	@media (prefers-color-scheme: light) {
+		.name {
+			background-color: rgba(84, 84, 84, 0.7);
+		}
+	}
 </style>
