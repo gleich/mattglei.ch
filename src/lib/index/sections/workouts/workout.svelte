@@ -96,9 +96,9 @@
 	}
 
 	.data {
-		border-radius: var(--border-radius);
-		overflow: hidden;
 		border: 1px solid var(--border);
+		overflow: hidden;
+		position: relative;
 	}
 
 	@media (max-width: 500px) {
