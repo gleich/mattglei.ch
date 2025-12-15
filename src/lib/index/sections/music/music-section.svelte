@@ -19,7 +19,7 @@
 		{ name: 'Daft Punk', url: 'https://www.daftpunk.com' },
 		{ name: 'Mac DeMarco', url: 'https://www.macdemarco.com' },
 		{ name: 'The Smiths', url: 'https://www.officialsmiths.co.uk' },
-		{ name: 'Eagles', url: 'https://eagles.com' },
+		{ name: 'Maxwell', url: 'https://musze.com' },
 		{ name: 'Fleetwood Mac', url: 'https://www.fleetwoodmacofficial.com' },
 		{ name: 'Cigarettes After Sex', url: 'https://www.cigarettesaftersex.com/' },
 		{ name: 'Deftones', url: 'https://www.deftones.com' }
