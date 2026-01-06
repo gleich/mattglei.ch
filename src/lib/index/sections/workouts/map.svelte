@@ -31,6 +31,12 @@
 		padding: 1px 0;
 	}
 
+	@media (max-width: 500px) {
+		.location {
+			font-size: 14px;
+		}
+	}
+
 	@media (prefers-color-scheme: light) {
 		.location {
 			background-color: rgba(128, 128, 128, 0.7);
