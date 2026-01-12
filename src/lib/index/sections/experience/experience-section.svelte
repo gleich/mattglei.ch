@@ -26,7 +26,8 @@
 			company="KCF Technologies"
 			url="https://kcftech.com"
 			startDate={dayjs(new Date(2025, 5))}
-			description="Continuing my full-time RIT co-op with KCF Technologies through the fall semester as an Associate DevOps Engineer on the Core Platform team. I work with technologies such as Terraform, AWS, Rust, and Python, along with various DevOps tools. My responsibilities also include Linux system administration and implementing infrastructure as code solutions."
+			endDate={dayjs(new Date(2025, 11))}
+			description="I worked full-time at KCF Technologies for my RIT co-op during the summer and fall semesters as an Associate DevOps Engineer on the Core Platform team. I used technologies such as Terraform, AWS, Rust, and Python, along with various DevOps tools. My responsibilities included Linux system administration and implementing infrastructure as code solutions. I also worked on a core user permissions service REST API written in Rust."
 		/>
 
 		<div class="past-experiences">

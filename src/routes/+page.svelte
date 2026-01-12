@@ -14,7 +14,7 @@
 
 <DynamicHead
 	title="Matt Gleich"
-	description="4th year computer science student at the Rochester Institute of Technology (RIT) & Associate DevOps Engineer for KCF Technologies."
+	description="4th year computer science student at the Rochester Institute of Technology (RIT)"
 />
 
 <Intro />
