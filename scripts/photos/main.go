@@ -71,9 +71,12 @@ func main() {
 		if err != nil {
 			timber.Fatal(err, "parsing JPEG failed for", file)
 		}
-		width := parsedJPG.Bounds().Dx()
-		height := parsedJPG.Bounds().Dy()
-		blurData, err := blurhash.Encode(4, 3, parsedJPG)
+		var (
+			width      = parsedJPG.Bounds().Dx()
+			height     = parsedJPG.Bounds().Dy()
+			components = 2
+		)
+		blurData, err := blurhash.Encode(components, components, parsedJPG)
 		if err != nil {
 			timber.Fatal(err, "creating blur data for", file, "failed")
 		}
@@ -111,7 +114,7 @@ func main() {
 	code := "const photoData: Photo[] = ["
 	for _, photo := range photos {
 		code = fmt.Sprintf(
-			"%s{src:'/photos/%s',alt:'%s',placeholder:'data:image/png;base64,%s', width:%d,height:%d},",
+			"%s{src:'/photos/%s',alt:'%s',placeholder:'%s',width:%d,height:%d},",
 			code,
 			photo.filename,
 			photo.name,
