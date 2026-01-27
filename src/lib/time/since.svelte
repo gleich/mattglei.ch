@@ -5,7 +5,7 @@
 
 	const { time }: { time: Date } = $props();
 
-	let dayjsTime = dayjs(time);
+	let dayjsTime = $derived(dayjs(time));
 	let now = $state(dayjs());
 	onMount(() => {
 		const interval = setInterval(

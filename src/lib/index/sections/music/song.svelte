@@ -29,14 +29,18 @@
 <Card padding="0">
 	<div class="container">
 		<div class="image">
-			<Image
-				src={song.album_art_url}
-				alt={`${song.track} by ${song.artist}`}
-				placeholder={song.album_art_blurhash}
-				height={217}
-				width={217}
-				aspectRatio="1/1"
-			/>
+			{#if song.album_art_url}
+				<Image
+					src={song.album_art_url as string}
+					alt={`${song.track} by ${song.artist}`}
+					placeholder={song.album_art_blurhash as string}
+					height={217}
+					width={217}
+					aspectRatio="1/1"
+				/>
+			{:else}
+				<div class="no-album-art-container">No Album Art</div>
+			{/if}
 			{#if song.preview_audio_url}
 				<div
 					title={`${paused ? 'Play' : 'Pause'} preview of "${song.track}"`}
@@ -79,6 +83,19 @@
 		border-bottom-left-radius: 0;
 		overflow: hidden;
 		position: relative;
+	}
+
+	.no-album-art-container {
+		height: 216px;
+		width: 217px;
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 1/1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: grey;
+		border-bottom: 1px solid var(--border);
 	}
 
 	.play-audio-button {

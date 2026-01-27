@@ -10,23 +10,25 @@
 	import Workout from './workout.svelte';
 	import { resolve } from '$app/paths';
 	import { source } from 'sveltekit-sse';
-
-	const stream = source('https://lcp.mattglei.ch/workouts/stream').select('message');
+	import { onMount } from 'svelte';
 
 	const {
 		workouts: initial,
 		loading
 	}: { workouts?: LcpResponse<LcpWorkout[]> | null; loading?: boolean } = $props();
-	let workouts = $state<LcpResponse<LcpWorkout[]> | null>(initial ?? null);
-
-	stream.subscribe((s) => {
-		if (s) {
-			workouts = JSON.parse(s);
-		}
-	});
+	let workouts = $derived<LcpResponse<LcpWorkout[]> | null>(initial ?? null);
 
 	const stravaURL = 'https://www.strava.com/about';
 	const hevyURL = 'https://www.hevyapp.com';
+
+	onMount(() => {
+		const stream = source('https://lcp.mattglei.ch/workouts/stream').select('message');
+		stream.subscribe((s) => {
+			if (s) {
+				workouts = JSON.parse(s);
+			}
+		});
+	});
 </script>
 
 {#key workouts}

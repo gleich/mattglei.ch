@@ -8,8 +8,7 @@
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
 	import { source } from 'sveltekit-sse';
-
-	const stream = source('https://lcp.mattglei.ch/applemusic/stream').select('message');
+	import { onMount } from 'svelte';
 
 	interface Artist {
 		name: string;
@@ -20,7 +19,7 @@
 		{ name: 'Daft Punk', url: 'https://www.daftpunk.com' },
 		{ name: 'Mac DeMarco', url: 'https://www.macdemarco.com' },
 		{ name: 'The Smiths', url: 'https://www.officialsmiths.co.uk' },
-		{ name: 'Eagles', url: 'https://eagles.com' },
+		{ name: 'Maxwell', url: 'https://musze.com' },
 		{ name: 'Fleetwood Mac', url: 'https://www.fleetwoodmacofficial.com' },
 		{ name: 'Cigarettes After Sex', url: 'https://www.cigarettesaftersex.com/' },
 		{ name: 'Deftones', url: 'https://www.deftones.com' }
@@ -28,12 +27,15 @@
 
 	const { music: initial, loading }: { music?: LcpResponse<CacheData> | null; loading?: boolean } =
 		$props();
-	let music = $state<LcpResponse<CacheData> | null>(initial ?? null);
+	let music = $derived<LcpResponse<CacheData> | null>(initial ?? null);
 
-	stream.subscribe((s) => {
-		if (s) {
-			music = JSON.parse(s);
-		}
+	onMount(() => {
+		const stream = source('https://lcp.mattglei.ch/applemusic/stream').select('message');
+		stream.subscribe((s) => {
+			if (s) {
+				music = JSON.parse(s);
+			}
+		});
 	});
 </script>
 
