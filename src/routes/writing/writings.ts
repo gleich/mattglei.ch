@@ -11,9 +11,9 @@ const writings: Map<string, WritingData> = new Map([
 		'audio',
 		{
 			title: 'My Audio Setup',
-			publishedDate: dayjs('2025-10-23').format(dateFormat),
+			publishedDate: dayjs('2026-01-27').format(dateFormat),
 			description:
-				'A full showcase of my current audio setup (as of October 23rd 2025). My main speakers, receiver, IEMs, DACs, and Amps.',
+				'A full showcase of my current audio setup (as of January 27th 2026). My main speakers, receiver, IEMs, DACs, and Amps.',
 			keywords: ['Audio', 'Music'],
 			readTime: 5
 		}
