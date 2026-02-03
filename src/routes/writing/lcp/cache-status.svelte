@@ -1,4 +1,5 @@
 <script lang="ts">
+	import CheckIcon from '$lib/icons/check-icon.svelte';
 	import RefreshIcon from '$lib/icons/refresh-icon.svelte';
 	import Since from '$lib/time/since.svelte';
 	import { Card } from '@gleich/ui';
@@ -15,11 +16,20 @@
 	<div class="header">
 		<p class="cache-name">{name} Cache</p>
 		{#if loading}
-			<p class="loading">LOADING</p>
+			<div class="loading status">
+				<p>LOADING</p>
+			</div>
 		{:else if updated}
-			<p class="online">ONLINE</p>
+			<div class="online status">
+				<div class="icon">
+					<CheckIcon />
+				</div>
+				<p>ONLINE</p>
+			</div>
 		{:else}
-			<p class="offline">OFFLINE</p>
+			<div class="offline status">
+				<p>OFFLINE</p>
+			</div>
 		{/if}
 	</div>
 	<div class="refresh">
@@ -59,6 +69,19 @@
 	.header {
 		display: flex;
 		justify-content: space-between;
+	}
+
+	.status {
+		display: flex;
+		gap: 6px;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.icon {
+		width: 15.5px;
+		height: auto;
+		display: flex;
 	}
 
 	.online,
