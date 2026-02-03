@@ -80,8 +80,7 @@
 
 	.icon {
 		width: 15.5px;
-		height: auto;
-		display: flex;
+		height: 15.5px;
 	}
 
 	.online,
