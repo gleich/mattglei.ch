@@ -22,12 +22,15 @@ export function renderDate(date: Dayjs, now: Dayjs): string {
 	} else if (d.isSame(now.add(1, 'day'), 'day')) {
 		label = 'Tomorrow';
 	} else if (d.isSame(now, 'week')) {
+		// this week
 		label = d.format('dddd');
+	} else if (d.isSame(now.subtract(1, 'week'), 'week')) {
+		label = `Last ${d.format('dddd')}`;
 	} else {
-		label = d.format('MMM Do');
+		label = d.format('MMMM Do');
 	}
 
-	return `${label} at ${d.format('h:mm A')}`;
+	return `${label} at ${d.format('h:mma')}`;
 }
 
 export function fromNow(date: Dayjs, currentTime: Dayjs): string {
@@ -59,16 +62,16 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 		if (totalMonthsDiff > 0) {
 			const remainderDays = totalDaysDiff % 30;
 			if (remainderDays > 0) {
-				fromNowStr += ` ${remainderDays} ${remainderDays === 1 ? 'day' : 'days'}`;
+				fromNowStr += ` ${remainderDays}d`;
 			}
 		}
 	} else if (weeksDiff > 0) {
 		fromNowStr = `${weeksDiff} ${weeksDiff === 1 ? 'week' : 'weeks'}`;
 		if (daysDiff > 0) {
-			fromNowStr += ` ${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
+			fromNowStr += ` ${daysDiff}d`;
 		}
 	} else if (totalDaysDiff > 0) {
-		fromNowStr = `${daysDiff} ${daysDiff === 1 ? 'day' : 'days'}`;
+		fromNowStr = `${daysDiff}d`;
 		if (hoursDiff > 0) fromNowStr += ` ${hoursDiff}hr`;
 	} else if (hoursDiff > 0) {
 		fromNowStr = `${hoursDiff}hr`;
