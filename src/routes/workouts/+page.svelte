@@ -14,7 +14,7 @@
 {#if data.workouts}
 	<h2>Workouts</h2>
 	<div class="workouts">
-		{#each data.workouts.data.slice(0, 14) as workout (workout.id)}
+		{#each data.workouts.data as workout (workout.id)}
 			<div class="workout">
 				<Workout {workout} />
 			</div>
