@@ -4,18 +4,23 @@
 	import { renderDuration } from '$lib/time';
 	import Since from '$lib/time/since.svelte';
 	import ViewButton from '$lib/view-button.svelte';
-	import { DynamicHead, Error } from '@gleich/ui';
+	import { DynamicHead, Error, type OpenGraphImage } from '@gleich/ui';
 	import type { PlaylistData } from './+page.server';
 	import SpotifyIcon from '$lib/icons/spotify-icon.svelte';
 
 	const { data }: { data: PlaylistData } = $props();
+	let ogImage: OpenGraphImage | undefined = $derived(
+		data.playlist?.tracks[0].album_art_url != null
+			? { url: data.playlist?.tracks[0].album_art_url, height: '600', width: '600' }
+			: undefined
+	);
 </script>
 
 {#if data.playlist}
 	<DynamicHead
 		title={`${data.playlist.name} Playlist`}
 		description={`${data.playlist.tracks.length} tracks`}
-		opengraphImage={{ url: data.playlist.tracks[0].album_art_url, height: '600', width: '600' }}
+		opengraphImage={ogImage}
 	/>
 {:else}
 	<DynamicHead title="404 Not found" description="Playlist not found" />
