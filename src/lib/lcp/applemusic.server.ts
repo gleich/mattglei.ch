@@ -29,7 +29,6 @@ export interface AppleMusicSong {
 	artist: string;
 	duration_in_millis: number;
 	album_art_url: string | null;
-	album_art_preview_url: string | null;
 	album_art_blurhash: string | null;
 	url: string;
 	id: string;

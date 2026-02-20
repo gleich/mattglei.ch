@@ -11,14 +11,16 @@
 			<div class="collage">
 				{#each playlist.first_four_tracks.slice(0, 4) as track (track.id)}
 					<div class="collage-image">
-						<Image
-							src={track.album_art_preview_url}
-							alt={`Album art for ${track.track} by ${track.artist}`}
-							placeholder={track.album_art_blurhash}
-							height={100}
-							width={100}
-							aspectRatio="1/1"
-						/>
+						{#if track.album_art_url && track.album_art_blurhash}
+							<Image
+								src={track.album_art_url}
+								alt={`Album art for ${track.track} by ${track.artist}`}
+								placeholder={track.album_art_blurhash}
+								height={100}
+								width={100}
+								aspectRatio="1/1"
+							/>
+						{/if}
 					</div>
 				{/each}
 			</div>
