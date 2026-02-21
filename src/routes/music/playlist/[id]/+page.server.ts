@@ -1,9 +1,9 @@
-import { loadPlaylistFromLCP, type AppleMusicPlaylist } from '$lib/lcp/applemusic.server';
+import { loadPlaylistFromLCP, type AppleMusicPlaylistResponse } from '$lib/lcp/applemusic';
 import { type SvelteFetch } from '$lib/lcp/lcp.server';
 import type { PageServerLoad } from './$types';
 
 export interface PlaylistData {
-	playlist: AppleMusicPlaylist | undefined;
+	response: AppleMusicPlaylistResponse | undefined;
 }
 
 export const load: PageServerLoad = async ({
@@ -13,5 +13,5 @@ export const load: PageServerLoad = async ({
 	params: Record<string, string>;
 	fetch: SvelteFetch;
 }) => ({
-	playlist: await loadPlaylistFromLCP(params.playlistID, fetch)
+	response: await loadPlaylistFromLCP(params.id, 1, fetch)
 });

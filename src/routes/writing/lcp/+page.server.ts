@@ -1,4 +1,4 @@
-import type { CacheData } from '$lib/lcp/applemusic.server';
+import type { CacheData } from '$lib/lcp/applemusic';
 import type { Repository } from '$lib/lcp/github';
 import { Cache, loadFromLCP, type LcpResponse, type SvelteFetch } from '$lib/lcp/lcp.server';
 import type { Game } from '$lib/lcp/steam';

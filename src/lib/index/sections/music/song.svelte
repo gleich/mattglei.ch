@@ -1,7 +1,7 @@
 <script lang="ts">
 	import PauseIcon from '$lib/icons/pause-icon.svelte';
 	import PlayIcon from '$lib/icons/play-icon.svelte';
-	import type { AppleMusicSong } from '$lib/lcp/applemusic.server';
+	import type { AppleMusicSong } from '$lib/lcp/applemusic';
 	import { Card, Image, Scrolling } from '@gleich/ui';
 	import { currentAudio } from './playing';
 

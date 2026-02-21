@@ -1,17 +1,15 @@
-import { LCP_TOKEN } from '$env/static/private';
 import type { SvelteFetch } from './lcp.server';
+import type { Pagination } from './pagination';
 
 export async function loadPlaylistFromLCP(
 	id: string,
+	page: number,
 	fetch: SvelteFetch
-): Promise<AppleMusicPlaylist | null> {
+): Promise<AppleMusicPlaylistResponse | null> {
 	try {
-		const res = await fetch(`https://lcp.mattglei.ch/applemusic/playlists/${id}`, {
+		const res = await fetch(`http://localhost:8000/applemusic/playlists/${id}?page=${page}`, {
 			method: 'GET',
-			cache: 'no-store',
-			headers: {
-				Authorization: `Bearer ${LCP_TOKEN}`
-			}
+			cache: 'no-store'
 		});
 		return await res.json();
 	} catch {
@@ -35,9 +33,16 @@ export interface AppleMusicSong {
 	preview_audio_url: string | null;
 }
 
+export interface AppleMusicPlaylistResponse {
+	playlist: AppleMusicPlaylist;
+	pagination: Pagination;
+}
+
 export interface AppleMusicPlaylist {
 	name: string;
 	id: string;
+	duration_in_millis: number;
+	track_count: number;
 	tracks: AppleMusicSong[];
 	last_modified: Date;
 	url: string;

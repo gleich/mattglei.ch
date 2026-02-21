@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { AppleMusicPlaylistSummary } from '$lib/lcp/applemusic.server';
+	import type { AppleMusicPlaylistSummary } from '$lib/lcp/applemusic';
 	import { Card, Image } from '@gleich/ui';
 
 	const { playlist }: { playlist: AppleMusicPlaylistSummary } = $props();

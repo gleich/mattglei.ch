@@ -1,7 +1,7 @@
 <script lang="ts">
 	import AppleMusicIcon from '$lib/icons/apple-music-icon.svelte';
 	import Section from '$lib/index/section.svelte';
-	import type { CacheData } from '$lib/lcp/applemusic.server';
+	import type { CacheData } from '$lib/lcp/applemusic';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import Loading from '$lib/loading.svelte';
 	import { Error } from '@gleich/ui';
