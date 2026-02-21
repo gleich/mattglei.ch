@@ -32,7 +32,6 @@
 		loading = true;
 		try {
 			const nextPage = currentPage + 1;
-			console.log('loading more from lcp');
 			const next = await loadPlaylistFromLCP(data.response?.playlist.id, nextPage, fetch);
 			const nextTracks = next?.playlist?.tracks ?? [];
 

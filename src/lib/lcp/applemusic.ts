@@ -7,7 +7,7 @@ export async function loadPlaylistFromLCP(
 	fetch: SvelteFetch
 ): Promise<AppleMusicPlaylistResponse | null> {
 	try {
-		const res = await fetch(`http://localhost:8000/applemusic/playlists/${id}?page=${page}`, {
+		const res = await fetch(`https://lcp.mattglei.ch/applemusic/playlists/${id}?page=${page}`, {
 			method: 'GET',
 			cache: 'no-store'
 		});
