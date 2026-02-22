@@ -21,35 +21,40 @@
 
 	<div class="experiences">
 		<Experience
+			role="Contracted Developer"
+			icon="synthient.webp"
+			company="Synthient"
+			url="https://synthient.com"
+			startDate={dayjs(new Date(2026, 0))}
+			description="Developing the Golang SDK and CLI for Synthient as a contracted developer. Working on research and maintenance of core ingest services powering the aggregation of IPs. Working closely with Go, Redis, and REST APIs."
+		/>
+		<Experience
 			role="Associate DevOps Engineer"
 			icon="kcftech.webp"
 			company="KCF Technologies"
 			url="https://kcftech.com"
 			startDate={dayjs(new Date(2025, 5))}
 			endDate={dayjs(new Date(2025, 11))}
-			description="I worked full-time at KCF Technologies for my RIT co-op during the summer and fall semesters as an Associate DevOps Engineer on the Core Platform team. I used technologies such as Terraform, AWS, Rust, and Python, along with various DevOps tools. My responsibilities included Linux system administration and implementing infrastructure as code solutions. I also worked on a core user permissions service REST API written in Rust."
+			description="Worked on the Core Platform team during my RIT co-op, building infrastructure and backend services with Terraform, AWS, Rust, and Python, including Linux administration and a Rust-based permissions REST API."
 		/>
-
-		<div class="past-experiences">
-			<Experience
-				role="Engineering Developer"
-				icon="stainless.webp"
-				company="Stainless"
-				startDate={dayjs(new Date(2022, 5))}
-				endDate={dayjs(new Date(2022, 11))}
-				url="https://stainless.com"
-				description="Served as the automation project owner, spearheaded the company's API, built GitHub actions to automate delivery and testing, and worked closely with a small, talented developer team."
-			/>
-			<Experience
-				role="Contracted Developer"
-				icon="rootly.webp"
-				company="Rootly"
-				startDate={dayjs(new Date(2021, 1))}
-				endDate={dayjs(new Date(2021, 11))}
-				url="https://rootly.com"
-				description="Developed the official CLI for rootly.com and wrote its documentation, built a Go-based library for interacting with the Rootly API, and implemented both a GitHub action and a Homebrew tap for the CLI."
-			/>
-		</div>
+		<Experience
+			role="Engineering Developer"
+			icon="stainless.webp"
+			company="Stainless"
+			startDate={dayjs(new Date(2022, 5))}
+			endDate={dayjs(new Date(2022, 11))}
+			url="https://stainless.com"
+			description="Served as the automation project owner, spearheaded the company's API, built GitHub actions to automate delivery and testing, and worked closely with a small, talented developer team. Joined the company early on at ~3 developers."
+		/>
+		<Experience
+			role="Contracted Developer"
+			icon="rootly.webp"
+			company="Rootly"
+			startDate={dayjs(new Date(2021, 1))}
+			endDate={dayjs(new Date(2021, 11))}
+			url="https://rootly.com"
+			description="Developed the official CLI for rootly.com and wrote its documentation, built a Go-based library for interacting with the Rootly API, and implemented both a GitHub action and a Homebrew tap for the CLI."
+		/>
 	</div>
 
 	<a class="view-more" href="https://www.linkedin.com/in/matt-gleich/" target="_blank">
@@ -59,12 +64,6 @@
 
 <style>
 	.experiences {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-
-	.past-experiences {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 10px;
@@ -75,8 +74,8 @@
 		margin-bottom: 5px;
 	}
 
-	@media (max-width: 820px) {
-		.past-experiences {
+	@media (max-width: 830px) {
+		.experiences {
 			grid-template-columns: 1fr;
 		}
 	}

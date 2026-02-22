@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, Image } from '@gleich/ui';
+	import { Card, Image, Scrolling } from '@gleich/ui';
 	import type { Dayjs } from 'dayjs';
 
 	const {
@@ -39,7 +39,7 @@
 						{#if startDate && endDate}
 							{startDate.format(timeFormat)} - {endDate.format(timeFormat)}
 						{:else if startDate}
-							{startDate.format(timeFormat)} - Present
+							{startDate.format(timeFormat)} - Now
 						{:else}
 							Upcoming
 						{/if}
@@ -80,11 +80,13 @@
 
 	.company {
 		line-height: 95%;
+		font-size: 1.3rem;
+		text-wrap-mode: nowrap;
 	}
 
 	.icon {
-		width: 45px;
-		height: 45px;
+		width: 40px;
+		height: 40px;
 		border-radius: var(--border-radius);
 		flex-shrink: 0;
 		overflow: hidden;
@@ -116,6 +118,12 @@
 
 		.date {
 			font-size: 14px;
+		}
+	}
+
+	@media (max-width: 370px) {
+		.date {
+			display: none;
 		}
 	}
 </style>
