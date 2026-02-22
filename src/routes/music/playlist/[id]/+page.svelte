@@ -54,7 +54,7 @@
 	}
 
 	function onScroll() {
-		const threshold = 400;
+		const threshold = 550;
 
 		const scrollTop = window.scrollY || document.documentElement.scrollTop;
 		const viewportHeight = window.innerHeight;
