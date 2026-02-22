@@ -22,3 +22,35 @@ h6 {
 	font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', 'Arial Black', Arial, sans-serif;
 	font-weight: 800;
 }
+
+ol,
+ul {
+	padding-left: 5px;
+	list-style-position: inside;
+}
+
+ol,
+ul {
+	margin: 0;
+}
+
+ol > li {
+	color: var(--green-foreground);
+	background-color: var(--green-background);
+	padding: 2px 5px;
+	margin-top: 5px;
+	width: fit-content;
+	border-radius: 2px;
+}
+
+ol {
+	padding-bottom: 10px;
+}
+
+ol p {
+	padding-left: 25px;
+}
+
+ol > p {
+	padding-top: 5px;
+}
