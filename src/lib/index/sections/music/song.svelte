@@ -42,10 +42,10 @@
 				<div class="no-album-art-container">No Album Art</div>
 			{/if}
 			{#if song.preview_audio_url}
-				<div
+				<button
 					title={`${paused ? 'Play' : 'Pause'} preview of "${song.track}"`}
 					class="play-audio-button"
-					onpointerdown={toggle}
+					onclick={toggle}
 				>
 					<audio bind:this={audioElement} bind:paused src={song.preview_audio_url} loop></audio>
 					{#if paused}
@@ -53,7 +53,7 @@
 					{:else}
 						<PauseIcon />
 					{/if}
-				</div>
+				</button>
 			{/if}
 		</div>
 		<a
@@ -111,6 +111,8 @@
 		height: 27px;
 		bottom: 5px;
 		left: 5px;
+		padding: 0;
+		box-shadow: none;
 	}
 
 	.apple-music-link,
