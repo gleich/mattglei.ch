@@ -11,11 +11,22 @@
 	import { source } from 'sveltekit-sse';
 
 	const {
-		projects: initial,
+		projects: response,
 		loading
 	}: { projects?: LcpResponse<Repository[]> | null; loading?: boolean } = $props();
 
-	let projects = $state<LcpResponse<Repository[]> | null>(null);
+	let projects = $derived<Repository[] | undefined>(response?.data);
+	let updated = $derived<Date | undefined>(response?.updated);
+
+	let displayProjects = $derived(
+		projects?.map((p) => {
+			const rgb = hexToRgb(p.language_color);
+			return {
+				...p,
+				language_color: rgb ? `${rgb.r}, ${rgb.g}, ${rgb.b}` : p.language_color
+			};
+		}) ?? null
+	);
 
 	function hexToRgb(hex: string) {
 		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -28,84 +39,72 @@
 			: null;
 	}
 
-	$effect(() => {
-		projects?.data.forEach((p) => {
-			const rgb = hexToRgb(p.language_color);
-			if (rgb) {
-				p.language_color = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
-			}
-		});
-	});
-
 	onMount(() => {
-		if (initial) {
-			projects = initial;
-		}
 		const stream = source('https://lcp.mattglei.ch/github/stream').select('message');
 		stream.subscribe((s) => {
 			if (s) {
-				projects = JSON.parse(s);
+				const streamedResponse: LcpResponse<Repository[]> = JSON.parse(s);
+				projects = streamedResponse.data;
+				updated = streamedResponse.updated;
 			}
 		});
 	});
 </script>
 
-{#key projects}
-	<Section
-		name="Projects"
-		liveData={{
-			sources: [{ name: 'GitHub', icon: GithubIcon, url: 'https://github.com' }],
-			updated: projects?.updated
-		}}
-	>
-		{#if loading}
-			<Loading height={446.5} />
-		{:else if projects != null}
-			<p class="intro">
-				I love to build and explore everything from <a
-					href="https://github.com/gleich/pcbs"
-					target="_blank">PCBs</a
-				>
-				to <a href="https://github.com/gleich/lcp" target="_blank">REST APIs</a>. Recently I've
-				really been enjoying working with
-				<a href="https://svelte.dev" target="_blank">Svelte/SvelteKit</a>
-				and the <a href="https://go.dev" target="_blank">Go Programming Language</a>. Here are a few
-				of my top projects that are open-source from my GitHub:
-			</p>
-			<div class="projects">
-				{#each projects.data as project (project.id)}
-					<Card>
-						<a
-							class="project"
-							href={project.url}
-							title={`View "${project.owner}/${project.name}" on GitHub`}
-							target="_blank"
-						>
-							<div class="top">
-								<div class="name">
-									<div class="github-icon">
-										<GithubIcon />
-									</div>
-									<p>{project.owner}/{project.name}</p>
+<Section
+	name="Projects"
+	liveData={{
+		sources: [{ name: 'GitHub', icon: GithubIcon, url: 'https://github.com' }],
+		updated
+	}}
+>
+	{#if loading}
+		<Loading height={446.5} />
+	{:else if projects}
+		<p class="intro">
+			I love to build and explore everything from <a
+				href="https://github.com/gleich/pcbs"
+				target="_blank">PCBs</a
+			>
+			to <a href="https://github.com/gleich/lcp" target="_blank">REST APIs</a>. Recently I've really
+			been enjoying working with
+			<a href="https://svelte.dev" target="_blank">Svelte/SvelteKit</a>
+			and the <a href="https://go.dev" target="_blank">Go Programming Language</a>. Here are a few
+			of my top projects that are open-source from my GitHub:
+		</p>
+		<div class="projects">
+			{#each displayProjects as project (project.id)}
+				<Card>
+					<a
+						class="project"
+						href={project.url}
+						title={`View "${project.owner}/${project.name}" on GitHub`}
+						target="_blank"
+					>
+						<div class="top">
+							<div class="name">
+								<div class="github-icon">
+									<GithubIcon />
 								</div>
-								<p class="language" style:--language-color={project.language_color}>
-									{project.language}
-								</p>
+								<p>{project.owner}/{project.name}</p>
 							</div>
-							<p class="description">{project.description}</p>
-							<p class="updated">Updated <Since time={project.updated_at} /></p>
-						</a>
-					</Card>
-				{/each}
-			</div>
-			<a class="view-more" href="https://github.com/gleich?tab=repositories" target="_blank">
-				<ViewButton more on="GitHub" icon={GithubIcon} />
-			</a>
-		{:else}
-			<Error msg="Failed to load project data" />
-		{/if}
-	</Section>
-{/key}
+							<p class="language" style:--language-color={project.language_color}>
+								{project.language}
+							</p>
+						</div>
+						<p class="description">{project.description}</p>
+						<p class="updated">Updated <Since time={project.updated_at} /></p>
+					</a>
+				</Card>
+			{/each}
+		</div>
+		<a class="view-more" href="https://github.com/gleich?tab=repositories" target="_blank">
+			<ViewButton more on="GitHub" icon={GithubIcon} />
+		</a>
+	{:else}
+		<Error msg="Failed to load project data" />
+	{/if}
+</Section>
 
 <style>
 	.projects {
