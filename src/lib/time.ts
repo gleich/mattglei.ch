@@ -49,7 +49,7 @@ export function fromNow(date: Dayjs, currentTime: Dayjs): string {
 
 	const MONTH_THRESHOLD_DAYS = 30;
 
-	let fromNowStr = '';
+	let fromNowStr;
 
 	if (yearsDiff > 0) {
 		fromNowStr = `${yearsDiff} ${yearsDiff === 1 ? 'year' : 'years'}`;
