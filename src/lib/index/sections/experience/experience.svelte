@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card, Image, Scrolling } from '@gleich/ui';
+	import { Card, Image } from '@gleich/ui';
 	import type { Dayjs } from 'dayjs';
 
 	const {
