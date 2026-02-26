@@ -197,4 +197,14 @@
 			gap: 10px;
 		}
 	}
+
+	@media (max-width: 430px) {
+		.song {
+			width: 100%;
+		}
+
+		.songs {
+			flex-direction: column;
+		}
+	}
 </style>
