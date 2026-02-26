@@ -5,9 +5,9 @@ import type { Workout } from '$lib/lcp/workouts';
 import type { PageServerLoad } from './$types';
 
 export interface WorkoutData {
-	workouts: LcpResponse<Workout[]> | null;
+	workouts: Promise<LcpResponse<Workout[]> | null>;
 }
 
 export const load: PageServerLoad = async ({ fetch }: { fetch: SvelteFetch }) => ({
-	workouts: await loadFromLCP(Cache.Workouts, fetch)
+	workouts: loadFromLCP(Cache.Workouts, fetch)
 });

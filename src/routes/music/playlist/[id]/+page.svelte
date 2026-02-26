@@ -6,36 +6,38 @@
 	import ViewButton from '$lib/view-button.svelte';
 	import { DynamicHead, Error } from '@gleich/ui';
 	import SpotifyIcon from '$lib/icons/spotify-icon.svelte';
-	import { loadPlaylistFromLCP } from '$lib/lcp/applemusic';
+	import { loadPlaylistFromLCP, type AppleMusicSong } from '$lib/lcp/applemusic';
 	import type { PlaylistData } from './+page.server';
 	import { onMount } from 'svelte';
+	import PageLoading from '$lib/loading/page-loading.svelte';
+	import { page } from '$app/state';
 
 	const { data }: { data: PlaylistData } = $props();
 
-	let tracks = $derived(data.response?.playlist?.tracks ?? []);
+	let tracks: AppleMusicSong[] | undefined = $state();
 	let currentPage = $state(1);
 	let loading = $state(false);
-	let hasMore = $derived(
-		data.response ? tracks.length < data.response.playlist.track_count : false
-	);
+	let hasMore = $state(false);
 
 	onMount(() => {
-		tracks = data.response?.playlist.tracks ?? [];
-		currentPage = 1;
-		loading = false;
-		hasMore = data.response ? tracks.length < data.response?.playlist.track_count : false;
+		data.response.then((resp) => {
+			tracks = resp?.playlist.tracks ?? [];
+			currentPage = 1;
+			loading = false;
+			hasMore = resp?.pagination.next != null;
+		});
 	});
 
 	async function loadNextPage() {
-		if (!data || !data.response || loading || !hasMore) return;
+		if (!data || !data.response || loading || !hasMore || !page.params.id) return;
 
 		loading = true;
 		try {
 			const nextPage = currentPage + 1;
-			const next = await loadPlaylistFromLCP(data.response?.playlist.id, nextPage, fetch);
+			const next = await loadPlaylistFromLCP(page.params.id, nextPage, fetch);
 			const nextTracks = next?.playlist?.tracks ?? [];
 
-			if (nextTracks.length > 0) {
+			if (nextTracks.length > 0 && tracks) {
 				tracks = [...tracks, ...nextTracks];
 				currentPage = nextPage;
 			}
@@ -45,7 +47,7 @@
 				return;
 			}
 
-			hasMore = tracks.length < data.response.playlist.track_count;
+			hasMore = next.pagination.next != null;
 		} catch (e) {
 			console.error(e);
 		} finally {
@@ -70,59 +72,59 @@
 
 <svelte:window on:scroll={onScroll} />
 
-{#if data.response}
-	<DynamicHead
-		title={`${data.response.playlist.name} Playlist`}
-		description={`${data.response.playlist.tracks.length} tracks`}
-		opengraphImage={data.response.playlist?.tracks[0].album_art_url != null
-			? { url: data.response.playlist?.tracks[0].album_art_url, height: '600', width: '600' }
-			: undefined}
-	/>
-{:else}
-	<DynamicHead title="404 Not found" description="Playlist Not Found" />
-{/if}
-
-{#if data.response}
-	<div class="header">
-		<div class="header-info">
-			<h2>{data.response.playlist.name} Playlist</h2>
-			<div class="stats">
-				<p>Last updated <Since time={data.response.playlist.last_modified} /></p>
-				<p>
-					{data.response.playlist.track_count} songs - {renderDuration(
-						data.response.playlist.duration_in_millis / 1000
-					)}
-				</p>
+{#await data.response}
+	<PageLoading />
+{:then response}
+	{#if response}
+		<DynamicHead
+			title={`${response.playlist.name} Playlist`}
+			description={`${response.playlist.tracks.length} tracks`}
+			opengraphImage={response.playlist?.tracks[0].album_art_url != null
+				? { url: response.playlist?.tracks[0].album_art_url, height: '600', width: '600' }
+				: undefined}
+		/>
+		<div class="header">
+			<div class="header-info">
+				<h2>{response.playlist.name} Playlist</h2>
+				<div class="stats">
+					<p>Last updated <Since time={response.playlist.last_modified} /></p>
+					<p>
+						{response.playlist.track_count} songs - {renderDuration(
+							response.playlist.duration_in_millis / 1000
+						)}
+					</p>
+				</div>
+			</div>
+			<div class="view-on-buttons">
+				<a
+					class="view-on-button"
+					href={`https://open.spotify.com/playlist/${response.playlist.spotify_id}`}
+					target="_blank"
+				>
+					<ViewButton on="Spotify" icon={SpotifyIcon} iconPaddingBottom="1px" iconColor="#24db68" />
+				</a>
+				<a class="view-on-button" href={response.playlist.url} target="_blank">
+					<ViewButton
+						on="Apple Music"
+						icon={AppleMusicIcon}
+						iconPaddingBottom="0.5px"
+						iconColor="#fb455d"
+					/>
+				</a>
 			</div>
 		</div>
-		<div class="view-on-buttons">
-			<a
-				class="view-on-button"
-				href={`https://open.spotify.com/playlist/${data.response.playlist.spotify_id}`}
-				target="_blank"
-			>
-				<ViewButton on="Spotify" icon={SpotifyIcon} iconPaddingBottom="1px" iconColor="#24db68" />
-			</a>
-			<a class="view-on-button" href={data.response.playlist.url} target="_blank">
-				<ViewButton
-					on="Apple Music"
-					icon={AppleMusicIcon}
-					iconPaddingBottom="0.5px"
-					iconColor="#fb455d"
-				/>
-			</a>
+		<div class="songs">
+			{#each tracks as song (song)}
+				<div class="song">
+					<Song {song} />
+				</div>
+			{/each}
 		</div>
-	</div>
-	<div class="songs">
-		{#each tracks as song (song)}
-			<div class="song">
-				<Song {song} />
-			</div>
-		{/each}
-	</div>
-{:else}
-	<Error msg="404: Playlist not found" />
-{/if}
+	{:else}
+		<DynamicHead title="404 Not found" description="Playlist Not Found" />
+		<Error msg="404: Playlist Not Found" />
+	{/if}
+{/await}
 
 <style>
 	.header {

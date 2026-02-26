@@ -3,7 +3,7 @@
 	import StravaIcon from '$lib/icons/strava-icon.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import { type Workout as LcpWorkout } from '$lib/lcp/workouts';
-	import SectionLoading from '$lib/section-loading.svelte';
+	import SectionLoading from '$lib/loading/section-loading.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import { Error } from '@gleich/ui';
 	import Section from '../../section.svelte';

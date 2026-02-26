@@ -3,7 +3,7 @@
 	import Section from '$lib/index/section.svelte';
 	import type { AppleMusicPlaylistSummary, AppleMusicSong, CacheData } from '$lib/lcp/applemusic';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
-	import SectionLoading from '$lib/section-loading.svelte';
+	import SectionLoading from '$lib/loading/section-loading.svelte';
 	import { Error } from '@gleich/ui';
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';

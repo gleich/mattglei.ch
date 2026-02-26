@@ -3,7 +3,7 @@
 	import Section from '$lib/index/section.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import type { Game } from '$lib/lcp/steam';
-	import SectionLoading from '$lib/section-loading.svelte';
+	import SectionLoading from '$lib/loading/section-loading.svelte';
 	import Stats from '$lib/stats.svelte';
 	import { renderDuration } from '$lib/time';
 	import { Card, Error, Image } from '@gleich/ui';

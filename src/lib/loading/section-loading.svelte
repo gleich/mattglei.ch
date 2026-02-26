@@ -22,7 +22,7 @@
 
 	.logo {
 		width: 100px;
-		height: auto;
+		height: 100px;
 	}
 
 	.loading {

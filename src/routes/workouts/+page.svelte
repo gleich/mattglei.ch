@@ -5,32 +5,37 @@
 	import ViewButton from '$lib/view-button.svelte';
 	import { DynamicHead, Error } from '@gleich/ui';
 	import type { WorkoutData } from './+page.server';
+	import PageLoading from '$lib/loading/page-loading.svelte';
 
 	const { data }: { data: WorkoutData } = $props();
 </script>
 
 <DynamicHead title="Workouts" description="Recent workouts automatically pulled from Hevy/Strava" />
 
-{#if data.workouts}
-	<h2>Workouts</h2>
-	<div class="workouts">
-		{#each data.workouts.data as workout (workout.id)}
-			<div class="workout">
-				<Workout {workout} />
-			</div>
-		{/each}
-	</div>
-	<div class="view-more-buttons">
-		<a class="view-more" href="https://www.strava.com/athletes/30124266" target="_blank">
-			<ViewButton more on="Strava" icon={StravaIcon} /></a
-		>
-		<a class="view-more" href="https://hevy.com/user/gleich" target="_blank">
-			<ViewButton more on="Hevy" icon={HevyIcon} iconPaddingBottom="0px" /></a
-		>
-	</div>
-{:else}
-	<Error msg="Failed to load workouts" />
-{/if}
+{#await data.workouts}
+	<PageLoading />
+{:then workouts}
+	{#if workouts}
+		<h2>Workouts</h2>
+		<div class="workouts">
+			{#each workouts.data as workout (workout.id)}
+				<div class="workout">
+					<Workout {workout} />
+				</div>
+			{/each}
+		</div>
+		<div class="view-more-buttons">
+			<a class="view-more" href="https://www.strava.com/athletes/30124266" target="_blank">
+				<ViewButton more on="Strava" icon={StravaIcon} /></a
+			>
+			<a class="view-more" href="https://hevy.com/user/gleich" target="_blank">
+				<ViewButton more on="Hevy" icon={HevyIcon} iconPaddingBottom="0px" /></a
+			>
+		</div>
+	{:else}
+		<Error msg="Failed to load workouts" />
+	{/if}
+{/await}
 
 <style>
 	h2 {

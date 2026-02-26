@@ -3,7 +3,7 @@
 	import Section from '$lib/index/section.svelte';
 	import type { Repository } from '$lib/lcp/github';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
-	import SectionLoading from '$lib/section-loading.svelte';
+	import SectionLoading from '$lib/loading/section-loading.svelte';
 	import Since from '$lib/time/since.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import { Card, Error } from '@gleich/ui';
