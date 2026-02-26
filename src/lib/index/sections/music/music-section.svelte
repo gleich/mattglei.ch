@@ -3,7 +3,7 @@
 	import Section from '$lib/index/section.svelte';
 	import type { AppleMusicPlaylistSummary, AppleMusicSong, CacheData } from '$lib/lcp/applemusic';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
-	import Loading from '$lib/loading.svelte';
+	import SectionLoading from '$lib/section-loading.svelte';
 	import { Error } from '@gleich/ui';
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
@@ -56,7 +56,7 @@
 	}}
 >
 	{#if loading}
-		<Loading height={744} />
+		<SectionLoading name="music" height={744} />
 	{:else if response && recently_played && playlists}
 		<p>
 			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite

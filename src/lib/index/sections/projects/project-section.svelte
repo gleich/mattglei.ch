@@ -3,7 +3,7 @@
 	import Section from '$lib/index/section.svelte';
 	import type { Repository } from '$lib/lcp/github';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
-	import Loading from '$lib/loading.svelte';
+	import SectionLoading from '$lib/section-loading.svelte';
 	import Since from '$lib/time/since.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import { Card, Error } from '@gleich/ui';
@@ -59,7 +59,7 @@
 	}}
 >
 	{#if loading}
-		<Loading height={446.5} />
+		<SectionLoading name="projects" height={446.5} />
 	{:else if projects}
 		<p class="intro">
 			I love to build and explore everything from <a

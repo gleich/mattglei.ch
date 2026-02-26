@@ -3,7 +3,7 @@
 	import Section from '$lib/index/section.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import type { Game } from '$lib/lcp/steam';
-	import Loading from '$lib/loading.svelte';
+	import SectionLoading from '$lib/section-loading.svelte';
 	import Stats from '$lib/stats.svelte';
 	import { renderDuration } from '$lib/time';
 	import { Card, Error, Image } from '@gleich/ui';
@@ -35,7 +35,7 @@
 	}}
 >
 	{#if loading}
-		<Loading height={483.63} />
+		<SectionLoading name="games" height={483.63} />
 	{:else if games}
 		<p>
 			To relax I like to occasionally play games with some of my friends. My favorite game of all

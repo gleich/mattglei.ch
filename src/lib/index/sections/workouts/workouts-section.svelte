@@ -3,7 +3,7 @@
 	import StravaIcon from '$lib/icons/strava-icon.svelte';
 	import type { LcpResponse } from '$lib/lcp/lcp.server';
 	import { type Workout as LcpWorkout } from '$lib/lcp/workouts';
-	import Loading from '$lib/loading.svelte';
+	import SectionLoading from '$lib/section-loading.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import { Error } from '@gleich/ui';
 	import Section from '../../section.svelte';
@@ -57,7 +57,7 @@
 	}}
 >
 	{#if loading}
-		<Loading height={529.91} />
+		<SectionLoading name="workouts" height={529.91} />
 	{:else if workouts}
 		<p>
 			One of my favorite things is staying active and enjoying the outdoors. I grew up in New
