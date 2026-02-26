@@ -11,6 +11,7 @@
 	import { onMount } from 'svelte';
 	import PageLoading from '$lib/loading/page-loading.svelte';
 	import { page } from '$app/state';
+	import LoadingWidget from '$lib/loading/loading-widget.svelte';
 
 	const { data }: { data: PlaylistData } = $props();
 
@@ -44,6 +45,7 @@
 
 			if (!next?.pagination.next) {
 				hasMore = false;
+				loading = false;
 				return;
 			}
 
@@ -83,6 +85,11 @@
 				? { url: response.playlist?.tracks[0].album_art_url, height: '600', width: '600' }
 				: undefined}
 		/>
+
+		{#if loading}
+			<LoadingWidget />
+		{/if}
+
 		<div class="header">
 			<div class="header-info">
 				<h2>{response.playlist.name} Playlist</h2>

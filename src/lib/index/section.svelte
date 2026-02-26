@@ -50,7 +50,7 @@
 		{#if liveData}
 			<p class="updated-container">
 				{#if liveData.updated}
-					Data <span class="updated-detailed">&nbsp;cached & processed&nbsp;</span><span
+					Data <span class="updated-detailed">&nbsp;cached & streamed&nbsp;</span><span
 						class="updated-concise">&nbsp;updated&nbsp;</span
 					>
 					by&nbsp;<a href="/writing/lcp" class="lcp-link">lcp</a>&nbsp;<span

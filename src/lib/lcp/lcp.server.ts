@@ -57,7 +57,7 @@ export async function loadFromLCP<T>(
 		return await res.json();
 	} catch (err: unknown) {
 		if (err instanceof DOMException && err.name === 'AbortError') {
-			console.error(`Timed out after 15 s: ${url}`);
+			console.error(`Timed out after 15s: ${url}`);
 		} else {
 			console.error(`Error fetching ${url}:`, err);
 		}

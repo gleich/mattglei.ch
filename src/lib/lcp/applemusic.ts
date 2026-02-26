@@ -6,6 +6,9 @@ export async function loadPlaylistFromLCP(
 	page: number,
 	fetch: SvelteFetch
 ): Promise<AppleMusicPlaylistResponse | null> {
+	// uncomment to check loading animation
+	// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+	// await sleep(1000);
 	try {
 		const res = await fetch(`https://lcp.mattglei.ch/applemusic/playlists/${id}?page=${page}`, {
 			method: 'GET',
