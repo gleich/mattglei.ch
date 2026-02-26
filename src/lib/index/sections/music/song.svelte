@@ -62,8 +62,8 @@
 			target="_blank"
 			class="apple-music-link"
 		>
-			<Scrolling center={false}><span class="track">{song.track}</span></Scrolling>
-			<Scrolling center={false}><span class="artist">{song.artist}</span></Scrolling>
+			<Scrolling><span class="track">{song.track}</span></Scrolling>
+			<Scrolling><span class="artist">{song.artist}</span></Scrolling>
 		</a>
 	</div>
 </Card>
@@ -125,31 +125,10 @@
 
 	.apple-music-link {
 		margin: 5px 8px;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
 	}
 
 	.artist {
 		color: grey;
-	}
-
-	@media (max-width: 430px) {
-		.container {
-			flex-direction: row;
-		}
-
-		.image {
-			height: 50px;
-			width: 50px;
-			flex: 0 0 50px;
-			border-radius: 0;
-		}
-
-		.apple-music-link {
-			flex: 1 1 auto;
-			min-width: 0;
-			align-items: start;
-		}
+		font-size: 13.5px;
 	}
 </style>
