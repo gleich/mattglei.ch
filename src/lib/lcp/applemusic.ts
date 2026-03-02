@@ -29,11 +29,11 @@ export interface AppleMusicSong {
 	track: string;
 	artist: string;
 	duration_in_millis: number;
-	album_art_url: string | null;
-	album_art_blurhash: string | null;
+	album_art_url: string | undefined;
+	album_art_blurhash: string | undefined;
 	url: string;
 	id: string;
-	preview_audio_url: string | null;
+	preview_audio_url: string | undefined;
 }
 
 export interface AppleMusicPlaylistResponse {
