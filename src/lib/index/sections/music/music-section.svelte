@@ -56,7 +56,7 @@
 	}}
 >
 	{#if loading}
-		<SectionLoading name="music" height={744} />
+		<SectionLoading name="music" height={708} />
 	{:else if response && recently_played && playlists}
 		<p>
 			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite
@@ -97,17 +97,28 @@
 
 <style>
 	.header {
+		display: flex;
+		align-items: center;
+		gap: 12px;
 		width: 100%;
-		text-align: center;
 		padding: 5px 0;
+		font-size: 14px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--muted-foreground, var(--foreground));
+	}
+
+	.header::before,
+	.header::after {
+		content: '';
+		flex: 1;
+		border-top: 1px solid var(--border);
 	}
 
 	.section {
 		display: flex;
 		overflow-x: scroll;
 		gap: 15px;
-		border-top: 1px solid var(--border);
-		padding-top: 10px;
 		padding: 10px;
 	}
 
