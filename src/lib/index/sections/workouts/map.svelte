@@ -5,18 +5,31 @@
 	const { workout }: { workout: Workout } = $props();
 </script>
 
-<Image
-	src={workout.map_image_url as string}
-	alt="Mapbox Map"
-	placeholder={workout.map_blur_image}
-	height={504}
-	width={924}
-/>
-{#if workout.location}
-	<p class="location">{workout.location}</p>
-{/if}
+<div class="map-wrapper">
+	<Image
+		src={workout.map_image_url as string}
+		alt="Mapbox Map"
+		placeholder={workout.map_blur_image}
+		height={504}
+		width={924}
+	/>
+	{#if workout.location}
+		<p class="location">{workout.location}</p>
+	{/if}
+</div>
 
 <style>
+	.map-wrapper {
+		position: relative;
+		border-radius: var(--border-radius);
+		overflow: hidden;
+	}
+
+	.map-wrapper :global(img) {
+		border-radius: var(--border-radius);
+		display: block;
+	}
+
 	.location {
 		position: absolute;
 		bottom: 0;
@@ -29,6 +42,8 @@
 		text-align: center;
 		font-size: 14.5px;
 		padding: 1px 0;
+		border-bottom-left-radius: var(--border-radius);
+		border-bottom-right-radius: var(--border-radius);
 	}
 
 	@media (max-width: 500px) {

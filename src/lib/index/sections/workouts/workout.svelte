@@ -97,6 +97,7 @@
 
 	.data {
 		border: 1px solid var(--border);
+		border-radius: var(--border-radius);
 		overflow: hidden;
 		position: relative;
 	}
