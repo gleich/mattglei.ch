@@ -28,16 +28,16 @@
 
 	<ExperienceSection />
 
-	{#await data.workouts}
-		<WorkoutsSection loading />
-	{:then workouts}
-		<WorkoutsSection {workouts} />
-	{/await}
-
 	{#await data.music}
 		<MusicSection loading />
 	{:then music}
 		<MusicSection {music} />
+	{/await}
+
+	{#await data.workouts}
+		<WorkoutsSection loading />
+	{:then workouts}
+		<WorkoutsSection {workouts} />
 	{/await}
 
 	<PhotoSection />

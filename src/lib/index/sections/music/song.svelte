@@ -135,11 +135,12 @@
 	.apple-music-link::before {
 		content: '';
 		position: absolute;
-		inset: -20px;
+		inset: 0;
 		background-image: var(--album-art);
 		background-size: cover;
 		background-position: center;
 		filter: blur(18px);
+		transform: scale(1.5);
 		opacity: 0.55;
 		z-index: -1;
 	}
