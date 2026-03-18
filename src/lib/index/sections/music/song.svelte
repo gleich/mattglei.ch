@@ -61,6 +61,7 @@
 			title={`View "${song.track}" on Apple Music`}
 			target="_blank"
 			class="apple-music-link"
+			style={song.album_art_url ? `--album-art: url('${song.album_art_url}')` : ''}
 		>
 			<Scrolling><span class="track">{song.track}</span></Scrolling>
 			<Scrolling><span class="artist">{song.artist}</span></Scrolling>
@@ -121,14 +122,31 @@
 		font-size: 14.5px;
 		text-decoration: none;
 		color: var(--foreground);
+		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 	}
 
 	.apple-music-link {
-		margin: 5px 8px;
+		padding: 5px 8px;
+		position: relative;
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	.apple-music-link::before {
+		content: '';
+		position: absolute;
+		inset: -20px;
+		background-image: var(--album-art);
+		background-size: cover;
+		background-position: center;
+		filter: blur(18px);
+		opacity: 0.55;
+		z-index: -1;
 	}
 
 	.artist {
-		color: grey;
+		color: var(--foreground);
+		opacity: 0.65;
 		font-size: 13.5px;
 	}
 </style>
