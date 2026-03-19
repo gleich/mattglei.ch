@@ -9,6 +9,8 @@
 	import Song from './song.svelte';
 	import { source } from 'sveltekit-sse';
 	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
 
 	interface Artist {
 		name: string;
@@ -75,7 +77,7 @@
 			<h3 class="header">Recently Played Songs</h3>
 			<div class="section songs">
 				{#each recently_played as song (song.id)}
-					<div class="song">
+					<div class="song" animate:flip={{ duration: 400 }} transition:fly={{ y: -24, duration: 350 }}>
 						<Song {song} />
 					</div>
 				{/each}
