@@ -141,7 +141,7 @@
 		background-position: center;
 		filter: blur(15px);
 		transform: scale(1.5);
-		opacity: 0.70;
+		opacity: 0.7;
 		z-index: -1;
 	}
 
