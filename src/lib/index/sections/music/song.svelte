@@ -139,9 +139,9 @@
 		background-image: var(--album-art);
 		background-size: cover;
 		background-position: center;
-		filter: blur(18px);
+		filter: blur(15px);
 		transform: scale(1.5);
-		opacity: 0.55;
+		opacity: 0.70;
 		z-index: -1;
 	}
 
