@@ -69,15 +69,19 @@
 					and
 				{/if}
 				<a href={artist.url} target="_blank" rel="noopener noreferrer">{artist.name}</a>
-			{/each}. Below is my collection of playlists that I've made over the years as well as my
-			recently played music.
+			{/each}. Below is my recently played music as well as a collection of playlists that I've made
+			over the years.
 		</p>
 
 		<div>
 			<h3 class="header">Recently Played Songs</h3>
 			<div class="section songs">
 				{#each recently_played as song (song.id)}
-					<div class="song" animate:flip={{ duration: 400 }} transition:fly={{ y: -24, duration: 350 }}>
+					<div
+						class="song"
+						animate:flip={{ duration: 400 }}
+						transition:fly={{ y: -24, duration: 350 }}
+					>
 						<Song {song} />
 					</div>
 				{/each}
