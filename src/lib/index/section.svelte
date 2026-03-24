@@ -105,7 +105,7 @@
 
 	.live-word {
 		font-size: inherit;
-		animation: blink 1s ease infinite;
+		animation: blink 1s ease-in-out infinite;
 	}
 
 	.live-from {
