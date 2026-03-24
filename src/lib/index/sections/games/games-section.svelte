@@ -57,7 +57,7 @@
 								placeholder={game.header_blur_hash}
 							/>
 						</div>
-						<div class="stats">
+						<div class="stats" style={`--game-header: url('${game.header_url}')`}>
 							<Stats
 								stats={new Map([
 									['Playtime', renderDuration(game.playtime_forever * 60)],
@@ -101,6 +101,27 @@
 
 	.stats {
 		padding: 5px 0;
+		position: relative;
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	.stats::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: var(--game-header);
+		background-size: cover;
+		background-position: center;
+		filter: blur(15px);
+		transform: scale(1.5);
+		opacity: 0.7;
+		z-index: -1;
+	}
+
+	.stats :global(*) {
+		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+		color: var(--foreground);
 	}
 
 	@media (max-width: 710px) {
