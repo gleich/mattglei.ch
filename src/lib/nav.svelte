@@ -7,6 +7,32 @@
 	import { NavLogo } from '@gleich/ui';
 
 	const links = ['', 'writing', 'photos', 'workouts'];
+
+	let linkEls: HTMLAnchorElement[] = [];
+	let linksContainer: HTMLDivElement;
+	let indicatorLeft = $state(0);
+	let indicatorTop = $state(0);
+	let indicatorWidth = $state(0);
+	let indicatorHeight = $state(0);
+	let indicatorVisible = $state(false);
+
+	function updateIndicator() {
+		const idx = links.findIndex((link) => `/${link}` === page.url.pathname);
+		if (idx === -1 || !linkEls[idx] || !linksContainer) return;
+		const el = linkEls[idx];
+		const containerRect = linksContainer.getBoundingClientRect();
+		const elRect = el.getBoundingClientRect();
+		indicatorLeft = elRect.left - containerRect.left;
+		indicatorTop = elRect.top - containerRect.top;
+		indicatorWidth = elRect.width;
+		indicatorHeight = elRect.height;
+		indicatorVisible = true;
+	}
+
+	$effect(() => {
+		page.url.pathname;
+		updateIndicator();
+	});
 </script>
 
 {#snippet social(name: string, href: string, Icon: Component)}
@@ -32,9 +58,20 @@
 		{@render socials('bar-socials')}
 	</div>
 	{@render socials('socials-under-name')}
-	<div class="links">
-		{#each links as link (link)}
-			<a href={`/${link}`} class={page.url.pathname === `/${link}` ? 'current-link' : ''}
+	<div class="links" bind:this={linksContainer}>
+		<div
+			class="indicator"
+			style:left="{indicatorLeft}px"
+			style:top="{indicatorTop}px"
+			style:width="{indicatorWidth}px"
+			style:height="{indicatorHeight}px"
+			style:opacity={indicatorVisible ? 1 : 0}
+		></div>
+		{#each links as link, i (link)}
+			<a
+				bind:this={linkEls[i]}
+				href={`/${link}`}
+				class={page.url.pathname === `/${link}` ? 'current-link' : ''}
 				>{link === '' ? 'home' : link}</a
 			>
 		{/each}
@@ -61,6 +98,7 @@
 	}
 
 	.links {
+		position: relative;
 		display: flex;
 		max-width: 600px;
 		width: 98%;
@@ -76,17 +114,32 @@
 		margin: 0px 20px;
 	}
 
+	.indicator {
+		position: absolute;
+		background-color: var(--green-background);
+		border-radius: 2px;
+		pointer-events: none;
+		transition:
+			left 0.25s ease,
+			top 0.25s ease,
+			width 0.25s ease,
+			height 0.25s ease,
+			opacity 0.15s ease;
+	}
+
 	.links a {
+		position: relative;
+		z-index: 1;
 		padding: 2px 10px;
 		margin: 5px;
 		text-decoration: none;
 		color: var(--foreground);
+		border-radius: 2px;
+		transition: color 0.25s ease;
 	}
 
 	.current-link {
-		background-color: var(--green-background);
 		color: var(--green-foreground) !important;
-		border-radius: 2px;
 	}
 
 	.left {
