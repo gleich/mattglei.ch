@@ -2,11 +2,13 @@
 	import PhotoGallery from '$lib/index/sections/photos/photo-gallery.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import Section from '../../section.svelte';
+
+	const yearsSince = new Date().getFullYear() - 2016;
 </script>
 
 <Section name="Photos">
 	<p>
-		I've been really into photography for about nine years now. Starting with nature photography,
+		I've been really into photography for about {yearsSince} years now. Starting with nature photography,
 		mainly landscapes and macro, I've recently delved into automotive photography, especially during
 		my time college with the RIT car club. I primarily use Nikon gear, with my current camera being
 		a Nikon Z7II. Below is a few of my favorite photo's I've taken over the years. You can see more
