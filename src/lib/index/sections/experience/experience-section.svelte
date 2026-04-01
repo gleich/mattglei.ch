@@ -21,12 +21,12 @@
 
 	<div class="experiences">
 		<Experience
-			role="Contracted Developer"
+			role="Software Engineer"
 			icon="synthient.webp"
 			company="Synthient"
 			url="https://synthient.com"
 			startDate={dayjs(new Date(2026, 0))}
-			description="Developing the Golang SDK and CLI for Synthient as a contracted developer. Working on research and maintenance of core ingest services powering the aggregation of IPs. Working closely with Go, Redis, and REST APIs."
+			description="Developing the Golang SDK and CLI for Synthient as a contracted developer. Working on research and maintenance of core ingest services powering the aggregation of IPs. Working closely with Go, CLickHouse, and REST APIs."
 		/>
 		<Experience
 			role="Associate DevOps Engineer"
