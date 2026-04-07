@@ -74,18 +74,22 @@
 
 <svelte:window on:scroll={onScroll} />
 
+{#if data.meta}
+	<DynamicHead
+		title={`${data.meta.name} Playlist`}
+		description={`${data.meta.trackCount} tracks`}
+		opengraphImage={data.meta.firstTrackArtUrl
+			? { url: data.meta.firstTrackArtUrl, height: '600', width: '600' }
+			: undefined}
+	/>
+{:else}
+	<DynamicHead title="404 Not found" description="Playlist Not Found" />
+{/if}
+
 {#await data.response}
 	<PageLoading />
 {:then response}
 	{#if response}
-		<DynamicHead
-			title={`${response.playlist.name} Playlist`}
-			description={`${response.playlist.tracks.length} tracks`}
-			opengraphImage={response.playlist?.tracks[0].album_art_url != null
-				? { url: response.playlist?.tracks[0].album_art_url, height: '600', width: '600' }
-				: undefined}
-		/>
-
 		{#if loading}
 			<LoadingWidget />
 		{/if}
@@ -128,7 +132,6 @@
 			{/each}
 		</div>
 	{:else}
-		<DynamicHead title="404 Not found" description="Playlist Not Found" />
 		<Error msg="404: Playlist Not Found" />
 	{/if}
 {/await}
