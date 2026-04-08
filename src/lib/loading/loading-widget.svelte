@@ -1,4 +1,8 @@
-<div class="container"></div>
+<script>
+	import { fly } from 'svelte/transition';
+</script>
+
+<div class="container" transition:fly={{ y: 60, duration: 300 }}></div>
 
 <style>
 	.container {
