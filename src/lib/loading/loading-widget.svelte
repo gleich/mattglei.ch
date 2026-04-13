@@ -2,7 +2,9 @@
 	import { fly } from 'svelte/transition';
 </script>
 
-<div class="container" transition:fly={{ y: 60, duration: 300 }}></div>
+<div class="container" transition:fly={{ y: 60, duration: 300 }}>
+	<div class="spinner"></div>
+</div>
 
 <style>
 	.container {
@@ -13,51 +15,24 @@
 		bottom: 20px;
 		right: 20px;
 		z-index: 9999;
+		padding: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	.container::before {
-		content: '[=    ]';
-		font-family:
-			'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-			'Courier New', monospace;
-		white-space: pre;
-		display: inline-block;
-		animation: asciiSpinner 0.4s steps(1, end) infinite;
+	.spinner {
+		width: 18px;
+		height: 18px;
+		border: 2px solid var(--green-border);
+		border-top-color: var(--green-foreground);
+		border-radius: 50%;
+		animation: spin 0.7s linear infinite;
 	}
 
-	@keyframes asciiSpinner {
-		0% {
-			content: '[=    ]';
-		}
-		10% {
-			content: '[==   ]';
-		}
-		20% {
-			content: '[ === ]';
-		}
-		30% {
-			content: '[  ===]';
-		}
-		40% {
-			content: '[   ==]';
-		}
-		50% {
-			content: '[    =]';
-		}
-		60% {
-			content: '[   ==]';
-		}
-		70% {
-			content: '[  ===]';
-		}
-		80% {
-			content: '[ === ]';
-		}
-		90% {
-			content: '[==   ]';
-		}
-		100% {
-			content: '[=    ]';
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
 		}
 	}
 </style>
