@@ -30,7 +30,6 @@
 	}
 
 	$effect(() => {
-		page.url.pathname;
 		updateIndicator();
 	});
 </script>
