@@ -8,7 +8,7 @@
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
 	import { source } from 'sveltekit-sse';
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 
@@ -35,6 +35,54 @@
 	);
 	let updated = $derived<Date | undefined>(response?.updated);
 
+	let songsContainer: HTMLDivElement | null = $state(null);
+	let playlistsContainer: HTMLDivElement | null = $state(null);
+
+	let songsScrollLeft = $state(0);
+	let songsScrollWidth = $state(0);
+	let songsClientWidth = $state(0);
+
+	let playlistsScrollLeft = $state(0);
+	let playlistsScrollWidth = $state(0);
+	let playlistsClientWidth = $state(0);
+
+	let songsCanScrollLeft = $derived(songsScrollLeft > 0);
+	let songsCanScrollRight = $derived(songsScrollLeft + songsClientWidth < songsScrollWidth);
+
+	let playlistsCanScrollLeft = $derived(playlistsScrollLeft > 0);
+	let playlistsCanScrollRight = $derived(
+		playlistsScrollLeft + playlistsClientWidth < playlistsScrollWidth
+	);
+
+	function updateSongsScroll() {
+		if (!songsContainer) return;
+		songsScrollLeft = songsContainer.scrollLeft;
+		songsScrollWidth = songsContainer.scrollWidth;
+		songsClientWidth = songsContainer.clientWidth;
+	}
+
+	function updatePlaylistsScroll() {
+		if (!playlistsContainer) return;
+		playlistsScrollLeft = playlistsContainer.scrollLeft;
+		playlistsScrollWidth = playlistsContainer.scrollWidth;
+		playlistsClientWidth = playlistsContainer.clientWidth;
+	}
+
+	function scrollSection(el: HTMLDivElement | null, direction: 'left' | 'right') {
+		if (!el) return;
+		el.scrollBy({ left: direction === 'left' ? -el.clientWidth : el.clientWidth, behavior: 'smooth' });
+	}
+
+	$effect(() => {
+		recently_played;
+		tick().then(() => updateSongsScroll());
+	});
+
+	$effect(() => {
+		playlists;
+		tick().then(() => updatePlaylistsScroll());
+	});
+
 	onMount(() => {
 		const stream = source('https://lcp.mattglei.ch/applemusic/stream').select('message');
 		stream.subscribe((s) => {
@@ -45,6 +93,13 @@
 				updated = streamedResponse.updated;
 			}
 		});
+
+		window.addEventListener('resize', updateSongsScroll);
+		window.addEventListener('resize', updatePlaylistsScroll);
+		return () => {
+			window.removeEventListener('resize', updateSongsScroll);
+			window.removeEventListener('resize', updatePlaylistsScroll);
+		};
 	});
 </script>
 
@@ -74,8 +129,28 @@
 		</p>
 
 		<div>
-			<h3 class="header">Recently Played Songs</h3>
-			<div class="section songs">
+			<div class="section-header">
+				<h3 class="header">Recently Played Songs</h3>
+				<div class="scroll-controls">
+					<button
+						class="scroll-btn"
+						disabled={!songsCanScrollLeft}
+						onclick={() => scrollSection(songsContainer, 'left')}
+						aria-label="Scroll songs left"
+					>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+					</button>
+					<button
+						class="scroll-btn"
+						disabled={!songsCanScrollRight}
+						onclick={() => scrollSection(songsContainer, 'right')}
+						aria-label="Scroll songs right"
+					>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+					</button>
+				</div>
+			</div>
+			<div class="section songs" bind:this={songsContainer} onscroll={updateSongsScroll}>
 				{#each recently_played as song (song.id)}
 					<div
 						class="song"
@@ -89,8 +164,28 @@
 		</div>
 
 		<div>
-			<h3 class="header">Playlists</h3>
-			<div class="section playlists">
+			<div class="section-header">
+				<h3 class="header">Playlists</h3>
+				<div class="scroll-controls">
+					<button
+						class="scroll-btn"
+						disabled={!playlistsCanScrollLeft}
+						onclick={() => scrollSection(playlistsContainer, 'left')}
+						aria-label="Scroll playlists left"
+					>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+					</button>
+					<button
+						class="scroll-btn"
+						disabled={!playlistsCanScrollRight}
+						onclick={() => scrollSection(playlistsContainer, 'right')}
+						aria-label="Scroll playlists right"
+					>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+					</button>
+				</div>
+			</div>
+			<div class="section playlists" bind:this={playlistsContainer} onscroll={updatePlaylistsScroll}>
 				{#each playlists as playlist (playlist.id)}
 					<Playlist {playlist} />
 				{/each}
@@ -102,11 +197,18 @@
 </Section>
 
 <style>
+	.section-header {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
 	.header {
 		display: flex;
 		align-items: center;
 		gap: 12px;
-		width: 100%;
+		flex: 1;
+		min-width: 0;
 		padding: 5px 0;
 		font-size: 14px;
 		letter-spacing: 0.05em;
@@ -119,6 +221,31 @@
 		content: '';
 		flex: 1;
 		border-top: 1px solid var(--border);
+	}
+
+	.scroll-controls {
+		display: flex;
+		gap: 4px;
+		flex-shrink: 0;
+	}
+
+	.scroll-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 26px;
+		height: 26px;
+		padding: 0;
+		border-radius: 50%;
+		background: transparent;
+		color: var(--foreground);
+		cursor: pointer;
+		transition: opacity 0.15s;
+	}
+
+	.scroll-btn:disabled {
+		opacity: 0.25;
+		cursor: default;
 	}
 
 	.section {
