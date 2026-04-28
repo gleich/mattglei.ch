@@ -30,7 +30,12 @@
 	<div class="container">
 		<div class="image">
 			{#if song.album_art_url}
-				<a href={song.url} title={`View "${song.track}" on Apple Music`} target="_blank" class="album-art-link">
+				<a
+					href={song.url}
+					title={`View "${song.track}" on Apple Music`}
+					target="_blank"
+					class="album-art-link"
+				>
 					<Image
 						src={song.album_art_url as string}
 						alt={`${song.track} by ${song.artist}`}
