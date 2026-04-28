@@ -30,14 +30,16 @@
 	<div class="container">
 		<div class="image">
 			{#if song.album_art_url}
-				<Image
-					src={song.album_art_url as string}
-					alt={`${song.track} by ${song.artist}`}
-					placeholder={song.album_art_blurhash as string}
-					height={217}
-					width={217}
-					aspectRatio="1/1"
-				/>
+				<a href={song.url} title={`View "${song.track}" on Apple Music`} target="_blank" class="album-art-link">
+					<Image
+						src={song.album_art_url as string}
+						alt={`${song.track} by ${song.artist}`}
+						placeholder={song.album_art_blurhash as string}
+						height={217}
+						width={217}
+						aspectRatio="1/1"
+					/>
+				</a>
 			{:else}
 				<div class="no-album-art-container">No Album Art</div>
 			{/if}
@@ -74,6 +76,11 @@
 		display: flex;
 		flex-direction: column;
 		text-decoration: none;
+	}
+
+	.album-art-link {
+		display: block;
+		line-height: 0;
 	}
 
 	.image {
