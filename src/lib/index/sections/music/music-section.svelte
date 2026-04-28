@@ -70,7 +70,10 @@
 
 	function scrollSection(el: HTMLDivElement | null, direction: 'left' | 'right') {
 		if (!el) return;
-		el.scrollBy({ left: direction === 'left' ? -el.clientWidth : el.clientWidth, behavior: 'smooth' });
+		el.scrollBy({
+			left: direction === 'left' ? -el.clientWidth : el.clientWidth,
+			behavior: 'smooth'
+		});
 	}
 
 	$effect(() => {
@@ -138,7 +141,16 @@
 						onclick={() => scrollSection(songsContainer, 'left')}
 						aria-label="Scroll songs left"
 					>
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg
+						>
 					</button>
 					<button
 						class="scroll-btn"
@@ -146,7 +158,16 @@
 						onclick={() => scrollSection(songsContainer, 'right')}
 						aria-label="Scroll songs right"
 					>
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg
+						>
 					</button>
 				</div>
 			</div>
@@ -173,7 +194,16 @@
 						onclick={() => scrollSection(playlistsContainer, 'left')}
 						aria-label="Scroll playlists left"
 					>
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg
+						>
 					</button>
 					<button
 						class="scroll-btn"
@@ -181,11 +211,24 @@
 						onclick={() => scrollSection(playlistsContainer, 'right')}
 						aria-label="Scroll playlists right"
 					>
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+						<svg
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg
+						>
 					</button>
 				</div>
 			</div>
-			<div class="section playlists" bind:this={playlistsContainer} onscroll={updatePlaylistsScroll}>
+			<div
+				class="section playlists"
+				bind:this={playlistsContainer}
+				onscroll={updatePlaylistsScroll}
+			>
 				{#each playlists as playlist (playlist.id)}
 					<Playlist {playlist} />
 				{/each}
