@@ -77,12 +77,12 @@
 	}
 
 	$effect(() => {
-		recently_played;
+		void recently_played;
 		tick().then(() => updateSongsScroll());
 	});
 
 	$effect(() => {
-		playlists;
+		void playlists;
 		tick().then(() => updatePlaylistsScroll());
 	});
 
