@@ -5,10 +5,8 @@
 <div class="container">
 	<p>Hey, I'm Matt Gleich</p>
 	<div>
-		I'm a rising fifth-year (5 year program due to <a
-			href="https://www.rit.edu/careerservices/students/co-op"
-			target="_blank">RIT COOP</a
-		>
+		I'm a rising 5<sup>th</sup> (5 year program due to
+		<a href="https://www.rit.edu/careerservices/students/co-op" target="_blank">RIT COOP</a>
 		program) computer science student at the
 		<a href="https://rit.edu" target="_blank">Rochester Institute of Technology (RIT)</a>. This
 		website serves as a portfolio showcasing my projects, work experience, and personal interests. I
