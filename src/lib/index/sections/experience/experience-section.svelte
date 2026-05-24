@@ -21,7 +21,7 @@
 
 	<div class="experiences">
 		<Experience
-			role="Intern"
+			role="Engineering Intern"
 			icon="synthient.webp"
 			company="Synthient"
 			url="https://synthient.com"
