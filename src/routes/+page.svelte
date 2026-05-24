@@ -14,7 +14,7 @@
 
 <DynamicHead
 	title="Matt Gleich"
-	description="4th year computer science student at the Rochester Institute of Technology (RIT)"
+	description="Software Engineering Intern @ Synthient | Computer science student at the Rochester Institute of Technology (RIT)"
 />
 
 <Intro />
