@@ -50,12 +50,24 @@
 		{#if liveData}
 			<p class="updated-container">
 				{#if liveData.updated}
-					Data <span class="updated-detailed">&nbsp;cached & streamed&nbsp;</span><span
-						class="updated-concise">&nbsp;updated&nbsp;</span
+					<svg
+						class="satellite-icon"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
 					>
-					by&nbsp;<a href="/writing/lcp" class="lcp-link">lcp</a>&nbsp;<span
-						class="updated-detailed">[</span
-					><Since time={liveData.updated} /><span class="updated-detailed">]</span>
+						<path d="M4 10a7.31 7.31 0 0 0 10 10Z" />
+						<path d="m9 15 3-3" />
+						<path class="satellite-wave satellite-wave-1" d="M17 13a6 6 0 0 0-6-6" />
+						<path class="satellite-wave satellite-wave-2" d="M21 13A10 10 0 0 0 11 3" />
+					</svg>
+					Cached by&nbsp;<a href="/writing/lcp" class="lcp-link">lcp</a>&nbsp;[<Since
+						time={liveData.updated}
+					/>]
 				{:else}
 					loading
 				{/if}
@@ -158,18 +170,29 @@
 		margin-top: 5px;
 	}
 
+	.satellite-icon {
+		width: 20px;
+		height: 20px;
+		color: var(--green-foreground);
+		margin-right: 8px;
+		flex-shrink: 0;
+		overflow: visible;
+	}
+
+	.satellite-wave {
+		transform-box: view-box;
+		transform-origin: 11px 13px;
+		will-change: transform, opacity;
+		animation: satellite-emit 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+	}
+
+	.satellite-wave-2 {
+		animation-delay: 1.3s;
+	}
+
 	.lcp-link {
 		color: inherit;
 		font-size: inherit;
-	}
-
-	.updated-detailed,
-	.updated-concise {
-		font-size: inherit;
-	}
-
-	.updated-concise {
-		display: none;
 	}
 
 	@media (max-width: 450px) {
@@ -205,12 +228,8 @@
 			margin-top: 10px;
 		}
 
-		.updated-detailed {
+		.satellite-icon {
 			display: none;
-		}
-
-		.updated-concise {
-			display: block;
 		}
 	}
 
@@ -239,6 +258,26 @@
 		}
 		100% {
 			opacity: 30%;
+		}
+	}
+
+	@keyframes satellite-emit {
+		0% {
+			opacity: 0;
+			transform: scale(0.4);
+		}
+		20% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+			transform: scale(1.25);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.satellite-wave {
+			animation: none;
 		}
 	}
 </style>
