@@ -2,6 +2,7 @@
 	import '@gleich/ui/styles.css';
 	import '../styles/global.css';
 	import '../styles/fonts.css';
+	import '../styles/font-fallbacks.css';
 
 	import Nav from '$lib/nav.svelte';
 	import Fonts from '$lib/fonts.svelte';

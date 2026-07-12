@@ -173,7 +173,7 @@
 
 	.index {
 		color: grey;
-		font-family: 'IBM Plex Mono';
+		font-family: 'IBM Plex Mono', 'IBM Plex Mono Fallback', monospace;
 		font-weight: 400;
 	}
 

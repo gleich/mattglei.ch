@@ -27,7 +27,7 @@
 
 	.loading {
 		color: grey;
-		font-family: 'IBM Plex Mono';
+		font-family: 'IBM Plex Mono', 'IBM Plex Mono Fallback', monospace;
 		font-size: 14.5px;
 	}
 </style>

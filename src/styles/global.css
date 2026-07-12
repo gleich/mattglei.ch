@@ -1,7 +1,7 @@
 html {
 	font-family:
 		'IBM Plex Sans',
-		'Inter',
+		'IBM Plex Sans Fallback',
 		system-ui,
 		-apple-system,
 		BlinkMacSystemFont,
@@ -19,7 +19,8 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', 'Arial Black', Arial, sans-serif;
+	font-family: 'Inter', 'Inter Fallback', 'Segoe UI', Roboto, 'Helvetica Neue', 'Arial Black',
+		Arial, sans-serif;
 	font-weight: 800;
 }
 

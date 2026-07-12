@@ -20,7 +20,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-evenly;
-		font-family: 'IBM Plex Mono';
+		font-family: 'IBM Plex Mono', 'IBM Plex Mono Fallback', monospace;
 		font-weight: 600;
 		width: 100%;
 	}
