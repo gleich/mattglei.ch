@@ -54,7 +54,7 @@
 		font-size: 19px;
 		padding-left: 10px;
 		padding-top: 6px;
-		font-family: 'Inter';
+		font-family: 'Inter', 'Inter Fallback', sans-serif;
 		font-weight: 700;
 		background-color: var(--section-name-background-color);
 		box-shadow: inset 0px 0px 6px var(--box-shadow-color);
@@ -86,7 +86,7 @@
 	.online,
 	.offline,
 	.loading {
-		font-family: 'IBM Plex Mono';
+		font-family: 'IBM Plex Mono', 'IBM Plex Mono Fallback', monospace;
 		display: flex;
 		align-items: center;
 		padding: 4px 10px;

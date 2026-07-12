@@ -59,7 +59,7 @@
 	}}
 >
 	{#if loading}
-		<SectionLoading name="projects" height={446.5} />
+		<SectionLoading name="projects" height={436} />
 	{:else if projects}
 		<p class="intro">
 			I love to build and explore everything from <a
@@ -134,7 +134,7 @@
 		background-color: var(--green-background);
 		border: 1px solid var(--green-border);
 		padding: 1px 5px;
-		border-radius: 2px;
+		border-radius: var(--border-radius);
 		gap: 7px;
 	}
 
@@ -155,7 +155,6 @@
 		display: flex;
 		align-items: center;
 		background-color: rgba(var(--language-color), 0.4);
-		border: 1px solid rgb(var(--language-color));
 		padding: 0 5px;
 		border-radius: 2px;
 		gap: 5px;

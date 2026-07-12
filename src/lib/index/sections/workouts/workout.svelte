@@ -77,6 +77,10 @@
 		text-decoration: inherit;
 	}
 
+	.workout-name {
+		overflow-y: hidden;
+	}
+
 	.platform-icon {
 		width: 21px;
 		height: 21px;
@@ -87,7 +91,7 @@
 
 	.time {
 		color: grey;
-		font-family: 'IBM Plex Mono';
+		font-family: 'IBM Plex Mono', 'IBM Plex Mono Fallback', monospace;
 		font-size: 13.5px;
 		font-weight: 400;
 		margin-top: 1.5px;

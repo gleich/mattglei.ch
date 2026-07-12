@@ -2,3 +2,7 @@ allowBuilds:
   esbuild: true
   sharp: true
   workerd: true
+minimumReleaseAgeExclude:
+  - '@gleich/ui@1.5.1'
+  - '@gleich/ui@1.5.2'
+  - '@gleich/ui@1.5.3'

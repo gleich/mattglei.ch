@@ -116,7 +116,7 @@
 	}}
 >
 	{#if loading}
-		<SectionLoading name="music" height={708} />
+		<SectionLoading name="music" height={691.19} />
 	{:else if response && recently_played && playlists}
 		<p>
 			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite

@@ -35,7 +35,7 @@
 	}}
 >
 	{#if loading}
-		<SectionLoading name="games" height={483.63} />
+		<SectionLoading name="games" height={479.63} />
 	{:else if games}
 		<p>
 			To relax I like to occasionally play games with some of my friends. My favorite game of all

@@ -69,7 +69,7 @@
 						time={liveData.updated}
 					/>]
 				{:else}
-					loading
+					<span class="loading"> loading </span>
 				{/if}
 			</p>
 		{/if}
@@ -108,7 +108,7 @@
 		align-items: center;
 		padding: 4px 15px;
 		padding-right: 12px;
-		font-family: 'IBM Plex Mono';
+		font-family: 'IBM Plex Mono', 'IBM Plex Mono Fallback', monospace;
 		font-weight: 500;
 		height: 28px;
 		flex-grow: 0;
@@ -160,14 +160,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 5px;
+		padding: 4px;
 		color: var(--green-foreground);
 		background: var(--green-background);
 		border-top: 1px solid var(--green-border);
-		font-family: 'IBM Plex Mono';
+		font-family: 'IBM Plex Mono', 'IBM Plex Mono Fallback', monospace;
 		font-weight: 500;
 		font-size: 13.5px;
-		margin-top: 5px;
 	}
 
 	.satellite-icon {
@@ -193,6 +192,10 @@
 	.lcp-link {
 		color: inherit;
 		font-size: inherit;
+	}
+
+	.loading {
+		line-height: 20px;
 	}
 
 	@media (max-width: 450px) {

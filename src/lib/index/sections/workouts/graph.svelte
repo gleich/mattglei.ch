@@ -147,7 +147,7 @@
 		justify-content: center;
 		padding-bottom: 4px;
 		padding-top: 2px;
-		font-family: 'IBM Plex Mono';
+		font-family: 'IBM Plex Mono', 'IBM Plex Mono Fallback', monospace;
 		font-size: 13px;
 		flex: 0 0 auto;
 	}
