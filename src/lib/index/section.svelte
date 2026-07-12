@@ -170,8 +170,8 @@
 	}
 
 	.satellite-icon {
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 		color: var(--green-foreground);
 		margin-right: 8px;
 		flex-shrink: 0;
