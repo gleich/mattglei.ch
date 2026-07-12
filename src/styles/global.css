@@ -19,8 +19,9 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Inter', 'Inter Fallback', 'Segoe UI', Roboto, 'Helvetica Neue', 'Arial Black',
-		Arial, sans-serif;
+	font-family:
+		'Inter', 'Inter Fallback', 'Segoe UI', Roboto, 'Helvetica Neue', 'Arial Black', Arial,
+		sans-serif;
 	font-weight: 800;
 }
 
