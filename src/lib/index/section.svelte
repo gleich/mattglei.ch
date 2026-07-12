@@ -60,10 +60,10 @@
 						stroke-linejoin="round"
 						aria-hidden="true"
 					>
-						<path d="M4 10a7.31 7.31 0 0 0 10 10Z" />
-						<path d="m9 15 3-3" />
-						<path class="satellite-wave satellite-wave-1" d="M17 13a6 6 0 0 0-6-6" />
-						<path class="satellite-wave satellite-wave-2" d="M21 13A10 10 0 0 0 11 3" />
+						<path class="satellite-dot" d="M5 19V15.5A3.5 3.5 0 0 1 8.5 19Z" />
+						<path class="satellite-wave satellite-wave-1" d="M5 11A8 8 0 0 1 13 19" />
+						<path class="satellite-wave satellite-wave-2" d="M5 7A12 12 0 0 1 17 19" />
+						<path class="satellite-wave satellite-wave-3" d="M5 3A16 16 0 0 1 21 19" />
 					</svg>
 					Cached by&nbsp;<a href="/writing/lcp" class="lcp-link">lcp</a>&nbsp;[<Since
 						time={liveData.updated}
@@ -178,15 +178,21 @@
 		overflow: visible;
 	}
 
+	.satellite-dot {
+		fill: currentColor;
+	}
+
 	.satellite-wave {
-		transform-box: view-box;
-		transform-origin: 11px 13px;
-		will-change: transform, opacity;
-		animation: satellite-emit 2.6s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+		will-change: opacity;
+		animation: satellite-pulse 2.1s ease-in-out infinite;
 	}
 
 	.satellite-wave-2 {
-		animation-delay: 1.3s;
+		animation-delay: 0.3s;
+	}
+
+	.satellite-wave-3 {
+		animation-delay: 0.6s;
 	}
 
 	.lcp-link {
@@ -264,17 +270,16 @@
 		}
 	}
 
-	@keyframes satellite-emit {
+	@keyframes satellite-pulse {
 		0% {
-			opacity: 0;
-			transform: scale(0.4);
+			opacity: 0.4;
 		}
 		20% {
 			opacity: 1;
 		}
+		45%,
 		100% {
-			opacity: 0;
-			transform: scale(1.25);
+			opacity: 0.4;
 		}
 	}
 
