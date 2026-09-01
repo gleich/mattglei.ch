@@ -2,7 +2,7 @@
 	import GitHubIcon from '$lib/icons/github-icon.svelte';
 	import InstagramIcon from '$lib/icons/instagram-icon.svelte';
 	import LinkedinIcon from '$lib/icons/linkedin-icon.svelte';
-	import type { Component } from 'svelte';
+	import { onMount, type Component } from 'svelte';
 	import { page } from '$app/state';
 	import { NavLogo } from '@gleich/ui';
 
@@ -16,9 +16,17 @@
 	let indicatorHeight = $state(0);
 	let indicatorVisible = $state(false);
 
+	function isCurrentLink(link: string) {
+		const href = `/${link}`;
+		return page.url.pathname === href || (href !== '/' && page.url.pathname.startsWith(`${href}/`));
+	}
+
 	function updateIndicator() {
-		const idx = links.findIndex((link) => `/${link}` === page.url.pathname);
-		if (idx === -1 || !linkEls[idx] || !linksContainer) return;
+		const idx = links.findIndex(isCurrentLink);
+		if (idx === -1 || !linkEls[idx] || !linksContainer) {
+			indicatorVisible = false;
+			return;
+		}
 		const el = linkEls[idx];
 		const containerRect = linksContainer.getBoundingClientRect();
 		const elRect = el.getBoundingClientRect();
@@ -31,6 +39,14 @@
 
 	$effect(() => {
 		updateIndicator();
+	});
+
+	onMount(() => {
+		const observer = new ResizeObserver(updateIndicator);
+		observer.observe(linksContainer);
+		linkEls.forEach((linkEl) => observer.observe(linkEl));
+
+		return () => observer.disconnect();
 	});
 </script>
 
@@ -67,10 +83,7 @@
 			style:opacity={indicatorVisible ? 1 : 0}
 		></div>
 		{#each links as link, i (link)}
-			<a
-				bind:this={linkEls[i]}
-				href={`/${link}`}
-				class={page.url.pathname === `/${link}` ? 'current-link' : ''}
+			<a bind:this={linkEls[i]} href={`/${link}`} class={isCurrentLink(link) ? 'current-link' : ''}
 				>{link === '' ? 'home' : link}</a
 			>
 		{/each}
