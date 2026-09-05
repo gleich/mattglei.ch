@@ -5,7 +5,7 @@
 <div class="container">
 	<p>Hey, I'm Matt Gleich</p>
 	<div>
-		I'm a 5th (5 year program due to
+		I'm a 5th year (5 year program due to
 		<a href="https://www.rit.edu/careerservices/students/co-op" target="_blank">RIT COOP</a>
 		program) computer science student at the
 		<a href="https://rit.edu" target="_blank">Rochester Institute of Technology (RIT)</a>. This
