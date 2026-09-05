@@ -40,10 +40,11 @@
 	}
 
 	onMount(() => {
-		const stream = source('https://lcp.mattglei.ch/github/stream').select('message');
-		stream.subscribe((s) => {
-			if (s) {
-				const streamedResponse: LcpResponse<Repository[]> = JSON.parse(s);
+		const stream = source('https://lcp.mattglei.ch/github/stream')
+			.select('message')
+			.json<LcpResponse<Repository[]>>();
+		return stream.subscribe((streamedResponse) => {
+			if (streamedResponse) {
 				projects = streamedResponse.data;
 				updated = streamedResponse.updated;
 			}

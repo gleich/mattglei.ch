@@ -3,7 +3,7 @@
 </script>
 
 <div class="container">
-	{#each [...stats] as [valueName, value] (valueName + value)}
+	{#each stats as [valueName, value] (valueName)}
 		<div class="stat">
 			<p class="value">
 				{value}

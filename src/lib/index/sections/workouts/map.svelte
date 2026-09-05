@@ -6,13 +6,15 @@
 </script>
 
 <div class="map-wrapper">
-	<Image
-		src={workout.map_image_url as string}
-		alt="Mapbox Map"
-		placeholder={workout.map_blur_image}
-		height={504}
-		width={924}
-	/>
+	{#if workout.map_image_url}
+		<Image
+			src={workout.map_image_url}
+			alt="Mapbox Map"
+			placeholder={workout.map_blur_image}
+			height={504}
+			width={924}
+		/>
+	{/if}
 	{#if workout.location}
 		<p class="location">{workout.location}</p>
 	{/if}

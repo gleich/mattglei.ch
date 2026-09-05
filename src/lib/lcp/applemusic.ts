@@ -1,19 +1,20 @@
-import type { SvelteFetch } from './lcp.server';
 import type { Pagination } from './pagination';
 
 export async function loadPlaylistFromLCP(
 	id: string,
 	page: number,
-	fetch: SvelteFetch
+	fetch: typeof globalThis.fetch,
+	signal?: AbortSignal
 ): Promise<AppleMusicPlaylistResponse | null> {
-	// uncomment to check loading animation
-	// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-	// await sleep(1000);
 	try {
-		const res = await fetch(`https://lcp.mattglei.ch/applemusic/playlists/${id}?page=${page}`, {
-			method: 'GET',
-			cache: 'no-store'
-		});
+		const res = await fetch(
+			`https://lcp.mattglei.ch/applemusic/playlists/${encodeURIComponent(id)}?page=${page}`,
+			{
+				cache: 'no-store',
+				signal
+			}
+		);
+		if (!res.ok) return null;
 		return await res.json();
 	} catch {
 		return null;

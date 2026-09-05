@@ -8,7 +8,7 @@
 	import Playlist from './playlist.svelte';
 	import Song from './song.svelte';
 	import { source } from 'sveltekit-sse';
-	import { onMount, tick } from 'svelte';
+	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
 
@@ -29,7 +29,7 @@
 
 	const { music: response, loading }: { music?: LcpResponse<CacheData> | null; loading?: boolean } =
 		$props();
-	let recently_played = $derived<AppleMusicSong[] | undefined>(response?.data.recently_played);
+	let recentlyPlayed = $derived<AppleMusicSong[] | undefined>(response?.data.recently_played);
 	let playlists = $derived<AppleMusicPlaylistSummary[] | undefined>(
 		response?.data.playlist_summaries
 	);
@@ -77,34 +77,35 @@
 	}
 
 	$effect(() => {
-		void recently_played;
-		tick().then(() => updateSongsScroll());
+		void recentlyPlayed;
+		updateSongsScroll();
 	});
 
 	$effect(() => {
 		void playlists;
-		tick().then(() => updatePlaylistsScroll());
+		updatePlaylistsScroll();
 	});
 
 	onMount(() => {
-		const stream = source('https://lcp.mattglei.ch/applemusic/stream').select('message');
-		stream.subscribe((s) => {
-			if (s) {
-				const streamedResponse: LcpResponse<CacheData> = JSON.parse(s);
-				recently_played = streamedResponse.data.recently_played;
+		const stream = source('https://lcp.mattglei.ch/applemusic/stream')
+			.select('message')
+			.json<LcpResponse<CacheData>>();
+		return stream.subscribe((streamedResponse) => {
+			if (streamedResponse) {
+				recentlyPlayed = streamedResponse.data.recently_played;
 				playlists = streamedResponse.data.playlist_summaries;
 				updated = streamedResponse.updated;
 			}
 		});
-
-		window.addEventListener('resize', updateSongsScroll);
-		window.addEventListener('resize', updatePlaylistsScroll);
-		return () => {
-			window.removeEventListener('resize', updateSongsScroll);
-			window.removeEventListener('resize', updatePlaylistsScroll);
-		};
 	});
 </script>
+
+<svelte:window
+	onresize={() => {
+		updateSongsScroll();
+		updatePlaylistsScroll();
+	}}
+/>
 
 <Section
 	name="Music"
@@ -117,12 +118,12 @@
 >
 	{#if loading}
 		<SectionLoading name="music" height={691.19} />
-	{:else if response && recently_played && playlists}
+	{:else if recentlyPlayed && playlists}
 		<p>
 			I love a lot of different types of music ranging from electronic to jazz. A few of my favorite
 			artists are
 			{#each favArtists as artist, index (artist.url)}
-				{#if index != favArtists.length && index != 0},{/if}
+				{#if index > 0},{/if}
 				{#if index + 1 === favArtists.length}
 					and
 				{/if}
@@ -172,7 +173,7 @@
 				</div>
 			</div>
 			<div class="section songs" bind:this={songsContainer} onscroll={updateSongsScroll}>
-				{#each recently_played as song (song.id)}
+				{#each recentlyPlayed as song (song.id)}
 					<div
 						class="song"
 						animate:flip={{ duration: 400 }}

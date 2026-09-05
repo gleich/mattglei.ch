@@ -4,10 +4,10 @@
 	import Workout from '$lib/index/sections/workouts/workout.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import { DynamicHead, Error } from '@gleich/ui';
-	import type { WorkoutData } from './+page.server';
+	import type { PageProps } from './$types';
 	import PageLoading from '$lib/loading/page-loading.svelte';
 
-	const { data }: { data: WorkoutData } = $props();
+	const { data }: PageProps = $props();
 </script>
 
 <DynamicHead title="Workouts" description="Recent workouts automatically pulled from Hevy/Strava" />

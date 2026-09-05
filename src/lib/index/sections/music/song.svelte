@@ -10,18 +10,33 @@
 	let audioElement: HTMLAudioElement | null = $state(null);
 	let paused = $state(true);
 
-	function toggle() {
-		if (paused) {
-			currentAudio.update((prev) => {
-				if (prev && prev !== audioElement) {
-					prev.pause();
-				}
-				return audioElement;
-			});
-			audioElement?.play();
-		} else {
-			audioElement?.pause();
-			currentAudio.update((prev) => (prev === audioElement ? null : prev));
+	$effect(() => {
+		const audio = audioElement;
+		return () => {
+			audio?.pause();
+			currentAudio.update((current) => (current === audio ? null : current));
+		};
+	});
+
+	async function toggle() {
+		const audio = audioElement;
+		if (!audio) return;
+
+		if (!paused) {
+			audio.pause();
+			currentAudio.update((current) => (current === audio ? null : current));
+			return;
+		}
+
+		currentAudio.update((current) => {
+			if (current !== audio) current?.pause();
+			return audio;
+		});
+
+		try {
+			await audio.play();
+		} catch {
+			currentAudio.update((current) => (current === audio ? null : current));
 		}
 	}
 </script>
@@ -37,9 +52,9 @@
 					class="album-art-link"
 				>
 					<Image
-						src={song.album_art_url as string}
+						src={song.album_art_url}
 						alt={`${song.track} by ${song.artist}`}
-						placeholder={song.album_art_blurhash as string}
+						placeholder={song.album_art_blurhash}
 						height={217}
 						width={217}
 						aspectRatio="1/1"
@@ -49,12 +64,13 @@
 				<div class="no-album-art-container">No Album Art</div>
 			{/if}
 			{#if song.preview_audio_url}
+				<audio bind:this={audioElement} bind:paused src={song.preview_audio_url} preload="none" loop
+				></audio>
 				<button
 					title={`${paused ? 'Play' : 'Pause'} preview of "${song.track}"`}
 					class="play-audio-button"
 					onclick={toggle}
 				>
-					<audio bind:this={audioElement} bind:paused src={song.preview_audio_url} loop></audio>
 					{#if paused}
 						<PlayIcon />
 					{:else}
@@ -99,8 +115,6 @@
 	}
 
 	.no-album-art-container {
-		height: 216px;
-		width: 217px;
 		width: 100%;
 		height: 100%;
 		aspect-ratio: 1/1;
@@ -117,7 +131,6 @@
 		color: var(--green-foreground);
 		cursor: pointer;
 		border-radius: 50%;
-		width: fit-content;
 		position: absolute;
 		z-index: 10;
 		width: 27px;

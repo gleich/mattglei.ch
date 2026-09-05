@@ -1,7 +1,5 @@
 import { LCP_TOKEN } from '$env/static/private';
 
-export type SvelteFetch = (input: RequestInfo, init?: RequestInit) => Promise<Response>;
-
 export interface LcpResponse<T> {
 	updated: Date;
 	data: T;
@@ -16,12 +14,8 @@ export enum Cache {
 
 export async function loadFromLCP<T>(
 	cache: Cache,
-	fetch: SvelteFetch
+	fetch: typeof globalThis.fetch
 ): Promise<LcpResponse<T> | null> {
-	// uncomment to check loading animation for each section
-	// const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-	// await sleep(1000);
-
 	let pathName: string;
 	switch (cache) {
 		case Cache.Workouts:
@@ -45,7 +39,6 @@ export async function loadFromLCP<T>(
 
 	try {
 		const res = await fetch(url, {
-			method: 'GET',
 			cache: 'no-store',
 			headers: {
 				Authorization: `Bearer ${LCP_TOKEN}`
@@ -53,7 +46,7 @@ export async function loadFromLCP<T>(
 			signal: controller.signal
 		});
 
-		clearTimeout(timeoutId);
+		if (!res.ok) return null;
 		return await res.json();
 	} catch (err: unknown) {
 		if (err instanceof DOMException && err.name === 'AbortError') {
@@ -62,5 +55,7 @@ export async function loadFromLCP<T>(
 			console.error(`Error fetching ${url}:`, err);
 		}
 		return null;
+	} finally {
+		clearTimeout(timeoutId);
 	}
 }

@@ -18,7 +18,7 @@
 	} = $props();
 </script>
 
-<button>
+<span class="button-label">
 	View
 
 	{#if more}
@@ -30,19 +30,19 @@
 	{/if}
 
 	{#if Icon}
-		<div
+		<span
 			class="icon"
 			style:--icon-padding-bottom={iconPaddingBottom}
 			style:--icon-color={iconColor}
 		>
 			<Icon />
-		</div>
+		</span>
 	{/if}
 	{on ?? of}
-</button>
+</span>
 
 <style>
-	button {
+	.button-label {
 		padding: 10px;
 		display: flex;
 		align-items: center;

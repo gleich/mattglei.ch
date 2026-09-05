@@ -26,9 +26,9 @@
 			</div>
 			<p class="name">{playlist.name}</p>
 		</div>
-		<button class="view-more">
+		<div class="view-more button-label">
 			View {playlist.track_count} tracks
-		</button>
+		</div>
 	</Card>
 </a>
 

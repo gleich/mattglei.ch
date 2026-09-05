@@ -56,3 +56,41 @@ ol p {
 ol > p {
 	padding-top: 5px;
 }
+
+.button-label {
+	display: block;
+	text-align: center;
+	background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+	color: color-mix(in srgb, var(--button-foreground) 82%, transparent);
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: 600;
+	line-height: 1;
+	border-radius: var(--border-radius);
+	box-shadow:
+		inset 0 0 0 1px color-mix(in srgb, var(--foreground) 8%, transparent),
+		0 1px 2px rgba(0, 0, 0, 0.15);
+	transition:
+		color 0.15s var(--ease),
+		background-color 0.15s var(--ease),
+		box-shadow 0.15s var(--ease),
+		transform 0.15s var(--ease);
+}
+
+a:hover .button-label,
+a:focus-visible .button-label {
+	cursor: pointer;
+	background-color: color-mix(in srgb, var(--foreground) 9%, transparent);
+	color: var(--button-foreground);
+	box-shadow:
+		inset 0 0 0 1px color-mix(in srgb, var(--foreground) 13%, transparent),
+		0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+a:active .button-label {
+	transform: translateY(1px);
+	box-shadow:
+		inset 0 0 0 1px color-mix(in srgb, var(--foreground) 10%, transparent),
+		0 1px 1px rgba(0, 0, 0, 0.2);
+}

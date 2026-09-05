@@ -8,13 +8,14 @@
 	const { workout }: { workout: Workout } = $props();
 
 	let imperialUnits = $state(false);
-	let stats = $derived(
-		new SvelteMap<string, string>([['Duration', renderDuration(workout.moving_time)]])
-	);
-
 	onMount(() => {
-		const locale = navigator.language;
-		imperialUnits = locale === 'en-US';
+		imperialUnits = navigator.language === 'en-US';
+	});
+
+	const stats = $derived.by(() => {
+		const stats = new SvelteMap<string, string>([
+			['Duration', renderDuration(workout.moving_time)]
+		]);
 
 		if (workout.distance) {
 			const distanceKm = workout.distance / 1000;
@@ -27,7 +28,7 @@
 					: `${distanceKm.toPrecision(3)} km`
 			);
 		} else if (workout.calories) {
-			stats.set('Calories Burned', workout.calories?.toLocaleString() + ' cal');
+			stats.set('Calories Burned', workout.calories.toLocaleString() + ' cal');
 		}
 
 		if (workout.sport_type === 'Run' && workout.distance) {
@@ -70,10 +71,10 @@
 		}
 
 		if (workout.hevy_set_count) {
-			stats.set('Sets', `${workout.hevy_set_count ?? 0}`);
+			stats.set('Sets', `${workout.hevy_set_count}`);
 		}
 
-		stats = new SvelteMap(stats);
+		return stats;
 	});
 </script>
 

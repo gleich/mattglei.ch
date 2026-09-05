@@ -25,10 +25,10 @@
 					<HumanWritten compact />
 				</div>
 				<p class="description">{writing.description}</p>
-				<button class="read-button"
-					><p>Read</p>
-					<p class="estimated-time">Estimated Time: ~{writing.readTime}min</p></button
-				>
+				<div class="read-button button-label">
+					<p>Read</p>
+					<p class="estimated-time">Estimated Time: ~{writing.readTime}min</p>
+				</div>
 			</a>
 		</Card>
 	{/each}

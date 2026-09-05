@@ -14,9 +14,10 @@
 
 	const { count = photoData.length }: { count?: number } = $props();
 
-	let verticalCount = $state(3);
-	let photos: Photo[] = $state(photoData);
-	let innerWidth = $state(0);
+	let innerWidth = $state<number>();
+	const photos = $derived(
+		innerWidth !== undefined && innerWidth <= 560 ? reorderPhotos(photoData, 2) : photoData
+	);
 
 	function reorderPhotos(photos: Photo[], verticalCount: number): Photo[] {
 		const horizontals = photos.filter((photo) => photo.width > photo.height);
@@ -40,16 +41,6 @@
 		}
 		return ordered;
 	}
-
-	$effect(() => {
-		if (innerWidth >= 560 && verticalCount != 3) {
-			verticalCount = 3;
-			photos = photoData;
-		} else if (innerWidth < 560 && verticalCount != 2) {
-			verticalCount = 2;
-			photos = reorderPhotos(photoData, verticalCount);
-		}
-	});
 </script>
 
 <svelte:window bind:innerWidth />

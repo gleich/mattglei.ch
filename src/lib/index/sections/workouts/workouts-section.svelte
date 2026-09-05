@@ -23,10 +23,11 @@
 	const hevyURL = 'https://www.hevyapp.com';
 
 	onMount(() => {
-		const stream = source('https://lcp.mattglei.ch/workouts/stream').select('message');
-		stream.subscribe((s) => {
-			if (s) {
-				const streamedResponse: LcpResponse<LcpWorkout[]> = JSON.parse(s);
+		const stream = source('https://lcp.mattglei.ch/workouts/stream')
+			.select('message')
+			.json<LcpResponse<LcpWorkout[]>>();
+		return stream.subscribe((streamedResponse) => {
+			if (streamedResponse) {
 				workouts = streamedResponse.data;
 				updated = streamedResponse.updated;
 			}

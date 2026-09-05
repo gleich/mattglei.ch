@@ -16,10 +16,11 @@
 	let updated = $derived<Date | undefined>(response?.updated);
 
 	onMount(() => {
-		const stream = source('https://lcp.mattglei.ch/steam/stream').select('message');
-		stream.subscribe((s) => {
-			if (s) {
-				const streamedResponse: LcpResponse<Game[]> = JSON.parse(s);
+		const stream = source('https://lcp.mattglei.ch/steam/stream')
+			.select('message')
+			.json<LcpResponse<Game[]>>();
+		return stream.subscribe((streamedResponse) => {
+			if (streamedResponse) {
 				games = streamedResponse.data;
 				updated = streamedResponse.updated;
 			}

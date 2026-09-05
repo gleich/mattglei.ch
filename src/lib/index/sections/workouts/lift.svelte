@@ -33,7 +33,7 @@
 				>
 					<Scrolling>
 						<p>
-							{`${exercise.title.replaceAll('(', '[').replaceAll(')', ']')}`}
+							{exercise.title.replaceAll('(', '[').replaceAll(')', ']')}
 						</p>
 					</Scrolling>
 				</a>
@@ -56,9 +56,9 @@
 							{#each exercise.sets as set, index (set)}
 								<tr>
 									<td class="index">{index + 1}</td>
-									{#if set.type == 'warmup'}
+									{#if set.type === 'warmup'}
 										<td class="warmup set">Warmup</td>
-									{:else if set.type == 'failure'}
+									{:else if set.type === 'failure'}
 										<td class="failure set">Till Failure</td>
 									{:else if set.type === 'dropset'}
 										<td class="drop set">Dropset</td>
@@ -68,7 +68,7 @@
 									<td>
 										{#if set.duration_seconds}
 											{renderDuration(set.duration_seconds)}
-										{:else if exercise.sets.every((s) => s.weight_kg == 0)}
+										{:else if exercise.sets.every((s) => s.weight_kg === 0)}
 											{set.reps} reps
 										{:else}
 											{imperialUnits

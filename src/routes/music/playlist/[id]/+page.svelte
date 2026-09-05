@@ -1,140 +1,66 @@
 <script lang="ts">
 	import AppleMusicIcon from '$lib/icons/apple-music-icon.svelte';
-	import Song from '$lib/index/sections/music/song.svelte';
+	import PlaylistTracks from '$lib/index/sections/music/playlist-tracks.svelte';
 	import { renderDuration } from '$lib/time';
 	import Since from '$lib/time/since.svelte';
 	import ViewButton from '$lib/view-button.svelte';
 	import { DynamicHead, Error } from '@gleich/ui';
 	import SpotifyIcon from '$lib/icons/spotify-icon.svelte';
-	import { loadPlaylistFromLCP, type AppleMusicSong } from '$lib/lcp/applemusic';
-	import type { PlaylistData } from './+page.server';
-	import { onMount } from 'svelte';
-	import PageLoading from '$lib/loading/page-loading.svelte';
-	import { page } from '$app/state';
-	import LoadingWidget from '$lib/loading/loading-widget.svelte';
+	import type { PageProps } from './$types';
 
-	const { data }: { data: PlaylistData } = $props();
-
-	let tracks: AppleMusicSong[] | undefined = $state();
-	let currentPage = $state(1);
-	let loading = $state(false);
-	let hasMore = $state(false);
-
-	onMount(() => {
-		data.response.then((resp) => {
-			tracks = resp?.playlist.tracks ?? [];
-			currentPage = 1;
-			loading = false;
-			hasMore = resp?.pagination.next != null;
-		});
-	});
-
-	async function loadNextPage() {
-		if (!data || !data.response || loading || !hasMore || !page.params.id) return;
-
-		loading = true;
-		try {
-			const nextPage = currentPage + 1;
-			const next = await loadPlaylistFromLCP(page.params.id, nextPage, fetch);
-			const nextTracks = next?.playlist?.tracks ?? [];
-
-			if (nextTracks.length > 0 && tracks) {
-				tracks = [...tracks, ...nextTracks];
-				currentPage = nextPage;
-			}
-
-			if (!next?.pagination.next) {
-				hasMore = false;
-				loading = false;
-				return;
-			}
-
-			hasMore = next.pagination.next != null;
-		} catch (e) {
-			console.error(e);
-		} finally {
-			loading = false;
-		}
-	}
-
-	function onScroll() {
-		const threshold = 700;
-
-		const scrollTop = window.scrollY || document.documentElement.scrollTop;
-		const viewportHeight = window.innerHeight;
-		const docHeight = document.documentElement.scrollHeight;
-
-		const nearBottom = scrollTop + viewportHeight >= docHeight - threshold;
-
-		if (nearBottom) {
-			void loadNextPage();
-		}
-	}
+	const { data }: PageProps = $props();
+	const response = $derived(data.response);
 </script>
 
-<svelte:window on:scroll={onScroll} />
-
-{#if data.meta}
+{#if response}
 	<DynamicHead
-		title={`${data.meta.name} Playlist`}
-		description={`${data.meta.trackCount} tracks`}
-		opengraphImage={data.meta.firstTrackArtUrl
-			? { url: data.meta.firstTrackArtUrl, height: '600', width: '600' }
+		title={`${response.playlist.name} Playlist`}
+		description={`${response.playlist.track_count} tracks`}
+		opengraphImage={response.playlist.tracks[0]?.album_art_url
+			? { url: response.playlist.tracks[0]?.album_art_url, height: '600', width: '600' }
 			: undefined}
 	/>
 {:else}
 	<DynamicHead title="404 Not found" description="Playlist Not Found" />
 {/if}
 
-{#await data.response}
-	<PageLoading />
-{:then response}
-	{#if response}
-		{#if loading}
-			<LoadingWidget />
-		{/if}
-
-		<div class="header">
-			<div class="header-info">
-				<h2>{response.playlist.name} Playlist</h2>
-				<div class="stats">
-					<p>Last updated <Since time={response.playlist.last_modified} /></p>
-					<p>
-						{response.playlist.track_count} songs - {renderDuration(
-							response.playlist.duration_in_millis / 1000
-						)}
-					</p>
-				</div>
-			</div>
-			<div class="view-on-buttons">
-				<a
-					class="view-on-button"
-					href={`https://open.spotify.com/playlist/${response.playlist.spotify_id}`}
-					target="_blank"
-				>
-					<ViewButton on="Spotify" icon={SpotifyIcon} iconPaddingBottom="1px" iconColor="#24db68" />
-				</a>
-				<a class="view-on-button" href={response.playlist.url} target="_blank">
-					<ViewButton
-						on="Apple Music"
-						icon={AppleMusicIcon}
-						iconPaddingBottom="0.5px"
-						iconColor="#fb455d"
-					/>
-				</a>
+{#if response}
+	<div class="header">
+		<div class="header-info">
+			<h2>{response.playlist.name} Playlist</h2>
+			<div class="stats">
+				<p>Last updated <Since time={response.playlist.last_modified} /></p>
+				<p>
+					{response.playlist.track_count} songs - {renderDuration(
+						response.playlist.duration_in_millis / 1000
+					)}
+				</p>
 			</div>
 		</div>
-		<div class="songs">
-			{#each tracks as song (song)}
-				<div class="song">
-					<Song {song} />
-				</div>
-			{/each}
+		<div class="view-on-buttons">
+			<a
+				class="view-on-button"
+				href={`https://open.spotify.com/playlist/${response.playlist.spotify_id}`}
+				target="_blank"
+			>
+				<ViewButton on="Spotify" icon={SpotifyIcon} iconPaddingBottom="1px" iconColor="#24db68" />
+			</a>
+			<a class="view-on-button" href={response.playlist.url} target="_blank">
+				<ViewButton
+					on="Apple Music"
+					icon={AppleMusicIcon}
+					iconPaddingBottom="0.5px"
+					iconColor="#fb455d"
+				/>
+			</a>
 		</div>
-	{:else}
-		<Error msg="404: Playlist Not Found" />
-	{/if}
-{/await}
+	</div>
+	{#key response}
+		<PlaylistTracks {response} />
+	{/key}
+{:else}
+	<Error msg="404: Playlist Not Found" />
+{/if}
 
 <style>
 	.header {
@@ -155,19 +81,6 @@
 		align-items: flex-end;
 	}
 
-	.songs {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
-		align-items: center;
-		justify-content: center;
-		margin-bottom: 20px;
-	}
-
-	.song {
-		width: 192px;
-	}
-
 	.view-on-buttons {
 		display: flex;
 		gap: 10px;
@@ -183,10 +96,6 @@
 	@media (max-width: 550px) {
 		.header-info {
 			flex-direction: column;
-		}
-
-		.song {
-			width: calc(50% - 5px);
 		}
 	}
 

@@ -5,10 +5,10 @@
 	import Writing from '$lib/writing/writing.svelte';
 	import { Image } from '@gleich/ui';
 	import writings from '../writings';
-	import type { LCPData } from './+page.server';
+	import type { PageProps } from './$types';
 	import CacheStatus from './cache-status.svelte';
 
-	const { data }: { data: LCPData } = $props();
+	const { data }: PageProps = $props();
 </script>
 
 <Writing writing={writings.get('lcp')!}>

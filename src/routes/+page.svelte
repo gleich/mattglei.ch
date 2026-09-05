@@ -7,9 +7,9 @@
 	import ProjectSection from '$lib/index/sections/projects/project-section.svelte';
 	import WorkoutsSection from '$lib/index/sections/workouts/workouts-section.svelte';
 	import { DynamicHead } from '@gleich/ui';
-	import type { SectionData } from './+page.server';
+	import type { PageProps } from './$types';
 
-	const { data }: { data: SectionData } = $props();
+	const { data }: PageProps = $props();
 </script>
 
 <DynamicHead
