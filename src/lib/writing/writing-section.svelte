@@ -7,7 +7,9 @@
 
 <Card>
 	<h4>{title}</h4>
-	{@render children()}
+	<div class="markdown markdown-section">
+		{@render children()}
+	</div>
 </Card>
 
 <style>

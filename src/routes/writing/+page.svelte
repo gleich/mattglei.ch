@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { Card, DynamicHead } from '@gleich/ui';
 	import HumanWritten from '$lib/writing/human-written.svelte';
-	import writings from './writings';
+	import { formatPublishedDate } from '$lib/writing/metadata';
+	import type { PageProps } from './$types';
+
+	const { data }: PageProps = $props();
 </script>
 
 <DynamicHead title="Writing" description="Matt Gleich's writings" />
@@ -9,12 +12,12 @@
 <h2>Writing</h2>
 
 <div class="writings">
-	{#each writings as [slug, writing] (slug)}
+	{#each data.writings as writing (writing.slug)}
 		<Card>
-			<a href={`/writing/${slug}`} class="writing">
+			<a href={`/writing/${writing.slug}`} class="writing">
 				<div class="title">
 					<h4>{writing.title}</h4>
-					<p class="date">{writing.publishedDate}</p>
+					<p class="date">{formatPublishedDate(writing.publishedDate)}</p>
 				</div>
 				<div class="metadata">
 					<div class="keywords">

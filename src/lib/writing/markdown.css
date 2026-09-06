@@ -1,0 +1,126 @@
+.markdown > * + * {
+	margin-top: 20px;
+}
+
+.markdown > :is(h1, h2, h3, h4, h5, h6) {
+	margin-top: 30px;
+}
+
+.markdown > :first-child {
+	margin-top: 0;
+}
+
+.markdown-post {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.markdown-post > * + *,
+.markdown-section > * + * {
+	margin-top: 0;
+}
+
+.markdown ol {
+	padding: 0 0 10px 5px;
+	list-style-position: inside;
+}
+
+.markdown ol > li {
+	margin-top: 5px;
+	padding: 2px 5px;
+	width: fit-content;
+	color: var(--green-foreground);
+	background: var(--green-background);
+	border-radius: 2px;
+}
+
+.markdown ol > li:has(> p) {
+	padding: 0;
+	width: auto;
+	color: inherit;
+	background: none;
+	list-style: none;
+}
+
+.markdown ol > li > p:first-child {
+	display: table;
+	padding: 2px 5px;
+	color: var(--green-foreground);
+	background: var(--green-background);
+	border-radius: 2px;
+}
+
+.markdown ol > li > p:first-child::before {
+	content: counter(list-item) '. ';
+}
+
+.markdown ol > li > p + p {
+	padding: 5px 0 0 25px;
+}
+
+.markdown ul {
+	padding: 5px 0 0 25px;
+	list-style: '- ' inside;
+}
+
+.markdown ul > li {
+	margin: 0;
+	padding: 0;
+	color: inherit;
+}
+
+.markdown ol > li > ul {
+	margin-left: 25px;
+}
+
+.markdown ul > li > p {
+	padding: 0;
+}
+
+.markdown ul > li > p:first-child {
+	display: inline;
+}
+
+.markdown img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border-radius: var(--border-radius);
+}
+
+.markdown-section > img {
+	margin: 10px 0;
+}
+
+.markdown pre {
+	max-width: 100%;
+	overflow-x: auto;
+	padding: 16px;
+	border: 1px solid var(--border);
+	border-radius: var(--border-radius);
+}
+
+.markdown :not(pre) > code {
+	padding: 2px 4px;
+	background: var(--green-background);
+	border-radius: 2px;
+}
+
+.markdown blockquote {
+	margin-left: 0;
+	padding-left: 20px;
+	border-left: 3px solid var(--green-foreground);
+}
+
+.markdown table {
+	display: block;
+	max-width: 100%;
+	overflow-x: auto;
+	border-collapse: collapse;
+}
+
+.markdown :is(th, td) {
+	padding: 8px 12px;
+	border: 1px solid var(--border);
+}

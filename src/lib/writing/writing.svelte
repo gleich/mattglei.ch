@@ -2,14 +2,7 @@
 	import { DynamicHead } from '@gleich/ui';
 	import HumanWritten from '$lib/writing/human-written.svelte';
 	import type { Snippet } from 'svelte';
-
-	export interface WritingData {
-		title: string;
-		publishedDate: string;
-		description: string;
-		keywords: string[];
-		readTime: number;
-	}
+	import { formatPublishedDate, type WritingData } from './metadata';
 
 	const { writing, children }: { writing: WritingData; children: Snippet } = $props();
 </script>
@@ -23,7 +16,7 @@
 			<div class="subtitle">
 				<p>Estimated read time: ~{writing.readTime}min</p>
 				<p>
-					{writing.publishedDate}
+					{formatPublishedDate(writing.publishedDate)}
 				</p>
 			</div>
 		</div>
