@@ -12,16 +12,25 @@
 			description:
 				'MCP servers, Codex, Claude Code, agentic loops, SDK generation, validation, skills, hooks, local models'
 		},
-		{ name: 'Languages', description: 'Go (Golang), TypeScript, Python, Rust, SQL' },
+		{
+			name: 'Programming',
+			description:
+				'Go (Golang), TypeScript, JavaScript, Python, Rust, SQL, Bash, HTML, CSS, Unit Testing'
+		},
 		{
 			name: 'Development',
 			description:
-				'API, SDK & CLI development, PostgreSQL, GraphQL, Redis, S3, SvelteKit, Node.js, Express, Axum, SQLx'
+				'Git, GitHub, REST APIs, SDKs, CLIs, PostgreSQL, GraphQL, Redis, S3, SvelteKit, Node.js, Express, Axum, SQLx'
+		},
+		{
+			name: 'Engineering',
+			description:
+				'Object-Oriented Design, Concurrency, gRPC, Protobuf, OAuth2, Webhooks, Server-Sent Events (SSE)'
 		},
 		{
 			name: 'Infrastructure',
 			description:
-				'Docker, AWS, Terraform, Kubernetes, Puppet, GitHub Actions, CI/CD, Prometheus, Grafana, Loki'
+				'Docker Compose, AWS, Terraform, Kubernetes, Puppet, GitHub Actions, CI/CD, Prometheus, Grafana, Loki'
 		}
 	];
 </script>
