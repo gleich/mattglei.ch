@@ -19,12 +19,12 @@
 
 	<div class="experiences">
 		<Experience
-			role="Engineering Intern"
+			role="Software Engineering Intern"
 			icon="synthient.webp"
 			company="Synthient"
 			url="https://synthient.com"
 			startDate={dayjs(new Date(2026, 0))}
-			description="Developing the Golang SDK and CLI for Synthient as a contracted developer. Working on research and maintenance of core ingest services powering the aggregation of IPs. Working closely with Go, ClickHouse, and REST APIs."
+			description="Built an agentic pipeline that implemented, tested, and documented SDKs in 10 languages. Developed a Go SDK and CLI for IP and domain intelligence, automated ClickHouse backups for terabytes of data, and built an MCP server and plugins for AI coding tools."
 		/>
 		<Experience
 			role="Associate DevOps Engineer"
@@ -33,7 +33,7 @@
 			url="https://kcftech.com"
 			startDate={dayjs(new Date(2025, 5))}
 			endDate={dayjs(new Date(2025, 11))}
-			description="Worked on the Core Platform team during my RIT co-op, building infrastructure and backend services with Terraform, AWS, Rust, and Python, including Linux administration and a Rust-based permissions REST API."
+			description="Implemented role-management APIs in Rust with Axum, SQLx, and PostgreSQL, and managed AWS infrastructure with Terraform. Migrated Packer AMI pipelines from Azure DevOps to GitHub Actions, reducing CI costs and improving reliability."
 		/>
 		<Experience
 			role="Engineering Developer"
@@ -42,7 +42,7 @@
 			startDate={dayjs(new Date(2022, 5))}
 			endDate={dayjs(new Date(2022, 11))}
 			url="https://stainless.com"
-			description="Served as the automation project owner, spearheaded the company's API, built GitHub actions to automate delivery and testing, and worked closely with a small, talented developer team. Joined the company early on at ~3 developers."
+			description="Built a REST API with Node.js and Express to give customers programmatic access to the platform. Automated SDK generation and delivery from OpenAPI changes and owned GitHub Actions workflows for testing, builds, and deployments."
 		/>
 		<Experience
 			role="Contracted Developer"
@@ -51,7 +51,7 @@
 			startDate={dayjs(new Date(2021, 1))}
 			endDate={dayjs(new Date(2021, 11))}
 			url="https://rootly.com"
-			description="Developed the official CLI for rootly.com and wrote its documentation, built a Go-based library for interacting with the Rootly API, and implemented both a GitHub action and a Homebrew tap for the CLI."
+			description="Created Rootly's original Go CLI for reporting deployments from terminals and CI/CD pipelines. Automated releases with GoReleaser and Homebrew, added a Docker-based GitHub Action, and wrote customer documentation."
 		/>
 	</div>
 
