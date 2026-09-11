@@ -3,8 +3,6 @@
 	import dayjs from 'dayjs';
 	import Experience from './experience.svelte';
 	import Resume from '$lib/resume.svelte';
-	import LinkedinButton from '$lib/icons/linkedin-icon.svelte';
-	import ViewButton from '$lib/view-button.svelte';
 </script>
 
 <Section name="Experience">
@@ -57,9 +55,9 @@
 		/>
 	</div>
 
-	<a class="view-more" href="https://www.linkedin.com/in/matt-gleich/" target="_blank">
-		<ViewButton more on="LinkedIn" icon={LinkedinButton} iconPaddingBottom="1.5px" /></a
-	>
+	<a class="view-more" href="/resume">
+		<span class="button-label">View more in resume</span>
+	</a>
 </Section>
 
 <style>
@@ -72,6 +70,10 @@
 	.view-more {
 		text-decoration: inherit;
 		margin-bottom: 5px;
+	}
+
+	.button-label {
+		padding: 10px;
 	}
 
 	@media (max-width: 830px) {

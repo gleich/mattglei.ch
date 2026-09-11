@@ -6,7 +6,7 @@
 	import { page } from '$app/state';
 	import { NavLogo } from '@gleich/ui';
 
-	const links = ['', 'writing', 'photos', 'workouts'];
+	const links = ['', 'resume', 'writing', 'photos', 'workouts'];
 
 	let linkEls: HTMLAnchorElement[] = [];
 	let linksContainer: HTMLDivElement;
@@ -83,8 +83,11 @@
 			style:opacity={indicatorVisible ? 1 : 0}
 		></div>
 		{#each links as link, i (link)}
-			<a bind:this={linkEls[i]} href={`/${link}`} class={isCurrentLink(link) ? 'current-link' : ''}
-				>{link === '' ? 'home' : link}</a
+			<a
+				bind:this={linkEls[i]}
+				href={`/${link}`}
+				class={isCurrentLink(link) ? 'current-link' : ''}
+				aria-current={isCurrentLink(link) ? 'page' : undefined}>{link === '' ? 'home' : link}</a
 			>
 		{/each}
 	</div>
@@ -205,6 +208,10 @@
 			margin: 4px;
 			padding: 5px;
 			text-align: center;
+		}
+
+		.links a:last-of-type:nth-of-type(odd) {
+			grid-column: 1 / -1;
 		}
 
 		.bar {
