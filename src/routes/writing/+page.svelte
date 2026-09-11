@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Card, DynamicHead } from '@gleich/ui';
-	import HumanWritten from '$lib/writing/human-written.svelte';
 	import { formatPublishedDate } from '$lib/writing/metadata';
 	import type { PageProps } from './$types';
 
@@ -19,13 +18,10 @@
 					<h4>{writing.title}</h4>
 					<p class="date">{formatPublishedDate(writing.publishedDate)}</p>
 				</div>
-				<div class="metadata">
-					<div class="keywords">
-						{#each writing.keywords as keyword (keyword)}
-							<p class="keyword">{keyword}</p>
-						{/each}
-					</div>
-					<HumanWritten compact />
+				<div class="keywords">
+					{#each writing.keywords as keyword (keyword)}
+						<p class="keyword">{keyword}</p>
+					{/each}
 				</div>
 				<p class="description">{writing.description}</p>
 				<div class="read-button button-label">
@@ -55,18 +51,11 @@
 		text-decoration: inherit;
 	}
 
-	.metadata {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 12px;
-		margin: 5px 0;
-	}
-
 	.keywords {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 10px;
+		margin: 5px 0;
 	}
 
 	.keyword {
@@ -112,12 +101,6 @@
 
 		.writings {
 			margin: 0 10px;
-		}
-
-		.metadata {
-			align-items: flex-start;
-			flex-direction: column;
-			gap: 8px;
 		}
 	}
 </style>

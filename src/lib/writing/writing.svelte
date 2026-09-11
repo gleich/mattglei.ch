@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { DynamicHead } from '@gleich/ui';
-	import HumanWritten from '$lib/writing/human-written.svelte';
 	import type { Snippet } from 'svelte';
 	import { formatPublishedDate, type WritingData } from './metadata';
 
@@ -10,17 +9,14 @@
 <DynamicHead title={writing.title} description={writing.description} keywords={writing.keywords} />
 
 <div class="container">
-	<header class="writing-header">
-		<div>
-			<h2>{writing.title}</h2>
-			<div class="subtitle">
-				<p>Estimated read time: ~{writing.readTime}min</p>
-				<p>
-					{formatPublishedDate(writing.publishedDate)}
-				</p>
-			</div>
+	<header>
+		<h2>{writing.title}</h2>
+		<div class="subtitle">
+			<p>Estimated read time: ~{writing.readTime}min</p>
+			<p>
+				{formatPublishedDate(writing.publishedDate)}
+			</p>
 		</div>
-		<HumanWritten />
 	</header>
 	<div class="children">
 		{@render children()}
@@ -28,13 +24,6 @@
 </div>
 
 <style>
-	.writing-header {
-		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-		gap: 24px;
-	}
-
 	.subtitle {
 		color: grey;
 	}
@@ -45,12 +34,5 @@
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
-	}
-
-	@media (max-width: 700px) {
-		.writing-header {
-			flex-direction: column;
-			gap: 14px;
-		}
 	}
 </style>

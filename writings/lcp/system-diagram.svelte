@@ -15,7 +15,7 @@
 			icon: StravaIcon,
 			endpoint: '/workouts',
 			data: 'Workouts',
-			trigger: 'On activity changes',
+			trigger: 'On Strava events',
 			detail: 'A Strava webhook triggers a refresh of workout data from Strava and Hevy.',
 			processing: 'Fetch activities and lifts, then combine them into one workout feed.'
 		},
@@ -91,7 +91,7 @@
 					{
 						title: 'Read from memory',
 						description:
-							'lcp reads the existing snapshot from protected memory. No upstream API request is needed.'
+							'lcp reads the cached data under a read lock. No upstream API request is needed.'
 					},
 					{
 						title: 'Return the JSON',
@@ -269,7 +269,7 @@
 				<span></span><span></span><span></span>
 			</div>
 			<strong>{source.data} cache</strong>
-			<span class="node-detail">Protected memory</span>
+			<span class="node-detail">Memory + read/write mutex</span>
 			<span class="snapshot"
 				>{refreshing && step >= 2 ? 'New snapshot saved' : 'Snapshot ready'}</span
 			>

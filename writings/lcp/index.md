@@ -1,7 +1,7 @@
 ---
 title: 'lcp: Lightweight Cache & Proxy'
 publishedDate: '2025-03-30'
-description: 'Technical writeup of a lightweight cache proxy written in Go. Backend service for caching, processing, and aggregating data from APIs like the Strava and GitHub API. Used to power the live data on mattglei.ch and terminal.mattglei.ch'
+description: 'How lcp, a lightweight cache and proxy written in Go, aggregates and caches API data to power the live sections of mattglei.ch and terminal.mattglei.ch.'
 keywords:
   - Programming
   - Technical
@@ -27,13 +27,13 @@ readTime: 5
 
 <WritingSection title="What is lcp?">
 
-lcp is a backend service I wrote that aggregates, processes, and caches data from a number of
-APIs. This data is then exposed as a REST API. It's written in the
+lcp stands for Lightweight Cache & Proxy. It's a backend service I wrote that aggregates,
+processes, and caches data from several APIs, then exposes that data through its own REST API.
+It's written in the
 [Go programming language](https://go.dev) and runs in a Docker container on my
-[Caprover server](https://caprover.com). The main goal of lcp is to provide _**extremely fast**_
-and very simplified data fetching for my website. This is mainly thanks to the way that caching
-is done in a protected memory space and that data is aggregated from multiple sources. Down
-below is more technical explanations of how lcp works.
+[CapRover server](https://caprover.com). The main goal is to make data fetching for my website
+fast and simple. lcp fetches and processes data ahead of time, so the site can read it directly
+from memory without waiting for the original APIs. Here's how it works.
 
 </WritingSection>
 
@@ -41,22 +41,29 @@ below is more technical explanations of how lcp works.
 
 <SystemDiagram />
 
-The diagram above illustrates how each cache gets updated. There are two main types of caches here:
+The diagram above shows how lcp refreshes its caches and serves data to the website. Each cache
+uses one of two refresh strategies:
 
-1. Event-based cache
+1. Event-based refreshes
 
-   Cache is updated based on an event like receiving a webhook. This is ideal as it provides
-   real-time cache updates. An example of this is the Strava cache which receives webhook
-   events for new activities.
+   An event, such as an incoming webhook, triggers a refresh. For example,
+   [Strava webhooks](https://developers.strava.com/docs/webhooks/) notify lcp about activity
+   changes. lcp then fetches data from Strava and Hevy to refresh the combined workouts cache.
+   This lets it pick up changes without waiting for the next polling interval.
 
-2. Time-based cache
+2. Time-based refreshes
 
-   Cache is updated based on a given time interval. An example of this is the Steam cache which
-   refreshes every 10 minutes.
+   A background loop refreshes the cache at regular intervals. For example, the Steam cache
+   waits 10 minutes between refreshes.
 
-A **protected memory space** in this context is just a
-[mutex lock](<https://en.wikipedia.org/wiki/Lock_(computer_science)>). All of this caching happens
-in different threads so to ensure thread-safe memory interactions this protected memory space is used.
+Cache refreshes and HTTP requests run concurrently in Go's goroutines. Each cache uses a
+[read/write mutex](https://pkg.go.dev/sync#RWMutex) to coordinate access to its data in memory.
+Multiple requests can read the cache at the same time, while an update takes an exclusive lock
+to replace the data safely.
+
+When the data changes, lcp also saves a snapshot to disk and sends the updated data to connected
+browsers through server-sent events (SSE). The cache's update timestamp records the last change
+to its data, so a successful refresh that finds no changes leaves that timestamp unchanged.
 
 </WritingSection>
 
@@ -64,32 +71,32 @@ in different threads so to ensure thread-safe memory interactions this protected
 
 1. Fast response times
 
-   When the site makes a request to load data from lcp.mattglei.ch/workouts all it is doing is
-   reading the cached data from memory. No expensive database queries or anything.
+   When the site requests `lcp.mattglei.ch/workouts`, lcp reads the cached data from memory and
+   returns it as JSON. There are no database queries or upstream API requests to wait for.
 
-2. Data can be processed and aggregated
+2. Process and aggregate data ahead of time
 
-   With Steam, for example, there is no endpoint from the Steam REST API to get your games with
-   the achievement data all in one request. So, for every game you need to make a request to
-   load the achievement data. All of this is done by lcp so that when a request is made to
-   lcp.mattglei.ch/steam it returns the games with their achievements all in one request. This
-   cuts down +25 requests to the Steam REST API with each request taking +400ms down to one
-   request that takes ~200ms.
+   Steam's API returns a player's
+   [achievements for one game at a time](https://partner.steamgames.com/doc/webapi/ISteamUserStats#GetPlayerAchievements).
+   To show achievement progress alongside a list of games, lcp fetches the games and their
+   achievement data, then combines the results. The site can request `lcp.mattglei.ch/steam`
+   and get everything it needs in one response. For my site, this reduced more than 25 Steam
+   API requests, each taking over 400 ms, to one cached request taking about 200 ms. The upstream
+   requests still happen during refreshes, but visitors don't have to wait for them.
 
-3. Prevent hitting API rate limits
+3. Reduce the risk of hitting API rate limits
 
-   Most major APIs have rate limits. The Strava API for example only allows 100 requests every
-   15 minutes. If I wasn't caching this data and was simply requesting the data every time that
-   someone visited the site I could very easily encounter rate limiting. The REST API that is
-   exposed by lcp has no rate limits, so my site can hit it every time a request is made without
-   having to worry about rate limits.
+   Most major APIs have rate limits. For example, Strava's default limits for non-upload
+   requests are [100 requests every 15 minutes and 1,000 per day](https://developers.strava.com/docs/rate-limits/).
+   Fetching data every time someone visited the site could quickly exhaust that allowance.
+   With lcp, page views read from the cache, so more visitors don't mean more upstream requests.
+   Background refreshes still need to stay within each API's limits.
 
-4. Prevent downtime
+4. Keep serving data during upstream outages
 
-   Sometimes APIs have problems and are down. Because lcp caches the data and is essentially
-   saving a copy, it does't have to depend about the source data being up. Downtime is more often
-   than people realize and when you're using multiple APIs, the chance of one of them being down
-   is even greater.
+   If an upstream API is unavailable or a refresh fails, lcp keeps serving the last cached
+   snapshot. The data may be out of date until a refresh succeeds, but the site can still display
+   it. This depends on lcp remaining available and already having a cached copy of the data.
 
 </WritingSection>
 
@@ -97,61 +104,54 @@ in different threads so to ensure thread-safe memory interactions this protected
 
 1. Couldn't this be simpler?
 
-   There are simpler solutions to purely load data onto my website. Why did I build this then?
-   Here are a few reasons why:
+   There are simpler ways to load data onto my website. I built lcp for a few reasons:
 
-   - Data caching and fetching are independent of the framework I am using to build my website.
-     This separation of responsibilities is important as every so often I like to rebuild my
-     personal website and try out a new framework (hence this being the 5th version of my
-     personal website). My last personal website was built in [Next.js](https://nextjs.org) for example.
-   - I want to use this data in other projects. For example, I use lcp in the
-     [ssh version of this website](https://github.com/gleich/terminal). To have a central place to
-     access all of this data instead of everything just getting pulled from my site is better
-     architecture in my opinion.
-   - It has been a little while since I worked in Go and wanted to do a new project in the language.
+   - Keeping data fetching and caching separate from the website lets me change frontend
+     frameworks without rebuilding the backend. I like to rebuild my personal website every so
+     often to try a new framework, which is how I ended up on version 5. The previous version
+     used [Next.js](https://nextjs.org), for example.
+   - I want to use this data in other projects, including the
+     [SSH version of this website](https://github.com/gleich/terminal). A shared backend gives
+     those projects a central place to access the data without depending on the website itself.
+   - It had been a while since I'd worked in Go, and I wanted to build another project with it.
 
 2. Why use the Go programming language?
 
-   Go is a popular language for building REST APIs. I've been using the language for a few years
-   now and have a few reasons why I selected it for V2 of lcp:
+   I've been using Go for a few years and chose it for v2 of lcp for a few reasons:
 
-   - The standard library makes it very easy to work with. I don't have to import a bunch of
-     different packages for working with things like JSON and requests. A lot of these features
-     come straight out of the box with the fantastic standard library.
-   - Go is very fast. Although I am not handling massive amounts of web traffic, being able to
-     handle a request on the microsecond scale (literally) is great. Very happy with the performance
-     I am getting.
-   - I have a lot of experience writing Go code and am very comfortable in the language.
+   - The standard library includes HTTP clients, servers, and JSON encoding, so I can build much
+     of the API without third-party packages.
+   - I've been very happy with the performance. Serving data from memory keeps request handling
+     fast, even though I'm not dealing with massive amounts of traffic.
+   - I have a lot of experience writing Go and feel comfortable working in the language.
 
 3. Why is lcp on version 2?
 
-   [V1 of lcp](https://github.com/gleich/lcp) was written in the
-   [Rust programming language](https://www.rust-lang.org). There are a few reasons why I wanted
-   to rewrite lcp and create a second version:
+   [v1 of lcp](https://github.com/gleich/lcp-1) was written in
+   [Rust](https://www.rust-lang.org). I wanted to rewrite it for a few reasons:
 
-   - I wanted to make a more generic cache. In V1 of lcp a lot of the codebase was a cache specific.
-     This added a lot of code for each cache with zero benefits. Making a generic cache greatly
-     reduced the amount of code/complexity of lcp V2.
-   - Go is easier to make APIs with compared to Rust in my opinion. Rust is pretty easy using the
-     [rocket.rs](https://rocket.rs) library, but working with the Go standard library makes things simpler.
-   - V1 of lcp used AWS S3 which I ended up replacing with a [Minio](https://min.io) instance running
-     on my Caprover server. The current Minio library for Rust is not stable, but the one for Go is.
-     Switching to Go allows me to use the stable Minio library and cut out using S3. I replaced S3
-     with Minio because I didn't want to pay any costs associated with storing images from mapbox.
+   - I wanted a reusable cache implementation. In v1, much of the code was specific to each
+     cache, which led to unnecessary duplication. A generic cache reduced the amount of code
+     and made v2 simpler to maintain.
+   - I find Go easier to build APIs with. Rust's [Rocket](https://rocket.rs) framework helps, but
+     I prefer the simplicity of Go's standard library for this project.
+   - v1 used Amazon S3 to store images from Mapbox. I replaced it with a
+     [MinIO](https://min.io) instance on my CapRover server to avoid a separate storage bill.
+     At the time, MinIO's Go client was stable while its Rust client wasn't, which was another
+     reason to switch to Go.
 
 4. Why mix webhooks and polling?
 
-   Using webhooks is ideal as it only reaches out to API when the data has actually changed.
-   Not all APIs or data changes support webhooks which is why polling has to be used instead.
-   For the GitHub API, there is no webhook for when the user's pinned repositories are changed
-   (which is what the data is based on). For the Steam API, they simply don't support webhooks
-   so polling is the only option.
+   Webhooks let lcp fetch fresh data in response to a change, which avoids repeatedly checking
+   for updates. Not every API provides webhooks for the data I need, though. For example,
+   [GitHub's webhook events](https://docs.github.com/en/webhooks/webhook-events-and-payloads)
+   don't cover changes to a user's pinned repositories, which power the projects section.
+   I use polling for those updates, as well as for Steam games and achievements.
 
-5. Why have separate endpoints instead of bundling them all together in one?
+5. Why have a separate endpoint for each cache?
 
-   Having each cache be independent of each other provides a separation of concerns which makes
-   the application easier to maintain/work with. It also allows each section to load independently
-   on the front end.
+   Each cache has its own data source, refresh logic, and endpoint. This makes the application
+   easier to maintain and lets each section of the website load independently.
 
 </WritingSection>
 

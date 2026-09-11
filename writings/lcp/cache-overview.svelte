@@ -14,7 +14,7 @@
 			<CacheStatus
 				name="Projects"
 				updated={projects?.updated}
-				updateFrequency="Refreshing every 5 seconds"
+				updateFrequency="Refreshes every 5 seconds"
 			/>
 		{/await}
 		{#await data.workouts}
@@ -23,7 +23,7 @@
 			<CacheStatus
 				name="Workouts"
 				updated={workouts?.updated}
-				updateFrequency="Refreshing when data changes"
+				updateFrequency="Refreshes on Strava events"
 			/>
 		{/await}
 		{#await data.music}
@@ -32,7 +32,7 @@
 			<CacheStatus
 				name="Music"
 				updated={music?.updated}
-				updateFrequency="Refreshing every 10 seconds"
+				updateFrequency="Refreshes every 10 seconds"
 			/>
 		{/await}
 		{#await data.games}
@@ -41,7 +41,7 @@
 			<CacheStatus
 				name="Games"
 				updated={games?.updated}
-				updateFrequency="Refreshing every 10 minutes"
+				updateFrequency="Refreshes every 10 minutes"
 			/>
 		{/await}
 	</div>

@@ -24,11 +24,11 @@
 				<div class="icon">
 					<CheckIcon />
 				</div>
-				<p>ONLINE</p>
+				<p>AVAILABLE</p>
 			</div>
 		{:else}
 			<div class="offline status">
-				<p>OFFLINE</p>
+				<p>UNAVAILABLE</p>
 			</div>
 		{/if}
 	</div>
@@ -42,9 +42,9 @@
 		{#if loading}
 			Loading...
 		{:else if updated}
-			Updated <Since time={updated} />
+			Last changed <Since time={updated} />
 		{:else}
-			Cache is currently offline
+			Could not load cached data
 		{/if}
 	</div>
 </Card>

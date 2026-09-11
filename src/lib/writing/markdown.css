@@ -102,9 +102,13 @@
 }
 
 .markdown :not(pre) > code {
-	padding: 2px 4px;
+	font-family: 'IBM Plex Mono', 'IBM Plex Mono Fallback', monospace;
+	font-size: 0.9em;
+	line-height: inherit;
+	overflow-wrap: anywhere;
+	padding: 0.125em 0.25em;
 	background: var(--green-background);
-	border-radius: 2px;
+	border-radius: 0.125em;
 }
 
 .markdown blockquote {
