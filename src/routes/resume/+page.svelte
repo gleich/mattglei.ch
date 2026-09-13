@@ -25,7 +25,7 @@
 		{
 			name: 'Engineering',
 			description:
-				'Object-Oriented Design, Concurrency, gRPC, Protobuf, OAuth2, Webhooks, Server-Sent Events (SSE)'
+				'Concurrency, gRPC, Protobuf, OAuth2, Webhooks, Server-Sent Events (SSE), Object-Oriented Design'
 		},
 		{
 			name: 'Infrastructure',
