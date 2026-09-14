@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="#000000">
+  <title>Stainless</title>
+  <defs>
+    <linearGradient id="face-0" gradientUnits="userSpaceOnUse" x1="42" y1="70" x2="86" y2="100">
+      <stop offset="0" stop-color="#b6b6b6"/>
+      <stop offset="1" stop-color="#dedede"/>
+    </linearGradient>
+    <linearGradient id="face-1" gradientUnits="userSpaceOnUse" x1="48" y1="60" x2="88" y2="90">
+      <stop offset="0" stop-color="#c5c5c5"/>
+      <stop offset="0.5" stop-color="#dddddd"/>
+      <stop offset="1" stop-color="#bcbcbc"/>
+    </linearGradient>
+    <linearGradient id="face-2" gradientUnits="userSpaceOnUse" x1="125" y1="90" x2="157" y2="70">
+      <stop offset="0" stop-color="#c9c9c9"/>
+      <stop offset="1" stop-color="#ececec"/>
+    </linearGradient>
+    <linearGradient id="face-3" gradientUnits="userSpaceOnUse" x1="108" y1="94" x2="151" y2="63">
+      <stop offset="0" stop-color="#e9e9e9"/>
+      <stop offset="0.45" stop-color="#c8c8c8"/>
+      <stop offset="0.75" stop-color="#767676"/>
+      <stop offset="1" stop-color="#818181"/>
+    </linearGradient>
+    <linearGradient id="face-4" gradientUnits="userSpaceOnUse" x1="100" y1="130" x2="114" y2="154">
+      <stop offset="0" stop-color="#bdbdbd"/>
+      <stop offset="1" stop-color="#e0e0e0"/>
+    </linearGradient>
+    <linearGradient id="face-5" gradientUnits="userSpaceOnUse" x1="88" y1="124" x2="101" y2="162">
+      <stop offset="0" stop-color="#c1c1c1"/>
+      <stop offset="0.55" stop-color="#8c8c8c"/>
+      <stop offset="1" stop-color="#2d2d2d"/>
+    </linearGradient>
+    <linearGradient id="face-6" gradientUnits="userSpaceOnUse" x1="110" y1="48" x2="101" y2="101">
+      <stop offset="0" stop-color="#292929"/>
+      <stop offset="0.35" stop-color="#444444"/>
+      <stop offset="0.64" stop-color="#737373"/>
+      <stop offset="1" stop-color="#eeeeee"/>
+    </linearGradient>
+    <linearGradient id="face-7" gradientUnits="userSpaceOnUse" x1="88" y1="68" x2="100" y2="68">
+      <stop offset="0" stop-color="#c8c8c8"/>
+      <stop offset="0.7" stop-color="#bfbfbf"/>
+      <stop offset="1" stop-color="#dddddd"/>
+    </linearGradient>
+    <linearGradient id="face-8" gradientUnits="userSpaceOnUse" x1="56" y1="129" x2="100" y2="109">
+      <stop offset="0" stop-color="#2b2b2b"/>
+      <stop offset="0.45" stop-color="#7c7c7c"/>
+      <stop offset="1" stop-color="#ededed"/>
+    </linearGradient>
+    <linearGradient id="face-9" gradientUnits="userSpaceOnUse" x1="88" y1="96" x2="48" y2="123">
+      <stop offset="0" stop-color="#969696"/>
+      <stop offset="0.5" stop-color="#777777"/>
+      <stop offset="1" stop-color="#484848"/>
+    </linearGradient>
+    <linearGradient id="face-10" gradientUnits="userSpaceOnUse" x1="105" y1="105" x2="145" y2="134">
+      <stop offset="0" stop-color="#d1d1d1"/>
+      <stop offset="0.6" stop-color="#bcbcbc"/>
+      <stop offset="1" stop-color="#c8c8c8"/>
+    </linearGradient>
+    <linearGradient id="face-11" gradientUnits="userSpaceOnUse" x1="110" y1="96" x2="149" y2="122">
+      <stop offset="0" stop-color="#8c8c8c"/>
+      <stop offset="0.7" stop-color="#686868"/>
+      <stop offset="1" stop-color="#505050"/>
+    </linearGradient>
+    <linearGradient id="face-12" gradientUnits="userSpaceOnUse" x1="95" y1="34" x2="105" y2="46">
+      <stop offset="0" stop-color="#878787"/>
+      <stop offset="1" stop-color="#6e6e6e"/>
+    </linearGradient>
+    <linearGradient id="face-13" gradientUnits="userSpaceOnUse" x1="43" y1="124" x2="53" y2="136">
+      <stop offset="0" stop-color="#171717"/>
+      <stop offset="1" stop-color="#080808"/>
+    </linearGradient>
+    <linearGradient id="face-14" gradientUnits="userSpaceOnUse" x1="146" y1="134" x2="158" y2="126">
+      <stop offset="0" stop-color="#a3a3a3"/>
+      <stop offset="0.65" stop-color="#d4d4d4"/>
+      <stop offset="1" stop-color="#b9b9b9"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(-4.74074 -4.74074) scale(0.2074074)" stroke-linejoin="round">
+    <polygon points="41.500,81.250 87.000,107.500 87.000,92.500 41.500,66.250" fill="url(#face-0)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="54.500,58.750 100.000,85.000 87.000,92.500 41.500,66.250" fill="url(#face-1)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="158.500,81.250 113.000,107.500 113.000,92.500 158.500,66.250" fill="url(#face-2)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="145.500,58.750 158.500,66.250 113.000,92.500 100.000,85.000" fill="url(#face-3)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="113.000,160.000 100.000,167.500 100.000,115.000 113.000,107.500" fill="url(#face-4)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="87.000,160.000 100.000,167.500 100.000,115.000 87.000,107.500" fill="url(#face-5)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="113.000,92.500 100.000,100.000 100.000,47.500 113.000,40.000" fill="url(#face-6)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="87.000,92.500 100.000,100.000 100.000,47.500 87.000,40.000" fill="url(#face-7)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="100.000,115.000 54.500,141.250 54.500,126.250 100.000,100.000" fill="url(#face-8)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="87.000,92.500 100.000,100.000 54.500,126.250 41.500,118.750" fill="url(#face-9)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="100.000,115.000 145.500,141.250 145.500,126.250 100.000,100.000" fill="url(#face-10)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="113.000,92.500 158.500,118.750 145.500,126.250 100.000,100.000" fill="url(#face-11)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="100.000,32.500 113.000,40.000 100.000,47.500 87.000,40.000" fill="url(#face-12)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="41.500,133.750 54.500,141.250 54.500,126.250 41.500,118.750" fill="url(#face-13)" stroke="#303030" stroke-width="0.7"/>
+    <polygon points="158.500,133.750 145.500,141.250 145.500,126.250 158.500,118.750" fill="url(#face-14)" stroke="#303030" stroke-width="0.7"/>
+    <g fill="none" stroke-linecap="round">
+      <path d="M100 48.2V99.8L54.5 126.4V140.4M100 100L145.5 126.4V140.4M100 116V166" stroke="#111111" stroke-width="2"/>
+      <path d="M42.2 67.2L86.2 92.6M114 92.5L157.4 67M87.7 41.4L98.3 47.7V98.4L54.3 124.8L42.8 118.5M101.7 99.4L145.7 124.8L157.2 118.3" stroke="#e7e7e7" stroke-width="0.7"/>
+      <path d="M101.6 49.2L111.8 42.9M56 128V138.8M147 127.7V138.7M101.5 117.7V164.7" stroke="#eeeeee" stroke-width="0.55"/>
+    </g>
+  </g>
+</svg>

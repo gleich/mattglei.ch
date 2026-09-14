@@ -7,108 +7,109 @@
 		dates,
 		href,
 		icon,
-		lightIcon = false,
+		preserveIconColors = false,
 		children
 	}: {
 		name: string;
 		role: string;
 		dates: string;
-		href?: string;
+		href: string;
 		icon?: string;
-		lightIcon?: boolean;
-		children?: Snippet;
+		preserveIconColors?: boolean;
+		children: Snippet;
 	} = $props();
 </script>
 
 <article>
 	<header>
 		{#if icon}
-			<div class="icon" class:light={lightIcon}>
-				<img src={icon} alt="" width="28" height="28" loading="lazy" decoding="async" />
+			<div class="icon">
+				<img
+					src={icon}
+					alt=""
+					width="20"
+					height="20"
+					loading="lazy"
+					decoding="async"
+					style:filter={preserveIconColors ? 'none' : undefined}
+				/>
 			</div>
 		{/if}
-		<div class="heading">
-			<div class="identity">
-				<h4>
-					{#if href}
-						<a {href} target="_blank" rel="noopener noreferrer">{name}</a>
-					{:else}
-						{name}
-					{/if}
-				</h4>
-				<p class="role">{role}</p>
-			</div>
-			<p class="dates">{dates}</p>
+		<div class="identity">
+			<h4>
+				<a {href} target="_blank" rel="noopener noreferrer">
+					{name}
+					<img src="/resume/external-link.svg" alt="" width="13" height="13" />
+				</a>
+			</h4>
+			<p class="role">{role}</p>
 		</div>
+		<p class="dates">{dates}</p>
 	</header>
-	{#if children}
-		<div class="details">
-			{@render children()}
-		</div>
-	{/if}
+	<div class="details">
+		{@render children()}
+	</div>
 </article>
 
 <style>
 	article {
-		padding: 4px 2px 8px;
 		min-width: 0;
+		margin-bottom: 5px;
 	}
 
-	:global(article) + article {
-		border-top: 1px solid var(--border);
-		margin-top: 4px;
-		padding-top: 12px;
+	article:last-child {
+		margin-bottom: 0;
 	}
 
 	header {
+		position: relative;
 		display: flex;
 		align-items: center;
-		gap: 8px;
+		justify-content: space-between;
+		gap: 4px 12px;
+		padding: 3px 7px;
+		background: color-mix(in srgb, var(--foreground) 4%, var(--background));
+		line-height: 1.2;
 	}
 
 	.icon {
-		width: 28px;
-		height: 28px;
-		flex-shrink: 0;
-		border-radius: 5px;
-		overflow: hidden;
+		position: absolute;
+		right: calc(100% + 8px);
+		top: 0;
+		display: grid;
+		place-items: center;
+		width: 24px;
+		height: 24px;
+		padding: 2px;
+		border: 1px solid var(--border);
+		background: var(--background);
 	}
 
 	.icon img {
-		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
 	}
 
-	.icon.light {
-		padding: 3px;
-		background-color: #fbfbfc;
-	}
-
-	.heading {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 6px 16px;
-		flex: 1;
-		min-width: 0;
-	}
-
 	.identity {
 		display: flex;
 		align-items: center;
-		flex-wrap: wrap;
-		gap: 4px 10px;
+		gap: 12px;
 		min-width: 0;
 	}
 
 	h4 {
-		font-size: 1.125rem;
-		text-wrap: pretty;
+		font-family: inherit;
+		font-size: 1.105em;
+		font-weight: 600;
+		line-height: inherit;
+		text-wrap: wrap;
 	}
 
 	h4 a {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 4px;
 		color: inherit;
 		text-decoration: none;
 	}
@@ -118,52 +119,81 @@
 		text-underline-offset: 3px;
 	}
 
+	h4 img {
+		flex-shrink: 0;
+	}
+
 	.role {
-		padding: 2px 4px;
-		width: fit-content;
-		font-size: 0.875rem;
-		line-height: 1.25;
-		color: var(--green-foreground);
-		background-color: var(--green-background);
-		border-radius: 2px;
+		padding-left: 12px;
+		border-left: 1px solid var(--border);
+		color: var(--resume-muted);
+		text-wrap: wrap;
 	}
 
 	.dates {
 		flex-shrink: 0;
-		font-size: 0.875rem;
-		line-height: 1.4;
+		color: var(--resume-muted);
+		font-size: 0.947em;
 		text-align: right;
 		white-space: nowrap;
-		color: color-mix(in srgb, var(--foreground) 68%, var(--background));
 	}
 
 	.details {
-		margin-top: 6px;
-		line-height: 1.45;
+		margin-top: 3px;
 	}
 
-	@media (max-width: 700px) {
+	@media (max-width: 900px) {
 		header {
-			align-items: flex-start;
+			flex-wrap: wrap;
 		}
 
-		.heading {
+		.dates {
+			margin-left: auto;
+		}
+	}
+
+	@media (max-width: 600px) {
+		article {
+			margin-bottom: 12px;
+		}
+
+		header {
+			gap: 6px;
+			padding: 7px 8px;
+		}
+
+		.icon {
+			right: calc(100% + 6px);
+			top: 6px;
+			width: 22px;
+			height: 22px;
+		}
+
+		.identity {
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 4px;
 		}
 
+		h4 {
+			font-size: 1.25em;
+		}
+
+		.role {
+			padding-left: 0;
+			border-left: 0;
+		}
+
 		.dates {
+			width: 100%;
+			margin-left: 0;
 			text-align: left;
 			white-space: normal;
-			text-wrap: balance;
+			text-wrap: wrap;
 		}
-	}
 
-	@media (max-width: 450px) {
-		article {
-			padding-left: 4px;
-			padding-right: 4px;
+		.details {
+			margin-top: 6px;
 		}
 	}
 </style>
