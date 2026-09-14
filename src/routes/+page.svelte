@@ -1,4 +1,5 @@
 <script lang="ts">
+	import JobSearchNotice from '$lib/index/job-search-notice.svelte';
 	import ExperienceSection from '$lib/index/sections/experience/experience-section.svelte';
 	import GamesSection from '$lib/index/sections/games/games-section.svelte';
 	import Intro from '$lib/index/sections/intro.svelte';
@@ -17,6 +18,7 @@
 	description="Software Engineering Intern @ Synthient | Computer science student at the Rochester Institute of Technology (RIT)"
 />
 
+<JobSearchNotice />
 <Intro />
 
 <div class="sections">

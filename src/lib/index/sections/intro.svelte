@@ -13,8 +13,8 @@
 		am passionate about applying my technical skills to develop practical solutions while
 		continually expanding my expertise. If you'd like to discuss a project or explore potential
 		opportunities, please contact me at
-		<a href="mailto:mail@mattglei.ch">mail@mattglei.ch</a>. Additional details about my professional
-		work are in my <Resume />.
+		<a href="mailto:email@mattglei.ch">email@mattglei.ch</a>. Additional details about my
+		professional work are in my <Resume />.
 	</div>
 </div>
 

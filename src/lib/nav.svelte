@@ -64,7 +64,7 @@
 	</div>
 {/snippet}
 
-<nav>
+<nav class:home-page={page.url.pathname === '/'}>
 	<div class="bar">
 		<a href="/" class="left">
 			<NavLogo />
@@ -73,15 +73,17 @@
 		{@render socials('bar-socials')}
 	</div>
 	{@render socials('socials-under-name')}
-	<div class="links" bind:this={linksContainer}>
-		<div
-			class="indicator"
-			style:left="{indicatorLeft}px"
-			style:top="{indicatorTop}px"
-			style:width="{indicatorWidth}px"
-			style:height="{indicatorHeight}px"
-			style:opacity={indicatorVisible ? 1 : 0}
-		></div>
+	<div class="links" class:has-indicator={indicatorVisible} bind:this={linksContainer}>
+		{#if indicatorVisible}
+			<div
+				class="indicator"
+				style:left="{indicatorLeft}px"
+				style:top="{indicatorTop}px"
+				style:width="{indicatorWidth}px"
+				style:height="{indicatorHeight}px"
+				aria-hidden="true"
+			></div>
+		{/if}
 		{#each links as link, i (link)}
 			<a
 				bind:this={linkEls[i]}
@@ -101,6 +103,10 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 10px;
+	}
+
+	nav.home-page {
+		margin-bottom: 48px;
 	}
 
 	.bar {
@@ -138,8 +144,7 @@
 			left 0.25s ease,
 			top 0.25s ease,
 			width 0.25s ease,
-			height 0.25s ease,
-			opacity 0.15s ease;
+			height 0.25s ease;
 	}
 
 	.links a {
@@ -155,6 +160,11 @@
 
 	.current-link {
 		color: var(--green-foreground) !important;
+		background-color: var(--green-background);
+	}
+
+	.has-indicator .current-link {
+		background-color: transparent;
 	}
 
 	.left {

@@ -35,6 +35,18 @@
 	];
 </script>
 
+<svelte:head>
+	{#each ['regular', 'semibold', 'bold'] as weight (weight)}
+		<link
+			rel="preload"
+			href="/resume/fonts/inter-{weight}.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin="anonymous"
+		/>
+	{/each}
+</svelte:head>
+
 <DynamicHead
 	title="Resume | Matt Gleich"
 	description="Matt Gleich's software engineering resume: experience, projects, skills, and education. Graduating from RIT in May 2027."
@@ -324,7 +336,7 @@
 		src: url('/resume/fonts/inter-regular.woff2') format('woff2');
 		font-weight: 400;
 		font-style: normal;
-		font-display: swap;
+		font-display: optional;
 	}
 
 	@font-face {
@@ -332,7 +344,7 @@
 		src: url('/resume/fonts/inter-semibold.woff2') format('woff2');
 		font-weight: 600;
 		font-style: normal;
-		font-display: swap;
+		font-display: optional;
 	}
 
 	@font-face {
@@ -340,7 +352,7 @@
 		src: url('/resume/fonts/inter-bold.woff2') format('woff2');
 		font-weight: 700;
 		font-style: normal;
-		font-display: swap;
+		font-display: optional;
 	}
 
 	main {
