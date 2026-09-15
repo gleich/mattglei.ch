@@ -16,6 +16,18 @@
 
 <Fonts />
 
+<svelte:head>
+	{#each ['regular', 'semibold', 'bold'] as weight (weight)}
+		<link
+			rel="preload"
+			href="/resume/fonts/inter-{weight}.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin="anonymous"
+		/>
+	{/each}
+</svelte:head>
+
 <Layout repo="gleich/mattglei.ch">
 	<Nav />
 	<div class="children">

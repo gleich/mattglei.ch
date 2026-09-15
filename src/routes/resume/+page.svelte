@@ -35,18 +35,6 @@
 	];
 </script>
 
-<svelte:head>
-	{#each ['regular', 'semibold', 'bold'] as weight (weight)}
-		<link
-			rel="preload"
-			href="/resume/fonts/inter-{weight}.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin="anonymous"
-		/>
-	{/each}
-</svelte:head>
-
 <DynamicHead
 	title="Resume | Matt Gleich"
 	description="Matt Gleich's software engineering resume: experience, projects, skills, and education. Graduating from RIT in May 2027."

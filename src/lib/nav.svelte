@@ -88,6 +88,7 @@
 			<a
 				bind:this={linkEls[i]}
 				href={`/${link}`}
+				data-sveltekit-preload-code={link === 'resume' ? 'eager' : undefined}
 				class={isCurrentLink(link) ? 'current-link' : ''}
 				aria-current={isCurrentLink(link) ? 'page' : undefined}>{link === '' ? 'home' : link}</a
 			>
