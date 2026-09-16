@@ -93,9 +93,35 @@
 
 	@media (max-width: 500px) {
 		.notice {
-			column-gap: 8px;
+			gap: 14px 10px;
 			margin: 0 0 16px;
-			padding: 8px 12px;
+			padding: 16px;
+			line-height: 1.5;
+		}
+
+		p {
+			text-wrap: pretty;
+		}
+
+		.actions {
+			grid-column: 1 / -1;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+			gap: 8px;
+		}
+
+		a {
+			justify-content: center;
+			min-height: 44px;
+			padding: 0 8px;
+			border: 1px solid color-mix(in srgb, var(--notice-accent) 25%, transparent);
+			border-radius: 6px;
+			background: color-mix(in srgb, var(--notice-accent) 6%, transparent);
+			text-decoration: none;
+		}
+
+		a:hover {
+			background: color-mix(in srgb, var(--notice-accent) 12%, transparent);
 		}
 	}
 </style>
