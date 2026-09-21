@@ -1,7 +1,7 @@
 <script lang="ts">
-	import EmailIcon from '$lib/icons/email-icon.svelte';
 	import FileIcon from '$lib/icons/file-icon.svelte';
 	import InfoIcon from '$lib/icons/info-icon.svelte';
+	import LinkedinIcon from '$lib/icons/linkedin-icon.svelte';
 </script>
 
 <aside aria-label="Job search" class="notice">
@@ -10,11 +10,11 @@
 	<div class="actions">
 		<a href="/resume">
 			<span class="action-icon" aria-hidden="true"><FileIcon /></span>
-			View my resume
+			Resume
 		</a>
-		<a href="mailto:email@mattglei.ch" title="email@mattglei.ch">
-			<span class="action-icon" aria-hidden="true"><EmailIcon /></span>
-			Contact me
+		<a href="https://www.linkedin.com/in/matt-gleich/" target="_blank">
+			<span class="action-icon" aria-hidden="true"><LinkedinIcon /></span>
+			Linkedin
 		</a>
 	</div>
 </aside>
