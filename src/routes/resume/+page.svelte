@@ -62,10 +62,6 @@
 					<img src="/resume/email.svg" alt="" width="14" height="14" />
 					email@mattglei.ch
 				</a>
-				<a href="https://mattglei.ch">
-					<img src="/resume/website.svg" alt="" width="14" height="14" />
-					mattglei.ch
-				</a>
 				<span class="contact">
 					<img src="/resume/location.svg" alt="" width="14" height="14" />
 					Greater New York City Area
