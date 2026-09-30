@@ -175,4 +175,20 @@
 		opacity: 0.65;
 		font-size: 13.5px;
 	}
+
+	@media (prefers-color-scheme: light) {
+		.apple-music-link,
+		.track,
+		.artist {
+			text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
+		}
+
+		.apple-music-link::before {
+			opacity: 0.35;
+		}
+
+		.artist {
+			opacity: 0.8;
+		}
+	}
 </style>

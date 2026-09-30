@@ -125,6 +125,16 @@
 		color: var(--foreground);
 	}
 
+	@media (prefers-color-scheme: light) {
+		.stats::before {
+			opacity: 0.35;
+		}
+
+		.stats :global(*) {
+			text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
+		}
+	}
+
 	@media (max-width: 710px) {
 		.games {
 			grid-template-columns: repeat(2, 1fr);
