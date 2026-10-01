@@ -96,8 +96,8 @@
 				>
 					<ul>
 						<li>
-							Developed an agentic pipeline that implemented, tested, and documented SDKs from
-							scratch in 10 languages using OpenAPI.
+							Developed an agentic pipeline that implemented, tested, and documented SDKs in 10
+							languages from OpenAPI specifications.
 						</li>
 						<li>
 							Independently developed the <a
