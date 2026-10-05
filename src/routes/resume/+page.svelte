@@ -1,10 +1,20 @@
 <script lang="ts">
-	import { DynamicHead } from '@gleich/ui';
+	import { DynamicHead, Logo } from '@gleich/ui';
 	import Section from '$lib/resume/section.svelte';
 	import Entry from '$lib/resume/entry.svelte';
 	import FileIcon from '$lib/icons/file-icon.svelte';
 	import GitHubIcon from '$lib/icons/github-icon.svelte';
 	import LinkedinIcon from '$lib/icons/linkedin-icon.svelte';
+	import BottomlineIcon from '$lib/resume/icons/bottomline-icon.svelte';
+	import EmailIcon from '$lib/resume/icons/email-icon.svelte';
+	import ExternalLinkIcon from '$lib/resume/icons/external-link-icon.svelte';
+	import KcfTechnologiesIcon from '$lib/resume/icons/kcf-technologies-icon.svelte';
+	import LocationIcon from '$lib/resume/icons/location-icon.svelte';
+	import PhoneIcon from '$lib/resume/icons/phone-icon.svelte';
+	import RitIcon from '$lib/resume/icons/rit-icon.svelte';
+	import RootlyIcon from '$lib/resume/icons/rootly-icon.svelte';
+	import StainlessIcon from '$lib/resume/icons/stainless-icon.svelte';
+	import SynthientIcon from '$lib/resume/icons/synthient-icon.svelte';
 
 	const skills = [
 		{
@@ -56,18 +66,18 @@
 				<h2>Matt Gleich</h2>
 				<p class="profession">Software Engineer <span>[Graduating May 2027]</span></p>
 			</div>
-			<img class="mark" src="/resume/mark.svg" alt="" width="82" height="82" />
+			<div class="mark" aria-hidden="true"><Logo /></div>
 			<address>
 				<a href="mailto:email@mattglei.ch">
-					<img src="/resume/email.svg" alt="" width="14" height="14" />
+					<span class="contact-icon"><EmailIcon /></span>
 					email@mattglei.ch
 				</a>
 				<span class="contact">
-					<img src="/resume/location.svg" alt="" width="14" height="14" />
+					<span class="contact-icon"><LocationIcon /></span>
 					Greater New York City Area
 				</span>
 				<a href="tel:+16033257895">
-					<img src="/resume/phone.svg" alt="" width="14" height="14" />
+					<span class="contact-icon"><PhoneIcon /></span>
 					+1 (603) 325-7895
 				</a>
 				<a href="https://github.com/gleich" target="_blank" rel="noopener noreferrer">
@@ -92,7 +102,7 @@
 					role="Software Engineering Intern"
 					dates="Jan 2026 - Present"
 					href="https://synthient.com/"
-					icon="/resume/synthient.svg"
+					icon={SynthientIcon}
 				>
 					<ul>
 						<li>
@@ -123,20 +133,13 @@
 							competing platforms through <a
 								href="https://docs.synthient.com/ai/codex"
 								target="_blank"
-								rel="noopener noreferrer"
-								>Codex <img src="/resume/external-link.svg" alt="" width="13" height="13" /></a
+								rel="noopener noreferrer">Codex <ExternalLinkIcon /></a
 							>
 							and
 							<a
 								href="https://docs.synthient.com/ai/claude"
 								target="_blank"
-								rel="noopener noreferrer"
-								>Claude Code <img
-									src="/resume/external-link.svg"
-									alt=""
-									width="13"
-									height="13"
-								/></a
+								rel="noopener noreferrer">Claude Code <ExternalLinkIcon /></a
 							> plugins and an eight-tool Model Context Protocol (MCP) server.
 						</li>
 						<li>
@@ -150,7 +153,7 @@
 					role="Associate DevOps Engineer"
 					dates="Jun 2025 - Dec 2025"
 					href="https://kcftech.com/"
-					icon="/resume/kcf-technologies.svg"
+					icon={KcfTechnologiesIcon}
 				>
 					<ul>
 						<li>
@@ -176,7 +179,7 @@
 					role="Engineering Developer"
 					dates="Jun 2022 - Dec 2022"
 					href="https://www.stainless.com/"
-					icon="/resume/stainless.svg"
+					icon={StainlessIcon}
 					preserveIconColors
 				>
 					<ul>
@@ -199,7 +202,7 @@
 					role="Contracted Developer"
 					dates="Feb 2021 - Dec 2021"
 					href="https://rootly.com/"
-					icon="/resume/rootly.svg"
+					icon={RootlyIcon}
 				>
 					<ul>
 						<li>
@@ -221,7 +224,7 @@
 					role="Cloud Automation Intern"
 					dates="Jun 2021 - Aug 2021; Jun 2020 - Aug 2020"
 					href="https://www.bottomline.com/us"
-					icon="/resume/bottomline.svg"
+					icon={BottomlineIcon}
 				>
 					<ul>
 						<li>
@@ -301,7 +304,7 @@
 			<Section name="Education">
 				<div class="education">
 					<span class="education-icon">
-						<img src="/resume/rit.svg" alt="" width="22" height="22" loading="lazy" />
+						<RitIcon />
 					</span>
 					<h4>Rochester Institute of Technology</h4>
 					<p class="education-dates">Aug 2022 - Expected May 2027</p>
@@ -393,7 +396,7 @@
 		text-decoration: underline;
 	}
 
-	.resume-document :global(img) {
+	.resume-document :global(.resume-icon) {
 		filter: var(--resume-icon-filter);
 	}
 
@@ -457,8 +460,7 @@
 		text-decoration: underline;
 	}
 
-	.contact-icon,
-	address img {
+	.contact-icon {
 		display: flex;
 		width: 14px;
 		height: 14px;
@@ -528,11 +530,10 @@
 		background: var(--background);
 	}
 
-	.education-icon img {
+	.education-icon :global(svg) {
 		display: block;
 		width: 100%;
 		height: 100%;
-		object-fit: contain;
 	}
 
 	h4 {

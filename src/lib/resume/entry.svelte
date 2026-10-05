@@ -1,12 +1,13 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import type { Component, Snippet } from 'svelte';
+	import ExternalLinkIcon from './icons/external-link-icon.svelte';
 
 	const {
 		name,
 		role,
 		dates,
 		href,
-		icon,
+		icon: Icon,
 		preserveIconColors = false,
 		children
 	}: {
@@ -14,7 +15,7 @@
 		role: string;
 		dates: string;
 		href: string;
-		icon?: string;
+		icon?: Component;
 		preserveIconColors?: boolean;
 		children: Snippet;
 	} = $props();
@@ -22,24 +23,16 @@
 
 <article>
 	<header>
-		{#if icon}
-			<div class="icon">
-				<img
-					src={icon}
-					alt=""
-					width="20"
-					height="20"
-					loading="lazy"
-					decoding="async"
-					style:filter={preserveIconColors ? 'none' : undefined}
-				/>
+		{#if Icon}
+			<div class="icon" style:--resume-icon-filter={preserveIconColors ? 'none' : undefined}>
+				<Icon />
 			</div>
 		{/if}
 		<div class="identity">
 			<h4>
 				<a {href} target="_blank" rel="noopener noreferrer">
 					{name}
-					<img src="/resume/external-link.svg" alt="" width="13" height="13" />
+					<ExternalLinkIcon />
 				</a>
 			</h4>
 			<p class="role">{role}</p>
@@ -85,10 +78,9 @@
 		background: var(--background);
 	}
 
-	.icon img {
+	.icon :global(svg) {
 		width: 100%;
 		height: 100%;
-		object-fit: contain;
 	}
 
 	.identity {
@@ -119,7 +111,7 @@
 		text-underline-offset: 3px;
 	}
 
-	h4 img {
+	h4 :global(svg) {
 		flex-shrink: 0;
 	}
 

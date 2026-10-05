@@ -1,0 +1,16 @@
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	width="20"
+	height="20"
+	viewBox="0 0 32 32"
+	fill="#000000"
+	class="resume-icon"
+	aria-hidden="true"
+	focusable="false"
+>
+	<rect x="5.7" y="17.1" width="2.6" height="7.8" rx="1.3" />
+	<rect x="11.7" y="10.7" width="2.6" height="19.3" rx="1.3" />
+	<rect x="17.7" y="2" width="2.6" height="26.2" rx="1.3" />
+	<rect x="23.7" y="6.1" width="2.6" height="15.6" rx="1.3" />
+	<rect x="23.7" y="23.6" width="2.6" height="6.4" rx="1.3" />
+</svg>
