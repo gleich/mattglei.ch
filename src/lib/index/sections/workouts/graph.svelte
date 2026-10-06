@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Workout } from '$lib/lcp/workouts';
 	import { MediaQuery } from 'svelte/reactivity';
-	import { Chart } from 'chart.js/auto';
+	import type { Chart } from 'chart.js';
 
 	const { workout }: { workout: Workout } = $props();
 
@@ -12,73 +12,85 @@
 	$effect(() => {
 		if (!canvas) return;
 
+		const target = canvas;
 		const hr = $state.snapshot(workout.heartrate_data);
-		const chart = new Chart(canvas, {
-			type: 'line',
-			data: {
-				labels: hr.map((_, i) => i.toString()),
-				datasets: [
-					{
-						data: hr,
-						borderColor: 'rgb(243, 9, 40)'
-					}
-				]
-			},
-			options: {
-				responsive: true,
-				maintainAspectRatio: false,
-				plugins: {
-					legend: {
-						display: false
-					},
-					tooltip: {
-						xAlign: 'center'
-					}
+		const gridColor = lineColor;
+		let chart: Chart | undefined;
+		let cancelled = false;
+
+		import('./chart').then((module) => {
+			if (cancelled) return;
+			chart = new module.Chart(target, {
+				type: 'line',
+				data: {
+					labels: hr.map((_, i) => i.toString()),
+					datasets: [
+						{
+							data: hr,
+							borderColor: 'rgb(243, 9, 40)'
+						}
+					]
 				},
-				animation: false,
-				interaction: {
-					intersect: false
-				},
-				scales: {
-					x: {
-						display: false
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					plugins: {
+						legend: {
+							display: false
+						},
+						tooltip: {
+							xAlign: 'center'
+						}
 					},
-					y: {
-						grid: {
-							color: lineColor
+					animation: false,
+					interaction: {
+						intersect: false
+					},
+					scales: {
+						x: {
+							display: false
 						},
-						border: {
-							color: lineColor
-						},
-						ticks: {
-							count: 6,
-							color: 'rgb(100, 100, 100)',
-							font: {
-								family: 'IBM Plex Sans'
+						y: {
+							grid: {
+								color: gridColor
+							},
+							border: {
+								color: gridColor
+							},
+							ticks: {
+								count: 6,
+								color: 'rgb(100, 100, 100)',
+								font: {
+									family: 'IBM Plex Sans'
+								}
 							}
 						}
-					}
-				},
-				layout: {
-					padding: {
-						left: 5,
-						right: 10,
-						top: 15
-					}
-				},
-				elements: {
-					point: {
-						radius: 0
 					},
-					line: {
-						tension: 0.5,
-						borderCapStyle: 'round',
-						borderWidth: 2
+					layout: {
+						padding: {
+							left: 5,
+							right: 10,
+							top: 15
+						}
+					},
+					elements: {
+						point: {
+							radius: 0
+						},
+						line: {
+							tension: 0.5,
+							borderCapStyle: 'round',
+							borderWidth: 2
+						}
 					}
 				}
-			}
+			});
 		});
-		return () => chart.destroy();
+
+		return () => {
+			cancelled = true;
+			chart?.destroy();
+		};
 	});
 </script>
 

@@ -65,3 +65,16 @@ looks in [/static/fonts](../../static/fonts/) and automatically generates the fo
 	/>
 </svelte:head>
 ```
+
+## subsetting
+
+fonts in [/static/fonts](../../static/fonts/) are subset to latin + latin extended to keep them small. run this on any new font before adding it:
+
+```sh
+uvx --from 'fonttools[woff]' pyftsubset <input>.woff2 \
+	--flavor=woff2 \
+	--unicodes='U+0000-024F,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+FEFF,U+FFFD' \
+	--output-file=<output>.woff2
+```
+
+fonts are served with a one year immutable cache (see [/\_headers](../../_headers)), so a changed font needs a new filename.

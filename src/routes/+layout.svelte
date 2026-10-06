@@ -6,26 +6,32 @@
 
 	import Nav from '$lib/nav.svelte';
 	import Fonts from '$lib/fonts.svelte';
+	import { page } from '$app/state';
 	import { Layout, siteName } from '@gleich/ui';
-	import type { Snippet } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
 
 	siteName.set('mattglei.ch');
 
 	const { children }: { children: Snippet } = $props();
+
+	let mounted = $state(false);
+	onMount(() => (mounted = true));
 </script>
 
 <Fonts />
 
 <svelte:head>
-	{#each ['regular', 'semibold', 'bold'] as weight (weight)}
-		<link
-			rel="preload"
-			href="/resume/fonts/inter-{weight}.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin="anonymous"
-		/>
-	{/each}
+	{#if mounted || page.route.id === '/resume'}
+		{#each ['regular', 'semibold', 'bold'] as weight (weight)}
+			<link
+				rel="preload"
+				href="/resume/fonts/inter-{weight}.woff2"
+				as="font"
+				type="font/woff2"
+				crossorigin="anonymous"
+			/>
+		{/each}
+	{/if}
 </svelte:head>
 
 <Layout repo="gleich/mattglei.ch">
