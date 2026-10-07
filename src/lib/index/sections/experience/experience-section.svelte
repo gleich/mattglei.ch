@@ -19,7 +19,7 @@
 
 	<div class="experiences">
 		<Experience
-			role="Software Engineering Intern"
+			role="Software Engineer"
 			icon="synthient.webp"
 			company="Synthient"
 			url="https://synthient.com"
