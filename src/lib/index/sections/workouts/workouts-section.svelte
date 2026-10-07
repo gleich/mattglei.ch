@@ -58,7 +58,7 @@
 	}}
 >
 	{#if loading}
-		<SectionLoading name="workouts" height={518.08} />
+		<SectionLoading name="workouts" height={521.59} />
 	{:else if workouts}
 		<p>
 			One of my favorite things is staying active and enjoying the outdoors. I grew up in New

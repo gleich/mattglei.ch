@@ -60,7 +60,7 @@
 	}}
 >
 	{#if loading}
-		<SectionLoading name="projects" height={436} />
+		<SectionLoading name="projects" height={442.5} />
 	{:else if projects}
 		<p class="intro">
 			I love to build and explore everything from <a

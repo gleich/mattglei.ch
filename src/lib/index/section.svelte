@@ -201,7 +201,7 @@
 	}
 
 	.loading {
-		line-height: 20px;
+		line-height: 18px;
 	}
 
 	@media (max-width: 450px) {
