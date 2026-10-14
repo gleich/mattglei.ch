@@ -2,42 +2,42 @@
 
 @font-face {
 	font-family: 'IBM Plex Mono';
-	src: url('/fonts/ibm_plex_mono/bold.woff2');
+	src: url('/fonts/ibm_plex_mono/bold.woff2?v=44f9c3dd');
 	font-weight: 700;
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'IBM Plex Mono';
-	src: url('/fonts/ibm_plex_mono/medium.woff2');
+	src: url('/fonts/ibm_plex_mono/medium.woff2?v=2a6c216c');
 	font-weight: 500;
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'IBM Plex Mono';
-	src: url('/fonts/ibm_plex_mono/normal.woff2');
+	src: url('/fonts/ibm_plex_mono/normal.woff2?v=90a2aedb');
 	font-weight: 400;
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'IBM Plex Sans';
-	src: url('/fonts/ibm_plex_sans/medium.woff2');
+	src: url('/fonts/ibm_plex_sans/medium.woff2?v=39480691');
 	font-weight: 500;
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'Inter';
-	src: url('/fonts/inter/bold.woff2');
+	src: url('/fonts/inter/bold.woff2?v=6333bd4d');
 	font-weight: 700;
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'Inter';
-	src: url('/fonts/inter/extra_bold.woff2');
+	src: url('/fonts/inter/extra_bold.woff2?v=5e550e89');
 	font-weight: 800;
 	font-display: swap;
 }

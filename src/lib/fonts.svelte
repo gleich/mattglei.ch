@@ -3,42 +3,42 @@
 <svelte:head>
 	<link
 		rel="preload"
-		href="/fonts/ibm_plex_mono/bold.woff2"
+		href="/fonts/ibm_plex_mono/bold.woff2?v=44f9c3dd"
 		as="font"
 		type="font/woff2"
 		crossorigin="anonymous"
 	/>
 	<link
 		rel="preload"
-		href="/fonts/ibm_plex_mono/medium.woff2"
+		href="/fonts/ibm_plex_mono/medium.woff2?v=2a6c216c"
 		as="font"
 		type="font/woff2"
 		crossorigin="anonymous"
 	/>
 	<link
 		rel="preload"
-		href="/fonts/ibm_plex_mono/normal.woff2"
+		href="/fonts/ibm_plex_mono/normal.woff2?v=90a2aedb"
 		as="font"
 		type="font/woff2"
 		crossorigin="anonymous"
 	/>
 	<link
 		rel="preload"
-		href="/fonts/ibm_plex_sans/medium.woff2"
+		href="/fonts/ibm_plex_sans/medium.woff2?v=39480691"
 		as="font"
 		type="font/woff2"
 		crossorigin="anonymous"
 	/>
 	<link
 		rel="preload"
-		href="/fonts/inter/bold.woff2"
+		href="/fonts/inter/bold.woff2?v=6333bd4d"
 		as="font"
 		type="font/woff2"
 		crossorigin="anonymous"
 	/>
 	<link
 		rel="preload"
-		href="/fonts/inter/extra_bold.woff2"
+		href="/fonts/inter/extra_bold.woff2?v=5e550e89"
 		as="font"
 		type="font/woff2"
 		crossorigin="anonymous"

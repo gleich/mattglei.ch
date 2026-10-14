@@ -78,4 +78,4 @@ uvx --from 'fonttools[woff]' pyftsubset <input>.woff2 \
 	--output-file=<output>.woff2
 ```
 
-fonts are served with a one year immutable cache (see [/\_headers](../../_headers)), so a changed font needs a new filename.
+fonts are served with a one year immutable cache (see [/\_headers](../../_headers)), so the generated urls include a hash of each file (`?v=<hash>`) that changes whenever the font does. rerun this script after changing a font.

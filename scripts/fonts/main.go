@@ -1,6 +1,8 @@
 package main
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 	"io/fs"
 	"os"
@@ -94,13 +96,23 @@ func collectFonts() []font {
 			style = "italic"
 		}
 
+		data, err := os.ReadFile(path)
+		if err != nil {
+			timber.Fatal(err, "failed to read", path)
+		}
+		hash := sha256.Sum256(data)
+
 		fonts = append(fonts, font{
 			family: strings.ReplaceAll(titleCaser.String(
 				strings.ReplaceAll(filepath.Base(filepath.Dir(path)), "_", " "),
 			), "Ibm", "IBM"),
 			weight: weight,
 			style:  style,
-			src:    strings.ReplaceAll(path, "../../static/", "/"),
+			src: fmt.Sprintf(
+				"%s?v=%s",
+				strings.ReplaceAll(path, "../../static/", "/"),
+				hex.EncodeToString(hash[:])[:8],
+			),
 		})
 		return nil
 	})
