@@ -68,11 +68,12 @@ looks in [/static/fonts](../../static/fonts/) and automatically generates the fo
 
 ## subsetting
 
-fonts in [/static/fonts](../../static/fonts/) are subset to latin + latin extended to keep them small. run this on any new font before adding it:
+fonts in [/static/fonts](../../static/fonts/) are subset to latin + latin extended to keep them small. run this on any new font before adding it. `--layout-features+=zero` keeps the slashed zero that `@gleich/ui` enables with `font-feature-settings: 'zero'`, since pyftsubset drops it by default:
 
 ```sh
 uvx --from 'fonttools[woff]' pyftsubset <input>.woff2 \
 	--flavor=woff2 \
+	--layout-features+=zero \
 	--unicodes='U+0000-024F,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+FEFF,U+FFFD' \
 	--output-file=<output>.woff2
 ```
