@@ -34,7 +34,6 @@ export interface AppleMusicSong {
 	album_art_blurhash: string | undefined;
 	url: string;
 	id: string;
-	preview_audio_url: string | undefined;
 }
 
 export interface AppleMusicPlaylistResponse {

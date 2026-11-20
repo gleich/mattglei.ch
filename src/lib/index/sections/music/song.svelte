@@ -1,95 +1,36 @@
 <script lang="ts">
-	import PauseIcon from '$lib/icons/pause-icon.svelte';
-	import PlayIcon from '$lib/icons/play-icon.svelte';
 	import type { AppleMusicSong } from '$lib/lcp/applemusic';
 	import { Card, Image, Scrolling } from '@gleich/ui';
-	import { currentAudio } from './playing';
 
 	const { song }: { song: AppleMusicSong } = $props();
-
-	let audioElement: HTMLAudioElement | null = $state(null);
-	let paused = $state(true);
-
-	$effect(() => {
-		const audio = audioElement;
-		return () => {
-			audio?.pause();
-			currentAudio.update((current) => (current === audio ? null : current));
-		};
-	});
-
-	async function toggle() {
-		const audio = audioElement;
-		if (!audio) return;
-
-		if (!paused) {
-			audio.pause();
-			currentAudio.update((current) => (current === audio ? null : current));
-			return;
-		}
-
-		currentAudio.update((current) => {
-			if (current !== audio) current?.pause();
-			return audio;
-		});
-
-		try {
-			await audio.play();
-		} catch {
-			currentAudio.update((current) => (current === audio ? null : current));
-		}
-	}
 </script>
 
 <Card padding="0">
-	<div class="container">
+	<a
+		href={song.url}
+		title={`View "${song.track}" on Apple Music`}
+		target="_blank"
+		class="container"
+	>
 		<div class="image">
 			{#if song.album_art_url}
-				<a
-					href={song.url}
-					title={`View "${song.track}" on Apple Music`}
-					target="_blank"
-					class="album-art-link"
-				>
-					<Image
-						src={song.album_art_url}
-						alt={`${song.track} by ${song.artist}`}
-						placeholder={song.album_art_blurhash}
-						height={217}
-						width={217}
-						aspectRatio="1/1"
-					/>
-				</a>
+				<Image
+					src={song.album_art_url}
+					alt={`${song.track} by ${song.artist}`}
+					placeholder={song.album_art_blurhash}
+					height={217}
+					width={217}
+					aspectRatio="1/1"
+				/>
 			{:else}
 				<div class="no-album-art-container">No Album Art</div>
 			{/if}
-			{#if song.preview_audio_url}
-				<audio bind:this={audioElement} bind:paused src={song.preview_audio_url} preload="none" loop
-				></audio>
-				<button
-					title={`${paused ? 'Play' : 'Pause'} preview of "${song.track}"`}
-					class="play-audio-button"
-					onclick={toggle}
-				>
-					{#if paused}
-						<PlayIcon />
-					{:else}
-						<PauseIcon />
-					{/if}
-				</button>
-			{/if}
 		</div>
-		<a
-			href={song.url}
-			title={`View "${song.track}" on Apple Music`}
-			target="_blank"
-			class="apple-music-link"
-			style={song.album_art_url ? `--album-art: url('${song.album_art_url}')` : ''}
-		>
+		<div class="info" style={song.album_art_url ? `--album-art: url('${song.album_art_url}')` : ''}>
 			<Scrolling><span class="track">{song.track}</span></Scrolling>
 			<Scrolling><span class="artist">{song.artist}</span></Scrolling>
-		</a>
-	</div>
+		</div>
+	</a>
 </Card>
 
 <style>
@@ -99,13 +40,9 @@
 		text-decoration: none;
 	}
 
-	.album-art-link {
-		display: block;
-		line-height: 0;
-	}
-
 	.image {
 		width: 100%;
+		line-height: 0;
 		height: auto;
 		border-radius: var(--border-radius);
 		border-bottom-right-radius: 0;
@@ -122,26 +59,11 @@
 		align-items: center;
 		justify-content: center;
 		color: grey;
+		line-height: normal;
 		border-bottom: 1px solid var(--border);
 	}
 
-	.play-audio-button {
-		background-color: var(--green-background);
-		backdrop-filter: blur(4px);
-		color: var(--green-foreground);
-		cursor: pointer;
-		border-radius: 50%;
-		position: absolute;
-		z-index: 10;
-		width: 27px;
-		height: 27px;
-		bottom: 5px;
-		left: 5px;
-		padding: 0;
-		box-shadow: none;
-	}
-
-	.apple-music-link,
+	.info,
 	.track,
 	.artist {
 		font-size: 14.5px;
@@ -150,14 +72,14 @@
 		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 	}
 
-	.apple-music-link {
+	.info {
 		padding: 5px 8px;
 		position: relative;
 		overflow: hidden;
 		isolation: isolate;
 	}
 
-	.apple-music-link::before {
+	.info::before {
 		content: '';
 		position: absolute;
 		inset: 0;
@@ -177,13 +99,13 @@
 	}
 
 	@media (prefers-color-scheme: light) {
-		.apple-music-link,
+		.info,
 		.track,
 		.artist {
 			text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8);
 		}
 
-		.apple-music-link::before {
+		.info::before {
 			opacity: 0.35;
 		}
 
