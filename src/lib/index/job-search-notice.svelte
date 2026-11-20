@@ -6,7 +6,7 @@
 
 <aside aria-label="Job search" class="notice">
 	<span class="icon"><InfoIcon /></span>
-	<p>Looking for software engineering roles in the Greater New York City Area</p>
+	<p>Open to software engineering roles in the Greater New York City Area</p>
 	<div class="actions">
 		<a href="/resume">
 			<span class="action-icon" aria-hidden="true"><FileIcon /></span>
