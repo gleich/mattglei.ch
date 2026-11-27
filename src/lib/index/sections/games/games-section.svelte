@@ -41,7 +41,11 @@
 		<p>
 			To relax I like to occasionally play games with some of my friends. My favorite game of all
 			time is <a href="https://www.firewatchgame.com" target="_blank">Firewatch</a> (I've probably
-			replayed it ~8 times over the years). Here are my recently played games from
+			replayed it ~8 times over the years). I'm also a huge fan of games made by Rockstar,
+			particularly
+			<a href="https://www.rockstargames.com/reddeadredemption2" target="_blank"
+				>Red Dead Redemption II</a
+			>. Here are my recently played games from
 			<a href="https://store.steampowered.com/about/" target="_blank">Steam</a>:
 		</p>
 
